@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "arm_c_cpp_properties",
+            "compilerPath": "C:/Software/EmbeddedGCC/arm_gcc/bin/arm-none-eabi-gcc.exe",
+            "includePath": [
+				"C:/Software/EmbeddedGCC/arm_gcc/arm-none-eabi/include",
+				"C:/Software/EmbeddedGCC/arm_gcc/arm-none-eabi/include/sys/",
+				"C:/Software/EmbeddedGCC/arm_gcc/lib/**",
+
+				"${workspaceRoot}\\Drivers\\**",
+				"${workspaceRoot}\\Src\\**",
+                "${workspaceRoot}\\Inc\\**"
+            ],
+            "defines": [
+				"USE_HAL_DRIVER",
+				"STM32F105xC",
+				"M3",
+				"GCC_ARMCM3"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+			"intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

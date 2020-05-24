@@ -1,0 +1,847 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"main.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  16              		.align	1
+  17              		.arch armv7-m
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	MX_GPIO_Init:
+  24              	.LFB68:
+  25              		.file 1 "Src/main.c"
+   1:Src/main.c    **** /* USER CODE BEGIN Header */
+   2:Src/main.c    **** /**
+   3:Src/main.c    ****   ******************************************************************************
+   4:Src/main.c    ****   * @file           : main.c
+   5:Src/main.c    ****   * @brief          : Main program body
+   6:Src/main.c    ****   ******************************************************************************
+   7:Src/main.c    ****   * @attention
+   8:Src/main.c    ****   *
+   9:Src/main.c    ****   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+  10:Src/main.c    ****   * All rights reserved.</center></h2>
+  11:Src/main.c    ****   *
+  12:Src/main.c    ****   * This software component is licensed by ST under BSD 3-Clause license,
+  13:Src/main.c    ****   * the "License"; You may not use this file except in compliance with the
+  14:Src/main.c    ****   * License. You may obtain a copy of the License at:
+  15:Src/main.c    ****   *                        opensource.org/licenses/BSD-3-Clause
+  16:Src/main.c    ****   *
+  17:Src/main.c    ****   ******************************************************************************
+  18:Src/main.c    ****   */
+  19:Src/main.c    **** /* USER CODE END Header */
+  20:Src/main.c    **** 
+  21:Src/main.c    **** /* Includes ------------------------------------------------------------------*/
+  22:Src/main.c    **** #include "main.h"
+  23:Src/main.c    **** 
+  24:Src/main.c    **** /* Private includes ----------------------------------------------------------*/
+  25:Src/main.c    **** /* USER CODE BEGIN Includes */
+  26:Src/main.c    **** 
+  27:Src/main.c    **** /* USER CODE END Includes */
+  28:Src/main.c    **** 
+  29:Src/main.c    **** /* Private typedef -----------------------------------------------------------*/
+  30:Src/main.c    **** /* USER CODE BEGIN PTD */
+  31:Src/main.c    **** 
+  32:Src/main.c    **** /* USER CODE END PTD */
+  33:Src/main.c    **** 
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 2
+
+
+  34:Src/main.c    **** /* Private define ------------------------------------------------------------*/
+  35:Src/main.c    **** /* USER CODE BEGIN PD */
+  36:Src/main.c    **** /* USER CODE END PD */
+  37:Src/main.c    **** 
+  38:Src/main.c    **** /* Private macro -------------------------------------------------------------*/
+  39:Src/main.c    **** /* USER CODE BEGIN PM */
+  40:Src/main.c    **** 
+  41:Src/main.c    **** /* USER CODE END PM */
+  42:Src/main.c    **** 
+  43:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  44:Src/main.c    **** TIM_HandleTypeDef htim6;
+  45:Src/main.c    **** 
+  46:Src/main.c    **** /* USER CODE BEGIN PV */
+  47:Src/main.c    **** 
+  48:Src/main.c    **** /* USER CODE END PV */
+  49:Src/main.c    **** 
+  50:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  51:Src/main.c    **** void SystemClock_Config(void);
+  52:Src/main.c    **** static void MX_GPIO_Init(void);
+  53:Src/main.c    **** static void MX_TIM6_Init(void);
+  54:Src/main.c    **** /* USER CODE BEGIN PFP */
+  55:Src/main.c    **** 
+  56:Src/main.c    **** /* USER CODE END PFP */
+  57:Src/main.c    **** 
+  58:Src/main.c    **** /* Private user code ---------------------------------------------------------*/
+  59:Src/main.c    **** /* USER CODE BEGIN 0 */
+  60:Src/main.c    **** 
+  61:Src/main.c    **** /* USER CODE END 0 */
+  62:Src/main.c    **** 
+  63:Src/main.c    **** /**
+  64:Src/main.c    ****   * @brief  The application entry point.
+  65:Src/main.c    ****   * @retval int
+  66:Src/main.c    ****   */
+  67:Src/main.c    **** int main(void)
+  68:Src/main.c    **** {
+  69:Src/main.c    ****   /* USER CODE BEGIN 1 */
+  70:Src/main.c    ****   uint16_t i;
+  71:Src/main.c    ****   /* USER CODE END 1 */
+  72:Src/main.c    ****   
+  73:Src/main.c    **** 
+  74:Src/main.c    ****   /* MCU Configuration--------------------------------------------------------*/
+  75:Src/main.c    **** 
+  76:Src/main.c    ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  77:Src/main.c    ****   HAL_Init();
+  78:Src/main.c    **** 
+  79:Src/main.c    ****   /* USER CODE BEGIN Init */
+  80:Src/main.c    **** 
+  81:Src/main.c    ****   /* USER CODE END Init */
+  82:Src/main.c    **** 
+  83:Src/main.c    ****   /* Configure the system clock */
+  84:Src/main.c    ****   SystemClock_Config();
+  85:Src/main.c    **** 
+  86:Src/main.c    ****   /* USER CODE BEGIN SysInit */
+  87:Src/main.c    **** 
+  88:Src/main.c    ****   /* USER CODE END SysInit */
+  89:Src/main.c    **** 
+  90:Src/main.c    ****   /* Initialize all configured peripherals */
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 3
+
+
+  91:Src/main.c    ****   MX_GPIO_Init();
+  92:Src/main.c    ****   MX_TIM6_Init();
+  93:Src/main.c    ****   /* USER CODE BEGIN 2 */
+  94:Src/main.c    ****   HAL_TIM_Base_Start_IT(&htim6);
+  95:Src/main.c    ****   //ledprint(123);
+  96:Src/main.c    ****   /* USER CODE END 2 */
+  97:Src/main.c    **** 
+  98:Src/main.c    ****   /* Infinite loop */
+  99:Src/main.c    ****   /* USER CODE BEGIN WHILE */
+ 100:Src/main.c    ****   while (1)
+ 101:Src/main.c    ****   {
+ 102:Src/main.c    ****     /* USER CODE END WHILE */
+ 103:Src/main.c    **** 
+ 104:Src/main.c    ****     /* USER CODE BEGIN 3 */
+ 105:Src/main.c    ****     for (i = 123; i < 334; i = i + 50)
+ 106:Src/main.c    ****     {
+ 107:Src/main.c    ****       ledprint(i);
+ 108:Src/main.c    ****       HAL_Delay(1000);
+ 109:Src/main.c    ****     }
+ 110:Src/main.c    ****   }
+ 111:Src/main.c    ****   /* USER CODE END 3 */
+ 112:Src/main.c    **** }
+ 113:Src/main.c    **** 
+ 114:Src/main.c    **** /**
+ 115:Src/main.c    ****   * @brief System Clock Configuration
+ 116:Src/main.c    ****   * @retval None
+ 117:Src/main.c    ****   */
+ 118:Src/main.c    **** void SystemClock_Config(void)
+ 119:Src/main.c    **** {
+ 120:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 121:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 122:Src/main.c    **** 
+ 123:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
+ 124:Src/main.c    ****   */
+ 125:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+ 126:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 127:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 128:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+ 129:Src/main.c    ****   RCC_OscInitStruct.PLL2.PLL2State = RCC_PLL_NONE;
+ 130:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 131:Src/main.c    ****   {
+ 132:Src/main.c    ****     Error_Handler();
+ 133:Src/main.c    ****   }
+ 134:Src/main.c    ****   /** Initializes the CPU, AHB and APB busses clocks 
+ 135:Src/main.c    ****   */
+ 136:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ 137:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 138:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+ 139:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 140:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 141:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 142:Src/main.c    **** 
+ 143:Src/main.c    ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+ 144:Src/main.c    ****   {
+ 145:Src/main.c    ****     Error_Handler();
+ 146:Src/main.c    ****   }
+ 147:Src/main.c    ****   /** Configure the Systick interrupt time 
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 4
+
+
+ 148:Src/main.c    ****   */
+ 149:Src/main.c    ****   __HAL_RCC_PLLI2S_ENABLE();
+ 150:Src/main.c    **** }
+ 151:Src/main.c    **** 
+ 152:Src/main.c    **** /**
+ 153:Src/main.c    ****   * @brief TIM6 Initialization Function
+ 154:Src/main.c    ****   * @param None
+ 155:Src/main.c    ****   * @retval None
+ 156:Src/main.c    ****   */
+ 157:Src/main.c    **** static void MX_TIM6_Init(void)
+ 158:Src/main.c    **** {
+ 159:Src/main.c    **** 
+ 160:Src/main.c    ****   /* USER CODE BEGIN TIM6_Init 0 */
+ 161:Src/main.c    **** 
+ 162:Src/main.c    ****   /* USER CODE END TIM6_Init 0 */
+ 163:Src/main.c    **** 
+ 164:Src/main.c    ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 165:Src/main.c    **** 
+ 166:Src/main.c    ****   /* USER CODE BEGIN TIM6_Init 1 */
+ 167:Src/main.c    **** 
+ 168:Src/main.c    ****   /* USER CODE END TIM6_Init 1 */
+ 169:Src/main.c    ****   htim6.Instance = TIM6;
+ 170:Src/main.c    ****   htim6.Init.Prescaler = 3999;
+ 171:Src/main.c    ****   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 172:Src/main.c    ****   htim6.Init.Period = 10;
+ 173:Src/main.c    ****   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 174:Src/main.c    ****   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+ 175:Src/main.c    ****   {
+ 176:Src/main.c    ****     Error_Handler();
+ 177:Src/main.c    ****   }
+ 178:Src/main.c    ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+ 179:Src/main.c    ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 180:Src/main.c    ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+ 181:Src/main.c    ****   {
+ 182:Src/main.c    ****     Error_Handler();
+ 183:Src/main.c    ****   }
+ 184:Src/main.c    ****   /* USER CODE BEGIN TIM6_Init 2 */
+ 185:Src/main.c    **** 
+ 186:Src/main.c    ****   /* USER CODE END TIM6_Init 2 */
+ 187:Src/main.c    **** 
+ 188:Src/main.c    **** }
+ 189:Src/main.c    **** 
+ 190:Src/main.c    **** /**
+ 191:Src/main.c    ****   * @brief GPIO Initialization Function
+ 192:Src/main.c    ****   * @param None
+ 193:Src/main.c    ****   * @retval None
+ 194:Src/main.c    ****   */
+ 195:Src/main.c    **** static void MX_GPIO_Init(void)
+ 196:Src/main.c    **** {
+  26              		.loc 1 196 1 view -0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 32
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  31              	.LCFI0:
+  32              		.cfi_def_cfa_offset 28
+  33              		.cfi_offset 4, -28
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 5
+
+
+  34              		.cfi_offset 5, -24
+  35              		.cfi_offset 6, -20
+  36              		.cfi_offset 7, -16
+  37              		.cfi_offset 8, -12
+  38              		.cfi_offset 9, -8
+  39              		.cfi_offset 14, -4
+  40 0004 89B0     		sub	sp, sp, #36
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 64
+ 197:Src/main.c    ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  43              		.loc 1 197 3 view .LVU1
+  44              		.loc 1 197 20 is_stmt 0 view .LVU2
+  45 0006 0024     		movs	r4, #0
+  46 0008 0494     		str	r4, [sp, #16]
+  47 000a 0594     		str	r4, [sp, #20]
+  48 000c 0694     		str	r4, [sp, #24]
+  49 000e 0794     		str	r4, [sp, #28]
+ 198:Src/main.c    **** 
+ 199:Src/main.c    ****   /* GPIO Ports Clock Enable */
+ 200:Src/main.c    ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  50              		.loc 1 200 3 is_stmt 1 view .LVU3
+  51              	.LBB2:
+  52              		.loc 1 200 3 view .LVU4
+  53              		.loc 1 200 3 view .LVU5
+  54 0010 294B     		ldr	r3, .L3
+  55 0012 9A69     		ldr	r2, [r3, #24]
+  56 0014 42F01002 		orr	r2, r2, #16
+  57 0018 9A61     		str	r2, [r3, #24]
+  58              		.loc 1 200 3 view .LVU6
+  59 001a 9A69     		ldr	r2, [r3, #24]
+  60 001c 02F01002 		and	r2, r2, #16
+  61 0020 0192     		str	r2, [sp, #4]
+  62              		.loc 1 200 3 view .LVU7
+  63 0022 019A     		ldr	r2, [sp, #4]
+  64              	.LBE2:
+ 201:Src/main.c    ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  65              		.loc 1 201 3 view .LVU8
+  66              	.LBB3:
+  67              		.loc 1 201 3 view .LVU9
+  68              		.loc 1 201 3 view .LVU10
+  69 0024 9A69     		ldr	r2, [r3, #24]
+  70 0026 42F00402 		orr	r2, r2, #4
+  71 002a 9A61     		str	r2, [r3, #24]
+  72              		.loc 1 201 3 view .LVU11
+  73 002c 9A69     		ldr	r2, [r3, #24]
+  74 002e 02F00402 		and	r2, r2, #4
+  75 0032 0292     		str	r2, [sp, #8]
+  76              		.loc 1 201 3 view .LVU12
+  77 0034 029A     		ldr	r2, [sp, #8]
+  78              	.LBE3:
+ 202:Src/main.c    ****   __HAL_RCC_GPIOD_CLK_ENABLE();
+  79              		.loc 1 202 3 view .LVU13
+  80              	.LBB4:
+  81              		.loc 1 202 3 view .LVU14
+  82              		.loc 1 202 3 view .LVU15
+  83 0036 9A69     		ldr	r2, [r3, #24]
+  84 0038 42F02002 		orr	r2, r2, #32
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 6
+
+
+  85 003c 9A61     		str	r2, [r3, #24]
+  86              		.loc 1 202 3 view .LVU16
+  87 003e 9B69     		ldr	r3, [r3, #24]
+  88 0040 03F02003 		and	r3, r3, #32
+  89 0044 0393     		str	r3, [sp, #12]
+  90              		.loc 1 202 3 view .LVU17
+  91 0046 039B     		ldr	r3, [sp, #12]
+  92              	.LBE4:
+ 203:Src/main.c    **** 
+ 204:Src/main.c    ****   /*Configure GPIO pin Output Level */
+ 205:Src/main.c    ****   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9|GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_SET);
+  93              		.loc 1 205 3 view .LVU18
+  94 0048 DFF87490 		ldr	r9, .L3+8
+  95 004c 0122     		movs	r2, #1
+  96 004e 4FF4D051 		mov	r1, #6656
+  97 0052 4846     		mov	r0, r9
+  98 0054 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  99              	.LVL0:
+ 206:Src/main.c    **** 
+ 207:Src/main.c    ****   /*Configure GPIO pin Output Level */
+ 208:Src/main.c    ****   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_SET);
+ 100              		.loc 1 208 3 view .LVU19
+ 101 0058 DFF86880 		ldr	r8, .L3+12
+ 102 005c 0122     		movs	r2, #1
+ 103 005e 4FF44071 		mov	r1, #768
+ 104 0062 4046     		mov	r0, r8
+ 105 0064 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 106              	.LVL1:
+ 209:Src/main.c    **** 
+ 210:Src/main.c    ****   /*Configure GPIO pin Output Level */
+ 211:Src/main.c    ****   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2, GPIO_PIN_SET);
+ 107              		.loc 1 211 3 view .LVU20
+ 108 0068 144F     		ldr	r7, .L3+4
+ 109 006a 0122     		movs	r2, #1
+ 110 006c 0721     		movs	r1, #7
+ 111 006e 3846     		mov	r0, r7
+ 112 0070 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 113              	.LVL2:
+ 212:Src/main.c    **** 
+ 213:Src/main.c    ****   /*Configure GPIO pins : PC9 PC11 PC12 */
+ 214:Src/main.c    ****   GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_11|GPIO_PIN_12;
+ 114              		.loc 1 214 3 view .LVU21
+ 115              		.loc 1 214 23 is_stmt 0 view .LVU22
+ 116 0074 4FF4D053 		mov	r3, #6656
+ 117 0078 0493     		str	r3, [sp, #16]
+ 215:Src/main.c    ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 118              		.loc 1 215 3 is_stmt 1 view .LVU23
+ 119              		.loc 1 215 24 is_stmt 0 view .LVU24
+ 120 007a 0126     		movs	r6, #1
+ 121 007c 0596     		str	r6, [sp, #20]
+ 216:Src/main.c    ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 122              		.loc 1 216 3 is_stmt 1 view .LVU25
+ 123              		.loc 1 216 24 is_stmt 0 view .LVU26
+ 124 007e 0694     		str	r4, [sp, #24]
+ 217:Src/main.c    ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 125              		.loc 1 217 3 is_stmt 1 view .LVU27
+ 126              		.loc 1 217 25 is_stmt 0 view .LVU28
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 7
+
+
+ 127 0080 0225     		movs	r5, #2
+ 128 0082 0795     		str	r5, [sp, #28]
+ 218:Src/main.c    ****   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 129              		.loc 1 218 3 is_stmt 1 view .LVU29
+ 130 0084 04A9     		add	r1, sp, #16
+ 131 0086 4846     		mov	r0, r9
+ 132 0088 FFF7FEFF 		bl	HAL_GPIO_Init
+ 133              	.LVL3:
+ 219:Src/main.c    **** 
+ 220:Src/main.c    ****   /*Configure GPIO pins : PA8 PA9 */
+ 221:Src/main.c    ****   GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+ 134              		.loc 1 221 3 view .LVU30
+ 135              		.loc 1 221 23 is_stmt 0 view .LVU31
+ 136 008c 4FF44073 		mov	r3, #768
+ 137 0090 0493     		str	r3, [sp, #16]
+ 222:Src/main.c    ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 138              		.loc 1 222 3 is_stmt 1 view .LVU32
+ 139              		.loc 1 222 24 is_stmt 0 view .LVU33
+ 140 0092 0596     		str	r6, [sp, #20]
+ 223:Src/main.c    ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 141              		.loc 1 223 3 is_stmt 1 view .LVU34
+ 142              		.loc 1 223 24 is_stmt 0 view .LVU35
+ 143 0094 0694     		str	r4, [sp, #24]
+ 224:Src/main.c    ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 144              		.loc 1 224 3 is_stmt 1 view .LVU36
+ 145              		.loc 1 224 25 is_stmt 0 view .LVU37
+ 146 0096 0795     		str	r5, [sp, #28]
+ 225:Src/main.c    ****   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 147              		.loc 1 225 3 is_stmt 1 view .LVU38
+ 148 0098 04A9     		add	r1, sp, #16
+ 149 009a 4046     		mov	r0, r8
+ 150 009c FFF7FEFF 		bl	HAL_GPIO_Init
+ 151              	.LVL4:
+ 226:Src/main.c    **** 
+ 227:Src/main.c    ****   /*Configure GPIO pins : PD0 PD1 PD2 */
+ 228:Src/main.c    ****   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2;
+ 152              		.loc 1 228 3 view .LVU39
+ 153              		.loc 1 228 23 is_stmt 0 view .LVU40
+ 154 00a0 0723     		movs	r3, #7
+ 155 00a2 0493     		str	r3, [sp, #16]
+ 229:Src/main.c    ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 156              		.loc 1 229 3 is_stmt 1 view .LVU41
+ 157              		.loc 1 229 24 is_stmt 0 view .LVU42
+ 158 00a4 0596     		str	r6, [sp, #20]
+ 230:Src/main.c    ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 159              		.loc 1 230 3 is_stmt 1 view .LVU43
+ 160              		.loc 1 230 24 is_stmt 0 view .LVU44
+ 161 00a6 0694     		str	r4, [sp, #24]
+ 231:Src/main.c    ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 162              		.loc 1 231 3 is_stmt 1 view .LVU45
+ 163              		.loc 1 231 25 is_stmt 0 view .LVU46
+ 164 00a8 0795     		str	r5, [sp, #28]
+ 232:Src/main.c    ****   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+ 165              		.loc 1 232 3 is_stmt 1 view .LVU47
+ 166 00aa 04A9     		add	r1, sp, #16
+ 167 00ac 3846     		mov	r0, r7
+ 168 00ae FFF7FEFF 		bl	HAL_GPIO_Init
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 8
+
+
+ 169              	.LVL5:
+ 233:Src/main.c    **** 
+ 234:Src/main.c    **** }
+ 170              		.loc 1 234 1 is_stmt 0 view .LVU48
+ 171 00b2 09B0     		add	sp, sp, #36
+ 172              	.LCFI2:
+ 173              		.cfi_def_cfa_offset 28
+ 174              		@ sp needed
+ 175 00b4 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 176              	.L4:
+ 177              		.align	2
+ 178              	.L3:
+ 179 00b8 00100240 		.word	1073876992
+ 180 00bc 00140140 		.word	1073812480
+ 181 00c0 00100140 		.word	1073811456
+ 182 00c4 00080140 		.word	1073809408
+ 183              		.cfi_endproc
+ 184              	.LFE68:
+ 186              		.section	.text.MX_TIM6_Init,"ax",%progbits
+ 187              		.align	1
+ 188              		.syntax unified
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.fpu softvfp
+ 193              	MX_TIM6_Init:
+ 194              	.LFB67:
+ 158:Src/main.c    **** 
+ 195              		.loc 1 158 1 is_stmt 1 view -0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 8
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0000 30B5     		push	{r4, r5, lr}
+ 200              	.LCFI3:
+ 201              		.cfi_def_cfa_offset 12
+ 202              		.cfi_offset 4, -12
+ 203              		.cfi_offset 5, -8
+ 204              		.cfi_offset 14, -4
+ 205 0002 83B0     		sub	sp, sp, #12
+ 206              	.LCFI4:
+ 207              		.cfi_def_cfa_offset 24
+ 164:Src/main.c    **** 
+ 208              		.loc 1 164 3 view .LVU50
+ 164:Src/main.c    **** 
+ 209              		.loc 1 164 27 is_stmt 0 view .LVU51
+ 210 0004 0025     		movs	r5, #0
+ 211 0006 0095     		str	r5, [sp]
+ 212 0008 0195     		str	r5, [sp, #4]
+ 169:Src/main.c    ****   htim6.Init.Prescaler = 3999;
+ 213              		.loc 1 169 3 is_stmt 1 view .LVU52
+ 169:Src/main.c    ****   htim6.Init.Prescaler = 3999;
+ 214              		.loc 1 169 18 is_stmt 0 view .LVU53
+ 215 000a 0A4C     		ldr	r4, .L7
+ 216 000c 0A4B     		ldr	r3, .L7+4
+ 217 000e 2360     		str	r3, [r4]
+ 170:Src/main.c    ****   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 218              		.loc 1 170 3 is_stmt 1 view .LVU54
+ 170:Src/main.c    ****   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 9
+
+
+ 219              		.loc 1 170 24 is_stmt 0 view .LVU55
+ 220 0010 40F69F73 		movw	r3, #3999
+ 221 0014 6360     		str	r3, [r4, #4]
+ 171:Src/main.c    ****   htim6.Init.Period = 10;
+ 222              		.loc 1 171 3 is_stmt 1 view .LVU56
+ 171:Src/main.c    ****   htim6.Init.Period = 10;
+ 223              		.loc 1 171 26 is_stmt 0 view .LVU57
+ 224 0016 A560     		str	r5, [r4, #8]
+ 172:Src/main.c    ****   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 225              		.loc 1 172 3 is_stmt 1 view .LVU58
+ 172:Src/main.c    ****   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 226              		.loc 1 172 21 is_stmt 0 view .LVU59
+ 227 0018 0A23     		movs	r3, #10
+ 228 001a E360     		str	r3, [r4, #12]
+ 173:Src/main.c    ****   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+ 229              		.loc 1 173 3 is_stmt 1 view .LVU60
+ 173:Src/main.c    ****   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+ 230              		.loc 1 173 32 is_stmt 0 view .LVU61
+ 231 001c A561     		str	r5, [r4, #24]
+ 174:Src/main.c    ****   {
+ 232              		.loc 1 174 3 is_stmt 1 view .LVU62
+ 174:Src/main.c    ****   {
+ 233              		.loc 1 174 7 is_stmt 0 view .LVU63
+ 234 001e 2046     		mov	r0, r4
+ 235 0020 FFF7FEFF 		bl	HAL_TIM_Base_Init
+ 236              	.LVL6:
+ 178:Src/main.c    ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 237              		.loc 1 178 3 is_stmt 1 view .LVU64
+ 178:Src/main.c    ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 238              		.loc 1 178 37 is_stmt 0 view .LVU65
+ 239 0024 0095     		str	r5, [sp]
+ 179:Src/main.c    ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+ 240              		.loc 1 179 3 is_stmt 1 view .LVU66
+ 179:Src/main.c    ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+ 241              		.loc 1 179 33 is_stmt 0 view .LVU67
+ 242 0026 0195     		str	r5, [sp, #4]
+ 180:Src/main.c    ****   {
+ 243              		.loc 1 180 3 is_stmt 1 view .LVU68
+ 180:Src/main.c    ****   {
+ 244              		.loc 1 180 7 is_stmt 0 view .LVU69
+ 245 0028 6946     		mov	r1, sp
+ 246 002a 2046     		mov	r0, r4
+ 247 002c FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
+ 248              	.LVL7:
+ 188:Src/main.c    **** 
+ 249              		.loc 1 188 1 view .LVU70
+ 250 0030 03B0     		add	sp, sp, #12
+ 251              	.LCFI5:
+ 252              		.cfi_def_cfa_offset 12
+ 253              		@ sp needed
+ 254 0032 30BD     		pop	{r4, r5, pc}
+ 255              	.L8:
+ 256              		.align	2
+ 257              	.L7:
+ 258 0034 00000000 		.word	htim6
+ 259 0038 00100040 		.word	1073745920
+ 260              		.cfi_endproc
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 10
+
+
+ 261              	.LFE67:
+ 263              		.section	.text.SystemClock_Config,"ax",%progbits
+ 264              		.align	1
+ 265              		.global	SystemClock_Config
+ 266              		.syntax unified
+ 267              		.thumb
+ 268              		.thumb_func
+ 269              		.fpu softvfp
+ 271              	SystemClock_Config:
+ 272              	.LFB66:
+ 119:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 273              		.loc 1 119 1 is_stmt 1 view -0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 80
+ 276              		@ frame_needed = 0, uses_anonymous_args = 0
+ 277 0000 30B5     		push	{r4, r5, lr}
+ 278              	.LCFI6:
+ 279              		.cfi_def_cfa_offset 12
+ 280              		.cfi_offset 4, -12
+ 281              		.cfi_offset 5, -8
+ 282              		.cfi_offset 14, -4
+ 283 0002 95B0     		sub	sp, sp, #84
+ 284              	.LCFI7:
+ 285              		.cfi_def_cfa_offset 96
+ 120:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 286              		.loc 1 120 3 view .LVU72
+ 120:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 287              		.loc 1 120 22 is_stmt 0 view .LVU73
+ 288 0004 3422     		movs	r2, #52
+ 289 0006 0021     		movs	r1, #0
+ 290 0008 07A8     		add	r0, sp, #28
+ 291 000a FFF7FEFF 		bl	memset
+ 292              	.LVL8:
+ 121:Src/main.c    **** 
+ 293              		.loc 1 121 3 is_stmt 1 view .LVU74
+ 121:Src/main.c    **** 
+ 294              		.loc 1 121 22 is_stmt 0 view .LVU75
+ 295 000e 0024     		movs	r4, #0
+ 296 0010 0194     		str	r4, [sp, #4]
+ 297 0012 0294     		str	r4, [sp, #8]
+ 298 0014 0394     		str	r4, [sp, #12]
+ 299 0016 0494     		str	r4, [sp, #16]
+ 300 0018 0594     		str	r4, [sp, #20]
+ 125:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 301              		.loc 1 125 3 is_stmt 1 view .LVU76
+ 125:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 302              		.loc 1 125 36 is_stmt 0 view .LVU77
+ 303 001a 0223     		movs	r3, #2
+ 304 001c 0693     		str	r3, [sp, #24]
+ 126:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 305              		.loc 1 126 3 is_stmt 1 view .LVU78
+ 126:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 306              		.loc 1 126 30 is_stmt 0 view .LVU79
+ 307 001e 0125     		movs	r5, #1
+ 308 0020 0B95     		str	r5, [sp, #44]
+ 127:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+ 309              		.loc 1 127 3 is_stmt 1 view .LVU80
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 11
+
+
+ 127:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+ 310              		.loc 1 127 41 is_stmt 0 view .LVU81
+ 311 0022 1023     		movs	r3, #16
+ 312 0024 0C93     		str	r3, [sp, #48]
+ 128:Src/main.c    ****   RCC_OscInitStruct.PLL2.PLL2State = RCC_PLL_NONE;
+ 313              		.loc 1 128 3 is_stmt 1 view .LVU82
+ 129:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 314              		.loc 1 129 3 view .LVU83
+ 130:Src/main.c    ****   {
+ 315              		.loc 1 130 3 view .LVU84
+ 130:Src/main.c    ****   {
+ 316              		.loc 1 130 7 is_stmt 0 view .LVU85
+ 317 0026 06A8     		add	r0, sp, #24
+ 318 0028 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 319              	.LVL9:
+ 136:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 320              		.loc 1 136 3 is_stmt 1 view .LVU86
+ 136:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 321              		.loc 1 136 31 is_stmt 0 view .LVU87
+ 322 002c 0F23     		movs	r3, #15
+ 323 002e 0193     		str	r3, [sp, #4]
+ 138:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 324              		.loc 1 138 3 is_stmt 1 view .LVU88
+ 138:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 325              		.loc 1 138 34 is_stmt 0 view .LVU89
+ 326 0030 0294     		str	r4, [sp, #8]
+ 139:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 327              		.loc 1 139 3 is_stmt 1 view .LVU90
+ 139:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+ 328              		.loc 1 139 35 is_stmt 0 view .LVU91
+ 329 0032 0394     		str	r4, [sp, #12]
+ 140:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 330              		.loc 1 140 3 is_stmt 1 view .LVU92
+ 140:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 331              		.loc 1 140 36 is_stmt 0 view .LVU93
+ 332 0034 0494     		str	r4, [sp, #16]
+ 141:Src/main.c    **** 
+ 333              		.loc 1 141 3 is_stmt 1 view .LVU94
+ 141:Src/main.c    **** 
+ 334              		.loc 1 141 36 is_stmt 0 view .LVU95
+ 335 0036 0594     		str	r4, [sp, #20]
+ 143:Src/main.c    ****   {
+ 336              		.loc 1 143 3 is_stmt 1 view .LVU96
+ 143:Src/main.c    ****   {
+ 337              		.loc 1 143 7 is_stmt 0 view .LVU97
+ 338 0038 2146     		mov	r1, r4
+ 339 003a 01A8     		add	r0, sp, #4
+ 340 003c FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 341              	.LVL10:
+ 149:Src/main.c    **** }
+ 342              		.loc 1 149 3 is_stmt 1 view .LVU98
+ 343 0040 014B     		ldr	r3, .L11
+ 344 0042 1D60     		str	r5, [r3]
+ 150:Src/main.c    **** 
+ 345              		.loc 1 150 1 is_stmt 0 view .LVU99
+ 346 0044 15B0     		add	sp, sp, #84
+ 347              	.LCFI8:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 12
+
+
+ 348              		.cfi_def_cfa_offset 12
+ 349              		@ sp needed
+ 350 0046 30BD     		pop	{r4, r5, pc}
+ 351              	.L12:
+ 352              		.align	2
+ 353              	.L11:
+ 354 0048 70004242 		.word	1111621744
+ 355              		.cfi_endproc
+ 356              	.LFE66:
+ 358              		.section	.text.main,"ax",%progbits
+ 359              		.align	1
+ 360              		.global	main
+ 361              		.syntax unified
+ 362              		.thumb
+ 363              		.thumb_func
+ 364              		.fpu softvfp
+ 366              	main:
+ 367              	.LFB65:
+  68:Src/main.c    ****   /* USER CODE BEGIN 1 */
+ 368              		.loc 1 68 1 is_stmt 1 view -0
+ 369              		.cfi_startproc
+ 370              		@ args = 0, pretend = 0, frame = 0
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372 0000 10B5     		push	{r4, lr}
+ 373              	.LCFI9:
+ 374              		.cfi_def_cfa_offset 8
+ 375              		.cfi_offset 4, -8
+ 376              		.cfi_offset 14, -4
+  70:Src/main.c    ****   /* USER CODE END 1 */
+ 377              		.loc 1 70 3 view .LVU101
+  77:Src/main.c    **** 
+ 378              		.loc 1 77 3 view .LVU102
+ 379 0002 FFF7FEFF 		bl	HAL_Init
+ 380              	.LVL11:
+  84:Src/main.c    **** 
+ 381              		.loc 1 84 3 view .LVU103
+ 382 0006 FFF7FEFF 		bl	SystemClock_Config
+ 383              	.LVL12:
+  91:Src/main.c    ****   MX_TIM6_Init();
+ 384              		.loc 1 91 3 view .LVU104
+ 385 000a FFF7FEFF 		bl	MX_GPIO_Init
+ 386              	.LVL13:
+  92:Src/main.c    ****   /* USER CODE BEGIN 2 */
+ 387              		.loc 1 92 3 view .LVU105
+ 388 000e FFF7FEFF 		bl	MX_TIM6_Init
+ 389              	.LVL14:
+  94:Src/main.c    ****   //ledprint(123);
+ 390              		.loc 1 94 3 view .LVU106
+ 391 0012 0848     		ldr	r0, .L18
+ 392 0014 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 393              	.LVL15:
+ 394              	.L16:
+ 100:Src/main.c    ****   {
+ 395              		.loc 1 100 3 view .LVU107
+ 105:Src/main.c    ****     {
+ 396              		.loc 1 105 5 view .LVU108
+ 105:Src/main.c    ****     {
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 13
+
+
+ 397              		.loc 1 105 12 is_stmt 0 view .LVU109
+ 398 0018 7B24     		movs	r4, #123
+ 399              	.LVL16:
+ 400              	.L14:
+ 105:Src/main.c    ****     {
+ 401              		.loc 1 105 5 discriminator 1 view .LVU110
+ 402 001a B4F5A77F 		cmp	r4, #334
+ 403 001e FBD2     		bcs	.L16
+ 107:Src/main.c    ****       HAL_Delay(1000);
+ 404              		.loc 1 107 7 is_stmt 1 discriminator 3 view .LVU111
+ 405 0020 2046     		mov	r0, r4
+ 406 0022 FFF7FEFF 		bl	ledprint
+ 407              	.LVL17:
+ 108:Src/main.c    ****     }
+ 408              		.loc 1 108 7 discriminator 3 view .LVU112
+ 409 0026 4FF47A70 		mov	r0, #1000
+ 410 002a FFF7FEFF 		bl	HAL_Delay
+ 411              	.LVL18:
+ 105:Src/main.c    ****     {
+ 412              		.loc 1 105 30 is_stmt 0 discriminator 3 view .LVU113
+ 413 002e 3234     		adds	r4, r4, #50
+ 414              	.LVL19:
+ 105:Src/main.c    ****     {
+ 415              		.loc 1 105 30 discriminator 3 view .LVU114
+ 416 0030 A4B2     		uxth	r4, r4
+ 417              	.LVL20:
+ 105:Src/main.c    ****     {
+ 418              		.loc 1 105 30 discriminator 3 view .LVU115
+ 419 0032 F2E7     		b	.L14
+ 420              	.L19:
+ 421              		.align	2
+ 422              	.L18:
+ 423 0034 00000000 		.word	htim6
+ 424              		.cfi_endproc
+ 425              	.LFE65:
+ 427              		.section	.text.Error_Handler,"ax",%progbits
+ 428              		.align	1
+ 429              		.global	Error_Handler
+ 430              		.syntax unified
+ 431              		.thumb
+ 432              		.thumb_func
+ 433              		.fpu softvfp
+ 435              	Error_Handler:
+ 436              	.LFB69:
+ 235:Src/main.c    **** 
+ 236:Src/main.c    **** /* USER CODE BEGIN 4 */
+ 237:Src/main.c    **** 
+ 238:Src/main.c    **** /* USER CODE END 4 */
+ 239:Src/main.c    **** 
+ 240:Src/main.c    **** /**
+ 241:Src/main.c    ****   * @brief  This function is executed in case of error occurrence.
+ 242:Src/main.c    ****   * @retval None
+ 243:Src/main.c    ****   */
+ 244:Src/main.c    **** void Error_Handler(void)
+ 245:Src/main.c    **** {
+ 437              		.loc 1 245 1 is_stmt 1 view -0
+ 438              		.cfi_startproc
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 14
+
+
+ 439              		@ args = 0, pretend = 0, frame = 0
+ 440              		@ frame_needed = 0, uses_anonymous_args = 0
+ 441              		@ link register save eliminated.
+ 246:Src/main.c    ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 247:Src/main.c    ****   /* User can add his own implementation to report the HAL error return state */
+ 248:Src/main.c    **** 
+ 249:Src/main.c    ****   /* USER CODE END Error_Handler_Debug */
+ 250:Src/main.c    **** }
+ 442              		.loc 1 250 1 view .LVU117
+ 443 0000 7047     		bx	lr
+ 444              		.cfi_endproc
+ 445              	.LFE69:
+ 447              		.comm	htim6,64,4
+ 448              		.text
+ 449              	.Letext0:
+ 450              		.file 2 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 451              		.file 3 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 452              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 453              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 454              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f105xc.h"
+ 455              		.file 7 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ 456              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 457              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ 458              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
+ 459              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 460              		.file 12 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 461              		.file 13 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h"
+ 462              		.file 14 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 463              		.file 15 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h"
+ 464              		.file 16 "Inc/led.h"
+ 465              		.file 17 "<built-in>"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:16     .text.MX_GPIO_Init:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:23     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:179    .text.MX_GPIO_Init:00000000000000b8 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:187    .text.MX_TIM6_Init:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:193    .text.MX_TIM6_Init:0000000000000000 MX_TIM6_Init
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:258    .text.MX_TIM6_Init:0000000000000034 $d
+                            *COM*:0000000000000040 htim6
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:264    .text.SystemClock_Config:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:271    .text.SystemClock_Config:0000000000000000 SystemClock_Config
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:354    .text.SystemClock_Config:0000000000000048 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:359    .text.main:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:366    .text.main:0000000000000000 main
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:423    .text.main:0000000000000034 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:428    .text.Error_Handler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cc2ss6Fm.s:435    .text.Error_Handler:0000000000000000 Error_Handler
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_Init
+HAL_TIM_Base_Init
+HAL_TIMEx_MasterConfigSynchronization
+memset
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_Init
+HAL_TIM_Base_Start_IT
+ledprint
+HAL_Delay

@@ -1,0 +1,298 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"led.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.segchar,"ax",%progbits
+  16              		.align	1
+  17              		.global	segchar
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	segchar:
+  25              	.LVL0:
+  26              	.LFB65:
+  27              		.file 1 "Src/led.c"
+   1:Src/led.c     **** #include "led.h"
+   2:Src/led.c     **** 
+   3:Src/led.c     **** uint8_t R1 = 0, R2 = 0, R3 = 0;
+   4:Src/led.c     **** 
+   5:Src/led.c     **** void segchar (uint8_t seg)
+   6:Src/led.c     **** {
+  28              		.loc 1 6 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 6 1 is_stmt 0 view .LVU1
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+   7:Src/led.c     ****     switch (seg)
+  38              		.loc 1 7 5 is_stmt 1 view .LVU2
+  39 0002 0228     		cmp	r0, #2
+  40 0004 18D0     		beq	.L2
+  41 0006 0328     		cmp	r0, #3
+  42 0008 2AD0     		beq	.L3
+  43 000a 0128     		cmp	r0, #1
+  44 000c 00D0     		beq	.L6
+  45              	.LVL1:
+  46              	.L1:
+   8:Src/led.c     ****     {
+   9:Src/led.c     ****       case 1:
+  10:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+  11:Src/led.c     ****         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+  12:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s 			page 2
+
+
+  13:Src/led.c     ****         break;
+  14:Src/led.c     ****       case 2:
+  15:Src/led.c     ****         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
+  16:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+  17:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+  18:Src/led.c     ****         break;
+  19:Src/led.c     ****       case 3:
+  20:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+  21:Src/led.c     ****         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+  22:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+  23:Src/led.c     ****         break;
+  24:Src/led.c     ****       }
+  25:Src/led.c     **** }
+  47              		.loc 1 25 1 is_stmt 0 view .LVU3
+  48 000e 10BD     		pop	{r4, pc}
+  49              	.LVL2:
+  50              	.L6:
+  10:Src/led.c     ****         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+  51              		.loc 1 10 9 is_stmt 1 view .LVU4
+  52 0010 1D4C     		ldr	r4, .L7
+  53 0012 0022     		movs	r2, #0
+  54 0014 4FF40071 		mov	r1, #512
+  55 0018 2046     		mov	r0, r4
+  56              	.LVL3:
+  10:Src/led.c     ****         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+  57              		.loc 1 10 9 is_stmt 0 view .LVU5
+  58 001a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  59              	.LVL4:
+  11:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+  60              		.loc 1 11 9 is_stmt 1 view .LVU6
+  61 001e 0122     		movs	r2, #1
+  62 0020 4FF40071 		mov	r1, #512
+  63 0024 1948     		ldr	r0, .L7+4
+  64 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  65              	.LVL5:
+  12:Src/led.c     ****         break;
+  66              		.loc 1 12 9 view .LVU7
+  67 002a 0122     		movs	r2, #1
+  68 002c 4FF48071 		mov	r1, #256
+  69 0030 2046     		mov	r0, r4
+  70 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  71              	.LVL6:
+  13:Src/led.c     ****       case 2:
+  72              		.loc 1 13 9 view .LVU8
+  73 0036 EAE7     		b	.L1
+  74              	.LVL7:
+  75              	.L2:
+  15:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+  76              		.loc 1 15 9 view .LVU9
+  77 0038 0022     		movs	r2, #0
+  78 003a 4FF40071 		mov	r1, #512
+  79 003e 1348     		ldr	r0, .L7+4
+  80              	.LVL8:
+  15:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+  81              		.loc 1 15 9 is_stmt 0 view .LVU10
+  82 0040 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  83              	.LVL9:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s 			page 3
+
+
+  16:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+  84              		.loc 1 16 9 is_stmt 1 view .LVU11
+  85 0044 104C     		ldr	r4, .L7
+  86 0046 0122     		movs	r2, #1
+  87 0048 4FF40071 		mov	r1, #512
+  88 004c 2046     		mov	r0, r4
+  89 004e FFF7FEFF 		bl	HAL_GPIO_WritePin
+  90              	.LVL10:
+  17:Src/led.c     ****         break;
+  91              		.loc 1 17 9 view .LVU12
+  92 0052 0122     		movs	r2, #1
+  93 0054 4FF48071 		mov	r1, #256
+  94 0058 2046     		mov	r0, r4
+  95 005a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  96              	.LVL11:
+  18:Src/led.c     ****       case 3:
+  97              		.loc 1 18 9 view .LVU13
+  98 005e D6E7     		b	.L1
+  99              	.LVL12:
+ 100              	.L3:
+  20:Src/led.c     ****         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+ 101              		.loc 1 20 9 view .LVU14
+ 102 0060 094C     		ldr	r4, .L7
+ 103 0062 0022     		movs	r2, #0
+ 104 0064 4FF48071 		mov	r1, #256
+ 105 0068 2046     		mov	r0, r4
+ 106              	.LVL13:
+  20:Src/led.c     ****         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+ 107              		.loc 1 20 9 is_stmt 0 view .LVU15
+ 108 006a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 109              	.LVL14:
+  21:Src/led.c     ****         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+ 110              		.loc 1 21 9 is_stmt 1 view .LVU16
+ 111 006e 0122     		movs	r2, #1
+ 112 0070 4FF40071 		mov	r1, #512
+ 113 0074 0548     		ldr	r0, .L7+4
+ 114 0076 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 115              	.LVL15:
+  22:Src/led.c     ****         break;
+ 116              		.loc 1 22 9 view .LVU17
+ 117 007a 0122     		movs	r2, #1
+ 118 007c 4FF40071 		mov	r1, #512
+ 119 0080 2046     		mov	r0, r4
+ 120 0082 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 121              	.LVL16:
+  23:Src/led.c     ****       }
+ 122              		.loc 1 23 9 view .LVU18
+ 123              		.loc 1 25 1 is_stmt 0 view .LVU19
+ 124 0086 C2E7     		b	.L1
+ 125              	.L8:
+ 126              		.align	2
+ 127              	.L7:
+ 128 0088 00080140 		.word	1073809408
+ 129 008c 00100140 		.word	1073811456
+ 130              		.cfi_endproc
+ 131              	.LFE65:
+ 133              		.section	.text.ledprint,"ax",%progbits
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s 			page 4
+
+
+ 134              		.align	1
+ 135              		.global	ledprint
+ 136              		.syntax unified
+ 137              		.thumb
+ 138              		.thumb_func
+ 139              		.fpu softvfp
+ 141              	ledprint:
+ 142              	.LVL17:
+ 143              	.LFB66:
+  26:Src/led.c     **** 
+  27:Src/led.c     **** void ledprint (uint16_t number)
+  28:Src/led.c     **** {
+ 144              		.loc 1 28 1 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 149              		.loc 1 28 1 is_stmt 0 view .LVU21
+ 150 0000 10B4     		push	{r4}
+ 151              	.LCFI1:
+ 152              		.cfi_def_cfa_offset 4
+ 153              		.cfi_offset 4, -4
+  29:Src/led.c     ****   R1 = number%10;
+ 154              		.loc 1 29 3 is_stmt 1 view .LVU22
+ 155              		.loc 1 29 6 is_stmt 0 view .LVU23
+ 156 0002 0D4C     		ldr	r4, .L11
+ 157 0004 A4FB0032 		umull	r3, r2, r4, r0
+ 158 0008 D208     		lsrs	r2, r2, #3
+ 159 000a 02EB8202 		add	r2, r2, r2, lsl #2
+ 160 000e 5100     		lsls	r1, r2, #1
+ 161 0010 411A     		subs	r1, r0, r1
+ 162 0012 0A4B     		ldr	r3, .L11+4
+ 163 0014 1970     		strb	r1, [r3]
+  30:Src/led.c     ****   R2 = number%100/10;
+ 164              		.loc 1 30 3 is_stmt 1 view .LVU24
+ 165              		.loc 1 30 6 is_stmt 0 view .LVU25
+ 166 0016 0A4A     		ldr	r2, .L11+8
+ 167 0018 A2FB0032 		umull	r3, r2, r2, r0
+ 168 001c 5209     		lsrs	r2, r2, #5
+ 169 001e 6423     		movs	r3, #100
+ 170 0020 03FB1203 		mls	r3, r3, r2, r0
+ 171 0024 9BB2     		uxth	r3, r3
+ 172 0026 A4FB0313 		umull	r1, r3, r4, r3
+ 173 002a DB08     		lsrs	r3, r3, #3
+ 174 002c 0549     		ldr	r1, .L11+12
+ 175 002e 0B70     		strb	r3, [r1]
+  31:Src/led.c     ****   R3 = number/100;
+ 176              		.loc 1 31 3 is_stmt 1 view .LVU26
+ 177              		.loc 1 31 6 is_stmt 0 view .LVU27
+ 178 0030 054B     		ldr	r3, .L11+16
+ 179 0032 1A70     		strb	r2, [r3]
+  32:Src/led.c     **** }...
+ 180              		.loc 1 32 1 view .LVU28
+ 181 0034 10BC     		pop	{r4}
+ 182              	.LCFI2:
+ 183              		.cfi_restore 4
+ 184              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s 			page 5
+
+
+ 185 0036 7047     		bx	lr
+ 186              	.L12:
+ 187              		.align	2
+ 188              	.L11:
+ 189 0038 CDCCCCCC 		.word	-858993459
+ 190 003c 00000000 		.word	.LANCHOR0
+ 191 0040 1F85EB51 		.word	1374389535
+ 192 0044 00000000 		.word	.LANCHOR1
+ 193 0048 00000000 		.word	.LANCHOR2
+ 194              		.cfi_endproc
+ 195              	.LFE66:
+ 197              		.global	R3
+ 198              		.global	R2
+ 199              		.global	R1
+ 200              		.section	.bss.R1,"aw",%nobits
+ 201              		.set	.LANCHOR0,. + 0
+ 204              	R1:
+ 205 0000 00       		.space	1
+ 206              		.section	.bss.R2,"aw",%nobits
+ 207              		.set	.LANCHOR1,. + 0
+ 210              	R2:
+ 211 0000 00       		.space	1
+ 212              		.section	.bss.R3,"aw",%nobits
+ 213              		.set	.LANCHOR2,. + 0
+ 216              	R3:
+ 217 0000 00       		.space	1
+ 218              		.text
+ 219              	.Letext0:
+ 220              		.file 2 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 221              		.file 3 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 222              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+ 223              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 224              		.file 6 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f105xc.h"
+ 225              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 226              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 led.c
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:16     .text.segchar:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:24     .text.segchar:0000000000000000 segchar
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:128    .text.segchar:0000000000000088 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:134    .text.ledprint:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:141    .text.ledprint:0000000000000000 ledprint
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:189    .text.ledprint:0000000000000038 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:216    .bss.R3:0000000000000000 R3
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:210    .bss.R2:0000000000000000 R2
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:204    .bss.R1:0000000000000000 R1
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:205    .bss.R1:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:211    .bss.R2:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cc60v2Bp.s:217    .bss.R3:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin

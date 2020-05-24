@@ -1,0 +1,5 @@
+core_cm4.h:1626:22:NVIC_EnableIRQ	16	static
+BuckConverter.c:8:6:InitHRPWM	4	static
+BuckConverter.c:69:6:SetDutyTimerA	16	static
+BuckConverter.c:75:6:InitBasicADC	8	static
+BuckConverter.c:116:6:ADC1_2_IRQHandler	8	static

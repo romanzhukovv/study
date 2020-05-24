@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "arm_c_cpp_properties",
+            "compilerPath": "C:/ARMSoft/armGCC/8.2.1-1.4-20190214-0604/bin/arm-none-eabi-gcc.exe",
+            "includePath": [
+                "C:/ARMSoft/armGCC/8.2.1-1.4-20190214-0604/arm-none-eabi/include",
+                "C:/ARMSoft/armGCC/8.2.1-1.4-20190214-0604/arm-none-eabi/include/sys/",
+                "C:/ARMSoft/armGCC/8.2.1-1.4-20190214-0604/lib/**",
+                "${workspaceRoot}\\app\\**",
+                "${workspaceRoot}\\cmsis\\**",
+                "${workspaceRoot}\\drivers\\**",
+                "${workspaceRoot}\\FreeRTOS\\**",
+                "${workspaceRoot}\\system\\**"
+            ],
+            "defines": [
+                "STM32F334x8",
+                "M4",
+                "GCC_ARMCM4"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

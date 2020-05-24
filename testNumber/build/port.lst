@@ -1,0 +1,1586 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"port.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.prvTaskExitError,"ax",%progbits
+  16              		.align	1
+  17              		.arch armv7-m
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	prvTaskExitError:
+  24              	.LFB5:
+  25              		.file 1 "FreeRTOS/src/port.c"
+   1:FreeRTOS/src/port.c **** /*
+   2:FreeRTOS/src/port.c ****  * FreeRTOS Kernel V10.3.1
+   3:FreeRTOS/src/port.c ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:FreeRTOS/src/port.c ****  *
+   5:FreeRTOS/src/port.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:FreeRTOS/src/port.c ****  * this software and associated documentation files (the "Software"), to deal in
+   7:FreeRTOS/src/port.c ****  * the Software without restriction, including without limitation the rights to
+   8:FreeRTOS/src/port.c ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:FreeRTOS/src/port.c ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:FreeRTOS/src/port.c ****  * subject to the following conditions:
+  11:FreeRTOS/src/port.c ****  *
+  12:FreeRTOS/src/port.c ****  * The above copyright notice and this permission notice shall be included in all
+  13:FreeRTOS/src/port.c ****  * copies or substantial portions of the Software.
+  14:FreeRTOS/src/port.c ****  *
+  15:FreeRTOS/src/port.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:FreeRTOS/src/port.c ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:FreeRTOS/src/port.c ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:FreeRTOS/src/port.c ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  19:FreeRTOS/src/port.c ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:FreeRTOS/src/port.c ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:FreeRTOS/src/port.c ****  *
+  22:FreeRTOS/src/port.c ****  * http://www.FreeRTOS.org
+  23:FreeRTOS/src/port.c ****  * http://aws.amazon.com/freertos
+  24:FreeRTOS/src/port.c ****  *
+  25:FreeRTOS/src/port.c ****  * 1 tab == 4 spaces!
+  26:FreeRTOS/src/port.c ****  */
+  27:FreeRTOS/src/port.c **** 
+  28:FreeRTOS/src/port.c **** /*-----------------------------------------------------------
+  29:FreeRTOS/src/port.c ****  * Implementation of functions defined in portable.h for the ARM CM3 port.
+  30:FreeRTOS/src/port.c ****  *----------------------------------------------------------*/
+  31:FreeRTOS/src/port.c **** 
+  32:FreeRTOS/src/port.c **** /* Scheduler includes. */
+  33:FreeRTOS/src/port.c **** #include "FreeRTOS.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 2
+
+
+  34:FreeRTOS/src/port.c **** #include "task.h"
+  35:FreeRTOS/src/port.c **** 
+  36:FreeRTOS/src/port.c **** /* For backward compatibility, ensure configKERNEL_INTERRUPT_PRIORITY is
+  37:FreeRTOS/src/port.c **** defined.  The value should also ensure backward compatibility.
+  38:FreeRTOS/src/port.c **** FreeRTOS.org versions prior to V4.4.0 did not include this definition. */
+  39:FreeRTOS/src/port.c **** #ifndef configKERNEL_INTERRUPT_PRIORITY
+  40:FreeRTOS/src/port.c **** 	#define configKERNEL_INTERRUPT_PRIORITY 255
+  41:FreeRTOS/src/port.c **** #endif
+  42:FreeRTOS/src/port.c **** 
+  43:FreeRTOS/src/port.c **** #ifndef configSYSTICK_CLOCK_HZ
+  44:FreeRTOS/src/port.c **** 	#define configSYSTICK_CLOCK_HZ configCPU_CLOCK_HZ
+  45:FreeRTOS/src/port.c **** 	/* Ensure the SysTick is clocked at the same frequency as the core. */
+  46:FreeRTOS/src/port.c **** 	#define portNVIC_SYSTICK_CLK_BIT	( 1UL << 2UL )
+  47:FreeRTOS/src/port.c **** #else
+  48:FreeRTOS/src/port.c **** 	/* The way the SysTick is clocked is not modified in case it is not the same
+  49:FreeRTOS/src/port.c **** 	as the core. */
+  50:FreeRTOS/src/port.c **** 	#define portNVIC_SYSTICK_CLK_BIT	( 0 )
+  51:FreeRTOS/src/port.c **** #endif
+  52:FreeRTOS/src/port.c **** 
+  53:FreeRTOS/src/port.c **** /* Constants required to manipulate the core.  Registers first... */
+  54:FreeRTOS/src/port.c **** #define portNVIC_SYSTICK_CTRL_REG			( * ( ( volatile uint32_t * ) 0xe000e010 ) )
+  55:FreeRTOS/src/port.c **** #define portNVIC_SYSTICK_LOAD_REG			( * ( ( volatile uint32_t * ) 0xe000e014 ) )
+  56:FreeRTOS/src/port.c **** #define portNVIC_SYSTICK_CURRENT_VALUE_REG	( * ( ( volatile uint32_t * ) 0xe000e018 ) )
+  57:FreeRTOS/src/port.c **** #define portNVIC_SYSPRI2_REG				( * ( ( volatile uint32_t * ) 0xe000ed20 ) )
+  58:FreeRTOS/src/port.c **** /* ...then bits in the registers. */
+  59:FreeRTOS/src/port.c **** #define portNVIC_SYSTICK_INT_BIT			( 1UL << 1UL )
+  60:FreeRTOS/src/port.c **** #define portNVIC_SYSTICK_ENABLE_BIT			( 1UL << 0UL )
+  61:FreeRTOS/src/port.c **** #define portNVIC_SYSTICK_COUNT_FLAG_BIT		( 1UL << 16UL )
+  62:FreeRTOS/src/port.c **** #define portNVIC_PENDSVCLEAR_BIT 			( 1UL << 27UL )
+  63:FreeRTOS/src/port.c **** #define portNVIC_PEND_SYSTICK_CLEAR_BIT		( 1UL << 25UL )
+  64:FreeRTOS/src/port.c **** 
+  65:FreeRTOS/src/port.c **** #define portNVIC_PENDSV_PRI					( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 16UL )
+  66:FreeRTOS/src/port.c **** #define portNVIC_SYSTICK_PRI				( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 24UL )
+  67:FreeRTOS/src/port.c **** 
+  68:FreeRTOS/src/port.c **** /* Constants required to check the validity of an interrupt priority. */
+  69:FreeRTOS/src/port.c **** #define portFIRST_USER_INTERRUPT_NUMBER		( 16 )
+  70:FreeRTOS/src/port.c **** #define portNVIC_IP_REGISTERS_OFFSET_16 	( 0xE000E3F0 )
+  71:FreeRTOS/src/port.c **** #define portAIRCR_REG						( * ( ( volatile uint32_t * ) 0xE000ED0C ) )
+  72:FreeRTOS/src/port.c **** #define portMAX_8_BIT_VALUE					( ( uint8_t ) 0xff )
+  73:FreeRTOS/src/port.c **** #define portTOP_BIT_OF_BYTE					( ( uint8_t ) 0x80 )
+  74:FreeRTOS/src/port.c **** #define portMAX_PRIGROUP_BITS				( ( uint8_t ) 7 )
+  75:FreeRTOS/src/port.c **** #define portPRIORITY_GROUP_MASK				( 0x07UL << 8UL )
+  76:FreeRTOS/src/port.c **** #define portPRIGROUP_SHIFT					( 8UL )
+  77:FreeRTOS/src/port.c **** 
+  78:FreeRTOS/src/port.c **** /* Masks off all bits but the VECTACTIVE bits in the ICSR register. */
+  79:FreeRTOS/src/port.c **** #define portVECTACTIVE_MASK					( 0xFFUL )
+  80:FreeRTOS/src/port.c **** 
+  81:FreeRTOS/src/port.c **** /* Constants required to set up the initial stack. */
+  82:FreeRTOS/src/port.c **** #define portINITIAL_XPSR					( 0x01000000UL )
+  83:FreeRTOS/src/port.c **** 
+  84:FreeRTOS/src/port.c **** /* The systick is a 24-bit counter. */
+  85:FreeRTOS/src/port.c **** #define portMAX_24_BIT_NUMBER				( 0xffffffUL )
+  86:FreeRTOS/src/port.c **** 
+  87:FreeRTOS/src/port.c **** /* A fiddle factor to estimate the number of SysTick counts that would have
+  88:FreeRTOS/src/port.c **** occurred while the SysTick counter is stopped during tickless idle
+  89:FreeRTOS/src/port.c **** calculations. */
+  90:FreeRTOS/src/port.c **** #define portMISSED_COUNTS_FACTOR			( 45UL )
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 3
+
+
+  91:FreeRTOS/src/port.c **** 
+  92:FreeRTOS/src/port.c **** /* For strict compliance with the Cortex-M spec the task start address should
+  93:FreeRTOS/src/port.c **** have bit-0 clear, as it is loaded into the PC on exit from an ISR. */
+  94:FreeRTOS/src/port.c **** #define portSTART_ADDRESS_MASK				( ( StackType_t ) 0xfffffffeUL )
+  95:FreeRTOS/src/port.c **** 
+  96:FreeRTOS/src/port.c **** /* Let the user override the pre-loading of the initial LR with the address of
+  97:FreeRTOS/src/port.c **** prvTaskExitError() in case it messes up unwinding of the stack in the
+  98:FreeRTOS/src/port.c **** debugger. */
+  99:FreeRTOS/src/port.c **** #ifdef configTASK_RETURN_ADDRESS
+ 100:FreeRTOS/src/port.c **** 	#define portTASK_RETURN_ADDRESS	configTASK_RETURN_ADDRESS
+ 101:FreeRTOS/src/port.c **** #else
+ 102:FreeRTOS/src/port.c **** 	#define portTASK_RETURN_ADDRESS	prvTaskExitError
+ 103:FreeRTOS/src/port.c **** #endif
+ 104:FreeRTOS/src/port.c **** 
+ 105:FreeRTOS/src/port.c **** /*
+ 106:FreeRTOS/src/port.c ****  * Setup the timer to generate the tick interrupts.  The implementation in this
+ 107:FreeRTOS/src/port.c ****  * file is weak to allow application writers to change the timer used to
+ 108:FreeRTOS/src/port.c ****  * generate the tick interrupt.
+ 109:FreeRTOS/src/port.c ****  */
+ 110:FreeRTOS/src/port.c **** void vPortSetupTimerInterrupt( void );
+ 111:FreeRTOS/src/port.c **** 
+ 112:FreeRTOS/src/port.c **** /*
+ 113:FreeRTOS/src/port.c ****  * Exception handlers.
+ 114:FreeRTOS/src/port.c ****  */
+ 115:FreeRTOS/src/port.c **** void xPortPendSVHandler( void ) __attribute__ (( naked ));
+ 116:FreeRTOS/src/port.c **** void xPortSysTickHandler( void );
+ 117:FreeRTOS/src/port.c **** void vPortSVCHandler( void ) __attribute__ (( naked ));
+ 118:FreeRTOS/src/port.c **** 
+ 119:FreeRTOS/src/port.c **** /*
+ 120:FreeRTOS/src/port.c ****  * Start first task is a separate function so it can be tested in isolation.
+ 121:FreeRTOS/src/port.c ****  */
+ 122:FreeRTOS/src/port.c **** static void prvPortStartFirstTask( void ) __attribute__ (( naked ));
+ 123:FreeRTOS/src/port.c **** 
+ 124:FreeRTOS/src/port.c **** /*
+ 125:FreeRTOS/src/port.c ****  * Used to catch tasks that attempt to return from their implementing function.
+ 126:FreeRTOS/src/port.c ****  */
+ 127:FreeRTOS/src/port.c **** static void prvTaskExitError( void );
+ 128:FreeRTOS/src/port.c **** 
+ 129:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 130:FreeRTOS/src/port.c **** 
+ 131:FreeRTOS/src/port.c **** /* Each task maintains its own interrupt status in the critical nesting
+ 132:FreeRTOS/src/port.c **** variable. */
+ 133:FreeRTOS/src/port.c **** static UBaseType_t uxCriticalNesting = 0xaaaaaaaa;
+ 134:FreeRTOS/src/port.c **** 
+ 135:FreeRTOS/src/port.c **** /*
+ 136:FreeRTOS/src/port.c ****  * The number of SysTick increments that make up one tick period.
+ 137:FreeRTOS/src/port.c ****  */
+ 138:FreeRTOS/src/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ 139:FreeRTOS/src/port.c **** 	static uint32_t ulTimerCountsForOneTick = 0;
+ 140:FreeRTOS/src/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 141:FreeRTOS/src/port.c **** 
+ 142:FreeRTOS/src/port.c **** /*
+ 143:FreeRTOS/src/port.c ****  * The maximum number of tick periods that can be suppressed is limited by the
+ 144:FreeRTOS/src/port.c ****  * 24 bit resolution of the SysTick timer.
+ 145:FreeRTOS/src/port.c ****  */
+ 146:FreeRTOS/src/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ 147:FreeRTOS/src/port.c **** 	static uint32_t xMaximumPossibleSuppressedTicks = 0;
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 4
+
+
+ 148:FreeRTOS/src/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 149:FreeRTOS/src/port.c **** 
+ 150:FreeRTOS/src/port.c **** /*
+ 151:FreeRTOS/src/port.c ****  * Compensate for the CPU cycles that pass while the SysTick is stopped (low
+ 152:FreeRTOS/src/port.c ****  * power functionality only.
+ 153:FreeRTOS/src/port.c ****  */
+ 154:FreeRTOS/src/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ 155:FreeRTOS/src/port.c **** 	static uint32_t ulStoppedTimerCompensation = 0;
+ 156:FreeRTOS/src/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 157:FreeRTOS/src/port.c **** 
+ 158:FreeRTOS/src/port.c **** /*
+ 159:FreeRTOS/src/port.c ****  * Used by the portASSERT_IF_INTERRUPT_PRIORITY_INVALID() macro to ensure
+ 160:FreeRTOS/src/port.c ****  * FreeRTOS API functions are not called from interrupts that have been assigned
+ 161:FreeRTOS/src/port.c ****  * a priority above configMAX_SYSCALL_INTERRUPT_PRIORITY.
+ 162:FreeRTOS/src/port.c ****  */
+ 163:FreeRTOS/src/port.c **** #if( configASSERT_DEFINED == 1 )
+ 164:FreeRTOS/src/port.c **** 	 static uint8_t ucMaxSysCallPriority = 0;
+ 165:FreeRTOS/src/port.c **** 	 static uint32_t ulMaxPRIGROUPValue = 0;
+ 166:FreeRTOS/src/port.c **** 	 static const volatile uint8_t * const pcInterruptPriorityRegisters = ( const volatile uint8_t * c
+ 167:FreeRTOS/src/port.c **** #endif /* configASSERT_DEFINED */
+ 168:FreeRTOS/src/port.c **** 
+ 169:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 170:FreeRTOS/src/port.c **** 
+ 171:FreeRTOS/src/port.c **** /*
+ 172:FreeRTOS/src/port.c ****  * See header file for description.
+ 173:FreeRTOS/src/port.c ****  */
+ 174:FreeRTOS/src/port.c **** StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParam
+ 175:FreeRTOS/src/port.c **** {
+ 176:FreeRTOS/src/port.c **** 	/* Simulate the stack frame as it would be created by a context switch
+ 177:FreeRTOS/src/port.c **** 	interrupt. */
+ 178:FreeRTOS/src/port.c **** 	pxTopOfStack--; /* Offset added to account for the way the MCU uses the stack on entry/exit of int
+ 179:FreeRTOS/src/port.c **** 	*pxTopOfStack = portINITIAL_XPSR;	/* xPSR */
+ 180:FreeRTOS/src/port.c **** 	pxTopOfStack--;
+ 181:FreeRTOS/src/port.c **** 	*pxTopOfStack = ( ( StackType_t ) pxCode ) & portSTART_ADDRESS_MASK;	/* PC */
+ 182:FreeRTOS/src/port.c **** 	pxTopOfStack--;
+ 183:FreeRTOS/src/port.c **** 	*pxTopOfStack = ( StackType_t ) portTASK_RETURN_ADDRESS;	/* LR */
+ 184:FreeRTOS/src/port.c **** 	pxTopOfStack -= 5;	/* R12, R3, R2 and R1. */
+ 185:FreeRTOS/src/port.c **** 	*pxTopOfStack = ( StackType_t ) pvParameters;	/* R0 */
+ 186:FreeRTOS/src/port.c **** 	pxTopOfStack -= 8;	/* R11, R10, R9, R8, R7, R6, R5 and R4. */
+ 187:FreeRTOS/src/port.c **** 
+ 188:FreeRTOS/src/port.c **** 	return pxTopOfStack;
+ 189:FreeRTOS/src/port.c **** }
+ 190:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 191:FreeRTOS/src/port.c **** 
+ 192:FreeRTOS/src/port.c **** static void prvTaskExitError( void )
+ 193:FreeRTOS/src/port.c **** {
+  26              		.loc 1 193 1 view -0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 8
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31 0000 82B0     		sub	sp, sp, #8
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+ 194:FreeRTOS/src/port.c **** volatile uint32_t ulDummy = 0UL;
+  34              		.loc 1 194 1 view .LVU1
+  35              		.loc 1 194 19 is_stmt 0 view .LVU2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 5
+
+
+  36 0002 0023     		movs	r3, #0
+  37 0004 0193     		str	r3, [sp, #4]
+ 195:FreeRTOS/src/port.c **** 
+ 196:FreeRTOS/src/port.c **** 	/* A function that implements a task must not exit or attempt to return to
+ 197:FreeRTOS/src/port.c **** 	its caller as there is nothing to return to.  If a task wants to exit it
+ 198:FreeRTOS/src/port.c **** 	should instead call vTaskDelete( NULL ).
+ 199:FreeRTOS/src/port.c **** 
+ 200:FreeRTOS/src/port.c **** 	Artificially force an assert() to be triggered if configASSERT() is
+ 201:FreeRTOS/src/port.c **** 	defined, then stop here so application writers can catch the error. */
+ 202:FreeRTOS/src/port.c **** 	configASSERT( uxCriticalNesting == ~0UL );
+  38              		.loc 1 202 43 is_stmt 1 view .LVU3
+ 203:FreeRTOS/src/port.c **** 	portDISABLE_INTERRUPTS();
+  39              		.loc 1 203 2 view .LVU4
+  40              	.LBB12:
+  41              	.LBI12:
+  42              		.file 2 "FreeRTOS/inc/portmacro.h"
+   1:FreeRTOS/inc/portmacro.h **** /*
+   2:FreeRTOS/inc/portmacro.h ****  * FreeRTOS Kernel V10.3.1
+   3:FreeRTOS/inc/portmacro.h ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:FreeRTOS/inc/portmacro.h ****  *
+   5:FreeRTOS/inc/portmacro.h ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:FreeRTOS/inc/portmacro.h ****  * this software and associated documentation files (the "Software"), to deal in
+   7:FreeRTOS/inc/portmacro.h ****  * the Software without restriction, including without limitation the rights to
+   8:FreeRTOS/inc/portmacro.h ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:FreeRTOS/inc/portmacro.h ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:FreeRTOS/inc/portmacro.h ****  * subject to the following conditions:
+  11:FreeRTOS/inc/portmacro.h ****  *
+  12:FreeRTOS/inc/portmacro.h ****  * The above copyright notice and this permission notice shall be included in all
+  13:FreeRTOS/inc/portmacro.h ****  * copies or substantial portions of the Software.
+  14:FreeRTOS/inc/portmacro.h ****  *
+  15:FreeRTOS/inc/portmacro.h ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:FreeRTOS/inc/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:FreeRTOS/inc/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:FreeRTOS/inc/portmacro.h ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  19:FreeRTOS/inc/portmacro.h ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:FreeRTOS/inc/portmacro.h ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:FreeRTOS/inc/portmacro.h ****  *
+  22:FreeRTOS/inc/portmacro.h ****  * http://www.FreeRTOS.org
+  23:FreeRTOS/inc/portmacro.h ****  * http://aws.amazon.com/freertos
+  24:FreeRTOS/inc/portmacro.h ****  *
+  25:FreeRTOS/inc/portmacro.h ****  * 1 tab == 4 spaces!
+  26:FreeRTOS/inc/portmacro.h ****  */
+  27:FreeRTOS/inc/portmacro.h **** 
+  28:FreeRTOS/inc/portmacro.h **** 
+  29:FreeRTOS/inc/portmacro.h **** #ifndef PORTMACRO_H
+  30:FreeRTOS/inc/portmacro.h **** #define PORTMACRO_H
+  31:FreeRTOS/inc/portmacro.h **** 
+  32:FreeRTOS/inc/portmacro.h **** #ifdef __cplusplus
+  33:FreeRTOS/inc/portmacro.h **** extern "C" {
+  34:FreeRTOS/inc/portmacro.h **** #endif
+  35:FreeRTOS/inc/portmacro.h **** 
+  36:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------
+  37:FreeRTOS/inc/portmacro.h ****  * Port specific definitions.
+  38:FreeRTOS/inc/portmacro.h ****  *
+  39:FreeRTOS/inc/portmacro.h ****  * The settings in this file configure FreeRTOS correctly for the
+  40:FreeRTOS/inc/portmacro.h ****  * given hardware and compiler.
+  41:FreeRTOS/inc/portmacro.h ****  *
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 6
+
+
+  42:FreeRTOS/inc/portmacro.h ****  * These settings should not be altered.
+  43:FreeRTOS/inc/portmacro.h ****  *-----------------------------------------------------------
+  44:FreeRTOS/inc/portmacro.h ****  */
+  45:FreeRTOS/inc/portmacro.h **** 
+  46:FreeRTOS/inc/portmacro.h **** /* Type definitions. */
+  47:FreeRTOS/inc/portmacro.h **** #define portCHAR		char
+  48:FreeRTOS/inc/portmacro.h **** #define portFLOAT		float
+  49:FreeRTOS/inc/portmacro.h **** #define portDOUBLE		double
+  50:FreeRTOS/inc/portmacro.h **** #define portLONG		long
+  51:FreeRTOS/inc/portmacro.h **** #define portSHORT		short
+  52:FreeRTOS/inc/portmacro.h **** #define portSTACK_TYPE	uint32_t
+  53:FreeRTOS/inc/portmacro.h **** #define portBASE_TYPE	long
+  54:FreeRTOS/inc/portmacro.h **** 
+  55:FreeRTOS/inc/portmacro.h **** typedef portSTACK_TYPE StackType_t;
+  56:FreeRTOS/inc/portmacro.h **** typedef long BaseType_t;
+  57:FreeRTOS/inc/portmacro.h **** typedef unsigned long UBaseType_t;
+  58:FreeRTOS/inc/portmacro.h **** 
+  59:FreeRTOS/inc/portmacro.h **** #if( configUSE_16_BIT_TICKS == 1 )
+  60:FreeRTOS/inc/portmacro.h **** 	typedef uint16_t TickType_t;
+  61:FreeRTOS/inc/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffff
+  62:FreeRTOS/inc/portmacro.h **** #else
+  63:FreeRTOS/inc/portmacro.h **** 	typedef uint32_t TickType_t;
+  64:FreeRTOS/inc/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffffffffUL
+  65:FreeRTOS/inc/portmacro.h **** 
+  66:FreeRTOS/inc/portmacro.h **** 	/* 32-bit tick type on a 32-bit architecture, so reads of the tick count do
+  67:FreeRTOS/inc/portmacro.h **** 	not need to be guarded with a critical section. */
+  68:FreeRTOS/inc/portmacro.h **** 	#define portTICK_TYPE_IS_ATOMIC 1
+  69:FreeRTOS/inc/portmacro.h **** #endif
+  70:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+  71:FreeRTOS/inc/portmacro.h **** 
+  72:FreeRTOS/inc/portmacro.h **** /* Architecture specifics. */
+  73:FreeRTOS/inc/portmacro.h **** #define portSTACK_GROWTH			( -1 )
+  74:FreeRTOS/inc/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
+  75:FreeRTOS/inc/portmacro.h **** #define portBYTE_ALIGNMENT			8
+  76:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+  77:FreeRTOS/inc/portmacro.h **** 
+  78:FreeRTOS/inc/portmacro.h **** /* Scheduler utilities. */
+  79:FreeRTOS/inc/portmacro.h **** #define portYIELD() 															\
+  80:FreeRTOS/inc/portmacro.h **** {																				\
+  81:FreeRTOS/inc/portmacro.h **** 	/* Set a PendSV to request a context switch. */								\
+  82:FreeRTOS/inc/portmacro.h **** 	portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;								\
+  83:FreeRTOS/inc/portmacro.h **** 																				\
+  84:FreeRTOS/inc/portmacro.h **** 	/* Barriers are normally not required but do ensure the code is completely	\
+  85:FreeRTOS/inc/portmacro.h **** 	within the specified behaviour for the architecture. */						\
+  86:FreeRTOS/inc/portmacro.h **** 	__asm volatile( "dsb" ::: "memory" );										\
+  87:FreeRTOS/inc/portmacro.h **** 	__asm volatile( "isb" );													\
+  88:FreeRTOS/inc/portmacro.h **** }
+  89:FreeRTOS/inc/portmacro.h **** 
+  90:FreeRTOS/inc/portmacro.h **** #define portNVIC_INT_CTRL_REG		( * ( ( volatile uint32_t * ) 0xe000ed04 ) )
+  91:FreeRTOS/inc/portmacro.h **** #define portNVIC_PENDSVSET_BIT		( 1UL << 28UL )
+  92:FreeRTOS/inc/portmacro.h **** #define portEND_SWITCHING_ISR( xSwitchRequired ) if( xSwitchRequired != pdFALSE ) portYIELD()
+  93:FreeRTOS/inc/portmacro.h **** #define portYIELD_FROM_ISR( x ) portEND_SWITCHING_ISR( x )
+  94:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+  95:FreeRTOS/inc/portmacro.h **** 
+  96:FreeRTOS/inc/portmacro.h **** /* Critical section management. */
+  97:FreeRTOS/inc/portmacro.h **** extern void vPortEnterCritical( void );
+  98:FreeRTOS/inc/portmacro.h **** extern void vPortExitCritical( void );
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 7
+
+
+  99:FreeRTOS/inc/portmacro.h **** #define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()
+ 100:FreeRTOS/inc/portmacro.h **** #define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)	vPortSetBASEPRI(x)
+ 101:FreeRTOS/inc/portmacro.h **** #define portDISABLE_INTERRUPTS()				vPortRaiseBASEPRI()
+ 102:FreeRTOS/inc/portmacro.h **** #define portENABLE_INTERRUPTS()					vPortSetBASEPRI(0)
+ 103:FreeRTOS/inc/portmacro.h **** #define portENTER_CRITICAL()					vPortEnterCritical()
+ 104:FreeRTOS/inc/portmacro.h **** #define portEXIT_CRITICAL()						vPortExitCritical()
+ 105:FreeRTOS/inc/portmacro.h **** 
+ 106:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 107:FreeRTOS/inc/portmacro.h **** 
+ 108:FreeRTOS/inc/portmacro.h **** /* Task function macros as described on the FreeRTOS.org WEB site.  These are
+ 109:FreeRTOS/inc/portmacro.h **** not necessary for to use this port.  They are defined so the common demo files
+ 110:FreeRTOS/inc/portmacro.h **** (which build with all the ports) will build. */
+ 111:FreeRTOS/inc/portmacro.h **** #define portTASK_FUNCTION_PROTO( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 112:FreeRTOS/inc/portmacro.h **** #define portTASK_FUNCTION( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 113:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 114:FreeRTOS/inc/portmacro.h **** 
+ 115:FreeRTOS/inc/portmacro.h **** /* Tickless idle/low power functionality. */
+ 116:FreeRTOS/inc/portmacro.h **** #ifndef portSUPPRESS_TICKS_AND_SLEEP
+ 117:FreeRTOS/inc/portmacro.h **** 	extern void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime );
+ 118:FreeRTOS/inc/portmacro.h **** 	#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime ) vPortSuppressTicksAndSleep( xExpectedIdl
+ 119:FreeRTOS/inc/portmacro.h **** #endif
+ 120:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 121:FreeRTOS/inc/portmacro.h **** 
+ 122:FreeRTOS/inc/portmacro.h **** /* Architecture specific optimisations. */
+ 123:FreeRTOS/inc/portmacro.h **** #ifndef configUSE_PORT_OPTIMISED_TASK_SELECTION
+ 124:FreeRTOS/inc/portmacro.h **** 	#define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
+ 125:FreeRTOS/inc/portmacro.h **** #endif
+ 126:FreeRTOS/inc/portmacro.h **** 
+ 127:FreeRTOS/inc/portmacro.h **** #if configUSE_PORT_OPTIMISED_TASK_SELECTION == 1
+ 128:FreeRTOS/inc/portmacro.h **** 
+ 129:FreeRTOS/inc/portmacro.h **** 	/* Generic helper function. */
+ 130:FreeRTOS/inc/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
+ 131:FreeRTOS/inc/portmacro.h **** 	{
+ 132:FreeRTOS/inc/portmacro.h **** 	uint8_t ucReturn;
+ 133:FreeRTOS/inc/portmacro.h **** 
+ 134:FreeRTOS/inc/portmacro.h **** 		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+ 135:FreeRTOS/inc/portmacro.h **** 		return ucReturn;
+ 136:FreeRTOS/inc/portmacro.h **** 	}
+ 137:FreeRTOS/inc/portmacro.h **** 
+ 138:FreeRTOS/inc/portmacro.h **** 	/* Check the configuration. */
+ 139:FreeRTOS/inc/portmacro.h **** 	#if( configMAX_PRIORITIES > 32 )
+ 140:FreeRTOS/inc/portmacro.h **** 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is 
+ 141:FreeRTOS/inc/portmacro.h **** 	#endif
+ 142:FreeRTOS/inc/portmacro.h **** 
+ 143:FreeRTOS/inc/portmacro.h **** 	/* Store/clear the ready priorities in a bit map. */
+ 144:FreeRTOS/inc/portmacro.h **** 	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL 
+ 145:FreeRTOS/inc/portmacro.h **** 	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL 
+ 146:FreeRTOS/inc/portmacro.h **** 
+ 147:FreeRTOS/inc/portmacro.h **** 	/*-----------------------------------------------------------*/
+ 148:FreeRTOS/inc/portmacro.h **** 
+ 149:FreeRTOS/inc/portmacro.h **** 	#define portGET_HIGHEST_PRIORITY( uxTopPriority, uxReadyPriorities ) uxTopPriority = ( 31UL - ( ui
+ 150:FreeRTOS/inc/portmacro.h **** 
+ 151:FreeRTOS/inc/portmacro.h **** #endif /* configUSE_PORT_OPTIMISED_TASK_SELECTION */
+ 152:FreeRTOS/inc/portmacro.h **** 
+ 153:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 154:FreeRTOS/inc/portmacro.h **** 
+ 155:FreeRTOS/inc/portmacro.h **** #ifdef configASSERT
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 8
+
+
+ 156:FreeRTOS/inc/portmacro.h **** 	void vPortValidateInterruptPriority( void );
+ 157:FreeRTOS/inc/portmacro.h **** 	#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID() 	vPortValidateInterruptPriority()
+ 158:FreeRTOS/inc/portmacro.h **** #endif
+ 159:FreeRTOS/inc/portmacro.h **** 
+ 160:FreeRTOS/inc/portmacro.h **** /* portNOP() is not required by this port. */
+ 161:FreeRTOS/inc/portmacro.h **** #define portNOP()
+ 162:FreeRTOS/inc/portmacro.h **** 
+ 163:FreeRTOS/inc/portmacro.h **** #define portINLINE	__inline
+ 164:FreeRTOS/inc/portmacro.h **** 
+ 165:FreeRTOS/inc/portmacro.h **** #ifndef portFORCE_INLINE
+ 166:FreeRTOS/inc/portmacro.h **** 	#define portFORCE_INLINE inline __attribute__(( always_inline))
+ 167:FreeRTOS/inc/portmacro.h **** #endif
+ 168:FreeRTOS/inc/portmacro.h **** 
+ 169:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 170:FreeRTOS/inc/portmacro.h **** 
+ 171:FreeRTOS/inc/portmacro.h **** portFORCE_INLINE static BaseType_t xPortIsInsideInterrupt( void )
+ 172:FreeRTOS/inc/portmacro.h **** {
+ 173:FreeRTOS/inc/portmacro.h **** uint32_t ulCurrentInterrupt;
+ 174:FreeRTOS/inc/portmacro.h **** BaseType_t xReturn;
+ 175:FreeRTOS/inc/portmacro.h **** 
+ 176:FreeRTOS/inc/portmacro.h **** 	/* Obtain the number of the currently executing interrupt. */
+ 177:FreeRTOS/inc/portmacro.h **** 	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+ 178:FreeRTOS/inc/portmacro.h **** 
+ 179:FreeRTOS/inc/portmacro.h **** 	if( ulCurrentInterrupt == 0 )
+ 180:FreeRTOS/inc/portmacro.h **** 	{
+ 181:FreeRTOS/inc/portmacro.h **** 		xReturn = pdFALSE;
+ 182:FreeRTOS/inc/portmacro.h **** 	}
+ 183:FreeRTOS/inc/portmacro.h **** 	else
+ 184:FreeRTOS/inc/portmacro.h **** 	{
+ 185:FreeRTOS/inc/portmacro.h **** 		xReturn = pdTRUE;
+ 186:FreeRTOS/inc/portmacro.h **** 	}
+ 187:FreeRTOS/inc/portmacro.h **** 
+ 188:FreeRTOS/inc/portmacro.h **** 	return xReturn;
+ 189:FreeRTOS/inc/portmacro.h **** }
+ 190:FreeRTOS/inc/portmacro.h **** 
+ 191:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 192:FreeRTOS/inc/portmacro.h **** 
+ 193:FreeRTOS/inc/portmacro.h **** portFORCE_INLINE static void vPortRaiseBASEPRI( void )
+  43              		.loc 2 193 30 view .LVU5
+  44              	.LBB13:
+ 194:FreeRTOS/inc/portmacro.h **** {
+ 195:FreeRTOS/inc/portmacro.h **** uint32_t ulNewBASEPRI;
+  45              		.loc 2 195 1 view .LVU6
+ 196:FreeRTOS/inc/portmacro.h **** 
+ 197:FreeRTOS/inc/portmacro.h **** 	__asm volatile
+  46              		.loc 2 197 2 view .LVU7
+  47              		.syntax unified
+  48              	@ 197 "FreeRTOS/inc/portmacro.h" 1
+  49 0006 4FF0BF03 			mov r3, #191												
+  50 000a 83F31188 		msr basepri, r3											
+  51 000e BFF36F8F 		isb														
+  52 0012 BFF34F8F 		dsb														
+  53              	
+  54              	@ 0 "" 2
+  55              	.LVL0:
+  56              		.thumb
+  57              		.syntax unified
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 9
+
+
+  58              	.L2:
+  59              		.loc 2 197 2 is_stmt 0 view .LVU8
+  60              	.LBE13:
+  61              	.LBE12:
+ 204:FreeRTOS/src/port.c **** 	while( ulDummy == 0 )
+ 205:FreeRTOS/src/port.c **** 	{
+ 206:FreeRTOS/src/port.c **** 		/* This file calls prvTaskExitError() after the scheduler has been
+ 207:FreeRTOS/src/port.c **** 		started to remove a compiler warning about the function being defined
+ 208:FreeRTOS/src/port.c **** 		but never called.  ulDummy is used purely to quieten other warnings
+ 209:FreeRTOS/src/port.c **** 		about code appearing after this function is called - making ulDummy
+ 210:FreeRTOS/src/port.c **** 		volatile makes the compiler think the function could return and
+ 211:FreeRTOS/src/port.c **** 		therefore not output an 'unreachable code' warning for code that appears
+ 212:FreeRTOS/src/port.c **** 		after it. */
+ 213:FreeRTOS/src/port.c **** 	}
+  62              		.loc 1 213 2 is_stmt 1 discriminator 1 view .LVU9
+ 204:FreeRTOS/src/port.c **** 	while( ulDummy == 0 )
+  63              		.loc 1 204 17 is_stmt 0 discriminator 1 view .LVU10
+  64 0016 019B     		ldr	r3, [sp, #4]
+ 204:FreeRTOS/src/port.c **** 	while( ulDummy == 0 )
+  65              		.loc 1 204 7 discriminator 1 view .LVU11
+  66 0018 002B     		cmp	r3, #0
+  67 001a FCD0     		beq	.L2
+ 214:FreeRTOS/src/port.c **** }
+  68              		.loc 1 214 1 view .LVU12
+  69 001c 02B0     		add	sp, sp, #8
+  70              	.LCFI1:
+  71              		.cfi_def_cfa_offset 0
+  72              		@ sp needed
+  73 001e 7047     		bx	lr
+  74              		.cfi_endproc
+  75              	.LFE5:
+  77              		.section	.text.prvPortStartFirstTask,"ax",%progbits
+  78              		.align	1
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  82              		.fpu softvfp
+  84              	prvPortStartFirstTask:
+  85              	.LFB7:
+ 215:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 216:FreeRTOS/src/port.c **** 
+ 217:FreeRTOS/src/port.c **** void vPortSVCHandler( void )
+ 218:FreeRTOS/src/port.c **** {
+ 219:FreeRTOS/src/port.c **** 	__asm volatile (
+ 220:FreeRTOS/src/port.c **** 					"	ldr	r3, pxCurrentTCBConst2		\n" /* Restore the context. */
+ 221:FreeRTOS/src/port.c **** 					"	ldr r1, [r3]					\n" /* Use pxCurrentTCBConst to get the pxCurrentTCB address. */
+ 222:FreeRTOS/src/port.c **** 					"	ldr r0, [r1]					\n" /* The first item in pxCurrentTCB is the task top of stack. */
+ 223:FreeRTOS/src/port.c **** 					"	ldmia r0!, {r4-r11}				\n" /* Pop the registers that are not automatically saved on exceptio
+ 224:FreeRTOS/src/port.c **** 					"	msr psp, r0						\n" /* Restore the task stack pointer. */
+ 225:FreeRTOS/src/port.c **** 					"	isb								\n"
+ 226:FreeRTOS/src/port.c **** 					"	mov r0, #0 						\n"
+ 227:FreeRTOS/src/port.c **** 					"	msr	basepri, r0					\n"
+ 228:FreeRTOS/src/port.c **** 					"	orr r14, #0xd					\n"
+ 229:FreeRTOS/src/port.c **** 					"	bx r14							\n"
+ 230:FreeRTOS/src/port.c **** 					"									\n"
+ 231:FreeRTOS/src/port.c **** 					"	.align 4						\n"
+ 232:FreeRTOS/src/port.c **** 					"pxCurrentTCBConst2: .word pxCurrentTCB				\n"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 10
+
+
+ 233:FreeRTOS/src/port.c **** 				);
+ 234:FreeRTOS/src/port.c **** }
+ 235:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 236:FreeRTOS/src/port.c **** 
+ 237:FreeRTOS/src/port.c **** static void prvPortStartFirstTask( void )
+ 238:FreeRTOS/src/port.c **** {
+  86              		.loc 1 238 1 is_stmt 1 view -0
+  87              		.cfi_startproc
+  88              		@ Naked Function: prologue and epilogue provided by programmer.
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239:FreeRTOS/src/port.c **** 	__asm volatile(
+  91              		.loc 1 239 2 view .LVU14
+  92              		.syntax unified
+  93              	@ 239 "FreeRTOS/src/port.c" 1
+  94 0000 0648     		 ldr r0, =0xE000ED08 	
+  95 0002 0068     	 ldr r0, [r0] 			
+  96 0004 0068     	 ldr r0, [r0] 			
+  97 0006 80F30888 	 msr msp, r0			
+  98 000a 62B6     	 cpsie i				
+  99 000c 61B6     	 cpsie f				
+ 100 000e BFF34F8F 	 dsb					
+ 101 0012 BFF36F8F 	 isb					
+ 102 0016 00DF     	 svc 0					
+ 103 0018 00BF     	 nop					
+ 104              	
+ 105              	@ 0 "" 2
+ 240:FreeRTOS/src/port.c **** 					" ldr r0, =0xE000ED08 	\n" /* Use the NVIC offset register to locate the stack. */
+ 241:FreeRTOS/src/port.c **** 					" ldr r0, [r0] 			\n"
+ 242:FreeRTOS/src/port.c **** 					" ldr r0, [r0] 			\n"
+ 243:FreeRTOS/src/port.c **** 					" msr msp, r0			\n" /* Set the msp back to the start of the stack. */
+ 244:FreeRTOS/src/port.c **** 					" cpsie i				\n" /* Globally enable interrupts. */
+ 245:FreeRTOS/src/port.c **** 					" cpsie f				\n"
+ 246:FreeRTOS/src/port.c **** 					" dsb					\n"
+ 247:FreeRTOS/src/port.c **** 					" isb					\n"
+ 248:FreeRTOS/src/port.c **** 					" svc 0					\n" /* System call to start first task. */
+ 249:FreeRTOS/src/port.c **** 					" nop					\n"
+ 250:FreeRTOS/src/port.c **** 				);
+ 251:FreeRTOS/src/port.c **** }
+ 106              		.loc 1 251 1 is_stmt 0 view .LVU15
+ 107              		.thumb
+ 108              		.syntax unified
+ 109              		.cfi_endproc
+ 110              	.LFE7:
+ 112 001a 0000     		.section	.text.pxPortInitialiseStack,"ax",%progbits
+ 113              		.align	1
+ 114              		.global	pxPortInitialiseStack
+ 115              		.syntax unified
+ 116              		.thumb
+ 117              		.thumb_func
+ 118              		.fpu softvfp
+ 120              	pxPortInitialiseStack:
+ 121              	.LVL1:
+ 122              	.LFB4:
+ 175:FreeRTOS/src/port.c **** 	/* Simulate the stack frame as it would be created by a context switch
+ 123              		.loc 1 175 1 is_stmt 1 view -0
+ 124              		.cfi_startproc
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 11
+
+
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127              		@ link register save eliminated.
+ 178:FreeRTOS/src/port.c **** 	*pxTopOfStack = portINITIAL_XPSR;	/* xPSR */
+ 128              		.loc 1 178 2 view .LVU17
+ 179:FreeRTOS/src/port.c **** 	pxTopOfStack--;
+ 129              		.loc 1 179 2 view .LVU18
+ 179:FreeRTOS/src/port.c **** 	pxTopOfStack--;
+ 130              		.loc 1 179 16 is_stmt 0 view .LVU19
+ 131 0000 4FF08073 		mov	r3, #16777216
+ 132 0004 40F8043C 		str	r3, [r0, #-4]
+ 180:FreeRTOS/src/port.c **** 	*pxTopOfStack = ( ( StackType_t ) pxCode ) & portSTART_ADDRESS_MASK;	/* PC */
+ 133              		.loc 1 180 2 is_stmt 1 view .LVU20
+ 134              	.LVL2:
+ 181:FreeRTOS/src/port.c **** 	pxTopOfStack--;
+ 135              		.loc 1 181 2 view .LVU21
+ 181:FreeRTOS/src/port.c **** 	pxTopOfStack--;
+ 136              		.loc 1 181 45 is_stmt 0 view .LVU22
+ 137 0008 21F00101 		bic	r1, r1, #1
+ 138              	.LVL3:
+ 181:FreeRTOS/src/port.c **** 	pxTopOfStack--;
+ 139              		.loc 1 181 16 view .LVU23
+ 140 000c 40F8081C 		str	r1, [r0, #-8]
+ 182:FreeRTOS/src/port.c **** 	*pxTopOfStack = ( StackType_t ) portTASK_RETURN_ADDRESS;	/* LR */
+ 141              		.loc 1 182 2 is_stmt 1 view .LVU24
+ 142              	.LVL4:
+ 183:FreeRTOS/src/port.c **** 	pxTopOfStack -= 5;	/* R12, R3, R2 and R1. */
+ 143              		.loc 1 183 2 view .LVU25
+ 183:FreeRTOS/src/port.c **** 	pxTopOfStack -= 5;	/* R12, R3, R2 and R1. */
+ 144              		.loc 1 183 18 is_stmt 0 view .LVU26
+ 145 0010 034B     		ldr	r3, .L6
+ 183:FreeRTOS/src/port.c **** 	pxTopOfStack -= 5;	/* R12, R3, R2 and R1. */
+ 146              		.loc 1 183 16 view .LVU27
+ 147 0012 40F80C3C 		str	r3, [r0, #-12]
+ 184:FreeRTOS/src/port.c **** 	*pxTopOfStack = ( StackType_t ) pvParameters;	/* R0 */
+ 148              		.loc 1 184 2 is_stmt 1 view .LVU28
+ 149              	.LVL5:
+ 185:FreeRTOS/src/port.c **** 	pxTopOfStack -= 8;	/* R11, R10, R9, R8, R7, R6, R5 and R4. */
+ 150              		.loc 1 185 2 view .LVU29
+ 185:FreeRTOS/src/port.c **** 	pxTopOfStack -= 8;	/* R11, R10, R9, R8, R7, R6, R5 and R4. */
+ 151              		.loc 1 185 16 is_stmt 0 view .LVU30
+ 152 0016 40F8202C 		str	r2, [r0, #-32]
+ 186:FreeRTOS/src/port.c **** 
+ 153              		.loc 1 186 2 is_stmt 1 view .LVU31
+ 154              	.LVL6:
+ 188:FreeRTOS/src/port.c **** }
+ 155              		.loc 1 188 2 view .LVU32
+ 189:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 156              		.loc 1 189 1 is_stmt 0 view .LVU33
+ 157 001a 4038     		subs	r0, r0, #64
+ 158              	.LVL7:
+ 189:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 159              		.loc 1 189 1 view .LVU34
+ 160 001c 7047     		bx	lr
+ 161              	.L7:
+ 162 001e 00BF     		.align	2
+ 163              	.L6:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 12
+
+
+ 164 0020 00000000 		.word	prvTaskExitError
+ 165              		.cfi_endproc
+ 166              	.LFE4:
+ 168              		.section	.text.SVC_Handler,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	SVC_Handler
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 174              		.fpu softvfp
+ 176              	SVC_Handler:
+ 177              	.LFB6:
+ 218:FreeRTOS/src/port.c **** 	__asm volatile (
+ 178              		.loc 1 218 1 is_stmt 1 view -0
+ 179              		.cfi_startproc
+ 180              		@ Naked Function: prologue and epilogue provided by programmer.
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219:FreeRTOS/src/port.c **** 					"	ldr	r3, pxCurrentTCBConst2		\n" /* Restore the context. */
+ 183              		.loc 1 219 2 view .LVU36
+ 184              		.syntax unified
+ 185              	@ 219 "FreeRTOS/src/port.c" 1
+ 186 0000 074B     			ldr	r3, pxCurrentTCBConst2		
+ 187 0002 1968     		ldr r1, [r3]					
+ 188 0004 0868     		ldr r0, [r1]					
+ 189 0006 B0E8F00F 		ldmia r0!, {r4-r11}				
+ 190 000a 80F30988 		msr psp, r0						
+ 191 000e BFF36F8F 		isb								
+ 192 0012 4FF00000 		mov r0, #0 						
+ 193 0016 80F31188 		msr	basepri, r0					
+ 194 001a 4EF00D0E 		orr r14, #0xd					
+ 195 001e 7047     		bx r14							
+ 196              										
+ 197              		.align 4						
+ 198 0020 00000000 	pxCurrentTCBConst2: .word pxCurrentTCB				
+ 199              	
+ 200              	@ 0 "" 2
+ 234:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 201              		.loc 1 234 1 is_stmt 0 view .LVU37
+ 202              		.thumb
+ 203              		.syntax unified
+ 204              		.cfi_endproc
+ 205              	.LFE6:
+ 207              		.section	.text.vPortEndScheduler,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	vPortEndScheduler
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.fpu softvfp
+ 215              	vPortEndScheduler:
+ 216              	.LFB9:
+ 252:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 253:FreeRTOS/src/port.c **** 
+ 254:FreeRTOS/src/port.c **** /*
+ 255:FreeRTOS/src/port.c ****  * See header file for description.
+ 256:FreeRTOS/src/port.c ****  */
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 13
+
+
+ 257:FreeRTOS/src/port.c **** BaseType_t xPortStartScheduler( void )
+ 258:FreeRTOS/src/port.c **** {
+ 259:FreeRTOS/src/port.c **** 	/* configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to 0.
+ 260:FreeRTOS/src/port.c **** 	See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html */
+ 261:FreeRTOS/src/port.c **** 	configASSERT( configMAX_SYSCALL_INTERRUPT_PRIORITY );
+ 262:FreeRTOS/src/port.c **** 
+ 263:FreeRTOS/src/port.c **** 	#if( configASSERT_DEFINED == 1 )
+ 264:FreeRTOS/src/port.c **** 	{
+ 265:FreeRTOS/src/port.c **** 		volatile uint32_t ulOriginalPriority;
+ 266:FreeRTOS/src/port.c **** 		volatile uint8_t * const pucFirstUserPriorityRegister = ( volatile uint8_t * const ) ( portNVIC_I
+ 267:FreeRTOS/src/port.c **** 		volatile uint8_t ucMaxPriorityValue;
+ 268:FreeRTOS/src/port.c **** 
+ 269:FreeRTOS/src/port.c **** 		/* Determine the maximum priority from which ISR safe FreeRTOS API
+ 270:FreeRTOS/src/port.c **** 		functions can be called.  ISR safe functions are those that end in
+ 271:FreeRTOS/src/port.c **** 		"FromISR".  FreeRTOS maintains separate thread and ISR API functions to
+ 272:FreeRTOS/src/port.c **** 		ensure interrupt entry is as fast and simple as possible.
+ 273:FreeRTOS/src/port.c **** 
+ 274:FreeRTOS/src/port.c **** 		Save the interrupt priority value that is about to be clobbered. */
+ 275:FreeRTOS/src/port.c **** 		ulOriginalPriority = *pucFirstUserPriorityRegister;
+ 276:FreeRTOS/src/port.c **** 
+ 277:FreeRTOS/src/port.c **** 		/* Determine the number of priority bits available.  First write to all
+ 278:FreeRTOS/src/port.c **** 		possible bits. */
+ 279:FreeRTOS/src/port.c **** 		*pucFirstUserPriorityRegister = portMAX_8_BIT_VALUE;
+ 280:FreeRTOS/src/port.c **** 
+ 281:FreeRTOS/src/port.c **** 		/* Read the value back to see how many bits stuck. */
+ 282:FreeRTOS/src/port.c **** 		ucMaxPriorityValue = *pucFirstUserPriorityRegister;
+ 283:FreeRTOS/src/port.c **** 
+ 284:FreeRTOS/src/port.c **** 		/* Use the same mask on the maximum system call priority. */
+ 285:FreeRTOS/src/port.c **** 		ucMaxSysCallPriority = configMAX_SYSCALL_INTERRUPT_PRIORITY & ucMaxPriorityValue;
+ 286:FreeRTOS/src/port.c **** 
+ 287:FreeRTOS/src/port.c **** 		/* Calculate the maximum acceptable priority group value for the number
+ 288:FreeRTOS/src/port.c **** 		of bits read back. */
+ 289:FreeRTOS/src/port.c **** 		ulMaxPRIGROUPValue = portMAX_PRIGROUP_BITS;
+ 290:FreeRTOS/src/port.c **** 		while( ( ucMaxPriorityValue & portTOP_BIT_OF_BYTE ) == portTOP_BIT_OF_BYTE )
+ 291:FreeRTOS/src/port.c **** 		{
+ 292:FreeRTOS/src/port.c **** 			ulMaxPRIGROUPValue--;
+ 293:FreeRTOS/src/port.c **** 			ucMaxPriorityValue <<= ( uint8_t ) 0x01;
+ 294:FreeRTOS/src/port.c **** 		}
+ 295:FreeRTOS/src/port.c **** 
+ 296:FreeRTOS/src/port.c **** 		#ifdef __NVIC_PRIO_BITS
+ 297:FreeRTOS/src/port.c **** 		{
+ 298:FreeRTOS/src/port.c **** 			/* Check the CMSIS configuration that defines the number of
+ 299:FreeRTOS/src/port.c **** 			priority bits matches the number of priority bits actually queried
+ 300:FreeRTOS/src/port.c **** 			from the hardware. */
+ 301:FreeRTOS/src/port.c **** 			configASSERT( ( portMAX_PRIGROUP_BITS - ulMaxPRIGROUPValue ) == __NVIC_PRIO_BITS );
+ 302:FreeRTOS/src/port.c **** 		}
+ 303:FreeRTOS/src/port.c **** 		#endif
+ 304:FreeRTOS/src/port.c **** 
+ 305:FreeRTOS/src/port.c **** 		#ifdef configPRIO_BITS
+ 306:FreeRTOS/src/port.c **** 		{
+ 307:FreeRTOS/src/port.c **** 			/* Check the FreeRTOS configuration that defines the number of
+ 308:FreeRTOS/src/port.c **** 			priority bits matches the number of priority bits actually queried
+ 309:FreeRTOS/src/port.c **** 			from the hardware. */
+ 310:FreeRTOS/src/port.c **** 			configASSERT( ( portMAX_PRIGROUP_BITS - ulMaxPRIGROUPValue ) == configPRIO_BITS );
+ 311:FreeRTOS/src/port.c **** 		}
+ 312:FreeRTOS/src/port.c **** 		#endif
+ 313:FreeRTOS/src/port.c **** 
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 14
+
+
+ 314:FreeRTOS/src/port.c **** 		/* Shift the priority group value back to its position within the AIRCR
+ 315:FreeRTOS/src/port.c **** 		register. */
+ 316:FreeRTOS/src/port.c **** 		ulMaxPRIGROUPValue <<= portPRIGROUP_SHIFT;
+ 317:FreeRTOS/src/port.c **** 		ulMaxPRIGROUPValue &= portPRIORITY_GROUP_MASK;
+ 318:FreeRTOS/src/port.c **** 
+ 319:FreeRTOS/src/port.c **** 		/* Restore the clobbered interrupt priority register to its original
+ 320:FreeRTOS/src/port.c **** 		value. */
+ 321:FreeRTOS/src/port.c **** 		*pucFirstUserPriorityRegister = ulOriginalPriority;
+ 322:FreeRTOS/src/port.c **** 	}
+ 323:FreeRTOS/src/port.c **** 	#endif /* conifgASSERT_DEFINED */
+ 324:FreeRTOS/src/port.c **** 
+ 325:FreeRTOS/src/port.c **** 	/* Make PendSV and SysTick the lowest priority interrupts. */
+ 326:FreeRTOS/src/port.c **** 	portNVIC_SYSPRI2_REG |= portNVIC_PENDSV_PRI;
+ 327:FreeRTOS/src/port.c **** 	portNVIC_SYSPRI2_REG |= portNVIC_SYSTICK_PRI;
+ 328:FreeRTOS/src/port.c **** 
+ 329:FreeRTOS/src/port.c **** 	/* Start the timer that generates the tick ISR.  Interrupts are disabled
+ 330:FreeRTOS/src/port.c **** 	here already. */
+ 331:FreeRTOS/src/port.c **** 	vPortSetupTimerInterrupt();
+ 332:FreeRTOS/src/port.c **** 
+ 333:FreeRTOS/src/port.c **** 	/* Initialise the critical nesting count ready for the first task. */
+ 334:FreeRTOS/src/port.c **** 	uxCriticalNesting = 0;
+ 335:FreeRTOS/src/port.c **** 
+ 336:FreeRTOS/src/port.c **** 	/* Start the first task. */
+ 337:FreeRTOS/src/port.c **** 	prvPortStartFirstTask();
+ 338:FreeRTOS/src/port.c **** 
+ 339:FreeRTOS/src/port.c **** 	/* Should never get here as the tasks will now be executing!  Call the task
+ 340:FreeRTOS/src/port.c **** 	exit error function to prevent compiler warnings about a static function
+ 341:FreeRTOS/src/port.c **** 	not being called in the case that the application writer overrides this
+ 342:FreeRTOS/src/port.c **** 	functionality by defining configTASK_RETURN_ADDRESS.  Call
+ 343:FreeRTOS/src/port.c **** 	vTaskSwitchContext() so link time optimisation does not remove the
+ 344:FreeRTOS/src/port.c **** 	symbol. */
+ 345:FreeRTOS/src/port.c **** 	vTaskSwitchContext();
+ 346:FreeRTOS/src/port.c **** 	prvTaskExitError();
+ 347:FreeRTOS/src/port.c **** 
+ 348:FreeRTOS/src/port.c **** 	/* Should not get here! */
+ 349:FreeRTOS/src/port.c **** 	return 0;
+ 350:FreeRTOS/src/port.c **** }
+ 351:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 352:FreeRTOS/src/port.c **** 
+ 353:FreeRTOS/src/port.c **** void vPortEndScheduler( void )
+ 354:FreeRTOS/src/port.c **** {
+ 217              		.loc 1 354 1 is_stmt 1 view -0
+ 218              		.cfi_startproc
+ 219              		@ args = 0, pretend = 0, frame = 0
+ 220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 221              		@ link register save eliminated.
+ 355:FreeRTOS/src/port.c **** 	/* Not implemented in ports where there is nothing to return to.
+ 356:FreeRTOS/src/port.c **** 	Artificially force an assert. */
+ 357:FreeRTOS/src/port.c **** 	configASSERT( uxCriticalNesting == 1000UL );
+ 222              		.loc 1 357 45 view .LVU39
+ 358:FreeRTOS/src/port.c **** }
+ 223              		.loc 1 358 1 is_stmt 0 view .LVU40
+ 224 0000 7047     		bx	lr
+ 225              		.cfi_endproc
+ 226              	.LFE9:
+ 228              		.section	.text.vPortEnterCritical,"ax",%progbits
+ 229              		.align	1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 15
+
+
+ 230              		.global	vPortEnterCritical
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 234              		.fpu softvfp
+ 236              	vPortEnterCritical:
+ 237              	.LFB10:
+ 359:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 360:FreeRTOS/src/port.c **** 
+ 361:FreeRTOS/src/port.c **** void vPortEnterCritical( void )
+ 362:FreeRTOS/src/port.c **** {
+ 238              		.loc 1 362 1 is_stmt 1 view -0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 0
+ 241              		@ frame_needed = 0, uses_anonymous_args = 0
+ 242              		@ link register save eliminated.
+ 363:FreeRTOS/src/port.c **** 	portDISABLE_INTERRUPTS();
+ 243              		.loc 1 363 2 view .LVU42
+ 244              	.LBB14:
+ 245              	.LBI14:
+ 193:FreeRTOS/inc/portmacro.h **** {
+ 246              		.loc 2 193 30 view .LVU43
+ 247              	.LBB15:
+ 195:FreeRTOS/inc/portmacro.h **** 
+ 248              		.loc 2 195 1 view .LVU44
+ 249              		.loc 2 197 2 view .LVU45
+ 250              		.syntax unified
+ 251              	@ 197 "FreeRTOS/inc/portmacro.h" 1
+ 252 0000 4FF0BF03 			mov r3, #191												
+ 253 0004 83F31188 		msr basepri, r3											
+ 254 0008 BFF36F8F 		isb														
+ 255 000c BFF34F8F 		dsb														
+ 256              	
+ 257              	@ 0 "" 2
+ 258              		.thumb
+ 259              		.syntax unified
+ 260              	.LBE15:
+ 261              	.LBE14:
+ 364:FreeRTOS/src/port.c **** 	uxCriticalNesting++;
+ 262              		.loc 1 364 2 view .LVU46
+ 263              		.loc 1 364 19 is_stmt 0 view .LVU47
+ 264 0010 024A     		ldr	r2, .L11
+ 265 0012 1368     		ldr	r3, [r2]
+ 266 0014 0133     		adds	r3, r3, #1
+ 267 0016 1360     		str	r3, [r2]
+ 365:FreeRTOS/src/port.c **** 
+ 366:FreeRTOS/src/port.c **** 	/* This is not the interrupt safe version of the enter critical function so
+ 367:FreeRTOS/src/port.c **** 	assert() if it is being called from an interrupt context.  Only API
+ 368:FreeRTOS/src/port.c **** 	functions that end in "FromISR" can be used in an interrupt.  Only assert if
+ 369:FreeRTOS/src/port.c **** 	the critical nesting count is 1 to protect against recursive calls if the
+ 370:FreeRTOS/src/port.c **** 	assert function also uses a critical section. */
+ 371:FreeRTOS/src/port.c **** 	if( uxCriticalNesting == 1 )
+ 268              		.loc 1 371 2 is_stmt 1 view .LVU48
+ 372:FreeRTOS/src/port.c **** 	{
+ 373:FreeRTOS/src/port.c **** 		configASSERT( ( portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK ) == 0 );
+ 269              		.loc 1 373 71 view .LVU49
+ 374:FreeRTOS/src/port.c **** 	}
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 16
+
+
+ 375:FreeRTOS/src/port.c **** }
+ 270              		.loc 1 375 1 is_stmt 0 view .LVU50
+ 271 0018 7047     		bx	lr
+ 272              	.L12:
+ 273 001a 00BF     		.align	2
+ 274              	.L11:
+ 275 001c 00000000 		.word	.LANCHOR0
+ 276              		.cfi_endproc
+ 277              	.LFE10:
+ 279              		.section	.text.vPortExitCritical,"ax",%progbits
+ 280              		.align	1
+ 281              		.global	vPortExitCritical
+ 282              		.syntax unified
+ 283              		.thumb
+ 284              		.thumb_func
+ 285              		.fpu softvfp
+ 287              	vPortExitCritical:
+ 288              	.LFB11:
+ 376:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 377:FreeRTOS/src/port.c **** 
+ 378:FreeRTOS/src/port.c **** void vPortExitCritical( void )
+ 379:FreeRTOS/src/port.c **** {
+ 289              		.loc 1 379 1 is_stmt 1 view -0
+ 290              		.cfi_startproc
+ 291              		@ args = 0, pretend = 0, frame = 0
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ 293              		@ link register save eliminated.
+ 380:FreeRTOS/src/port.c **** 	configASSERT( uxCriticalNesting );
+ 294              		.loc 1 380 35 view .LVU52
+ 381:FreeRTOS/src/port.c **** 	uxCriticalNesting--;
+ 295              		.loc 1 381 2 view .LVU53
+ 296              		.loc 1 381 19 is_stmt 0 view .LVU54
+ 297 0000 034A     		ldr	r2, .L15
+ 298 0002 1368     		ldr	r3, [r2]
+ 299 0004 013B     		subs	r3, r3, #1
+ 300 0006 1360     		str	r3, [r2]
+ 382:FreeRTOS/src/port.c **** 	if( uxCriticalNesting == 0 )
+ 301              		.loc 1 382 2 is_stmt 1 view .LVU55
+ 302              		.loc 1 382 4 is_stmt 0 view .LVU56
+ 303 0008 0BB9     		cbnz	r3, .L13
+ 383:FreeRTOS/src/port.c **** 	{
+ 384:FreeRTOS/src/port.c **** 		portENABLE_INTERRUPTS();
+ 304              		.loc 1 384 3 is_stmt 1 view .LVU57
+ 305              	.LVL8:
+ 306              	.LBB16:
+ 307              	.LBI16:
+ 198:FreeRTOS/inc/portmacro.h **** 	(
+ 199:FreeRTOS/inc/portmacro.h **** 		"	mov %0, %1												\n" \
+ 200:FreeRTOS/inc/portmacro.h **** 		"	msr basepri, %0											\n" \
+ 201:FreeRTOS/inc/portmacro.h **** 		"	isb														\n" \
+ 202:FreeRTOS/inc/portmacro.h **** 		"	dsb														\n" \
+ 203:FreeRTOS/inc/portmacro.h **** 		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+ 204:FreeRTOS/inc/portmacro.h **** 	);
+ 205:FreeRTOS/inc/portmacro.h **** }
+ 206:FreeRTOS/inc/portmacro.h **** 
+ 207:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 208:FreeRTOS/inc/portmacro.h **** 
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 17
+
+
+ 209:FreeRTOS/inc/portmacro.h **** portFORCE_INLINE static uint32_t ulPortRaiseBASEPRI( void )
+ 210:FreeRTOS/inc/portmacro.h **** {
+ 211:FreeRTOS/inc/portmacro.h **** uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+ 212:FreeRTOS/inc/portmacro.h **** 
+ 213:FreeRTOS/inc/portmacro.h **** 	__asm volatile
+ 214:FreeRTOS/inc/portmacro.h **** 	(
+ 215:FreeRTOS/inc/portmacro.h **** 		"	mrs %0, basepri											\n" \
+ 216:FreeRTOS/inc/portmacro.h **** 		"	mov %1, %2												\n" \
+ 217:FreeRTOS/inc/portmacro.h **** 		"	msr basepri, %1											\n" \
+ 218:FreeRTOS/inc/portmacro.h **** 		"	isb														\n" \
+ 219:FreeRTOS/inc/portmacro.h **** 		"	dsb														\n" \
+ 220:FreeRTOS/inc/portmacro.h **** 		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "
+ 221:FreeRTOS/inc/portmacro.h **** 	);
+ 222:FreeRTOS/inc/portmacro.h **** 
+ 223:FreeRTOS/inc/portmacro.h **** 	/* This return will not be reached but is necessary to prevent compiler
+ 224:FreeRTOS/inc/portmacro.h **** 	warnings. */
+ 225:FreeRTOS/inc/portmacro.h **** 	return ulOriginalBASEPRI;
+ 226:FreeRTOS/inc/portmacro.h **** }
+ 227:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
+ 228:FreeRTOS/inc/portmacro.h **** 
+ 229:FreeRTOS/inc/portmacro.h **** portFORCE_INLINE static void vPortSetBASEPRI( uint32_t ulNewMaskValue )
+ 308              		.loc 2 229 30 view .LVU58
+ 309              	.LBB17:
+ 230:FreeRTOS/inc/portmacro.h **** {
+ 231:FreeRTOS/inc/portmacro.h **** 	__asm volatile
+ 310              		.loc 2 231 2 view .LVU59
+ 311              		.syntax unified
+ 312              	@ 231 "FreeRTOS/inc/portmacro.h" 1
+ 313 000a 83F31188 			msr basepri, r3	
+ 314              	@ 0 "" 2
+ 315              	.LVL9:
+ 316              		.thumb
+ 317              		.syntax unified
+ 318              	.L13:
+ 319              		.loc 2 231 2 is_stmt 0 view .LVU60
+ 320              	.LBE17:
+ 321              	.LBE16:
+ 385:FreeRTOS/src/port.c **** 	}
+ 386:FreeRTOS/src/port.c **** }
+ 322              		.loc 1 386 1 view .LVU61
+ 323 000e 7047     		bx	lr
+ 324              	.L16:
+ 325              		.align	2
+ 326              	.L15:
+ 327 0010 00000000 		.word	.LANCHOR0
+ 328              		.cfi_endproc
+ 329              	.LFE11:
+ 331              		.section	.text.PendSV_Handler,"ax",%progbits
+ 332              		.align	1
+ 333              		.global	PendSV_Handler
+ 334              		.syntax unified
+ 335              		.thumb
+ 336              		.thumb_func
+ 337              		.fpu softvfp
+ 339              	PendSV_Handler:
+ 340              	.LFB12:
+ 387:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 18
+
+
+ 388:FreeRTOS/src/port.c **** 
+ 389:FreeRTOS/src/port.c **** void xPortPendSVHandler( void )
+ 390:FreeRTOS/src/port.c **** {
+ 341              		.loc 1 390 1 is_stmt 1 view -0
+ 342              		.cfi_startproc
+ 343              		@ Naked Function: prologue and epilogue provided by programmer.
+ 344              		@ args = 0, pretend = 0, frame = 0
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391:FreeRTOS/src/port.c **** 	/* This is a naked function. */
+ 392:FreeRTOS/src/port.c **** 
+ 393:FreeRTOS/src/port.c **** 	__asm volatile
+ 346              		.loc 1 393 2 view .LVU63
+ 347              		.syntax unified
+ 348              	@ 393 "FreeRTOS/src/port.c" 1
+ 349 0000 EFF30980 			mrs r0, psp							
+ 350 0004 BFF36F8F 		isb									
+ 351              											
+ 352 0008 0D4B     		ldr	r3, pxCurrentTCBConst			
+ 353 000a 1A68     		ldr	r2, [r3]						
+ 354              											
+ 355 000c 20E9F00F 		stmdb r0!, {r4-r11}					
+ 356 0010 1060     		str r0, [r2]						
+ 357              											
+ 358 0012 2DE90840 		stmdb sp!, {r3, r14}				
+ 359 0016 4FF0BF00 		mov r0, #191							
+ 360 001a 80F31188 		msr basepri, r0						
+ 361 001e FFF7FEFF 		bl vTaskSwitchContext				
+ 362 0022 4FF00000 		mov r0, #0							
+ 363 0026 80F31188 		msr basepri, r0						
+ 364 002a BDE80840 		ldmia sp!, {r3, r14}				
+ 365              											
+ 366 002e 1968     		ldr r1, [r3]						
+ 367 0030 0868     		ldr r0, [r1]						
+ 368 0032 B0E8F00F 		ldmia r0!, {r4-r11}					
+ 369 0036 80F30988 		msr psp, r0							
+ 370 003a BFF36F8F 		isb									
+ 371 003e 7047     		bx r14								
+ 372              											
+ 373              		.align 4							
+ 374 0040 00000000 	pxCurrentTCBConst: .word pxCurrentTCB	
+ 375              	
+ 376              	@ 0 "" 2
+ 394:FreeRTOS/src/port.c **** 	(
+ 395:FreeRTOS/src/port.c **** 	"	mrs r0, psp							\n"
+ 396:FreeRTOS/src/port.c **** 	"	isb									\n"
+ 397:FreeRTOS/src/port.c **** 	"										\n"
+ 398:FreeRTOS/src/port.c **** 	"	ldr	r3, pxCurrentTCBConst			\n" /* Get the location of the current TCB. */
+ 399:FreeRTOS/src/port.c **** 	"	ldr	r2, [r3]						\n"
+ 400:FreeRTOS/src/port.c **** 	"										\n"
+ 401:FreeRTOS/src/port.c **** 	"	stmdb r0!, {r4-r11}					\n" /* Save the remaining registers. */
+ 402:FreeRTOS/src/port.c **** 	"	str r0, [r2]						\n" /* Save the new top of stack into the first member of the TCB. */
+ 403:FreeRTOS/src/port.c **** 	"										\n"
+ 404:FreeRTOS/src/port.c **** 	"	stmdb sp!, {r3, r14}				\n"
+ 405:FreeRTOS/src/port.c **** 	"	mov r0, %0							\n"
+ 406:FreeRTOS/src/port.c **** 	"	msr basepri, r0						\n"
+ 407:FreeRTOS/src/port.c **** 	"	bl vTaskSwitchContext				\n"
+ 408:FreeRTOS/src/port.c **** 	"	mov r0, #0							\n"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 19
+
+
+ 409:FreeRTOS/src/port.c **** 	"	msr basepri, r0						\n"
+ 410:FreeRTOS/src/port.c **** 	"	ldmia sp!, {r3, r14}				\n"
+ 411:FreeRTOS/src/port.c **** 	"										\n" /* Restore the context, including the critical nesting count. */
+ 412:FreeRTOS/src/port.c **** 	"	ldr r1, [r3]						\n"
+ 413:FreeRTOS/src/port.c **** 	"	ldr r0, [r1]						\n" /* The first item in pxCurrentTCB is the task top of stack. */
+ 414:FreeRTOS/src/port.c **** 	"	ldmia r0!, {r4-r11}					\n" /* Pop the registers. */
+ 415:FreeRTOS/src/port.c **** 	"	msr psp, r0							\n"
+ 416:FreeRTOS/src/port.c **** 	"	isb									\n"
+ 417:FreeRTOS/src/port.c **** 	"	bx r14								\n"
+ 418:FreeRTOS/src/port.c **** 	"										\n"
+ 419:FreeRTOS/src/port.c **** 	"	.align 4							\n"
+ 420:FreeRTOS/src/port.c **** 	"pxCurrentTCBConst: .word pxCurrentTCB	\n"
+ 421:FreeRTOS/src/port.c **** 	::"i"(configMAX_SYSCALL_INTERRUPT_PRIORITY)
+ 422:FreeRTOS/src/port.c **** 	);
+ 423:FreeRTOS/src/port.c **** }
+ 377              		.loc 1 423 1 is_stmt 0 view .LVU64
+ 378              		.thumb
+ 379              		.syntax unified
+ 380              		.cfi_endproc
+ 381              	.LFE12:
+ 383              		.section	.text.SysTick_Handler,"ax",%progbits
+ 384              		.align	1
+ 385              		.global	SysTick_Handler
+ 386              		.syntax unified
+ 387              		.thumb
+ 388              		.thumb_func
+ 389              		.fpu softvfp
+ 391              	SysTick_Handler:
+ 392              	.LFB13:
+ 424:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 425:FreeRTOS/src/port.c **** 
+ 426:FreeRTOS/src/port.c **** void xPortSysTickHandler( void )
+ 427:FreeRTOS/src/port.c **** {
+ 393              		.loc 1 427 1 is_stmt 1 view -0
+ 394              		.cfi_startproc
+ 395              		@ args = 0, pretend = 0, frame = 0
+ 396              		@ frame_needed = 0, uses_anonymous_args = 0
+ 397 0000 08B5     		push	{r3, lr}
+ 398              	.LCFI2:
+ 399              		.cfi_def_cfa_offset 8
+ 400              		.cfi_offset 3, -8
+ 401              		.cfi_offset 14, -4
+ 428:FreeRTOS/src/port.c **** 	/* The SysTick runs at the lowest interrupt priority, so when this interrupt
+ 429:FreeRTOS/src/port.c **** 	executes all interrupts must be unmasked.  There is therefore no need to
+ 430:FreeRTOS/src/port.c **** 	save and then restore the interrupt mask value as its value is already
+ 431:FreeRTOS/src/port.c **** 	known. */
+ 432:FreeRTOS/src/port.c **** 	portDISABLE_INTERRUPTS();
+ 402              		.loc 1 432 2 view .LVU66
+ 403              	.LBB18:
+ 404              	.LBI18:
+ 193:FreeRTOS/inc/portmacro.h **** {
+ 405              		.loc 2 193 30 view .LVU67
+ 406              	.LBB19:
+ 195:FreeRTOS/inc/portmacro.h **** 
+ 407              		.loc 2 195 1 view .LVU68
+ 197:FreeRTOS/inc/portmacro.h **** 	(
+ 408              		.loc 2 197 2 view .LVU69
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 20
+
+
+ 409              		.syntax unified
+ 410              	@ 197 "FreeRTOS/inc/portmacro.h" 1
+ 411 0002 4FF0BF03 			mov r3, #191												
+ 412 0006 83F31188 		msr basepri, r3											
+ 413 000a BFF36F8F 		isb														
+ 414 000e BFF34F8F 		dsb														
+ 415              	
+ 416              	@ 0 "" 2
+ 417              		.thumb
+ 418              		.syntax unified
+ 419              	.LBE19:
+ 420              	.LBE18:
+ 433:FreeRTOS/src/port.c **** 	{
+ 434:FreeRTOS/src/port.c **** 		/* Increment the RTOS tick. */
+ 435:FreeRTOS/src/port.c **** 		if( xTaskIncrementTick() != pdFALSE )
+ 421              		.loc 1 435 3 view .LVU70
+ 422              		.loc 1 435 7 is_stmt 0 view .LVU71
+ 423 0012 FFF7FEFF 		bl	xTaskIncrementTick
+ 424              	.LVL10:
+ 425              		.loc 1 435 5 view .LVU72
+ 426 0016 18B1     		cbz	r0, .L19
+ 436:FreeRTOS/src/port.c **** 		{
+ 437:FreeRTOS/src/port.c **** 			/* A context switch is required.  Context switching is performed in
+ 438:FreeRTOS/src/port.c **** 			the PendSV interrupt.  Pend the PendSV interrupt. */
+ 439:FreeRTOS/src/port.c **** 			portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+ 427              		.loc 1 439 4 is_stmt 1 view .LVU73
+ 428              		.loc 1 439 26 is_stmt 0 view .LVU74
+ 429 0018 034B     		ldr	r3, .L21
+ 430 001a 4FF08052 		mov	r2, #268435456
+ 431 001e 1A60     		str	r2, [r3]
+ 432              	.L19:
+ 440:FreeRTOS/src/port.c **** 		}
+ 441:FreeRTOS/src/port.c **** 	}
+ 442:FreeRTOS/src/port.c **** 	portENABLE_INTERRUPTS();
+ 433              		.loc 1 442 2 is_stmt 1 view .LVU75
+ 434              	.LVL11:
+ 435              	.LBB20:
+ 436              	.LBI20:
+ 229:FreeRTOS/inc/portmacro.h **** {
+ 437              		.loc 2 229 30 view .LVU76
+ 438              	.LBB21:
+ 439              		.loc 2 231 2 view .LVU77
+ 440 0020 0023     		movs	r3, #0
+ 441              		.syntax unified
+ 442              	@ 231 "FreeRTOS/inc/portmacro.h" 1
+ 443 0022 83F31188 			msr basepri, r3	
+ 444              	@ 0 "" 2
+ 445              	.LVL12:
+ 446              		.loc 2 231 2 is_stmt 0 view .LVU78
+ 447              		.thumb
+ 448              		.syntax unified
+ 449              	.LBE21:
+ 450              	.LBE20:
+ 443:FreeRTOS/src/port.c **** }
+ 451              		.loc 1 443 1 view .LVU79
+ 452 0026 08BD     		pop	{r3, pc}
+ 453              	.L22:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 21
+
+
+ 454              		.align	2
+ 455              	.L21:
+ 456 0028 04ED00E0 		.word	-536810236
+ 457              		.cfi_endproc
+ 458              	.LFE13:
+ 460              		.section	.text.vPortSetupTimerInterrupt,"ax",%progbits
+ 461              		.align	1
+ 462              		.weak	vPortSetupTimerInterrupt
+ 463              		.syntax unified
+ 464              		.thumb
+ 465              		.thumb_func
+ 466              		.fpu softvfp
+ 468              	vPortSetupTimerInterrupt:
+ 469              	.LFB14:
+ 444:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 445:FreeRTOS/src/port.c **** 
+ 446:FreeRTOS/src/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ 447:FreeRTOS/src/port.c **** 
+ 448:FreeRTOS/src/port.c **** 	__attribute__((weak)) void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
+ 449:FreeRTOS/src/port.c **** 	{
+ 450:FreeRTOS/src/port.c **** 	uint32_t ulReloadValue, ulCompleteTickPeriods, ulCompletedSysTickDecrements;
+ 451:FreeRTOS/src/port.c **** 	TickType_t xModifiableIdleTime;
+ 452:FreeRTOS/src/port.c **** 
+ 453:FreeRTOS/src/port.c **** 		/* Make sure the SysTick reload value does not overflow the counter. */
+ 454:FreeRTOS/src/port.c **** 		if( xExpectedIdleTime > xMaximumPossibleSuppressedTicks )
+ 455:FreeRTOS/src/port.c **** 		{
+ 456:FreeRTOS/src/port.c **** 			xExpectedIdleTime = xMaximumPossibleSuppressedTicks;
+ 457:FreeRTOS/src/port.c **** 		}
+ 458:FreeRTOS/src/port.c **** 
+ 459:FreeRTOS/src/port.c **** 		/* Stop the SysTick momentarily.  The time the SysTick is stopped for
+ 460:FreeRTOS/src/port.c **** 		is accounted for as best it can be, but using the tickless mode will
+ 461:FreeRTOS/src/port.c **** 		inevitably result in some tiny drift of the time maintained by the
+ 462:FreeRTOS/src/port.c **** 		kernel with respect to calendar time. */
+ 463:FreeRTOS/src/port.c **** 		portNVIC_SYSTICK_CTRL_REG &= ~portNVIC_SYSTICK_ENABLE_BIT;
+ 464:FreeRTOS/src/port.c **** 
+ 465:FreeRTOS/src/port.c **** 		/* Calculate the reload value required to wait xExpectedIdleTime
+ 466:FreeRTOS/src/port.c **** 		tick periods.  -1 is used because this code will execute part way
+ 467:FreeRTOS/src/port.c **** 		through one of the tick periods. */
+ 468:FreeRTOS/src/port.c **** 		ulReloadValue = portNVIC_SYSTICK_CURRENT_VALUE_REG + ( ulTimerCountsForOneTick * ( xExpectedIdleT
+ 469:FreeRTOS/src/port.c **** 		if( ulReloadValue > ulStoppedTimerCompensation )
+ 470:FreeRTOS/src/port.c **** 		{
+ 471:FreeRTOS/src/port.c **** 			ulReloadValue -= ulStoppedTimerCompensation;
+ 472:FreeRTOS/src/port.c **** 		}
+ 473:FreeRTOS/src/port.c **** 
+ 474:FreeRTOS/src/port.c **** 		/* Enter a critical section but don't use the taskENTER_CRITICAL()
+ 475:FreeRTOS/src/port.c **** 		method as that will mask interrupts that should exit sleep mode. */
+ 476:FreeRTOS/src/port.c **** 		__asm volatile( "cpsid i" ::: "memory" );
+ 477:FreeRTOS/src/port.c **** 		__asm volatile( "dsb" );
+ 478:FreeRTOS/src/port.c **** 		__asm volatile( "isb" );
+ 479:FreeRTOS/src/port.c **** 
+ 480:FreeRTOS/src/port.c **** 		/* If a context switch is pending or a task is waiting for the scheduler
+ 481:FreeRTOS/src/port.c **** 		to be unsuspended then abandon the low power entry. */
+ 482:FreeRTOS/src/port.c **** 		if( eTaskConfirmSleepModeStatus() == eAbortSleep )
+ 483:FreeRTOS/src/port.c **** 		{
+ 484:FreeRTOS/src/port.c **** 			/* Restart from whatever is left in the count register to complete
+ 485:FreeRTOS/src/port.c **** 			this tick period. */
+ 486:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_LOAD_REG = portNVIC_SYSTICK_CURRENT_VALUE_REG;
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 22
+
+
+ 487:FreeRTOS/src/port.c **** 
+ 488:FreeRTOS/src/port.c **** 			/* Restart SysTick. */
+ 489:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
+ 490:FreeRTOS/src/port.c **** 
+ 491:FreeRTOS/src/port.c **** 			/* Reset the reload register to the value required for normal tick
+ 492:FreeRTOS/src/port.c **** 			periods. */
+ 493:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_LOAD_REG = ulTimerCountsForOneTick - 1UL;
+ 494:FreeRTOS/src/port.c **** 
+ 495:FreeRTOS/src/port.c **** 			/* Re-enable interrupts - see comments above the cpsid instruction()
+ 496:FreeRTOS/src/port.c **** 			above. */
+ 497:FreeRTOS/src/port.c **** 			__asm volatile( "cpsie i" ::: "memory" );
+ 498:FreeRTOS/src/port.c **** 		}
+ 499:FreeRTOS/src/port.c **** 		else
+ 500:FreeRTOS/src/port.c **** 		{
+ 501:FreeRTOS/src/port.c **** 			/* Set the new reload value. */
+ 502:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_LOAD_REG = ulReloadValue;
+ 503:FreeRTOS/src/port.c **** 
+ 504:FreeRTOS/src/port.c **** 			/* Clear the SysTick count flag and set the count value back to
+ 505:FreeRTOS/src/port.c **** 			zero. */
+ 506:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+ 507:FreeRTOS/src/port.c **** 
+ 508:FreeRTOS/src/port.c **** 			/* Restart SysTick. */
+ 509:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
+ 510:FreeRTOS/src/port.c **** 
+ 511:FreeRTOS/src/port.c **** 			/* Sleep until something happens.  configPRE_SLEEP_PROCESSING() can
+ 512:FreeRTOS/src/port.c **** 			set its parameter to 0 to indicate that its implementation contains
+ 513:FreeRTOS/src/port.c **** 			its own wait for interrupt or wait for event instruction, and so wfi
+ 514:FreeRTOS/src/port.c **** 			should not be executed again.  However, the original expected idle
+ 515:FreeRTOS/src/port.c **** 			time variable must remain unmodified, so a copy is taken. */
+ 516:FreeRTOS/src/port.c **** 			xModifiableIdleTime = xExpectedIdleTime;
+ 517:FreeRTOS/src/port.c **** 			configPRE_SLEEP_PROCESSING( xModifiableIdleTime );
+ 518:FreeRTOS/src/port.c **** 			if( xModifiableIdleTime > 0 )
+ 519:FreeRTOS/src/port.c **** 			{
+ 520:FreeRTOS/src/port.c **** 				__asm volatile( "dsb" ::: "memory" );
+ 521:FreeRTOS/src/port.c **** 				__asm volatile( "wfi" );
+ 522:FreeRTOS/src/port.c **** 				__asm volatile( "isb" );
+ 523:FreeRTOS/src/port.c **** 			}
+ 524:FreeRTOS/src/port.c **** 			configPOST_SLEEP_PROCESSING( xExpectedIdleTime );
+ 525:FreeRTOS/src/port.c **** 
+ 526:FreeRTOS/src/port.c **** 			/* Re-enable interrupts to allow the interrupt that brought the MCU
+ 527:FreeRTOS/src/port.c **** 			out of sleep mode to execute immediately.  see comments above
+ 528:FreeRTOS/src/port.c **** 			__disable_interrupt() call above. */
+ 529:FreeRTOS/src/port.c **** 			__asm volatile( "cpsie i" ::: "memory" );
+ 530:FreeRTOS/src/port.c **** 			__asm volatile( "dsb" );
+ 531:FreeRTOS/src/port.c **** 			__asm volatile( "isb" );
+ 532:FreeRTOS/src/port.c **** 
+ 533:FreeRTOS/src/port.c **** 			/* Disable interrupts again because the clock is about to be stopped
+ 534:FreeRTOS/src/port.c **** 			and interrupts that execute while the clock is stopped will increase
+ 535:FreeRTOS/src/port.c **** 			any slippage between the time maintained by the RTOS and calendar
+ 536:FreeRTOS/src/port.c **** 			time. */
+ 537:FreeRTOS/src/port.c **** 			__asm volatile( "cpsid i" ::: "memory" );
+ 538:FreeRTOS/src/port.c **** 			__asm volatile( "dsb" );
+ 539:FreeRTOS/src/port.c **** 			__asm volatile( "isb" );
+ 540:FreeRTOS/src/port.c **** 
+ 541:FreeRTOS/src/port.c **** 			/* Disable the SysTick clock without reading the
+ 542:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CTRL_REG register to ensure the
+ 543:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_COUNT_FLAG_BIT is not cleared if it is set.  Again,
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 23
+
+
+ 544:FreeRTOS/src/port.c **** 			the time the SysTick is stopped for is accounted for as best it can
+ 545:FreeRTOS/src/port.c **** 			be, but using the tickless mode will inevitably result in some tiny
+ 546:FreeRTOS/src/port.c **** 			drift of the time maintained by the kernel with respect to calendar
+ 547:FreeRTOS/src/port.c **** 			time*/
+ 548:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT );
+ 549:FreeRTOS/src/port.c **** 
+ 550:FreeRTOS/src/port.c **** 			/* Determine if the SysTick clock has already counted to zero and
+ 551:FreeRTOS/src/port.c **** 			been set back to the current reload value (the reload back being
+ 552:FreeRTOS/src/port.c **** 			correct for the entire expected idle time) or if the SysTick is yet
+ 553:FreeRTOS/src/port.c **** 			to count to zero (in which case an interrupt other than the SysTick
+ 554:FreeRTOS/src/port.c **** 			must have brought the system out of sleep mode). */
+ 555:FreeRTOS/src/port.c **** 			if( ( portNVIC_SYSTICK_CTRL_REG & portNVIC_SYSTICK_COUNT_FLAG_BIT ) != 0 )
+ 556:FreeRTOS/src/port.c **** 			{
+ 557:FreeRTOS/src/port.c **** 				uint32_t ulCalculatedLoadValue;
+ 558:FreeRTOS/src/port.c **** 
+ 559:FreeRTOS/src/port.c **** 				/* The tick interrupt is already pending, and the SysTick count
+ 560:FreeRTOS/src/port.c **** 				reloaded with ulReloadValue.  Reset the
+ 561:FreeRTOS/src/port.c **** 				portNVIC_SYSTICK_LOAD_REG with whatever remains of this tick
+ 562:FreeRTOS/src/port.c **** 				period. */
+ 563:FreeRTOS/src/port.c **** 				ulCalculatedLoadValue = ( ulTimerCountsForOneTick - 1UL ) - ( ulReloadValue - portNVIC_SYSTICK_
+ 564:FreeRTOS/src/port.c **** 
+ 565:FreeRTOS/src/port.c **** 				/* Don't allow a tiny value, or values that have somehow
+ 566:FreeRTOS/src/port.c **** 				underflowed because the post sleep hook did something
+ 567:FreeRTOS/src/port.c **** 				that took too long. */
+ 568:FreeRTOS/src/port.c **** 				if( ( ulCalculatedLoadValue < ulStoppedTimerCompensation ) || ( ulCalculatedLoadValue > ulTimer
+ 569:FreeRTOS/src/port.c **** 				{
+ 570:FreeRTOS/src/port.c **** 					ulCalculatedLoadValue = ( ulTimerCountsForOneTick - 1UL );
+ 571:FreeRTOS/src/port.c **** 				}
+ 572:FreeRTOS/src/port.c **** 
+ 573:FreeRTOS/src/port.c **** 				portNVIC_SYSTICK_LOAD_REG = ulCalculatedLoadValue;
+ 574:FreeRTOS/src/port.c **** 
+ 575:FreeRTOS/src/port.c **** 				/* As the pending tick will be processed as soon as this
+ 576:FreeRTOS/src/port.c **** 				function exits, the tick value maintained by the tick is stepped
+ 577:FreeRTOS/src/port.c **** 				forward by one less than the time spent waiting. */
+ 578:FreeRTOS/src/port.c **** 				ulCompleteTickPeriods = xExpectedIdleTime - 1UL;
+ 579:FreeRTOS/src/port.c **** 			}
+ 580:FreeRTOS/src/port.c **** 			else
+ 581:FreeRTOS/src/port.c **** 			{
+ 582:FreeRTOS/src/port.c **** 				/* Something other than the tick interrupt ended the sleep.
+ 583:FreeRTOS/src/port.c **** 				Work out how long the sleep lasted rounded to complete tick
+ 584:FreeRTOS/src/port.c **** 				periods (not the ulReload value which accounted for part
+ 585:FreeRTOS/src/port.c **** 				ticks). */
+ 586:FreeRTOS/src/port.c **** 				ulCompletedSysTickDecrements = ( xExpectedIdleTime * ulTimerCountsForOneTick ) - portNVIC_SYSTI
+ 587:FreeRTOS/src/port.c **** 
+ 588:FreeRTOS/src/port.c **** 				/* How many complete tick periods passed while the processor
+ 589:FreeRTOS/src/port.c **** 				was waiting? */
+ 590:FreeRTOS/src/port.c **** 				ulCompleteTickPeriods = ulCompletedSysTickDecrements / ulTimerCountsForOneTick;
+ 591:FreeRTOS/src/port.c **** 
+ 592:FreeRTOS/src/port.c **** 				/* The reload value is set to whatever fraction of a single tick
+ 593:FreeRTOS/src/port.c **** 				period remains. */
+ 594:FreeRTOS/src/port.c **** 				portNVIC_SYSTICK_LOAD_REG = ( ( ulCompleteTickPeriods + 1UL ) * ulTimerCountsForOneTick ) - ulC
+ 595:FreeRTOS/src/port.c **** 			}
+ 596:FreeRTOS/src/port.c **** 
+ 597:FreeRTOS/src/port.c **** 			/* Restart SysTick so it runs from portNVIC_SYSTICK_LOAD_REG
+ 598:FreeRTOS/src/port.c **** 			again, then set portNVIC_SYSTICK_LOAD_REG back to its standard
+ 599:FreeRTOS/src/port.c **** 			value. */
+ 600:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 24
+
+
+ 601:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
+ 602:FreeRTOS/src/port.c **** 			vTaskStepTick( ulCompleteTickPeriods );
+ 603:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_LOAD_REG = ulTimerCountsForOneTick - 1UL;
+ 604:FreeRTOS/src/port.c **** 
+ 605:FreeRTOS/src/port.c **** 			/* Exit with interrupts enabled. */
+ 606:FreeRTOS/src/port.c **** 			__asm volatile( "cpsie i" ::: "memory" );
+ 607:FreeRTOS/src/port.c **** 		}
+ 608:FreeRTOS/src/port.c **** 	}
+ 609:FreeRTOS/src/port.c **** 
+ 610:FreeRTOS/src/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 611:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 612:FreeRTOS/src/port.c **** 
+ 613:FreeRTOS/src/port.c **** /*
+ 614:FreeRTOS/src/port.c ****  * Setup the systick timer to generate the tick interrupts at the required
+ 615:FreeRTOS/src/port.c ****  * frequency.
+ 616:FreeRTOS/src/port.c ****  */
+ 617:FreeRTOS/src/port.c **** __attribute__(( weak )) void vPortSetupTimerInterrupt( void )
+ 618:FreeRTOS/src/port.c **** {
+ 470              		.loc 1 618 1 is_stmt 1 view -0
+ 471              		.cfi_startproc
+ 472              		@ args = 0, pretend = 0, frame = 0
+ 473              		@ frame_needed = 0, uses_anonymous_args = 0
+ 474              		@ link register save eliminated.
+ 619:FreeRTOS/src/port.c **** 	/* Calculate the constants required to configure the tick interrupt. */
+ 620:FreeRTOS/src/port.c **** 	#if( configUSE_TICKLESS_IDLE == 1 )
+ 621:FreeRTOS/src/port.c **** 	{
+ 622:FreeRTOS/src/port.c **** 		ulTimerCountsForOneTick = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ );
+ 623:FreeRTOS/src/port.c **** 		xMaximumPossibleSuppressedTicks = portMAX_24_BIT_NUMBER / ulTimerCountsForOneTick;
+ 624:FreeRTOS/src/port.c **** 		ulStoppedTimerCompensation = portMISSED_COUNTS_FACTOR / ( configCPU_CLOCK_HZ / configSYSTICK_CLOC
+ 625:FreeRTOS/src/port.c **** 	}
+ 626:FreeRTOS/src/port.c **** 	#endif /* configUSE_TICKLESS_IDLE */
+ 627:FreeRTOS/src/port.c **** 
+ 628:FreeRTOS/src/port.c **** 	/* Stop and clear the SysTick. */
+ 629:FreeRTOS/src/port.c **** 	portNVIC_SYSTICK_CTRL_REG = 0UL;
+ 475              		.loc 1 629 2 view .LVU81
+ 476              		.loc 1 629 28 is_stmt 0 view .LVU82
+ 477 0000 054B     		ldr	r3, .L24
+ 478 0002 0022     		movs	r2, #0
+ 479 0004 1A60     		str	r2, [r3]
+ 630:FreeRTOS/src/port.c **** 	portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+ 480              		.loc 1 630 2 is_stmt 1 view .LVU83
+ 481              		.loc 1 630 37 is_stmt 0 view .LVU84
+ 482 0006 0549     		ldr	r1, .L24+4
+ 483 0008 0A60     		str	r2, [r1]
+ 631:FreeRTOS/src/port.c **** 
+ 632:FreeRTOS/src/port.c **** 	/* Configure SysTick to interrupt at the requested rate. */
+ 633:FreeRTOS/src/port.c **** 	portNVIC_SYSTICK_LOAD_REG = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ ) - 1UL;
+ 484              		.loc 1 633 2 is_stmt 1 view .LVU85
+ 485              		.loc 1 633 28 is_stmt 0 view .LVU86
+ 486 000a 054A     		ldr	r2, .L24+8
+ 487 000c 4BF67F31 		movw	r1, #47999
+ 488 0010 1160     		str	r1, [r2]
+ 634:FreeRTOS/src/port.c **** 	portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT | portNVIC_SYSTI
+ 489              		.loc 1 634 2 is_stmt 1 view .LVU87
+ 490              		.loc 1 634 28 is_stmt 0 view .LVU88
+ 491 0012 0722     		movs	r2, #7
+ 492 0014 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 25
+
+
+ 635:FreeRTOS/src/port.c **** }
+ 493              		.loc 1 635 1 view .LVU89
+ 494 0016 7047     		bx	lr
+ 495              	.L25:
+ 496              		.align	2
+ 497              	.L24:
+ 498 0018 10E000E0 		.word	-536813552
+ 499 001c 18E000E0 		.word	-536813544
+ 500 0020 14E000E0 		.word	-536813548
+ 501              		.cfi_endproc
+ 502              	.LFE14:
+ 504              		.section	.text.xPortStartScheduler,"ax",%progbits
+ 505              		.align	1
+ 506              		.global	xPortStartScheduler
+ 507              		.syntax unified
+ 508              		.thumb
+ 509              		.thumb_func
+ 510              		.fpu softvfp
+ 512              	xPortStartScheduler:
+ 513              	.LFB8:
+ 258:FreeRTOS/src/port.c **** 	/* configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to 0.
+ 514              		.loc 1 258 1 is_stmt 1 view -0
+ 515              		.cfi_startproc
+ 516              		@ args = 0, pretend = 0, frame = 0
+ 517              		@ frame_needed = 0, uses_anonymous_args = 0
+ 518 0000 10B5     		push	{r4, lr}
+ 519              	.LCFI3:
+ 520              		.cfi_def_cfa_offset 8
+ 521              		.cfi_offset 4, -8
+ 522              		.cfi_offset 14, -4
+ 261:FreeRTOS/src/port.c **** 
+ 523              		.loc 1 261 54 view .LVU91
+ 326:FreeRTOS/src/port.c **** 	portNVIC_SYSPRI2_REG |= portNVIC_SYSTICK_PRI;
+ 524              		.loc 1 326 2 view .LVU92
+ 326:FreeRTOS/src/port.c **** 	portNVIC_SYSPRI2_REG |= portNVIC_SYSTICK_PRI;
+ 525              		.loc 1 326 23 is_stmt 0 view .LVU93
+ 526 0002 0B4B     		ldr	r3, .L28
+ 527 0004 1A68     		ldr	r2, [r3]
+ 528 0006 42F47F02 		orr	r2, r2, #16711680
+ 529 000a 1A60     		str	r2, [r3]
+ 327:FreeRTOS/src/port.c **** 
+ 530              		.loc 1 327 2 is_stmt 1 view .LVU94
+ 327:FreeRTOS/src/port.c **** 
+ 531              		.loc 1 327 23 is_stmt 0 view .LVU95
+ 532 000c 1A68     		ldr	r2, [r3]
+ 533 000e 42F07F42 		orr	r2, r2, #-16777216
+ 534 0012 1A60     		str	r2, [r3]
+ 331:FreeRTOS/src/port.c **** 
+ 535              		.loc 1 331 2 is_stmt 1 view .LVU96
+ 536 0014 FFF7FEFF 		bl	vPortSetupTimerInterrupt
+ 537              	.LVL13:
+ 334:FreeRTOS/src/port.c **** 
+ 538              		.loc 1 334 2 view .LVU97
+ 334:FreeRTOS/src/port.c **** 
+ 539              		.loc 1 334 20 is_stmt 0 view .LVU98
+ 540 0018 0024     		movs	r4, #0
+ 541 001a 064B     		ldr	r3, .L28+4
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 26
+
+
+ 542 001c 1C60     		str	r4, [r3]
+ 337:FreeRTOS/src/port.c **** 
+ 543              		.loc 1 337 2 is_stmt 1 view .LVU99
+ 544 001e FFF7FEFF 		bl	prvPortStartFirstTask
+ 545              	.LVL14:
+ 345:FreeRTOS/src/port.c **** 	prvTaskExitError();
+ 546              		.loc 1 345 2 view .LVU100
+ 547 0022 FFF7FEFF 		bl	vTaskSwitchContext
+ 548              	.LVL15:
+ 346:FreeRTOS/src/port.c **** 
+ 549              		.loc 1 346 2 view .LVU101
+ 550 0026 FFF7FEFF 		bl	prvTaskExitError
+ 551              	.LVL16:
+ 349:FreeRTOS/src/port.c **** }
+ 552              		.loc 1 349 2 view .LVU102
+ 350:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
+ 553              		.loc 1 350 1 is_stmt 0 view .LVU103
+ 554 002a 2046     		mov	r0, r4
+ 555 002c 10BD     		pop	{r4, pc}
+ 556              	.L29:
+ 557 002e 00BF     		.align	2
+ 558              	.L28:
+ 559 0030 20ED00E0 		.word	-536810208
+ 560 0034 00000000 		.word	.LANCHOR0
+ 561              		.cfi_endproc
+ 562              	.LFE8:
+ 564              		.section	.data.uxCriticalNesting,"aw"
+ 565              		.align	2
+ 566              		.set	.LANCHOR0,. + 0
+ 569              	uxCriticalNesting:
+ 570 0000 AAAAAAAA 		.word	-1431655766
+ 571              		.text
+ 572              	.Letext0:
+ 573              		.file 3 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 574              		.file 4 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 575              		.file 5 "FreeRTOS/inc/projdefs.h"
+ 576              		.file 6 "FreeRTOS/inc/task.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 port.c
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:16     .text.prvTaskExitError:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:23     .text.prvTaskExitError:0000000000000000 prvTaskExitError
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:78     .text.prvPortStartFirstTask:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:84     .text.prvPortStartFirstTask:0000000000000000 prvPortStartFirstTask
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:113    .text.pxPortInitialiseStack:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:120    .text.pxPortInitialiseStack:0000000000000000 pxPortInitialiseStack
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:164    .text.pxPortInitialiseStack:0000000000000020 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:169    .text.SVC_Handler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:176    .text.SVC_Handler:0000000000000000 SVC_Handler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:198    .text.SVC_Handler:0000000000000020 pxCurrentTCBConst2
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:198    .text.SVC_Handler:0000000000000020 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:208    .text.vPortEndScheduler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:215    .text.vPortEndScheduler:0000000000000000 vPortEndScheduler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:229    .text.vPortEnterCritical:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:236    .text.vPortEnterCritical:0000000000000000 vPortEnterCritical
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:275    .text.vPortEnterCritical:000000000000001c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:280    .text.vPortExitCritical:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:287    .text.vPortExitCritical:0000000000000000 vPortExitCritical
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:327    .text.vPortExitCritical:0000000000000010 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:332    .text.PendSV_Handler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:339    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:374    .text.PendSV_Handler:0000000000000040 pxCurrentTCBConst
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:374    .text.PendSV_Handler:0000000000000040 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:384    .text.SysTick_Handler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:391    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:456    .text.SysTick_Handler:0000000000000028 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:461    .text.vPortSetupTimerInterrupt:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:468    .text.vPortSetupTimerInterrupt:0000000000000000 vPortSetupTimerInterrupt
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:498    .text.vPortSetupTimerInterrupt:0000000000000018 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:505    .text.xPortStartScheduler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:512    .text.xPortStartScheduler:0000000000000000 xPortStartScheduler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:559    .text.xPortStartScheduler:0000000000000030 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:565    .data.uxCriticalNesting:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:569    .data.uxCriticalNesting:0000000000000000 uxCriticalNesting
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:112    .text.prvPortStartFirstTask:000000000000001a $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccXZO2ri.s:1854   .text.prvPortStartFirstTask:000000000000001c $d
+
+UNDEFINED SYMBOLS
+pxCurrentTCB
+vTaskSwitchContext
+xTaskIncrementTick

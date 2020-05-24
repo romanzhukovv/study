@@ -1,0 +1,421 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"heap_1.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.pvPortMalloc,"ax",%progbits
+  16              		.align	1
+  17              		.global	pvPortMalloc
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	pvPortMalloc:
+  25              	.LVL0:
+  26              	.LFB4:
+  27              		.file 1 "FreeRTOS/src/heap_1.c"
+   1:FreeRTOS/src/heap_1.c **** /*
+   2:FreeRTOS/src/heap_1.c ****  * FreeRTOS Kernel V10.3.1
+   3:FreeRTOS/src/heap_1.c ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:FreeRTOS/src/heap_1.c ****  *
+   5:FreeRTOS/src/heap_1.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:FreeRTOS/src/heap_1.c ****  * this software and associated documentation files (the "Software"), to deal in
+   7:FreeRTOS/src/heap_1.c ****  * the Software without restriction, including without limitation the rights to
+   8:FreeRTOS/src/heap_1.c ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:FreeRTOS/src/heap_1.c ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:FreeRTOS/src/heap_1.c ****  * subject to the following conditions:
+  11:FreeRTOS/src/heap_1.c ****  *
+  12:FreeRTOS/src/heap_1.c ****  * The above copyright notice and this permission notice shall be included in all
+  13:FreeRTOS/src/heap_1.c ****  * copies or substantial portions of the Software.
+  14:FreeRTOS/src/heap_1.c ****  *
+  15:FreeRTOS/src/heap_1.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:FreeRTOS/src/heap_1.c ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:FreeRTOS/src/heap_1.c ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:FreeRTOS/src/heap_1.c ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  19:FreeRTOS/src/heap_1.c ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:FreeRTOS/src/heap_1.c ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:FreeRTOS/src/heap_1.c ****  *
+  22:FreeRTOS/src/heap_1.c ****  * http://www.FreeRTOS.org
+  23:FreeRTOS/src/heap_1.c ****  * http://aws.amazon.com/freertos
+  24:FreeRTOS/src/heap_1.c ****  *
+  25:FreeRTOS/src/heap_1.c ****  * 1 tab == 4 spaces!
+  26:FreeRTOS/src/heap_1.c ****  */
+  27:FreeRTOS/src/heap_1.c **** 
+  28:FreeRTOS/src/heap_1.c **** 
+  29:FreeRTOS/src/heap_1.c **** /*
+  30:FreeRTOS/src/heap_1.c ****  * The simplest possible implementation of pvPortMalloc().  Note that this
+  31:FreeRTOS/src/heap_1.c ****  * implementation does NOT allow allocated memory to be freed again.
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 2
+
+
+  32:FreeRTOS/src/heap_1.c ****  *
+  33:FreeRTOS/src/heap_1.c ****  * See heap_2.c, heap_3.c and heap_4.c for alternative implementations, and the
+  34:FreeRTOS/src/heap_1.c ****  * memory management pages of http://www.FreeRTOS.org for more information.
+  35:FreeRTOS/src/heap_1.c ****  */
+  36:FreeRTOS/src/heap_1.c **** #include <stdlib.h>
+  37:FreeRTOS/src/heap_1.c **** 
+  38:FreeRTOS/src/heap_1.c **** /* Defining MPU_WRAPPERS_INCLUDED_FROM_API_FILE prevents task.h from redefining
+  39:FreeRTOS/src/heap_1.c **** all the API functions to use the MPU wrappers.  That should only be done when
+  40:FreeRTOS/src/heap_1.c **** task.h is included from an application file. */
+  41:FreeRTOS/src/heap_1.c **** #define MPU_WRAPPERS_INCLUDED_FROM_API_FILE
+  42:FreeRTOS/src/heap_1.c **** 
+  43:FreeRTOS/src/heap_1.c **** #include "FreeRTOS.h"
+  44:FreeRTOS/src/heap_1.c **** #include "task.h"
+  45:FreeRTOS/src/heap_1.c **** 
+  46:FreeRTOS/src/heap_1.c **** #undef MPU_WRAPPERS_INCLUDED_FROM_API_FILE
+  47:FreeRTOS/src/heap_1.c **** 
+  48:FreeRTOS/src/heap_1.c **** #if( configSUPPORT_DYNAMIC_ALLOCATION == 0 )
+  49:FreeRTOS/src/heap_1.c **** 	#error This file must not be used if configSUPPORT_DYNAMIC_ALLOCATION is 0
+  50:FreeRTOS/src/heap_1.c **** #endif
+  51:FreeRTOS/src/heap_1.c **** 
+  52:FreeRTOS/src/heap_1.c **** /* A few bytes might be lost to byte aligning the heap start address. */
+  53:FreeRTOS/src/heap_1.c **** #define configADJUSTED_HEAP_SIZE	( configTOTAL_HEAP_SIZE - portBYTE_ALIGNMENT )
+  54:FreeRTOS/src/heap_1.c **** 
+  55:FreeRTOS/src/heap_1.c **** /* Allocate the memory for the heap. */
+  56:FreeRTOS/src/heap_1.c **** #if( configAPPLICATION_ALLOCATED_HEAP == 1 )
+  57:FreeRTOS/src/heap_1.c **** 	/* The application writer has already defined the array used for the RTOS
+  58:FreeRTOS/src/heap_1.c **** 	heap - probably so it can be placed in a special segment or address. */
+  59:FreeRTOS/src/heap_1.c **** 	extern uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
+  60:FreeRTOS/src/heap_1.c **** #else
+  61:FreeRTOS/src/heap_1.c **** 	static uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
+  62:FreeRTOS/src/heap_1.c **** #endif /* configAPPLICATION_ALLOCATED_HEAP */
+  63:FreeRTOS/src/heap_1.c **** 
+  64:FreeRTOS/src/heap_1.c **** /* Index into the ucHeap array. */
+  65:FreeRTOS/src/heap_1.c **** static size_t xNextFreeByte = ( size_t ) 0;
+  66:FreeRTOS/src/heap_1.c **** 
+  67:FreeRTOS/src/heap_1.c **** /*-----------------------------------------------------------*/
+  68:FreeRTOS/src/heap_1.c **** 
+  69:FreeRTOS/src/heap_1.c **** void *pvPortMalloc( size_t xWantedSize )
+  70:FreeRTOS/src/heap_1.c **** {
+  28              		.loc 1 70 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 70 1 is_stmt 0 view .LVU1
+  33 0000 38B5     		push	{r3, r4, r5, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 16
+  36              		.cfi_offset 3, -16
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 5, -8
+  39              		.cfi_offset 14, -4
+  40 0002 0446     		mov	r4, r0
+  71:FreeRTOS/src/heap_1.c **** void *pvReturn = NULL;
+  41              		.loc 1 71 1 is_stmt 1 view .LVU2
+  42              	.LVL1:
+  72:FreeRTOS/src/heap_1.c **** static uint8_t *pucAlignedHeap = NULL;
+  43              		.loc 1 72 1 view .LVU3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 3
+
+
+  73:FreeRTOS/src/heap_1.c **** 
+  74:FreeRTOS/src/heap_1.c **** 	/* Ensure that blocks are always aligned to the required number of bytes. */
+  75:FreeRTOS/src/heap_1.c **** 	#if( portBYTE_ALIGNMENT != 1 )
+  76:FreeRTOS/src/heap_1.c **** 	{
+  77:FreeRTOS/src/heap_1.c **** 		if( xWantedSize & portBYTE_ALIGNMENT_MASK )
+  44              		.loc 1 77 3 view .LVU4
+  45              		.loc 1 77 5 is_stmt 0 view .LVU5
+  46 0004 10F0070F 		tst	r0, #7
+  47 0008 02D0     		beq	.L2
+  78:FreeRTOS/src/heap_1.c **** 		{
+  79:FreeRTOS/src/heap_1.c **** 			/* Byte alignment required. */
+  80:FreeRTOS/src/heap_1.c **** 			xWantedSize += ( portBYTE_ALIGNMENT - ( xWantedSize & portBYTE_ALIGNMENT_MASK ) );
+  48              		.loc 1 80 4 is_stmt 1 view .LVU6
+  49              		.loc 1 80 16 is_stmt 0 view .LVU7
+  50 000a 20F00704 		bic	r4, r0, #7
+  51 000e 0834     		adds	r4, r4, #8
+  52              	.LVL2:
+  53              	.L2:
+  81:FreeRTOS/src/heap_1.c **** 		}
+  82:FreeRTOS/src/heap_1.c **** 	}
+  83:FreeRTOS/src/heap_1.c **** 	#endif
+  84:FreeRTOS/src/heap_1.c **** 
+  85:FreeRTOS/src/heap_1.c **** 	vTaskSuspendAll();
+  54              		.loc 1 85 2 is_stmt 1 view .LVU8
+  55 0010 FFF7FEFF 		bl	vTaskSuspendAll
+  56              	.LVL3:
+  86:FreeRTOS/src/heap_1.c **** 	{
+  87:FreeRTOS/src/heap_1.c **** 		if( pucAlignedHeap == NULL )
+  57              		.loc 1 87 3 view .LVU9
+  58              		.loc 1 87 22 is_stmt 0 view .LVU10
+  59 0014 0F4B     		ldr	r3, .L9
+  60 0016 1B68     		ldr	r3, [r3]
+  61              		.loc 1 87 5 view .LVU11
+  62 0018 8BB1     		cbz	r3, .L8
+  63              	.L3:
+  88:FreeRTOS/src/heap_1.c **** 		{
+  89:FreeRTOS/src/heap_1.c **** 			/* Ensure the heap starts on a correctly aligned boundary. */
+  90:FreeRTOS/src/heap_1.c **** 			pucAlignedHeap = ( uint8_t * ) ( ( ( portPOINTER_SIZE_TYPE ) &ucHeap[ portBYTE_ALIGNMENT ] ) & (
+  91:FreeRTOS/src/heap_1.c **** 		}
+  92:FreeRTOS/src/heap_1.c **** 
+  93:FreeRTOS/src/heap_1.c **** 		/* Check there is enough room left for the allocation. */
+  94:FreeRTOS/src/heap_1.c **** 		if( ( ( xNextFreeByte + xWantedSize ) < configADJUSTED_HEAP_SIZE ) &&
+  64              		.loc 1 94 3 is_stmt 1 view .LVU12
+  65              		.loc 1 94 25 is_stmt 0 view .LVU13
+  66 001a 0F4B     		ldr	r3, .L9+4
+  67 001c 1B68     		ldr	r3, [r3]
+  68 001e 1C44     		add	r4, r4, r3
+  69              	.LVL4:
+  70              		.loc 1 94 5 view .LVU14
+  71 0020 44F2F732 		movw	r2, #17399
+  72 0024 9442     		cmp	r4, r2
+  73 0026 10D8     		bhi	.L5
+  74              		.loc 1 94 70 discriminator 1 view .LVU15
+  75 0028 A342     		cmp	r3, r4
+  76 002a 10D2     		bcs	.L6
+  95:FreeRTOS/src/heap_1.c **** 			( ( xNextFreeByte + xWantedSize ) > xNextFreeByte )	)/* Check for overflow. */
+  96:FreeRTOS/src/heap_1.c **** 		{
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 4
+
+
+  97:FreeRTOS/src/heap_1.c **** 			/* Return the next free byte then increment the index past this
+  98:FreeRTOS/src/heap_1.c **** 			block. */
+  99:FreeRTOS/src/heap_1.c **** 			pvReturn = pucAlignedHeap + xNextFreeByte;
+  77              		.loc 1 99 4 is_stmt 1 view .LVU16
+  78              		.loc 1 99 30 is_stmt 0 view .LVU17
+  79 002c 094A     		ldr	r2, .L9
+  80 002e 1568     		ldr	r5, [r2]
+  81              		.loc 1 99 13 view .LVU18
+  82 0030 1D44     		add	r5, r5, r3
+  83              	.LVL5:
+ 100:FreeRTOS/src/heap_1.c **** 			xNextFreeByte += xWantedSize;
+  84              		.loc 1 100 4 is_stmt 1 view .LVU19
+  85              		.loc 1 100 18 is_stmt 0 view .LVU20
+  86 0032 094B     		ldr	r3, .L9+4
+  87 0034 1C60     		str	r4, [r3]
+  88              	.LVL6:
+  89              	.L4:
+ 101:FreeRTOS/src/heap_1.c **** 		}
+ 102:FreeRTOS/src/heap_1.c **** 
+ 103:FreeRTOS/src/heap_1.c **** 		traceMALLOC( pvReturn, xWantedSize );
+  90              		.loc 1 103 39 is_stmt 1 view .LVU21
+ 104:FreeRTOS/src/heap_1.c **** 	}
+ 105:FreeRTOS/src/heap_1.c **** 	( void ) xTaskResumeAll();
+  91              		.loc 1 105 2 view .LVU22
+  92              		.loc 1 105 11 is_stmt 0 view .LVU23
+  93 0036 FFF7FEFF 		bl	xTaskResumeAll
+  94              	.LVL7:
+ 106:FreeRTOS/src/heap_1.c **** 
+ 107:FreeRTOS/src/heap_1.c **** 	#if( configUSE_MALLOC_FAILED_HOOK == 1 )
+ 108:FreeRTOS/src/heap_1.c **** 	{
+ 109:FreeRTOS/src/heap_1.c **** 		if( pvReturn == NULL )
+ 110:FreeRTOS/src/heap_1.c **** 		{
+ 111:FreeRTOS/src/heap_1.c **** 			extern void vApplicationMallocFailedHook( void );
+ 112:FreeRTOS/src/heap_1.c **** 			vApplicationMallocFailedHook();
+ 113:FreeRTOS/src/heap_1.c **** 		}
+ 114:FreeRTOS/src/heap_1.c **** 	}
+ 115:FreeRTOS/src/heap_1.c **** 	#endif
+ 116:FreeRTOS/src/heap_1.c **** 
+ 117:FreeRTOS/src/heap_1.c **** 	return pvReturn;
+  95              		.loc 1 117 2 is_stmt 1 view .LVU24
+ 118:FreeRTOS/src/heap_1.c **** }
+  96              		.loc 1 118 1 is_stmt 0 view .LVU25
+  97 003a 2846     		mov	r0, r5
+  98 003c 38BD     		pop	{r3, r4, r5, pc}
+  99              	.LVL8:
+ 100              	.L8:
+  90:FreeRTOS/src/heap_1.c **** 		}
+ 101              		.loc 1 90 4 is_stmt 1 view .LVU26
+  90:FreeRTOS/src/heap_1.c **** 		}
+ 102              		.loc 1 90 39 is_stmt 0 view .LVU27
+ 103 003e 074B     		ldr	r3, .L9+8
+  90:FreeRTOS/src/heap_1.c **** 		}
+ 104              		.loc 1 90 19 view .LVU28
+ 105 0040 23F00703 		bic	r3, r3, #7
+ 106 0044 034A     		ldr	r2, .L9
+ 107 0046 1360     		str	r3, [r2]
+ 108 0048 E7E7     		b	.L3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 5
+
+
+ 109              	.LVL9:
+ 110              	.L5:
+  71:FreeRTOS/src/heap_1.c **** static uint8_t *pucAlignedHeap = NULL;
+ 111              		.loc 1 71 7 view .LVU29
+ 112 004a 0025     		movs	r5, #0
+ 113 004c F3E7     		b	.L4
+ 114              	.L6:
+ 115 004e 0025     		movs	r5, #0
+ 116 0050 F1E7     		b	.L4
+ 117              	.L10:
+ 118 0052 00BF     		.align	2
+ 119              	.L9:
+ 120 0054 00000000 		.word	.LANCHOR0
+ 121 0058 00000000 		.word	.LANCHOR1
+ 122 005c 08000000 		.word	ucHeap+8
+ 123              		.cfi_endproc
+ 124              	.LFE4:
+ 126              		.section	.text.vPortFree,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	vPortFree
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.fpu softvfp
+ 134              	vPortFree:
+ 135              	.LVL10:
+ 136              	.LFB5:
+ 119:FreeRTOS/src/heap_1.c **** /*-----------------------------------------------------------*/
+ 120:FreeRTOS/src/heap_1.c **** 
+ 121:FreeRTOS/src/heap_1.c **** void vPortFree( void *pv )
+ 122:FreeRTOS/src/heap_1.c **** {
+ 137              		.loc 1 122 1 is_stmt 1 view -0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              		@ link register save eliminated.
+ 123:FreeRTOS/src/heap_1.c **** 	/* Memory cannot be freed using this scheme.  See heap_2.c, heap_3.c and
+ 124:FreeRTOS/src/heap_1.c **** 	heap_4.c for alternative implementations, and the memory management pages of
+ 125:FreeRTOS/src/heap_1.c **** 	http://www.FreeRTOS.org for more information. */
+ 126:FreeRTOS/src/heap_1.c **** 	( void ) pv;
+ 142              		.loc 1 126 2 view .LVU31
+ 127:FreeRTOS/src/heap_1.c **** 
+ 128:FreeRTOS/src/heap_1.c **** 	/* Force an assert as it is invalid to call this function. */
+ 129:FreeRTOS/src/heap_1.c **** 	configASSERT( pv == NULL );
+ 143              		.loc 1 129 28 view .LVU32
+ 130:FreeRTOS/src/heap_1.c **** }
+ 144              		.loc 1 130 1 is_stmt 0 view .LVU33
+ 145 0000 7047     		bx	lr
+ 146              		.cfi_endproc
+ 147              	.LFE5:
+ 149              		.section	.text.vPortInitialiseBlocks,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	vPortInitialiseBlocks
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.fpu softvfp
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 6
+
+
+ 157              	vPortInitialiseBlocks:
+ 158              	.LFB6:
+ 131:FreeRTOS/src/heap_1.c **** /*-----------------------------------------------------------*/
+ 132:FreeRTOS/src/heap_1.c **** 
+ 133:FreeRTOS/src/heap_1.c **** void vPortInitialiseBlocks( void )
+ 134:FreeRTOS/src/heap_1.c **** {
+ 159              		.loc 1 134 1 is_stmt 1 view -0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+ 135:FreeRTOS/src/heap_1.c **** 	/* Only required when static memory is not cleared. */
+ 136:FreeRTOS/src/heap_1.c **** 	xNextFreeByte = ( size_t ) 0;
+ 164              		.loc 1 136 2 view .LVU35
+ 165              		.loc 1 136 16 is_stmt 0 view .LVU36
+ 166 0000 014B     		ldr	r3, .L13
+ 167 0002 0022     		movs	r2, #0
+ 168 0004 1A60     		str	r2, [r3]
+ 137:FreeRTOS/src/heap_1.c **** }
+ 169              		.loc 1 137 1 view .LVU37
+ 170 0006 7047     		bx	lr
+ 171              	.L14:
+ 172              		.align	2
+ 173              	.L13:
+ 174 0008 00000000 		.word	.LANCHOR1
+ 175              		.cfi_endproc
+ 176              	.LFE6:
+ 178              		.section	.text.xPortGetFreeHeapSize,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	xPortGetFreeHeapSize
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 184              		.fpu softvfp
+ 186              	xPortGetFreeHeapSize:
+ 187              	.LFB7:
+ 138:FreeRTOS/src/heap_1.c **** /*-----------------------------------------------------------*/
+ 139:FreeRTOS/src/heap_1.c **** 
+ 140:FreeRTOS/src/heap_1.c **** size_t xPortGetFreeHeapSize( void )
+ 141:FreeRTOS/src/heap_1.c **** {
+ 188              		.loc 1 141 1 is_stmt 1 view -0
+ 189              		.cfi_startproc
+ 190              		@ args = 0, pretend = 0, frame = 0
+ 191              		@ frame_needed = 0, uses_anonymous_args = 0
+ 192              		@ link register save eliminated.
+ 142:FreeRTOS/src/heap_1.c **** 	return ( configADJUSTED_HEAP_SIZE - xNextFreeByte );
+ 193              		.loc 1 142 2 view .LVU39
+ 194              		.loc 1 142 36 is_stmt 0 view .LVU40
+ 195 0000 024B     		ldr	r3, .L16
+ 196 0002 1868     		ldr	r0, [r3]
+ 143:FreeRTOS/src/heap_1.c **** }
+ 197              		.loc 1 143 1 view .LVU41
+ 198 0004 C0F58740 		rsb	r0, r0, #17280
+ 199 0008 7830     		adds	r0, r0, #120
+ 200 000a 7047     		bx	lr
+ 201              	.L17:
+ 202              		.align	2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 7
+
+
+ 203              	.L16:
+ 204 000c 00000000 		.word	.LANCHOR1
+ 205              		.cfi_endproc
+ 206              	.LFE7:
+ 208              		.section	.bss.pucAlignedHeap.5220,"aw",%nobits
+ 209              		.align	2
+ 210              		.set	.LANCHOR0,. + 0
+ 213              	pucAlignedHeap.5220:
+ 214 0000 00000000 		.space	4
+ 215              		.section	.bss.ucHeap,"aw",%nobits
+ 216              		.align	2
+ 219              	ucHeap:
+ 220 0000 00000000 		.space	17408
+ 220      00000000 
+ 220      00000000 
+ 220      00000000 
+ 220      00000000 
+ 221              		.section	.bss.xNextFreeByte,"aw",%nobits
+ 222              		.align	2
+ 223              		.set	.LANCHOR1,. + 0
+ 226              	xNextFreeByte:
+ 227 0000 00000000 		.space	4
+ 228              		.text
+ 229              	.Letext0:
+ 230              		.file 2 "c:\\software\\embeddedgcc\\arm_gcc\\lib\\gcc\\arm-none-eabi\\8.2.1\\include\\stddef.h"
+ 231              		.file 3 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 232              		.file 4 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\lock.h"
+ 233              		.file 5 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_types.h"
+ 234              		.file 6 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\reent.h"
+ 235              		.file 7 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\stdlib.h"
+ 236              		.file 8 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 237              		.file 9 "FreeRTOS/inc/task.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 heap_1.c
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:16     .text.pvPortMalloc:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:24     .text.pvPortMalloc:0000000000000000 pvPortMalloc
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:120    .text.pvPortMalloc:0000000000000054 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:219    .bss.ucHeap:0000000000000000 ucHeap
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:127    .text.vPortFree:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:134    .text.vPortFree:0000000000000000 vPortFree
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:150    .text.vPortInitialiseBlocks:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:157    .text.vPortInitialiseBlocks:0000000000000000 vPortInitialiseBlocks
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:174    .text.vPortInitialiseBlocks:0000000000000008 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:179    .text.xPortGetFreeHeapSize:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:186    .text.xPortGetFreeHeapSize:0000000000000000 xPortGetFreeHeapSize
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:204    .text.xPortGetFreeHeapSize:000000000000000c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:209    .bss.pucAlignedHeap.5220:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:213    .bss.pucAlignedHeap.5220:0000000000000000 pucAlignedHeap.5220
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:216    .bss.ucHeap:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:222    .bss.xNextFreeByte:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccV029re.s:226    .bss.xNextFreeByte:0000000000000000 xNextFreeByte
+
+UNDEFINED SYMBOLS
+vTaskSuspendAll
+xTaskResumeAll
