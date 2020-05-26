@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s 			page 1
+ARM GAS  C:\Users\DEVELO~1\AppData\Local\Temp\ccBx3DKC.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s 			page 1
   22:Code/src/main.c **** 	//MCO_out();
   23:Code/src/main.c **** 
   24:Code/src/main.c **** 	//xTaskCreate(vTaskLed1, "LED1", 32, NULL, 2, NULL);
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s 			page 2
+ARM GAS  C:\Users\DEVELO~1\AppData\Local\Temp\ccBx3DKC.s 			page 2
 
 
   25:Code/src/main.c **** 	//xTaskCreate(vTaskLed2, "LED2", 32, NULL, 1, NULL);
@@ -67,63 +67,77 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s 			page 1
   28:Code/src/main.c **** 	vTaskStartScheduler();
   29:Code/src/main.c **** */
   30:Code/src/main.c **** 
-  31:Code/src/main.c **** 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;						
+  31:Code/src/main.c **** 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
   35              		.loc 1 31 2 view .LVU1
   36              		.loc 1 31 15 is_stmt 0 view .LVU2
-  37 0000 094A     		ldr	r2, .L3
-  38 0002 136B     		ldr	r3, [r2, #48]
-  39 0004 43F00203 		orr	r3, r3, #2
-  40 0008 1363     		str	r3, [r2, #48]
-  32:Code/src/main.c **** 	
-  33:Code/src/main.c **** 	GPIOB->MODER &= ~GPIO_MODER_MODER5;
-  41              		.loc 1 33 2 is_stmt 1 view .LVU3
-  42              		.loc 1 33 15 is_stmt 0 view .LVU4
-  43 000a 084B     		ldr	r3, .L3+4
-  44 000c 1A68     		ldr	r2, [r3]
-  45 000e 22F44062 		bic	r2, r2, #3072
-  46 0012 1A60     		str	r2, [r3]
-  34:Code/src/main.c **** 	GPIOB->MODER |= GPIO_MODER_MODER5_0;
-  47              		.loc 1 34 2 is_stmt 1 view .LVU5
-  48              		.loc 1 34 15 is_stmt 0 view .LVU6
-  49 0014 1A68     		ldr	r2, [r3]
-  50 0016 42F48062 		orr	r2, r2, #1024
-  51 001a 1A60     		str	r2, [r3]
-  35:Code/src/main.c **** 	GPIOB->BSRR |= GPIO_BSRR_BS5; 						
-  52              		.loc 1 35 2 is_stmt 1 view .LVU7
-  53              		.loc 1 35 14 is_stmt 0 view .LVU8
-  54 001c 9A69     		ldr	r2, [r3, #24]
-  55 001e 42F02002 		orr	r2, r2, #32
-  56 0022 9A61     		str	r2, [r3, #24]
-  57              	.L2:
-  36:Code/src/main.c **** 
-  37:Code/src/main.c ****     while (1)
-  58              		.loc 1 37 5 is_stmt 1 discriminator 1 view .LVU9
-  38:Code/src/main.c ****     {
-  39:Code/src/main.c **** 		
-  40:Code/src/main.c ****     }
-  59              		.loc 1 40 5 discriminator 1 view .LVU10
-  60 0024 FEE7     		b	.L2
-  61              	.L4:
-  62 0026 00BF     		.align	2
-  63              	.L3:
-  64 0028 00380240 		.word	1073887232
-  65 002c 00040240 		.word	1073873920
-  66              		.cfi_endproc
-  67              	.LFE134:
-  69              		.text
-  70              	.Letext0:
-  71              		.file 2 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\machine\\_default_types.h"
-  72              		.file 3 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_stdint.h"
-  73              		.file 4 "CMSIS/inc/core_cm4.h"
-  74              		.file 5 "CMSIS/inc/system_stm32f4xx.h"
-  75              		.file 6 "CMSIS/inc/stm32f405xx.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s 			page 3
+  37 0000 0E4B     		ldr	r3, .L3
+  38 0002 1A6B     		ldr	r2, [r3, #48]
+  39 0004 42F00202 		orr	r2, r2, #2
+  40 0008 1A63     		str	r2, [r3, #48]
+  32:Code/src/main.c **** 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+  41              		.loc 1 32 2 is_stmt 1 view .LVU3
+  42              		.loc 1 32 15 is_stmt 0 view .LVU4
+  43 000a 1A6B     		ldr	r2, [r3, #48]
+  44 000c 42F00102 		orr	r2, r2, #1
+  45 0010 1A63     		str	r2, [r3, #48]
+  33:Code/src/main.c **** 	GPIOB->MODER |= GPIO_MODER_MODER5_0;
+  46              		.loc 1 33 2 is_stmt 1 view .LVU5
+  47              		.loc 1 33 15 is_stmt 0 view .LVU6
+  48 0012 A3F55053 		sub	r3, r3, #13312
+  49 0016 1A68     		ldr	r2, [r3]
+  50 0018 42F48062 		orr	r2, r2, #1024
+  51 001c 1A60     		str	r2, [r3]
+  34:Code/src/main.c **** 	GPIOB->BSRR |= GPIO_BSRR_BS_5;		
+  52              		.loc 1 34 2 is_stmt 1 view .LVU7
+  53              		.loc 1 34 14 is_stmt 0 view .LVU8
+  54 001e 9A69     		ldr	r2, [r3, #24]
+  55 0020 42F02002 		orr	r2, r2, #32
+  56 0024 9A61     		str	r2, [r3, #24]
+  35:Code/src/main.c ****    GPIOA->MODER |= GPIO_MODER_MODER0_0;
+  57              		.loc 1 35 4 is_stmt 1 view .LVU9
+  58              		.loc 1 35 17 is_stmt 0 view .LVU10
+  59 0026 A3F58063 		sub	r3, r3, #1024
+  60 002a 1A68     		ldr	r2, [r3]
+  61 002c 42F00102 		orr	r2, r2, #1
+  62 0030 1A60     		str	r2, [r3]
+  36:Code/src/main.c **** 	GPIOA->BSRR |= GPIO_BSRR_BS_0;							
+  63              		.loc 1 36 2 is_stmt 1 view .LVU11
+  64              		.loc 1 36 14 is_stmt 0 view .LVU12
+  65 0032 9A69     		ldr	r2, [r3, #24]
+  66 0034 42F00102 		orr	r2, r2, #1
+  67 0038 9A61     		str	r2, [r3, #24]
+  68              	.L2:
+  37:Code/src/main.c **** 
+  38:Code/src/main.c ****     while (1)
+  69              		.loc 1 38 5 is_stmt 1 discriminator 1 view .LVU13
+  39:Code/src/main.c ****     {
+  40:Code/src/main.c **** 		
+  41:Code/src/main.c ****     }
+  70              		.loc 1 41 5 discriminator 1 view .LVU14
+  71 003a FEE7     		b	.L2
+  72              	.L4:
+  73              		.align	2
+  74              	.L3:
+ARM GAS  C:\Users\DEVELO~1\AppData\Local\Temp\ccBx3DKC.s 			page 3
+
+
+  75 003c 00380240 		.word	1073887232
+  76              		.cfi_endproc
+  77              	.LFE134:
+  79              		.text
+  80              	.Letext0:
+  81              		.file 2 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\machine\\_default_types.h"
+  82              		.file 3 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+  83              		.file 4 "CMSIS/inc/core_cm4.h"
+  84              		.file 5 "CMSIS/inc/system_stm32f4xx.h"
+  85              		.file 6 "CMSIS/inc/stm32f405xx.h"
+ARM GAS  C:\Users\DEVELO~1\AppData\Local\Temp\ccBx3DKC.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s:18     .text.main:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s:26     .text.main:0000000000000000 main
-C:\Users\HARTO_~1\AppData\Local\Temp\ccLMboXe.s:64     .text.main:0000000000000028 $d
+C:\Users\DEVELO~1\AppData\Local\Temp\ccBx3DKC.s:18     .text.main:0000000000000000 $t
+C:\Users\DEVELO~1\AppData\Local\Temp\ccBx3DKC.s:26     .text.main:0000000000000000 main
+C:\Users\DEVELO~1\AppData\Local\Temp\ccBx3DKC.s:75     .text.main:000000000000003c $d
 
 NO UNDEFINED SYMBOLS
