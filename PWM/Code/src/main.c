@@ -1,4 +1,8 @@
+/***************************Library*******************************/
+
 #include "main.h"
+
+/*****************************Main*******************************/
 
 int main(void)
 {
@@ -7,7 +11,7 @@ int main(void)
 	//USART3_Init();
 	PWM_Init();
 	//MCO_out();
-	
+
 	//xTaskCreate(vTaskLed1, "LED1", 32, NULL, 2, NULL);
 	//xTaskCreate(vTaskLed2, "LED2", 32, NULL, 1, NULL);
 	xTaskCreate(vTaskButtonUser, "LED1", 32, NULL, 1, NULL);
@@ -20,6 +24,8 @@ int main(void)
     }
   
 }
+
+/*****************************Tasks*******************************/
 
 void vTaskLed1(void *argument)
 {
@@ -59,6 +65,8 @@ void vTaskButtonUser(void *argument)
 		}
 	}
 }
+
+/*****************************Interupts*******************************/
 
 void USART3_IRQHandler(void)
 {
