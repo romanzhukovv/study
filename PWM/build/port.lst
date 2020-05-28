@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
   31:FreeRTOS/src/port.c **** 
   32:FreeRTOS/src/port.c **** /* Scheduler includes. */
   33:FreeRTOS/src/port.c **** #include "FreeRTOS.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 2
 
 
   34:FreeRTOS/src/port.c **** #include "task.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
   88:FreeRTOS/src/port.c **** occurred while the SysTick counter is stopped during tickless idle
   89:FreeRTOS/src/port.c **** calculations. */
   90:FreeRTOS/src/port.c **** #define portMISSED_COUNTS_FACTOR			( 45UL )
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 3
 
 
   91:FreeRTOS/src/port.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  145:FreeRTOS/src/port.c ****  */
  146:FreeRTOS/src/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
  147:FreeRTOS/src/port.c **** 	static uint32_t xMaximumPossibleSuppressedTicks = 0;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 4
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 4
 
 
  148:FreeRTOS/src/port.c **** #endif /* configUSE_TICKLESS_IDLE */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  194:FreeRTOS/src/port.c **** volatile uint32_t ulDummy = 0UL;
   34              		.loc 1 194 1 view .LVU1
   35              		.loc 1 194 19 is_stmt 0 view .LVU2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 5
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 5
 
 
   36 0002 0023     		movs	r3, #0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
   39:FreeRTOS/inc/portmacro.h ****  * The settings in this file configure FreeRTOS correctly for the
   40:FreeRTOS/inc/portmacro.h ****  * given hardware and compiler.
   41:FreeRTOS/inc/portmacro.h ****  *
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 6
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 6
 
 
   42:FreeRTOS/inc/portmacro.h ****  * These settings should not be altered.
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
   96:FreeRTOS/inc/portmacro.h **** /* Critical section management. */
   97:FreeRTOS/inc/portmacro.h **** extern void vPortEnterCritical( void );
   98:FreeRTOS/inc/portmacro.h **** extern void vPortExitCritical( void );
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 7
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 7
 
 
   99:FreeRTOS/inc/portmacro.h **** #define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  153:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
  154:FreeRTOS/inc/portmacro.h **** 
  155:FreeRTOS/inc/portmacro.h **** #ifdef configASSERT
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 8
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 8
 
 
  156:FreeRTOS/inc/portmacro.h **** 	void vPortValidateInterruptPriority( void );
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
   55              	.LVL0:
   56              		.thumb
   57              		.syntax unified
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 9
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 9
 
 
   58              	.L2:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  230:FreeRTOS/src/port.c **** 					"									\n"
  231:FreeRTOS/src/port.c **** 					"	.align 4						\n"
  232:FreeRTOS/src/port.c **** 					"pxCurrentTCBConst2: .word pxCurrentTCB				\n"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 10
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 10
 
 
  233:FreeRTOS/src/port.c **** 				);
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  175:FreeRTOS/src/port.c **** 	/* Simulate the stack frame as it would be created by a context switch
  123              		.loc 1 175 1 is_stmt 1 view -0
  124              		.cfi_startproc
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 11
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 11
 
 
  125              		@ args = 0, pretend = 0, frame = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  161              	.L7:
  162 001e 00BF     		.align	2
  163              	.L6:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 12
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 12
 
 
  164 0020 00000000 		.word	prvTaskExitError
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  254:FreeRTOS/src/port.c **** /*
  255:FreeRTOS/src/port.c ****  * See header file for description.
  256:FreeRTOS/src/port.c ****  */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 13
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 13
 
 
  257:FreeRTOS/src/port.c **** BaseType_t xPortStartScheduler( void )
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  311:FreeRTOS/src/port.c **** 		}
  312:FreeRTOS/src/port.c **** 		#endif
  313:FreeRTOS/src/port.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 14
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 14
 
 
  314:FreeRTOS/src/port.c **** 		/* Shift the priority group value back to its position within the AIRCR
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  226              	.LFE9:
  228              		.section	.text.vPortEnterCritical,"ax",%progbits
  229              		.align	1
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 15
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 15
 
 
  230              		.global	vPortEnterCritical
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  373:FreeRTOS/src/port.c **** 		configASSERT( ( portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK ) == 0 );
  269              		.loc 1 373 71 view .LVU49
  374:FreeRTOS/src/port.c **** 	}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 16
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 16
 
 
  375:FreeRTOS/src/port.c **** }
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  206:FreeRTOS/inc/portmacro.h **** 
  207:FreeRTOS/inc/portmacro.h **** /*-----------------------------------------------------------*/
  208:FreeRTOS/inc/portmacro.h **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 17
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 17
 
 
  209:FreeRTOS/inc/portmacro.h **** portFORCE_INLINE static uint32_t ulPortRaiseBASEPRI( void )
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  339              	PendSV_Handler:
  340              	.LFB12:
  387:FreeRTOS/src/port.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 18
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 18
 
 
  388:FreeRTOS/src/port.c **** 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  406:FreeRTOS/src/port.c **** 	"	msr basepri, r0						\n"
  407:FreeRTOS/src/port.c **** 	"	bl vTaskSwitchContext				\n"
  408:FreeRTOS/src/port.c **** 	"	mov r0, #0							\n"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 19
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 19
 
 
  409:FreeRTOS/src/port.c **** 	"	msr basepri, r0						\n"
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  407              		.loc 2 195 1 view .LVU68
  197:FreeRTOS/inc/portmacro.h **** 	(
  408              		.loc 2 197 2 view .LVU69
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 20
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 20
 
 
  409              		.syntax unified
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  451              		.loc 1 443 1 view .LVU79
  452 0026 08BD     		pop	{r3, pc}
  453              	.L22:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 21
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 21
 
 
  454              		.align	2
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  484:FreeRTOS/src/port.c **** 			/* Restart from whatever is left in the count register to complete
  485:FreeRTOS/src/port.c **** 			this tick period. */
  486:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_LOAD_REG = portNVIC_SYSTICK_CURRENT_VALUE_REG;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 22
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 22
 
 
  487:FreeRTOS/src/port.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  541:FreeRTOS/src/port.c **** 			/* Disable the SysTick clock without reading the
  542:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CTRL_REG register to ensure the
  543:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_COUNT_FLAG_BIT is not cleared if it is set.  Again,
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 23
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 23
 
 
  544:FreeRTOS/src/port.c **** 			the time the SysTick is stopped for is accounted for as best it can
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  598:FreeRTOS/src/port.c **** 			again, then set portNVIC_SYSTICK_LOAD_REG back to its standard
  599:FreeRTOS/src/port.c **** 			value. */
  600:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 24
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 24
 
 
  601:FreeRTOS/src/port.c **** 			portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  490              		.loc 1 634 28 is_stmt 0 view .LVU88
  491 0012 0722     		movs	r2, #7
  492 0014 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 25
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 25
 
 
  635:FreeRTOS/src/port.c **** }
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  539              		.loc 1 334 20 is_stmt 0 view .LVU98
  540 0018 0024     		movs	r4, #0
  541 001a 064B     		ldr	r3, .L28+4
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 26
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 26
 
 
  542 001c 1C60     		str	r4, [r3]
@@ -1538,47 +1538,47 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 1
  574              		.file 4 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_stdint.h"
  575              		.file 5 "FreeRTOS/inc/projdefs.h"
  576              		.file 6 "FreeRTOS/inc/task.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s 			page 27
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 port.c
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:16     .text.prvTaskExitError:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:23     .text.prvTaskExitError:0000000000000000 prvTaskExitError
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:78     .text.prvPortStartFirstTask:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:84     .text.prvPortStartFirstTask:0000000000000000 prvPortStartFirstTask
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:113    .text.pxPortInitialiseStack:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:120    .text.pxPortInitialiseStack:0000000000000000 pxPortInitialiseStack
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:164    .text.pxPortInitialiseStack:0000000000000020 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:169    .text.SVC_Handler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:176    .text.SVC_Handler:0000000000000000 SVC_Handler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:198    .text.SVC_Handler:0000000000000020 pxCurrentTCBConst2
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:198    .text.SVC_Handler:0000000000000020 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:208    .text.vPortEndScheduler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:215    .text.vPortEndScheduler:0000000000000000 vPortEndScheduler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:229    .text.vPortEnterCritical:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:236    .text.vPortEnterCritical:0000000000000000 vPortEnterCritical
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:275    .text.vPortEnterCritical:000000000000001c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:280    .text.vPortExitCritical:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:287    .text.vPortExitCritical:0000000000000000 vPortExitCritical
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:327    .text.vPortExitCritical:0000000000000010 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:332    .text.PendSV_Handler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:339    .text.PendSV_Handler:0000000000000000 PendSV_Handler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:374    .text.PendSV_Handler:0000000000000040 pxCurrentTCBConst
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:374    .text.PendSV_Handler:0000000000000040 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:384    .text.SysTick_Handler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:391    .text.SysTick_Handler:0000000000000000 SysTick_Handler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:456    .text.SysTick_Handler:0000000000000028 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:461    .text.vPortSetupTimerInterrupt:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:468    .text.vPortSetupTimerInterrupt:0000000000000000 vPortSetupTimerInterrupt
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:498    .text.vPortSetupTimerInterrupt:0000000000000018 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:505    .text.xPortStartScheduler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:512    .text.xPortStartScheduler:0000000000000000 xPortStartScheduler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:559    .text.xPortStartScheduler:0000000000000030 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:565    .data.uxCriticalNesting:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:569    .data.uxCriticalNesting:0000000000000000 uxCriticalNesting
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:112    .text.prvPortStartFirstTask:000000000000001a $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccFHAw0a.s:1854   .text.prvPortStartFirstTask:000000000000001c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:16     .text.prvTaskExitError:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:23     .text.prvTaskExitError:0000000000000000 prvTaskExitError
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:78     .text.prvPortStartFirstTask:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:84     .text.prvPortStartFirstTask:0000000000000000 prvPortStartFirstTask
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:113    .text.pxPortInitialiseStack:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:120    .text.pxPortInitialiseStack:0000000000000000 pxPortInitialiseStack
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:164    .text.pxPortInitialiseStack:0000000000000020 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:169    .text.SVC_Handler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:176    .text.SVC_Handler:0000000000000000 SVC_Handler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:198    .text.SVC_Handler:0000000000000020 pxCurrentTCBConst2
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:198    .text.SVC_Handler:0000000000000020 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:208    .text.vPortEndScheduler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:215    .text.vPortEndScheduler:0000000000000000 vPortEndScheduler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:229    .text.vPortEnterCritical:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:236    .text.vPortEnterCritical:0000000000000000 vPortEnterCritical
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:275    .text.vPortEnterCritical:000000000000001c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:280    .text.vPortExitCritical:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:287    .text.vPortExitCritical:0000000000000000 vPortExitCritical
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:327    .text.vPortExitCritical:0000000000000010 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:332    .text.PendSV_Handler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:339    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:374    .text.PendSV_Handler:0000000000000040 pxCurrentTCBConst
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:374    .text.PendSV_Handler:0000000000000040 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:384    .text.SysTick_Handler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:391    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:456    .text.SysTick_Handler:0000000000000028 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:461    .text.vPortSetupTimerInterrupt:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:468    .text.vPortSetupTimerInterrupt:0000000000000000 vPortSetupTimerInterrupt
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:498    .text.vPortSetupTimerInterrupt:0000000000000018 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:505    .text.xPortStartScheduler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:512    .text.xPortStartScheduler:0000000000000000 xPortStartScheduler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:559    .text.xPortStartScheduler:0000000000000030 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:565    .data.uxCriticalNesting:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:569    .data.uxCriticalNesting:0000000000000000 uxCriticalNesting
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:112    .text.prvPortStartFirstTask:000000000000001a $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPAN8VV.s:1854   .text.prvPortStartFirstTask:000000000000001c $d
 
 UNDEFINED SYMBOLS
 pxCurrentTCB
