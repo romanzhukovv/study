@@ -1,0 +1,601 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"main.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.vTaskLed1,"ax",%progbits
+  16              		.align	1
+  17              		.global	vTaskLed1
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	vTaskLed1:
+  25              	.LFB71:
+  26              		.file 1 "Code/src/main.c"
+   1:Code/src/main.c **** /***************************Library*******************************/
+   2:Code/src/main.c **** 
+   3:Code/src/main.c **** #include "main.h"
+   4:Code/src/main.c **** 
+   5:Code/src/main.c **** /*****************************Main*******************************/
+   6:Code/src/main.c **** 
+   7:Code/src/main.c **** int main(void)
+   8:Code/src/main.c **** {
+   9:Code/src/main.c ****     RCC_Init();
+  10:Code/src/main.c ****     GPIO_Init();
+  11:Code/src/main.c **** 	USART3_Init();
+  12:Code/src/main.c **** 	//PWM_Init();
+  13:Code/src/main.c **** 	//MCO_out();
+  14:Code/src/main.c **** 
+  15:Code/src/main.c **** 	xTaskCreate(vTaskLed1, "LED1", 32, NULL, 1, NULL);
+  16:Code/src/main.c **** 	xTaskCreate(vTaskLed2, "LED2", 32, NULL, 1, NULL);
+  17:Code/src/main.c **** 	//xTaskCreate(vTaskButtonUser, "LED1", 32, NULL, 1, NULL);
+  18:Code/src/main.c **** 
+  19:Code/src/main.c **** 	SendData = xQueueCreate(5, sizeof(uint8_t));
+  20:Code/src/main.c **** 	
+  21:Code/src/main.c **** 	vTaskStartScheduler();
+  22:Code/src/main.c **** 
+  23:Code/src/main.c ****     while (1)
+  24:Code/src/main.c ****     {
+  25:Code/src/main.c **** 
+  26:Code/src/main.c ****     }
+  27:Code/src/main.c ****   
+  28:Code/src/main.c **** }
+  29:Code/src/main.c **** 
+  30:Code/src/main.c **** /*****************************Tasks*******************************/
+  31:Code/src/main.c **** 
+  32:Code/src/main.c **** void vTaskLed1(void *argument)
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 2
+
+
+  33:Code/src/main.c **** {
+  27              		.loc 1 33 1 view -0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33              		.loc 1 33 1 is_stmt 0 view .LVU1
+  34 0000 00B5     		push	{lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 14, -4
+  38 0002 83B0     		sub	sp, sp, #12
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 16
+  41 0004 02E0     		b	.L3
+  42              	.LVL1:
+  43              	.L2:
+  34:Code/src/main.c **** 	uint8_t data;
+  35:Code/src/main.c **** 
+  36:Code/src/main.c **** 	while (1)
+  37:Code/src/main.c **** 	{
+  38:Code/src/main.c **** 		if (uxQueueMessagesWaiting(SendData) != 0){
+  39:Code/src/main.c **** 			
+  40:Code/src/main.c **** 			xQueueReceive(SendData, &data, 0);
+  41:Code/src/main.c **** 			SendDataUSART3(data);
+  42:Code/src/main.c **** 			
+  43:Code/src/main.c **** 		}
+  44:Code/src/main.c **** 		
+  45:Code/src/main.c **** 		vTaskDelay(100);
+  44              		.loc 1 45 3 is_stmt 1 view .LVU2
+  45 0006 6420     		movs	r0, #100
+  46 0008 FFF7FEFF 		bl	vTaskDelay
+  47              	.LVL2:
+  48              	.L3:
+  34:Code/src/main.c **** 	uint8_t data;
+  49              		.loc 1 34 2 view .LVU3
+  36:Code/src/main.c **** 	{
+  50              		.loc 1 36 2 view .LVU4
+  38:Code/src/main.c **** 			
+  51              		.loc 1 38 3 view .LVU5
+  38:Code/src/main.c **** 			
+  52              		.loc 1 38 7 is_stmt 0 view .LVU6
+  53 000c 084B     		ldr	r3, .L5
+  54 000e 1868     		ldr	r0, [r3]
+  55 0010 FFF7FEFF 		bl	uxQueueMessagesWaiting
+  56              	.LVL3:
+  38:Code/src/main.c **** 			
+  57              		.loc 1 38 6 view .LVU7
+  58 0014 0028     		cmp	r0, #0
+  59 0016 F6D0     		beq	.L2
+  40:Code/src/main.c **** 			SendDataUSART3(data);
+  60              		.loc 1 40 4 is_stmt 1 view .LVU8
+  61 0018 0022     		movs	r2, #0
+  62 001a 0DF10701 		add	r1, sp, #7
+  63 001e 044B     		ldr	r3, .L5
+  64 0020 1868     		ldr	r0, [r3]
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 3
+
+
+  65 0022 FFF7FEFF 		bl	xQueueReceive
+  66              	.LVL4:
+  41:Code/src/main.c **** 			
+  67              		.loc 1 41 4 view .LVU9
+  68 0026 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+  69 002a FFF7FEFF 		bl	SendDataUSART3
+  70              	.LVL5:
+  71 002e EAE7     		b	.L2
+  72              	.L6:
+  73              		.align	2
+  74              	.L5:
+  75 0030 00000000 		.word	SendData
+  76              		.cfi_endproc
+  77              	.LFE71:
+  79              		.section	.text.vTaskLed2,"ax",%progbits
+  80              		.align	1
+  81              		.global	vTaskLed2
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  85              		.fpu softvfp
+  87              	vTaskLed2:
+  88              	.LVL6:
+  89              	.LFB72:
+  46:Code/src/main.c **** 	}
+  47:Code/src/main.c **** }
+  48:Code/src/main.c **** 
+  49:Code/src/main.c **** void vTaskLed2(void *argument)
+  50:Code/src/main.c **** {
+  90              		.loc 1 50 1 view -0
+  91              		.cfi_startproc
+  92              		@ Volatile: function does not return.
+  93              		@ args = 0, pretend = 0, frame = 8
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95              		.loc 1 50 1 is_stmt 0 view .LVU11
+  96 0000 00B5     		push	{lr}
+  97              	.LCFI2:
+  98              		.cfi_def_cfa_offset 4
+  99              		.cfi_offset 14, -4
+ 100 0002 83B0     		sub	sp, sp, #12
+ 101              	.LCFI3:
+ 102              		.cfi_def_cfa_offset 16
+  51:Code/src/main.c **** 	uint16_t i = 30;
+ 103              		.loc 1 51 2 is_stmt 1 view .LVU12
+ 104              		.loc 1 51 11 is_stmt 0 view .LVU13
+ 105 0004 1E23     		movs	r3, #30
+ 106 0006 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 107              	.LVL7:
+ 108              	.L8:
+  52:Code/src/main.c **** 	
+  53:Code/src/main.c **** 	while(1)
+ 109              		.loc 1 53 2 is_stmt 1 discriminator 1 view .LVU14
+  54:Code/src/main.c **** 	{
+  55:Code/src/main.c **** 		i++;
+ 110              		.loc 1 55 3 discriminator 1 view .LVU15
+ 111              		.loc 1 55 4 is_stmt 0 discriminator 1 view .LVU16
+ 112 000a BDF80630 		ldrh	r3, [sp, #6]
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 4
+
+
+ 113 000e 0133     		adds	r3, r3, #1
+ 114 0010 ADF80630 		strh	r3, [sp, #6]	@ movhi
+  56:Code/src/main.c **** 		xQueueSend(SendData, &i, 0);
+ 115              		.loc 1 56 3 is_stmt 1 discriminator 1 view .LVU17
+ 116 0014 0023     		movs	r3, #0
+ 117 0016 1A46     		mov	r2, r3
+ 118 0018 0DF10601 		add	r1, sp, #6
+ 119 001c 0448     		ldr	r0, .L10
+ 120 001e 0068     		ldr	r0, [r0]
+ 121 0020 FFF7FEFF 		bl	xQueueGenericSend
+ 122              	.LVL8:
+  57:Code/src/main.c **** 		vTaskDelay(1000);
+ 123              		.loc 1 57 3 discriminator 1 view .LVU18
+ 124 0024 4FF47A70 		mov	r0, #1000
+ 125 0028 FFF7FEFF 		bl	vTaskDelay
+ 126              	.LVL9:
+ 127 002c EDE7     		b	.L8
+ 128              	.L11:
+ 129 002e 00BF     		.align	2
+ 130              	.L10:
+ 131 0030 00000000 		.word	SendData
+ 132              		.cfi_endproc
+ 133              	.LFE72:
+ 135              		.section	.text.main,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	main
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.fpu softvfp
+ 143              	main:
+ 144              	.LFB70:
+   8:Code/src/main.c ****     RCC_Init();
+ 145              		.loc 1 8 1 view -0
+ 146              		.cfi_startproc
+ 147              		@ Volatile: function does not return.
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150 0000 00B5     		push	{lr}
+ 151              	.LCFI4:
+ 152              		.cfi_def_cfa_offset 4
+ 153              		.cfi_offset 14, -4
+ 154 0002 83B0     		sub	sp, sp, #12
+ 155              	.LCFI5:
+ 156              		.cfi_def_cfa_offset 16
+   9:Code/src/main.c ****     GPIO_Init();
+ 157              		.loc 1 9 5 view .LVU20
+ 158 0004 FFF7FEFF 		bl	RCC_Init
+ 159              	.LVL10:
+  10:Code/src/main.c **** 	USART3_Init();
+ 160              		.loc 1 10 5 view .LVU21
+ 161 0008 FFF7FEFF 		bl	GPIO_Init
+ 162              	.LVL11:
+  11:Code/src/main.c **** 	//PWM_Init();
+ 163              		.loc 1 11 2 view .LVU22
+ 164 000c FFF7FEFF 		bl	USART3_Init
+ 165              	.LVL12:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 5
+
+
+  15:Code/src/main.c **** 	xTaskCreate(vTaskLed2, "LED2", 32, NULL, 1, NULL);
+ 166              		.loc 1 15 2 view .LVU23
+ 167 0010 0024     		movs	r4, #0
+ 168 0012 0194     		str	r4, [sp, #4]
+ 169 0014 0125     		movs	r5, #1
+ 170 0016 0095     		str	r5, [sp]
+ 171 0018 2346     		mov	r3, r4
+ 172 001a 2022     		movs	r2, #32
+ 173 001c 0A49     		ldr	r1, .L15
+ 174 001e 0B48     		ldr	r0, .L15+4
+ 175 0020 FFF7FEFF 		bl	xTaskCreate
+ 176              	.LVL13:
+  16:Code/src/main.c **** 	//xTaskCreate(vTaskButtonUser, "LED1", 32, NULL, 1, NULL);
+ 177              		.loc 1 16 2 view .LVU24
+ 178 0024 0194     		str	r4, [sp, #4]
+ 179 0026 0095     		str	r5, [sp]
+ 180 0028 2346     		mov	r3, r4
+ 181 002a 2022     		movs	r2, #32
+ 182 002c 0849     		ldr	r1, .L15+8
+ 183 002e 0948     		ldr	r0, .L15+12
+ 184 0030 FFF7FEFF 		bl	xTaskCreate
+ 185              	.LVL14:
+  19:Code/src/main.c **** 	
+ 186              		.loc 1 19 2 view .LVU25
+  19:Code/src/main.c **** 	
+ 187              		.loc 1 19 13 is_stmt 0 view .LVU26
+ 188 0034 2246     		mov	r2, r4
+ 189 0036 2946     		mov	r1, r5
+ 190 0038 0520     		movs	r0, #5
+ 191 003a FFF7FEFF 		bl	xQueueGenericCreate
+ 192              	.LVL15:
+  19:Code/src/main.c **** 	
+ 193              		.loc 1 19 11 view .LVU27
+ 194 003e 064B     		ldr	r3, .L15+16
+ 195 0040 1860     		str	r0, [r3]
+  21:Code/src/main.c **** 
+ 196              		.loc 1 21 2 is_stmt 1 view .LVU28
+ 197 0042 FFF7FEFF 		bl	vTaskStartScheduler
+ 198              	.LVL16:
+ 199              	.L13:
+  23:Code/src/main.c ****     {
+ 200              		.loc 1 23 5 discriminator 1 view .LVU29
+  26:Code/src/main.c ****   
+ 201              		.loc 1 26 5 discriminator 1 view .LVU30
+ 202 0046 FEE7     		b	.L13
+ 203              	.L16:
+ 204              		.align	2
+ 205              	.L15:
+ 206 0048 00000000 		.word	.LC0
+ 207 004c 00000000 		.word	vTaskLed1
+ 208 0050 08000000 		.word	.LC1
+ 209 0054 00000000 		.word	vTaskLed2
+ 210 0058 00000000 		.word	SendData
+ 211              		.cfi_endproc
+ 212              	.LFE70:
+ 214              		.section	.text.vTaskButtonUser,"ax",%progbits
+ 215              		.align	1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 6
+
+
+ 216              		.global	vTaskButtonUser
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 220              		.fpu softvfp
+ 222              	vTaskButtonUser:
+ 223              	.LFB73:
+  58:Code/src/main.c **** 	}
+  59:Code/src/main.c **** }
+  60:Code/src/main.c **** 
+  61:Code/src/main.c **** void vTaskButtonUser(void *argument)
+  62:Code/src/main.c **** {
+ 224              		.loc 1 62 1 view -0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228              	.LVL17:
+ 229              		.loc 1 62 1 is_stmt 0 view .LVU32
+ 230 0000 10B5     		push	{r4, lr}
+ 231              	.LCFI6:
+ 232              		.cfi_def_cfa_offset 8
+ 233              		.cfi_offset 4, -8
+ 234              		.cfi_offset 14, -4
+ 235              	.LVL18:
+ 236              	.L22:
+  63:Code/src/main.c **** 	while (1)
+ 237              		.loc 1 63 2 is_stmt 1 view .LVU33
+  64:Code/src/main.c **** 	{	
+  65:Code/src/main.c **** 		for(uint16_t i=0; i<=1000; i++)
+ 238              		.loc 1 65 3 view .LVU34
+ 239              	.LBB2:
+ 240              		.loc 1 65 7 view .LVU35
+ 241              		.loc 1 65 16 is_stmt 0 view .LVU36
+ 242 0002 0024     		movs	r4, #0
+ 243              	.LVL19:
+ 244              	.L18:
+ 245              		.loc 1 65 3 discriminator 1 view .LVU37
+ 246 0004 B4F57A7F 		cmp	r4, #1000
+ 247 0008 07D8     		bhi	.L24
+  66:Code/src/main.c **** 		{	
+  67:Code/src/main.c **** 			TIM1->CCR2 = i;
+ 248              		.loc 1 67 4 is_stmt 1 discriminator 3 view .LVU38
+ 249              		.loc 1 67 15 is_stmt 0 discriminator 3 view .LVU39
+ 250 000a 0A4B     		ldr	r3, .L25
+ 251 000c 9C63     		str	r4, [r3, #56]
+  68:Code/src/main.c **** 			vTaskDelay(1);
+ 252              		.loc 1 68 4 is_stmt 1 discriminator 3 view .LVU40
+ 253 000e 0120     		movs	r0, #1
+ 254 0010 FFF7FEFF 		bl	vTaskDelay
+ 255              	.LVL20:
+  65:Code/src/main.c **** 		{	
+ 256              		.loc 1 65 31 is_stmt 0 discriminator 3 view .LVU41
+ 257 0014 0134     		adds	r4, r4, #1
+ 258              	.LVL21:
+  65:Code/src/main.c **** 		{	
+ 259              		.loc 1 65 31 discriminator 3 view .LVU42
+ 260 0016 A4B2     		uxth	r4, r4
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 7
+
+
+ 261              	.LVL22:
+  65:Code/src/main.c **** 		{	
+ 262              		.loc 1 65 31 discriminator 3 view .LVU43
+ 263 0018 F4E7     		b	.L18
+ 264              	.L24:
+  65:Code/src/main.c **** 		{	
+ 265              		.loc 1 65 31 discriminator 3 view .LVU44
+ 266              	.LBE2:
+ 267              	.LBB3:
+  69:Code/src/main.c **** 		}	
+  70:Code/src/main.c **** 		for(int16_t j=1000; j>=0; j--)
+ 268              		.loc 1 70 15 view .LVU45
+ 269 001a 4FF47A74 		mov	r4, #1000
+ 270              	.LVL23:
+ 271              	.L20:
+ 272              		.loc 1 70 3 discriminator 1 view .LVU46
+ 273 001e 002C     		cmp	r4, #0
+ 274 0020 EFDB     		blt	.L22
+  71:Code/src/main.c **** 		{
+  72:Code/src/main.c **** 			TIM1->CCR2 = j;
+ 275              		.loc 1 72 4 is_stmt 1 discriminator 3 view .LVU47
+ 276              		.loc 1 72 15 is_stmt 0 discriminator 3 view .LVU48
+ 277 0022 044B     		ldr	r3, .L25
+ 278 0024 9C63     		str	r4, [r3, #56]
+  73:Code/src/main.c **** 			vTaskDelay(1);
+ 279              		.loc 1 73 4 is_stmt 1 discriminator 3 view .LVU49
+ 280 0026 0120     		movs	r0, #1
+ 281 0028 FFF7FEFF 		bl	vTaskDelay
+ 282              	.LVL24:
+  70:Code/src/main.c **** 		{
+ 283              		.loc 1 70 30 is_stmt 0 discriminator 3 view .LVU50
+ 284 002c 013C     		subs	r4, r4, #1
+ 285              	.LVL25:
+  70:Code/src/main.c **** 		{
+ 286              		.loc 1 70 30 discriminator 3 view .LVU51
+ 287 002e 24B2     		sxth	r4, r4
+ 288              	.LVL26:
+  70:Code/src/main.c **** 		{
+ 289              		.loc 1 70 30 discriminator 3 view .LVU52
+ 290 0030 F5E7     		b	.L20
+ 291              	.L26:
+ 292 0032 00BF     		.align	2
+ 293              	.L25:
+ 294 0034 002C0140 		.word	1073818624
+ 295              	.LBE3:
+ 296              		.cfi_endproc
+ 297              	.LFE73:
+ 299              		.section	.text.USART3_IRQHandler,"ax",%progbits
+ 300              		.align	1
+ 301              		.global	USART3_IRQHandler
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 305              		.fpu softvfp
+ 307              	USART3_IRQHandler:
+ 308              	.LFB74:
+  74:Code/src/main.c **** 		}
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 8
+
+
+  75:Code/src/main.c **** 	}
+  76:Code/src/main.c **** }
+  77:Code/src/main.c **** 
+  78:Code/src/main.c **** /*****************************Interupts*******************************/
+  79:Code/src/main.c **** 
+  80:Code/src/main.c **** void USART3_IRQHandler(void)
+  81:Code/src/main.c **** {
+ 309              		.loc 1 81 1 is_stmt 1 view -0
+ 310              		.cfi_startproc
+ 311              		@ args = 0, pretend = 0, frame = 0
+ 312              		@ frame_needed = 0, uses_anonymous_args = 0
+ 313 0000 08B5     		push	{r3, lr}
+ 314              	.LCFI7:
+ 315              		.cfi_def_cfa_offset 8
+ 316              		.cfi_offset 3, -8
+ 317              		.cfi_offset 14, -4
+  82:Code/src/main.c **** 	if (USART3->SR & USART_SR_RXNE)
+ 318              		.loc 1 82 2 view .LVU54
+ 319              		.loc 1 82 12 is_stmt 0 view .LVU55
+ 320 0002 124B     		ldr	r3, .L33
+ 321 0004 1B68     		ldr	r3, [r3]
+ 322              		.loc 1 82 5 view .LVU56
+ 323 0006 13F0200F 		tst	r3, #32
+ 324 000a 0BD0     		beq	.L27
+  83:Code/src/main.c **** 	{
+  84:Code/src/main.c **** 		USART3->SR &= ~USART_SR_RXNE;
+ 325              		.loc 1 84 3 is_stmt 1 view .LVU57
+ 326              		.loc 1 84 14 is_stmt 0 view .LVU58
+ 327 000c 0F4B     		ldr	r3, .L33
+ 328 000e 1A68     		ldr	r2, [r3]
+ 329 0010 22F02002 		bic	r2, r2, #32
+ 330 0014 1A60     		str	r2, [r3]
+  85:Code/src/main.c **** 		
+  86:Code/src/main.c **** 		if (USART3->DR == '0')
+ 331              		.loc 1 86 3 is_stmt 1 view .LVU59
+ 332              		.loc 1 86 13 is_stmt 0 view .LVU60
+ 333 0016 5B68     		ldr	r3, [r3, #4]
+ 334              		.loc 1 86 6 view .LVU61
+ 335 0018 302B     		cmp	r3, #48
+ 336 001a 04D0     		beq	.L31
+ 337              	.L29:
+  87:Code/src/main.c **** 		{
+  88:Code/src/main.c **** 			USART3_Send_String("OFF\r\n");
+  89:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+  90:Code/src/main.c **** 		}
+  91:Code/src/main.c **** 		
+  92:Code/src/main.c **** 		if (USART3->DR == '1')
+ 338              		.loc 1 92 3 is_stmt 1 view .LVU62
+ 339              		.loc 1 92 13 is_stmt 0 view .LVU63
+ 340 001c 0B4B     		ldr	r3, .L33
+ 341 001e 5B68     		ldr	r3, [r3, #4]
+ 342              		.loc 1 92 6 view .LVU64
+ 343 0020 312B     		cmp	r3, #49
+ 344 0022 09D0     		beq	.L32
+ 345              	.L27:
+  93:Code/src/main.c **** 		{
+  94:Code/src/main.c **** 			USART3_Send_String("ON\r\n");
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 9
+
+
+  95:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
+  96:Code/src/main.c **** 		}
+  97:Code/src/main.c **** 	}
+  98:Code/src/main.c **** 	
+  99:Code/src/main.c **** }...
+ 346              		.loc 1 99 1 view .LVU65
+ 347 0024 08BD     		pop	{r3, pc}
+ 348              	.L31:
+  88:Code/src/main.c **** 			USART3_Send_String("OFF\r\n");
+ 349              		.loc 1 88 4 is_stmt 1 view .LVU66
+ 350 0026 0A48     		ldr	r0, .L33+4
+ 351 0028 FFF7FEFF 		bl	USART3_Send_String
+ 352              	.LVL27:
+  89:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+ 353              		.loc 1 89 4 view .LVU67
+  89:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+ 354              		.loc 1 89 16 is_stmt 0 view .LVU68
+ 355 002c 094A     		ldr	r2, .L33+8
+ 356 002e 1369     		ldr	r3, [r2, #16]
+ 357 0030 43F08053 		orr	r3, r3, #268435456
+ 358 0034 1361     		str	r3, [r2, #16]
+ 359 0036 F1E7     		b	.L29
+ 360              	.L32:
+  94:Code/src/main.c **** 			USART3_Send_String("ON\r\n");
+ 361              		.loc 1 94 4 is_stmt 1 view .LVU69
+ 362 0038 0748     		ldr	r0, .L33+12
+ 363 003a FFF7FEFF 		bl	USART3_Send_String
+ 364              	.LVL28:
+  95:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
+ 365              		.loc 1 95 4 view .LVU70
+  95:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
+ 366              		.loc 1 95 16 is_stmt 0 view .LVU71
+ 367 003e 054A     		ldr	r2, .L33+8
+ 368 0040 1369     		ldr	r3, [r2, #16]
+ 369 0042 43F48053 		orr	r3, r3, #4096
+ 370 0046 1361     		str	r3, [r2, #16]
+ 371              		.loc 1 99 1 view .LVU72
+ 372 0048 ECE7     		b	.L27
+ 373              	.L34:
+ 374 004a 00BF     		.align	2
+ 375              	.L33:
+ 376 004c 00480040 		.word	1073760256
+ 377 0050 00000000 		.word	.LC2
+ 378 0054 00100140 		.word	1073811456
+ 379 0058 08000000 		.word	.LC3
+ 380              		.cfi_endproc
+ 381              	.LFE74:
+ 383              		.comm	SendData,4,4
+ 384              		.section	.rodata.USART3_IRQHandler.str1.4,"aMS",%progbits,1
+ 385              		.align	2
+ 386              	.LC2:
+ 387 0000 4F46460D 		.ascii	"OFF\015\012\000"
+ 387      0A00
+ 388 0006 0000     		.space	2
+ 389              	.LC3:
+ 390 0008 4F4E0D0A 		.ascii	"ON\015\012\000"
+ 390      00
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 10
+
+
+ 391              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+ 392              		.align	2
+ 393              	.LC0:
+ 394 0000 4C454431 		.ascii	"LED1\000"
+ 394      00
+ 395 0005 000000   		.space	3
+ 396              	.LC1:
+ 397 0008 4C454432 		.ascii	"LED2\000"
+ 397      00
+ 398              		.text
+ 399              	.Letext0:
+ 400              		.file 2 "FreeRTOS/inc/stdint.h"
+ 401              		.file 3 "CMSIS/inc/core_cm3.h"
+ 402              		.file 4 "CMSIS/inc/system_stm32f1xx.h"
+ 403              		.file 5 "CMSIS/inc/stm32f105xc.h"
+ 404              		.file 6 "FreeRTOS/inc/portmacro.h"
+ 405              		.file 7 "FreeRTOS/inc/queue.h"
+ 406              		.file 8 "Code/inc/main.h"
+ 407              		.file 9 "Code/inc/uartLib.h"
+ 408              		.file 10 "FreeRTOS/inc/task.h"
+ 409              		.file 11 "Code/inc/sysInit.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:16     .text.vTaskLed1:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:24     .text.vTaskLed1:0000000000000000 vTaskLed1
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:75     .text.vTaskLed1:0000000000000030 $d
+                            *COM*:0000000000000004 SendData
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:80     .text.vTaskLed2:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:87     .text.vTaskLed2:0000000000000000 vTaskLed2
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:131    .text.vTaskLed2:0000000000000030 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:136    .text.main:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:143    .text.main:0000000000000000 main
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:206    .text.main:0000000000000048 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:215    .text.vTaskButtonUser:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:222    .text.vTaskButtonUser:0000000000000000 vTaskButtonUser
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:294    .text.vTaskButtonUser:0000000000000034 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:300    .text.USART3_IRQHandler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:307    .text.USART3_IRQHandler:0000000000000000 USART3_IRQHandler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:376    .text.USART3_IRQHandler:000000000000004c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:385    .rodata.USART3_IRQHandler.str1.4:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccPKimmi.s:392    .rodata.main.str1.4:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+vTaskDelay
+uxQueueMessagesWaiting
+xQueueReceive
+SendDataUSART3
+xQueueGenericSend
+RCC_Init
+GPIO_Init
+USART3_Init
+xTaskCreate
+xQueueGenericCreate
+vTaskStartScheduler
+USART3_Send_String

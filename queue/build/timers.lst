@@ -1,0 +1,33 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccfeYmln.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"timers.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              	.Letext0:
+  16              		.file 1 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\lock.h"
+  17              		.file 2 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_types.h"
+  18              		.file 3 "c:\\software\\embeddedgcc\\arm_gcc\\lib\\gcc\\arm-none-eabi\\8.2.1\\include\\stddef.h"
+  19              		.file 4 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\reent.h"
+  20              		.file 5 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\stdlib.h"
+  21              		.file 6 "FreeRTOS/inc/stdint.h"
+  22              		.file 7 "CMSIS/inc/core_cm3.h"
+  23              		.file 8 "CMSIS/inc/system_stm32f1xx.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccfeYmln.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 timers.c
+
+NO UNDEFINED SYMBOLS

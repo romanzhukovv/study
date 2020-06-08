@@ -1,0 +1,6 @@
+r
+loadbin build\queue.bin, 0x00
+verifybin build\queue.bin, 0x00
+r
+g
+q

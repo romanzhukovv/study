@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -26,64 +26,68 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
   24              	vTaskButtonUser:
   25              	.LFB70:
   26              		.file 1 "Code/src/main.c"
-   1:Code/src/main.c **** #include "main.h"
+   1:Code/src/main.c **** /***************************Library*******************************/
    2:Code/src/main.c **** 
-   3:Code/src/main.c **** int main(void)
-   4:Code/src/main.c **** {
-   5:Code/src/main.c ****     RCC_Init();
-   6:Code/src/main.c ****     GPIO_Init();
-   7:Code/src/main.c **** 	//USART3_Init();
-   8:Code/src/main.c **** 	PWM_Init();
-   9:Code/src/main.c **** 	//MCO_out();
-  10:Code/src/main.c **** 
-  11:Code/src/main.c **** 	//xTaskCreate(vTaskLed1, "LED1", 32, NULL, 2, NULL);
-  12:Code/src/main.c **** 	//xTaskCreate(vTaskLed2, "LED2", 32, NULL, 1, NULL);
-  13:Code/src/main.c **** 	xTaskCreate(vTaskButtonUser, "LED1", 32, NULL, 1, NULL);
-  14:Code/src/main.c **** 	
-  15:Code/src/main.c **** 	vTaskStartScheduler();
-  16:Code/src/main.c **** 
-  17:Code/src/main.c ****     while (1)
-  18:Code/src/main.c ****     {
-  19:Code/src/main.c **** 
-  20:Code/src/main.c ****     }
-  21:Code/src/main.c ****   
-  22:Code/src/main.c **** }
+   3:Code/src/main.c **** #include "main.h"
+   4:Code/src/main.c **** 
+   5:Code/src/main.c **** /*****************************Main*******************************/
+   6:Code/src/main.c **** 
+   7:Code/src/main.c **** int main(void)
+   8:Code/src/main.c **** {
+   9:Code/src/main.c ****     RCC_Init();
+  10:Code/src/main.c ****     GPIO_Init();
+  11:Code/src/main.c **** 	//USART3_Init();
+  12:Code/src/main.c **** 	PWM_Init();
+  13:Code/src/main.c **** 	//MCO_out();
+  14:Code/src/main.c **** 
+  15:Code/src/main.c **** 	//xTaskCreate(vTaskLed1, "LED1", 32, NULL, 2, NULL);
+  16:Code/src/main.c **** 	//xTaskCreate(vTaskLed2, "LED2", 32, NULL, 1, NULL);
+  17:Code/src/main.c **** 	xTaskCreate(vTaskButtonUser, "LED1", 32, NULL, 1, NULL);
+  18:Code/src/main.c **** 	
+  19:Code/src/main.c **** 	vTaskStartScheduler();
+  20:Code/src/main.c **** 
+  21:Code/src/main.c ****     while (1)
+  22:Code/src/main.c ****     {
   23:Code/src/main.c **** 
-  24:Code/src/main.c **** //-------------------------------------------------------------------------------------------------
-  25:Code/src/main.c **** 
-  26:Code/src/main.c **** void vTaskLed1(void *argument)
-  27:Code/src/main.c **** {
-  28:Code/src/main.c **** 	while (1)
-  29:Code/src/main.c **** 	{
-  30:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BR11; 		//Reset PC11
-  31:Code/src/main.c **** 		vTaskDelay(1000);
-  32:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BS11; 		//Set PC11
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 2
+  24:Code/src/main.c ****     }
+  25:Code/src/main.c ****   
+  26:Code/src/main.c **** }
+  27:Code/src/main.c **** 
+  28:Code/src/main.c **** /*****************************Tasks*******************************/
+  29:Code/src/main.c **** 
+  30:Code/src/main.c **** void vTaskLed1(void *argument)
+  31:Code/src/main.c **** {
+  32:Code/src/main.c **** 	while (1)
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 2
 
 
-  33:Code/src/main.c **** 		vTaskDelay(1000);
-  34:Code/src/main.c **** 	}
-  35:Code/src/main.c **** }
-  36:Code/src/main.c **** 
-  37:Code/src/main.c **** void vTaskLed2(void *argument)
-  38:Code/src/main.c **** {
-  39:Code/src/main.c **** 	while (1)
-  40:Code/src/main.c **** 	{
-  41:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
-  42:Code/src/main.c **** 		vTaskDelay(1000);
-  43:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
-  44:Code/src/main.c **** 		vTaskDelay(1000);
-  45:Code/src/main.c **** 	}
-  46:Code/src/main.c **** }
-  47:Code/src/main.c **** 
-  48:Code/src/main.c **** void vTaskButtonUser(void *argument)
-  49:Code/src/main.c **** {
-  27              		.loc 1 49 1 view -0
+  33:Code/src/main.c **** 	{
+  34:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BR11; 		//Reset PC11
+  35:Code/src/main.c **** 		vTaskDelay(1000);
+  36:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BS11; 		//Set PC11
+  37:Code/src/main.c **** 		vTaskDelay(1000);
+  38:Code/src/main.c **** 	}
+  39:Code/src/main.c **** }
+  40:Code/src/main.c **** 
+  41:Code/src/main.c **** void vTaskLed2(void *argument)
+  42:Code/src/main.c **** {
+  43:Code/src/main.c **** 	while (1)
+  44:Code/src/main.c **** 	{
+  45:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
+  46:Code/src/main.c **** 		vTaskDelay(1000);
+  47:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+  48:Code/src/main.c **** 		vTaskDelay(1000);
+  49:Code/src/main.c **** 	}
+  50:Code/src/main.c **** }
+  51:Code/src/main.c **** 
+  52:Code/src/main.c **** void vTaskButtonUser(void *argument)
+  53:Code/src/main.c **** {
+  27              		.loc 1 53 1 view -0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
   31              	.LVL0:
-  32              		.loc 1 49 1 is_stmt 0 view .LVU1
+  32              		.loc 1 53 1 is_stmt 0 view .LVU1
   33 0000 10B5     		push	{r4, lr}
   34              	.LCFI0:
   35              		.cfi_def_cfa_offset 8
@@ -91,80 +95,80 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
   37              		.cfi_offset 14, -4
   38              	.LVL1:
   39              	.L6:
-  50:Code/src/main.c **** 	while (1)
-  40              		.loc 1 50 2 is_stmt 1 view .LVU2
-  51:Code/src/main.c **** 	{	
-  52:Code/src/main.c **** 		for(uint16_t i=0; i<=1000; i++)
-  41              		.loc 1 52 3 view .LVU3
+  54:Code/src/main.c **** 	while (1)
+  40              		.loc 1 54 2 is_stmt 1 view .LVU2
+  55:Code/src/main.c **** 	{	
+  56:Code/src/main.c **** 		for(uint16_t i=0; i<=1000; i++)
+  41              		.loc 1 56 3 view .LVU3
   42              	.LBB2:
-  43              		.loc 1 52 7 view .LVU4
-  44              		.loc 1 52 16 is_stmt 0 view .LVU5
+  43              		.loc 1 56 7 view .LVU4
+  44              		.loc 1 56 16 is_stmt 0 view .LVU5
   45 0002 0024     		movs	r4, #0
   46              	.LVL2:
   47              	.L2:
-  48              		.loc 1 52 3 discriminator 1 view .LVU6
+  48              		.loc 1 56 3 discriminator 1 view .LVU6
   49 0004 B4F57A7F 		cmp	r4, #1000
   50 0008 07D8     		bhi	.L8
-  53:Code/src/main.c **** 		{	
-  54:Code/src/main.c **** 			TIM1->CCR2 = i;
-  51              		.loc 1 54 4 is_stmt 1 discriminator 3 view .LVU7
-  52              		.loc 1 54 15 is_stmt 0 discriminator 3 view .LVU8
+  57:Code/src/main.c **** 		{	
+  58:Code/src/main.c **** 			TIM1->CCR2 = i;
+  51              		.loc 1 58 4 is_stmt 1 discriminator 3 view .LVU7
+  52              		.loc 1 58 15 is_stmt 0 discriminator 3 view .LVU8
   53 000a 0A4B     		ldr	r3, .L9
   54 000c 9C63     		str	r4, [r3, #56]
-  55:Code/src/main.c **** 			vTaskDelay(1);
-  55              		.loc 1 55 4 is_stmt 1 discriminator 3 view .LVU9
+  59:Code/src/main.c **** 			vTaskDelay(1);
+  55              		.loc 1 59 4 is_stmt 1 discriminator 3 view .LVU9
   56 000e 0120     		movs	r0, #1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 3
+
+
   57 0010 FFF7FEFF 		bl	vTaskDelay
   58              	.LVL3:
-  52:Code/src/main.c **** 		{	
-  59              		.loc 1 52 31 is_stmt 0 discriminator 3 view .LVU10
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 3
-
-
+  56:Code/src/main.c **** 		{	
+  59              		.loc 1 56 31 is_stmt 0 discriminator 3 view .LVU10
   60 0014 0134     		adds	r4, r4, #1
   61              	.LVL4:
-  52:Code/src/main.c **** 		{	
-  62              		.loc 1 52 31 discriminator 3 view .LVU11
+  56:Code/src/main.c **** 		{	
+  62              		.loc 1 56 31 discriminator 3 view .LVU11
   63 0016 A4B2     		uxth	r4, r4
   64              	.LVL5:
-  52:Code/src/main.c **** 		{	
-  65              		.loc 1 52 31 discriminator 3 view .LVU12
+  56:Code/src/main.c **** 		{	
+  65              		.loc 1 56 31 discriminator 3 view .LVU12
   66 0018 F4E7     		b	.L2
   67              	.L8:
-  52:Code/src/main.c **** 		{	
-  68              		.loc 1 52 31 discriminator 3 view .LVU13
+  56:Code/src/main.c **** 		{	
+  68              		.loc 1 56 31 discriminator 3 view .LVU13
   69              	.LBE2:
   70              	.LBB3:
-  56:Code/src/main.c **** 		}	
-  57:Code/src/main.c **** 		for(int16_t j=1000; j>=0; j--)
-  71              		.loc 1 57 15 view .LVU14
+  60:Code/src/main.c **** 		}	
+  61:Code/src/main.c **** 		for(int16_t j=1000; j>=0; j--)
+  71              		.loc 1 61 15 view .LVU14
   72 001a 4FF47A74 		mov	r4, #1000
   73              	.LVL6:
   74              	.L4:
-  75              		.loc 1 57 3 discriminator 1 view .LVU15
+  75              		.loc 1 61 3 discriminator 1 view .LVU15
   76 001e 002C     		cmp	r4, #0
   77 0020 EFDB     		blt	.L6
-  58:Code/src/main.c **** 		{
-  59:Code/src/main.c **** 			TIM1->CCR2 = j;
-  78              		.loc 1 59 4 is_stmt 1 discriminator 3 view .LVU16
-  79              		.loc 1 59 15 is_stmt 0 discriminator 3 view .LVU17
+  62:Code/src/main.c **** 		{
+  63:Code/src/main.c **** 			TIM1->CCR2 = j;
+  78              		.loc 1 63 4 is_stmt 1 discriminator 3 view .LVU16
+  79              		.loc 1 63 15 is_stmt 0 discriminator 3 view .LVU17
   80 0022 044B     		ldr	r3, .L9
   81 0024 9C63     		str	r4, [r3, #56]
-  60:Code/src/main.c **** 			vTaskDelay(1);
-  82              		.loc 1 60 4 is_stmt 1 discriminator 3 view .LVU18
+  64:Code/src/main.c **** 			vTaskDelay(1);
+  82              		.loc 1 64 4 is_stmt 1 discriminator 3 view .LVU18
   83 0026 0120     		movs	r0, #1
   84 0028 FFF7FEFF 		bl	vTaskDelay
   85              	.LVL7:
-  57:Code/src/main.c **** 		{
-  86              		.loc 1 57 30 is_stmt 0 discriminator 3 view .LVU19
+  61:Code/src/main.c **** 		{
+  86              		.loc 1 61 30 is_stmt 0 discriminator 3 view .LVU19
   87 002c 013C     		subs	r4, r4, #1
   88              	.LVL8:
-  57:Code/src/main.c **** 		{
-  89              		.loc 1 57 30 discriminator 3 view .LVU20
+  61:Code/src/main.c **** 		{
+  89              		.loc 1 61 30 discriminator 3 view .LVU20
   90 002e 24B2     		sxth	r4, r4
   91              	.LVL9:
-  57:Code/src/main.c **** 		{
-  92              		.loc 1 57 30 discriminator 3 view .LVU21
+  61:Code/src/main.c **** 		{
+  92              		.loc 1 61 30 discriminator 3 view .LVU21
   93 0030 F5E7     		b	.L4
   94              	.L10:
   95 0032 00BF     		.align	2
@@ -174,19 +178,19 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
   99              		.cfi_endproc
  100              	.LFE70:
  102              		.section	.text.main,"ax",%progbits
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 4
+
+
  103              		.align	1
  104              		.global	main
  105              		.syntax unified
  106              		.thumb
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 4
-
-
  107              		.thumb_func
  108              		.fpu softvfp
  110              	main:
  111              	.LFB67:
-   4:Code/src/main.c ****     RCC_Init();
- 112              		.loc 1 4 1 is_stmt 1 view -0
+   8:Code/src/main.c ****     RCC_Init();
+ 112              		.loc 1 8 1 is_stmt 1 view -0
  113              		.cfi_startproc
  114              		@ Volatile: function does not return.
  115              		@ args = 0, pretend = 0, frame = 0
@@ -198,20 +202,20 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  121 0002 83B0     		sub	sp, sp, #12
  122              	.LCFI2:
  123              		.cfi_def_cfa_offset 16
-   5:Code/src/main.c ****     GPIO_Init();
- 124              		.loc 1 5 5 view .LVU23
+   9:Code/src/main.c ****     GPIO_Init();
+ 124              		.loc 1 9 5 view .LVU23
  125 0004 FFF7FEFF 		bl	RCC_Init
  126              	.LVL10:
-   6:Code/src/main.c **** 	//USART3_Init();
- 127              		.loc 1 6 5 view .LVU24
+  10:Code/src/main.c **** 	//USART3_Init();
+ 127              		.loc 1 10 5 view .LVU24
  128 0008 FFF7FEFF 		bl	GPIO_Init
  129              	.LVL11:
-   8:Code/src/main.c **** 	//MCO_out();
- 130              		.loc 1 8 2 view .LVU25
+  12:Code/src/main.c **** 	//MCO_out();
+ 130              		.loc 1 12 2 view .LVU25
  131 000c FFF7FEFF 		bl	PWM_Init
  132              	.LVL12:
-  13:Code/src/main.c **** 	
- 133              		.loc 1 13 2 view .LVU26
+  17:Code/src/main.c **** 	
+ 133              		.loc 1 17 2 view .LVU26
  134 0010 0023     		movs	r3, #0
  135 0012 0193     		str	r3, [sp, #4]
  136 0014 0122     		movs	r2, #1
@@ -221,26 +225,26 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  140 001c 0348     		ldr	r0, .L14+4
  141 001e FFF7FEFF 		bl	xTaskCreate
  142              	.LVL13:
-  15:Code/src/main.c **** 
- 143              		.loc 1 15 2 view .LVU27
+  19:Code/src/main.c **** 
+ 143              		.loc 1 19 2 view .LVU27
  144 0022 FFF7FEFF 		bl	vTaskStartScheduler
  145              	.LVL14:
  146              	.L12:
-  17:Code/src/main.c ****     {
- 147              		.loc 1 17 5 discriminator 1 view .LVU28
-  20:Code/src/main.c ****   
- 148              		.loc 1 20 5 discriminator 1 view .LVU29
+  21:Code/src/main.c ****     {
+ 147              		.loc 1 21 5 discriminator 1 view .LVU28
+  24:Code/src/main.c ****   
+ 148              		.loc 1 24 5 discriminator 1 view .LVU29
  149 0026 FEE7     		b	.L12
  150              	.L15:
  151              		.align	2
  152              	.L14:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 5
+
+
  153 0028 00000000 		.word	.LC0
  154 002c 00000000 		.word	vTaskButtonUser
  155              		.cfi_endproc
  156              	.LFE67:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 5
-
-
  158              		.section	.text.vTaskLed1,"ax",%progbits
  159              		.align	1
  160              		.global	vTaskLed1
@@ -250,15 +254,15 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  164              		.fpu softvfp
  166              	vTaskLed1:
  167              	.LFB68:
-  27:Code/src/main.c **** 	while (1)
- 168              		.loc 1 27 1 view -0
+  31:Code/src/main.c **** 	while (1)
+ 168              		.loc 1 31 1 view -0
  169              		.cfi_startproc
  170              		@ Volatile: function does not return.
  171              		@ args = 0, pretend = 0, frame = 0
  172              		@ frame_needed = 0, uses_anonymous_args = 0
  173              	.LVL15:
-  27:Code/src/main.c **** 	while (1)
- 174              		.loc 1 27 1 is_stmt 0 view .LVU31
+  31:Code/src/main.c **** 	while (1)
+ 174              		.loc 1 31 1 is_stmt 0 view .LVU31
  175 0000 08B5     		push	{r3, lr}
  176              	.LCFI3:
  177              		.cfi_def_cfa_offset 8
@@ -266,41 +270,41 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  179              		.cfi_offset 14, -4
  180              	.LVL16:
  181              	.L17:
-  28:Code/src/main.c **** 	{
- 182              		.loc 1 28 2 is_stmt 1 discriminator 1 view .LVU32
-  30:Code/src/main.c **** 		vTaskDelay(1000);
- 183              		.loc 1 30 3 discriminator 1 view .LVU33
-  30:Code/src/main.c **** 		vTaskDelay(1000);
- 184              		.loc 1 30 15 is_stmt 0 discriminator 1 view .LVU34
+  32:Code/src/main.c **** 	{
+ 182              		.loc 1 32 2 is_stmt 1 discriminator 1 view .LVU32
+  34:Code/src/main.c **** 		vTaskDelay(1000);
+ 183              		.loc 1 34 3 discriminator 1 view .LVU33
+  34:Code/src/main.c **** 		vTaskDelay(1000);
+ 184              		.loc 1 34 15 is_stmt 0 discriminator 1 view .LVU34
  185 0002 094C     		ldr	r4, .L19
  186 0004 2369     		ldr	r3, [r4, #16]
  187 0006 43F00063 		orr	r3, r3, #134217728
  188 000a 2361     		str	r3, [r4, #16]
-  31:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BS11; 		//Set PC11
- 189              		.loc 1 31 3 is_stmt 1 discriminator 1 view .LVU35
+  35:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BS11; 		//Set PC11
+ 189              		.loc 1 35 3 is_stmt 1 discriminator 1 view .LVU35
  190 000c 4FF47A70 		mov	r0, #1000
  191 0010 FFF7FEFF 		bl	vTaskDelay
  192              	.LVL17:
-  32:Code/src/main.c **** 		vTaskDelay(1000);
- 193              		.loc 1 32 3 discriminator 1 view .LVU36
-  32:Code/src/main.c **** 		vTaskDelay(1000);
- 194              		.loc 1 32 15 is_stmt 0 discriminator 1 view .LVU37
+  36:Code/src/main.c **** 		vTaskDelay(1000);
+ 193              		.loc 1 36 3 discriminator 1 view .LVU36
+  36:Code/src/main.c **** 		vTaskDelay(1000);
+ 194              		.loc 1 36 15 is_stmt 0 discriminator 1 view .LVU37
  195 0014 2369     		ldr	r3, [r4, #16]
  196 0016 43F40063 		orr	r3, r3, #2048
  197 001a 2361     		str	r3, [r4, #16]
-  33:Code/src/main.c **** 	}
- 198              		.loc 1 33 3 is_stmt 1 discriminator 1 view .LVU38
+  37:Code/src/main.c **** 	}
+ 198              		.loc 1 37 3 is_stmt 1 discriminator 1 view .LVU38
  199 001c 4FF47A70 		mov	r0, #1000
  200 0020 FFF7FEFF 		bl	vTaskDelay
  201              	.LVL18:
  202 0024 EDE7     		b	.L17
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 6
+
+
  203              	.L20:
  204 0026 00BF     		.align	2
  205              	.L19:
  206 0028 00100140 		.word	1073811456
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 6
-
-
  207              		.cfi_endproc
  208              	.LFE68:
  210              		.section	.text.vTaskLed2,"ax",%progbits
@@ -312,15 +316,15 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  216              		.fpu softvfp
  218              	vTaskLed2:
  219              	.LFB69:
-  38:Code/src/main.c **** 	while (1)
- 220              		.loc 1 38 1 view -0
+  42:Code/src/main.c **** 	while (1)
+ 220              		.loc 1 42 1 view -0
  221              		.cfi_startproc
  222              		@ Volatile: function does not return.
  223              		@ args = 0, pretend = 0, frame = 0
  224              		@ frame_needed = 0, uses_anonymous_args = 0
  225              	.LVL19:
-  38:Code/src/main.c **** 	while (1)
- 226              		.loc 1 38 1 is_stmt 0 view .LVU40
+  42:Code/src/main.c **** 	while (1)
+ 226              		.loc 1 42 1 is_stmt 0 view .LVU40
  227 0000 08B5     		push	{r3, lr}
  228              	.LCFI4:
  229              		.cfi_def_cfa_offset 8
@@ -328,39 +332,39 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  231              		.cfi_offset 14, -4
  232              	.LVL20:
  233              	.L22:
-  39:Code/src/main.c **** 	{
- 234              		.loc 1 39 2 is_stmt 1 discriminator 1 view .LVU41
-  41:Code/src/main.c **** 		vTaskDelay(1000);
- 235              		.loc 1 41 3 discriminator 1 view .LVU42
-  41:Code/src/main.c **** 		vTaskDelay(1000);
- 236              		.loc 1 41 15 is_stmt 0 discriminator 1 view .LVU43
+  43:Code/src/main.c **** 	{
+ 234              		.loc 1 43 2 is_stmt 1 discriminator 1 view .LVU41
+  45:Code/src/main.c **** 		vTaskDelay(1000);
+ 235              		.loc 1 45 3 discriminator 1 view .LVU42
+  45:Code/src/main.c **** 		vTaskDelay(1000);
+ 236              		.loc 1 45 15 is_stmt 0 discriminator 1 view .LVU43
  237 0002 094C     		ldr	r4, .L24
  238 0004 2369     		ldr	r3, [r4, #16]
  239 0006 43F48053 		orr	r3, r3, #4096
  240 000a 2361     		str	r3, [r4, #16]
-  42:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
- 241              		.loc 1 42 3 is_stmt 1 discriminator 1 view .LVU44
+  46:Code/src/main.c **** 		GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+ 241              		.loc 1 46 3 is_stmt 1 discriminator 1 view .LVU44
  242 000c 4FF47A70 		mov	r0, #1000
  243 0010 FFF7FEFF 		bl	vTaskDelay
  244              	.LVL21:
-  43:Code/src/main.c **** 		vTaskDelay(1000);
- 245              		.loc 1 43 3 discriminator 1 view .LVU45
-  43:Code/src/main.c **** 		vTaskDelay(1000);
- 246              		.loc 1 43 15 is_stmt 0 discriminator 1 view .LVU46
+  47:Code/src/main.c **** 		vTaskDelay(1000);
+ 245              		.loc 1 47 3 discriminator 1 view .LVU45
+  47:Code/src/main.c **** 		vTaskDelay(1000);
+ 246              		.loc 1 47 15 is_stmt 0 discriminator 1 view .LVU46
  247 0014 2369     		ldr	r3, [r4, #16]
  248 0016 43F08053 		orr	r3, r3, #268435456
  249 001a 2361     		str	r3, [r4, #16]
-  44:Code/src/main.c **** 	}
- 250              		.loc 1 44 3 is_stmt 1 discriminator 1 view .LVU47
+  48:Code/src/main.c **** 	}
+ 250              		.loc 1 48 3 is_stmt 1 discriminator 1 view .LVU47
  251 001c 4FF47A70 		mov	r0, #1000
  252 0020 FFF7FEFF 		bl	vTaskDelay
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 7
+
+
  253              	.LVL22:
  254 0024 EDE7     		b	.L22
  255              	.L25:
  256 0026 00BF     		.align	2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 7
-
-
  257              	.L24:
  258 0028 00100140 		.word	1073811456
  259              		.cfi_endproc
@@ -374,13 +378,15 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  268              		.fpu softvfp
  270              	USART3_IRQHandler:
  271              	.LFB71:
-  61:Code/src/main.c **** 		}
-  62:Code/src/main.c **** 	}
-  63:Code/src/main.c **** }
-  64:Code/src/main.c **** 
-  65:Code/src/main.c **** void USART3_IRQHandler(void)
-  66:Code/src/main.c **** {
- 272              		.loc 1 66 1 view -0
+  65:Code/src/main.c **** 		}
+  66:Code/src/main.c **** 	}
+  67:Code/src/main.c **** }
+  68:Code/src/main.c **** 
+  69:Code/src/main.c **** /*****************************Interupts*******************************/
+  70:Code/src/main.c **** 
+  71:Code/src/main.c **** void USART3_IRQHandler(void)
+  72:Code/src/main.c **** {
+ 272              		.loc 1 72 1 view -0
  273              		.cfi_startproc
  274              		@ args = 0, pretend = 0, frame = 0
  275              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -389,98 +395,98 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  278              		.cfi_def_cfa_offset 8
  279              		.cfi_offset 3, -8
  280              		.cfi_offset 14, -4
-  67:Code/src/main.c **** 	if (USART3->SR & USART_SR_RXNE)
- 281              		.loc 1 67 2 view .LVU49
- 282              		.loc 1 67 12 is_stmt 0 view .LVU50
+  73:Code/src/main.c **** 	if (USART3->SR & USART_SR_RXNE)
+ 281              		.loc 1 73 2 view .LVU49
+ 282              		.loc 1 73 12 is_stmt 0 view .LVU50
  283 0002 124B     		ldr	r3, .L32
  284 0004 1B68     		ldr	r3, [r3]
- 285              		.loc 1 67 5 view .LVU51
+ 285              		.loc 1 73 5 view .LVU51
  286 0006 13F0200F 		tst	r3, #32
  287 000a 0BD0     		beq	.L26
-  68:Code/src/main.c **** 	{
-  69:Code/src/main.c **** 		USART3->SR &= ~USART_SR_RXNE;
- 288              		.loc 1 69 3 is_stmt 1 view .LVU52
- 289              		.loc 1 69 14 is_stmt 0 view .LVU53
+  74:Code/src/main.c **** 	{
+  75:Code/src/main.c **** 		USART3->SR &= ~USART_SR_RXNE;
+ 288              		.loc 1 75 3 is_stmt 1 view .LVU52
+ 289              		.loc 1 75 14 is_stmt 0 view .LVU53
  290 000c 0F4B     		ldr	r3, .L32
  291 000e 1A68     		ldr	r2, [r3]
  292 0010 22F02002 		bic	r2, r2, #32
  293 0014 1A60     		str	r2, [r3]
-  70:Code/src/main.c **** 		
-  71:Code/src/main.c **** 		if (USART3->DR == '0')
- 294              		.loc 1 71 3 is_stmt 1 view .LVU54
- 295              		.loc 1 71 13 is_stmt 0 view .LVU55
+  76:Code/src/main.c **** 		
+  77:Code/src/main.c **** 		if (USART3->DR == '0')
+ 294              		.loc 1 77 3 is_stmt 1 view .LVU54
+ 295              		.loc 1 77 13 is_stmt 0 view .LVU55
  296 0016 5B68     		ldr	r3, [r3, #4]
- 297              		.loc 1 71 6 view .LVU56
+ 297              		.loc 1 77 6 view .LVU56
  298 0018 302B     		cmp	r3, #48
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 8
+
+
  299 001a 04D0     		beq	.L30
  300              	.L28:
-  72:Code/src/main.c **** 		{
-  73:Code/src/main.c **** 			USART3_Send_String("OFF\r\n");
-  74:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
-  75:Code/src/main.c **** 		}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 8
-
-
-  76:Code/src/main.c **** 		
-  77:Code/src/main.c **** 		if (USART3->DR == '1')
- 301              		.loc 1 77 3 is_stmt 1 view .LVU57
- 302              		.loc 1 77 13 is_stmt 0 view .LVU58
+  78:Code/src/main.c **** 		{
+  79:Code/src/main.c **** 			USART3_Send_String("OFF\r\n");
+  80:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+  81:Code/src/main.c **** 		}
+  82:Code/src/main.c **** 		
+  83:Code/src/main.c **** 		if (USART3->DR == '1')
+ 301              		.loc 1 83 3 is_stmt 1 view .LVU57
+ 302              		.loc 1 83 13 is_stmt 0 view .LVU58
  303 001c 0B4B     		ldr	r3, .L32
  304 001e 5B68     		ldr	r3, [r3, #4]
- 305              		.loc 1 77 6 view .LVU59
+ 305              		.loc 1 83 6 view .LVU59
  306 0020 312B     		cmp	r3, #49
  307 0022 09D0     		beq	.L31
  308              	.L26:
-  78:Code/src/main.c **** 		{
-  79:Code/src/main.c **** 			USART3_Send_String("ON\r\n");
-  80:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
-  81:Code/src/main.c **** 		}
-  82:Code/src/main.c **** 	}
-  83:Code/src/main.c **** 	
-  84:Code/src/main.c **** }...
- 309              		.loc 1 84 1 view .LVU60
+  84:Code/src/main.c **** 		{
+  85:Code/src/main.c **** 			USART3_Send_String("ON\r\n");
+  86:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
+  87:Code/src/main.c **** 		}
+  88:Code/src/main.c **** 	}
+  89:Code/src/main.c **** 	
+  90:Code/src/main.c **** }...
+ 309              		.loc 1 90 1 view .LVU60
  310 0024 08BD     		pop	{r3, pc}
  311              	.L30:
-  73:Code/src/main.c **** 			USART3_Send_String("OFF\r\n");
- 312              		.loc 1 73 4 is_stmt 1 view .LVU61
+  79:Code/src/main.c **** 			USART3_Send_String("OFF\r\n");
+ 312              		.loc 1 79 4 is_stmt 1 view .LVU61
  313 0026 0A48     		ldr	r0, .L32+4
  314 0028 FFF7FEFF 		bl	USART3_Send_String
  315              	.LVL23:
-  74:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
- 316              		.loc 1 74 4 view .LVU62
-  74:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
- 317              		.loc 1 74 16 is_stmt 0 view .LVU63
+  80:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+ 316              		.loc 1 80 4 view .LVU62
+  80:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BR12; 		//Set PC12
+ 317              		.loc 1 80 16 is_stmt 0 view .LVU63
  318 002c 094A     		ldr	r2, .L32+8
  319 002e 1369     		ldr	r3, [r2, #16]
  320 0030 43F08053 		orr	r3, r3, #268435456
  321 0034 1361     		str	r3, [r2, #16]
  322 0036 F1E7     		b	.L28
  323              	.L31:
-  79:Code/src/main.c **** 			USART3_Send_String("ON\r\n");
- 324              		.loc 1 79 4 is_stmt 1 view .LVU64
+  85:Code/src/main.c **** 			USART3_Send_String("ON\r\n");
+ 324              		.loc 1 85 4 is_stmt 1 view .LVU64
  325 0038 0748     		ldr	r0, .L32+12
  326 003a FFF7FEFF 		bl	USART3_Send_String
  327              	.LVL24:
-  80:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
- 328              		.loc 1 80 4 view .LVU65
-  80:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
- 329              		.loc 1 80 16 is_stmt 0 view .LVU66
+  86:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
+ 328              		.loc 1 86 4 view .LVU65
+  86:Code/src/main.c **** 			GPIOC->BSRR |= GPIO_BSRR_BS12; 		//Reset PC12
+ 329              		.loc 1 86 16 is_stmt 0 view .LVU66
  330 003e 054A     		ldr	r2, .L32+8
  331 0040 1369     		ldr	r3, [r2, #16]
  332 0042 43F48053 		orr	r3, r3, #4096
  333 0046 1361     		str	r3, [r2, #16]
- 334              		.loc 1 84 1 view .LVU67
+ 334              		.loc 1 90 1 view .LVU67
  335 0048 ECE7     		b	.L26
  336              	.L33:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 9
+
+
  337 004a 00BF     		.align	2
  338              	.L32:
  339 004c 00480040 		.word	1073760256
  340 0050 00000000 		.word	.LC1
  341 0054 00100140 		.word	1073811456
  342 0058 08000000 		.word	.LC2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 9
-
-
  343              		.cfi_endproc
  344              	.LFE71:
  346              		.section	.rodata.USART3_IRQHandler.str1.4,"aMS",%progbits,1
@@ -508,28 +514,28 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 1
  365              		.file 8 "FreeRTOS/inc/task.h"
  366              		.file 9 "Code/inc/sysInit.h"
  367              		.file 10 "Code/inc/pwmLib.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s 			page 10
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:16     .text.vTaskButtonUser:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:24     .text.vTaskButtonUser:0000000000000000 vTaskButtonUser
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:97     .text.vTaskButtonUser:0000000000000034 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:103    .text.main:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:110    .text.main:0000000000000000 main
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:153    .text.main:0000000000000028 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:159    .text.vTaskLed1:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:166    .text.vTaskLed1:0000000000000000 vTaskLed1
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:206    .text.vTaskLed1:0000000000000028 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:211    .text.vTaskLed2:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:218    .text.vTaskLed2:0000000000000000 vTaskLed2
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:258    .text.vTaskLed2:0000000000000028 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:263    .text.USART3_IRQHandler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:270    .text.USART3_IRQHandler:0000000000000000 USART3_IRQHandler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:339    .text.USART3_IRQHandler:000000000000004c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:347    .rodata.USART3_IRQHandler.str1.4:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNDku4s.s:354    .rodata.main.str1.4:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:16     .text.vTaskButtonUser:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:24     .text.vTaskButtonUser:0000000000000000 vTaskButtonUser
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:97     .text.vTaskButtonUser:0000000000000034 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:103    .text.main:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:110    .text.main:0000000000000000 main
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:153    .text.main:0000000000000028 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:159    .text.vTaskLed1:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:166    .text.vTaskLed1:0000000000000000 vTaskLed1
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:206    .text.vTaskLed1:0000000000000028 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:211    .text.vTaskLed2:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:218    .text.vTaskLed2:0000000000000000 vTaskLed2
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:258    .text.vTaskLed2:0000000000000028 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:263    .text.USART3_IRQHandler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:270    .text.USART3_IRQHandler:0000000000000000 USART3_IRQHandler
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:339    .text.USART3_IRQHandler:000000000000004c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:347    .rodata.USART3_IRQHandler.str1.4:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cczUndbg.s:354    .rodata.main.str1.4:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 vTaskDelay
