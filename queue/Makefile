@@ -128,7 +128,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = STM32F105XC_FLASH.ld
+LDSCRIPT = STM32F105V8Tx_FLASH.ld
 
 # libraries
 LIBS = -lc -lm -lnosys 

@@ -488,8 +488,8 @@ Discarded input sections
 Memory Configuration
 
 Name             Origin             Length             Attributes
-FLASH            0x0000000008000000 0x0000000000040000 xr
 RAM              0x0000000020000000 0x0000000000010000 xrw
+FLASH            0x0000000008000000 0x0000000000010000 xr
 *default*        0x0000000000000000 0xffffffffffffffff
 
 Linker script and memory map
@@ -526,7 +526,7 @@ LOAD c:/software/embeddedgcc/arm_gcc/bin/../lib/gcc/arm-none-eabi/8.2.1/../../..
 END GROUP
 LOAD c:/software/embeddedgcc/arm_gcc/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp/crtend.o
 LOAD c:/software/embeddedgcc/arm_gcc/bin/../lib/gcc/arm-none-eabi/8.2.1/thumb/v7-m/nofp/crtn.o
-                0x000000002000ffff                _estack = 0x2000ffff
+                0x0000000020010000                _estack = 0x20010000
                 0x0000000000000200                _Min_Heap_Size = 0x200
                 0x0000000000000400                _Min_Stack_Size = 0x400
 

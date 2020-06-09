@@ -4,11 +4,11 @@
 #include "cmsis_os.h"
 #include "sysInit.h"
 #include "uartLib.h"
-#include "adcLib.h"
+#include "pwmLib.h"
 
 /***************************Defines*******************************/
 
-xQueueHandle SendDataADC;
+xQueueHandle SendData;
 
 /************************Tasks FreeRTOS***************************/
 

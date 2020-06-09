@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
   30:FreeRTOS/src/event_groups.c **** 
   31:FreeRTOS/src/event_groups.c **** /* Defining MPU_WRAPPERS_INCLUDED_FROM_API_FILE prevents task.h from redefining
   32:FreeRTOS/src/event_groups.c **** all the API functions to use the MPU wrappers.  That should only be done when
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 2
 
 
   33:FreeRTOS/src/event_groups.c **** task.h is included from an application file. */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
   87:FreeRTOS/src/event_groups.c **** static BaseType_t prvTestWaitCondition( const EventBits_t uxCurrentEventBits, const EventBits_t uxB
   88:FreeRTOS/src/event_groups.c **** 
   89:FreeRTOS/src/event_groups.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 3
 
 
   90:FreeRTOS/src/event_groups.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  144:FreeRTOS/src/event_groups.c **** 
  145:FreeRTOS/src/event_groups.c **** 	EventGroupHandle_t xEventGroupCreate( void )
  146:FreeRTOS/src/event_groups.c **** 	{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 4
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 4
 
 
  147:FreeRTOS/src/event_groups.c **** 	EventGroup_t *pxEventBits;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  201:FreeRTOS/src/event_groups.c **** 	{
  202:FreeRTOS/src/event_groups.c **** 		configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 )
  203:FreeRTOS/src/event_groups.c **** 	}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 5
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 5
 
 
  204:FreeRTOS/src/event_groups.c **** 	#endif
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  258:FreeRTOS/src/event_groups.c **** 		{
  259:FreeRTOS/src/event_groups.c **** 			mtCOVERAGE_TEST_MARKER();
  260:FreeRTOS/src/event_groups.c **** 		}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 6
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 6
 
 
  261:FreeRTOS/src/event_groups.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  315:FreeRTOS/src/event_groups.c **** BaseType_t xWaitConditionMet, xAlreadyYielded;
  316:FreeRTOS/src/event_groups.c **** BaseType_t xTimeoutOccurred = pdFALSE;
  317:FreeRTOS/src/event_groups.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 7
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 7
 
 
  318:FreeRTOS/src/event_groups.c **** 	/* Check the user is not attempting to wait on the bits used by the kernel
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  372:FreeRTOS/src/event_groups.c **** 				mtCOVERAGE_TEST_MARKER();
  373:FreeRTOS/src/event_groups.c **** 			}
  374:FreeRTOS/src/event_groups.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 8
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 8
 
 
  375:FreeRTOS/src/event_groups.c **** 			if( xWaitForAllBits != pdFALSE )
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  429:FreeRTOS/src/event_groups.c **** 						pxEventBits->uxEventBits &= ~uxBitsToWaitFor;
  430:FreeRTOS/src/event_groups.c **** 					}
  431:FreeRTOS/src/event_groups.c **** 					else
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 9
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 9
 
 
  432:FreeRTOS/src/event_groups.c **** 					{
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  486:FreeRTOS/src/event_groups.c **** /*-----------------------------------------------------------*/
  487:FreeRTOS/src/event_groups.c **** 
  488:FreeRTOS/src/event_groups.c **** #if ( ( configUSE_TRACE_FACILITY == 1 ) && ( INCLUDE_xTimerPendFunctionCall == 1 ) && ( configUSE_T
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 10
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 10
 
 
  489:FreeRTOS/src/event_groups.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  543:FreeRTOS/src/event_groups.c **** 
  544:FreeRTOS/src/event_groups.c **** 		/* See if the new bit value should unblock any tasks. */
  545:FreeRTOS/src/event_groups.c **** 		while( pxListItem != pxListEnd )
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 11
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 11
 
 
  546:FreeRTOS/src/event_groups.c **** 		{
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  600:FreeRTOS/src/event_groups.c **** 			pxListItem = pxNext;
  601:FreeRTOS/src/event_groups.c **** 		}
  602:FreeRTOS/src/event_groups.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 12
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 12
 
 
  603:FreeRTOS/src/event_groups.c **** 		/* Clear any bits that matched when the eventCLEAR_EVENTS_ON_EXIT_BIT
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  657:FreeRTOS/src/event_groups.c **** void vEventGroupSetBitsCallback( void *pvEventGroup, const uint32_t ulBitsToSet )
  658:FreeRTOS/src/event_groups.c **** {
  659:FreeRTOS/src/event_groups.c **** 	( void ) xEventGroupSetBits( pvEventGroup, ( EventBits_t ) ulBitsToSet ); /*lint !e9079 Can't avoi
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 13
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 13
 
 
  660:FreeRTOS/src/event_groups.c **** }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  692:FreeRTOS/src/event_groups.c **** 		if( ( uxCurrentEventBits & uxBitsToWaitFor ) == uxBitsToWaitFor )
   47              		.loc 1 692 3 is_stmt 1 view .LVU8
   48              		.loc 1 692 5 is_stmt 0 view .LVU9
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 14
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 14
 
 
   49 000a 31EA0003 		bics	r3, r1, r0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
   89 0000 10B5     		push	{r4, lr}
   90              	.LCFI0:
   91              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 15
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 15
 
 
   92              		.cfi_offset 4, -8
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  134              		.loc 1 312 1 is_stmt 1 view -0
  135              		.cfi_startproc
  136              		@ args = 4, pretend = 0, frame = 0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 16
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 16
 
 
  137              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  336:FreeRTOS/src/event_groups.c **** 		{
  178              		.loc 1 336 3 is_stmt 1 view .LVU46
  336:FreeRTOS/src/event_groups.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 17
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 17
 
 
  179              		.loc 1 336 5 is_stmt 0 view .LVU47
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  403:FreeRTOS/src/event_groups.c **** 		}
  217              		.loc 1 403 4 view .LVU64
  218              	@ 403 "FreeRTOS/src/event_groups.c" 1
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 18
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 18
 
 
  219 0042 BFF36F8F 		isb
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  257 005e E6D0     		beq	.L11
  366:FreeRTOS/src/event_groups.c **** 			{
  258              		.loc 1 366 4 is_stmt 1 view .LVU81
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 19
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 19
 
 
  366:FreeRTOS/src/event_groups.c **** 			{
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  298 0080 4FF08071 		mov	r1, #16777216
  299 0084 F0E7     		b	.L12
  300              	.LVL31:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 20
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 20
 
 
  301              	.L18:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  339              		.loc 1 442 4 view .LVU112
  340 00a8 FFF7FEFF 		bl	vPortExitCritical
  341              	.LVL38:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 21
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 21
 
 
  342 00ac D1E7     		b	.L16
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  480:FreeRTOS/src/event_groups.c **** 	}
  388              		.loc 1 480 3 is_stmt 1 view .LVU123
  480:FreeRTOS/src/event_groups.c **** 	}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 22
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 22
 
 
  389              		.loc 1 480 28 is_stmt 0 view .LVU124
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
    8:FreeRTOS/inc/portmacro.h ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
    9:FreeRTOS/inc/portmacro.h ****  * the Software, and to permit persons to whom the Software is furnished to do so,
   10:FreeRTOS/inc/portmacro.h ****  * subject to the following conditions:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 23
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 23
 
 
   11:FreeRTOS/inc/portmacro.h ****  *
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
   65:FreeRTOS/inc/portmacro.h **** 
   66:FreeRTOS/inc/portmacro.h **** 	/* 32-bit tick type on a 32-bit architecture, so reads of the tick count do
   67:FreeRTOS/inc/portmacro.h **** 	not need to be guarded with a critical section. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 24
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 24
 
 
   68:FreeRTOS/inc/portmacro.h **** 	#define portTICK_TYPE_IS_ATOMIC 1
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  122:FreeRTOS/inc/portmacro.h **** /* Architecture specific optimisations. */
  123:FreeRTOS/inc/portmacro.h **** #ifndef configUSE_PORT_OPTIMISED_TASK_SELECTION
  124:FreeRTOS/inc/portmacro.h **** 	#define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 25
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 25
 
 
  125:FreeRTOS/inc/portmacro.h **** #endif
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  179:FreeRTOS/inc/portmacro.h **** 	if( ulCurrentInterrupt == 0 )
  180:FreeRTOS/inc/portmacro.h **** 	{
  181:FreeRTOS/inc/portmacro.h **** 		xReturn = pdFALSE;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 26
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 26
 
 
  182:FreeRTOS/inc/portmacro.h **** 	}
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  222:FreeRTOS/inc/portmacro.h **** 
  223:FreeRTOS/inc/portmacro.h **** 	/* This return will not be reached but is necessary to prevent compiler
  224:FreeRTOS/inc/portmacro.h **** 	warnings. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 27
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 27
 
 
  225:FreeRTOS/inc/portmacro.h **** 	return ulOriginalBASEPRI;
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  485              		.loc 1 520 1 is_stmt 1 view -0
  486              		.cfi_startproc
  487              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 28
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 28
 
 
  488              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  524              		.loc 1 542 28 is_stmt 0 view .LVU166
  525 0010 2168     		ldr	r1, [r4]
  526 0012 2943     		orrs	r1, r1, r5
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 29
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 29
 
 
  527 0014 2160     		str	r1, [r4]
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  548:FreeRTOS/src/event_groups.c **** 			xMatchFound = pdFALSE;
  565              		.loc 1 548 20 is_stmt 0 view .LVU183
  566 0036 0368     		ldr	r3, [r0]
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 30
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 30
 
 
  567              	.LVL58:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  607:FreeRTOS/src/event_groups.c **** 
  604              		.loc 1 607 2 is_stmt 1 view .LVU201
  607:FreeRTOS/src/event_groups.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 31
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 31
 
 
  605              		.loc 1 607 11 is_stmt 0 view .LVU202
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  199:FreeRTOS/src/event_groups.c **** 	#if ( ( INCLUDE_xTaskGetSchedulerState == 1 ) || ( configUSE_TIMERS == 1 ) )
  651              		.loc 1 199 38 view .LVU213
  206:FreeRTOS/src/event_groups.c **** 	{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 32
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 32
 
 
  652              		.loc 1 206 2 view .LVU214
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  253:FreeRTOS/src/event_groups.c **** 		{
  689              		.loc 1 253 5 is_stmt 0 view .LVU232
  690 002c 38B9     		cbnz	r0, .L41
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 33
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 33
 
 
  255:FreeRTOS/src/event_groups.c **** 		}
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  729              		.loc 1 307 2 view .LVU248
  730              	.L36:
  308:FreeRTOS/src/event_groups.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 34
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 34
 
 
  731              		.loc 1 308 1 is_stmt 0 view .LVU249
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  771 0076 38EA0403 		bics	r3, r8, r4
  772 007a 02D0     		beq	.L48
  773              	.L43:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 35
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 35
 
 
  285:FreeRTOS/src/event_groups.c **** 				}
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  618:FreeRTOS/src/event_groups.c **** 	{
  820              		.loc 1 618 2 view .LVU274
  821 0004 FFF7FEFF 		bl	vTaskSuspendAll
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 36
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 36
 
 
  822              	.LVL87:
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  866              		@ frame_needed = 0, uses_anonymous_args = 0
  658:FreeRTOS/src/event_groups.c **** 	( void ) xEventGroupSetBits( pvEventGroup, ( EventBits_t ) ulBitsToSet ); /*lint !e9079 Can't avoi
  867              		.loc 1 658 1 is_stmt 0 view .LVU287
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 37
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 37
 
 
  868 0000 08B5     		push	{r3, lr}
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  917              		.file 6 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\reent.h"
  918              		.file 7 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\stdlib.h"
  919              		.file 8 "FreeRTOS/inc/stdint.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 38
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 38
 
 
  920              		.file 9 "CMSIS/inc/core_cm3.h"
@@ -2227,33 +2227,33 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 1
  923              		.file 12 "FreeRTOS/inc/event_groups.h"
  924              		.file 13 "FreeRTOS/inc/task.h"
  925              		.file 14 "FreeRTOS/inc/portable.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s 			page 39
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s 			page 39
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 event_groups.c
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:16     .text.prvTestWaitCondition:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:23     .text.prvTestWaitCondition:0000000000000000 prvTestWaitCondition
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:76     .text.xEventGroupCreate:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:83     .text.xEventGroupCreate:0000000000000000 xEventGroupCreate
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:124    .text.xEventGroupWaitBits:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:131    .text.xEventGroupWaitBits:0000000000000000 xEventGroupWaitBits
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:346    .text.xEventGroupWaitBits:00000000000000b0 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:351    .text.xEventGroupClearBits:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:358    .text.xEventGroupClearBits:0000000000000000 xEventGroupClearBits
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:406    .text.xEventGroupGetBitsFromISR:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:413    .text.xEventGroupGetBitsFromISR:0000000000000000 xEventGroupGetBitsFromISR
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:475    .text.xEventGroupSetBits:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:482    .text.xEventGroupSetBits:0000000000000000 xEventGroupSetBits
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:617    .text.xEventGroupSync:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:624    .text.xEventGroupSync:0000000000000000 xEventGroupSync
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:791    .text.xEventGroupSync:000000000000008c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:796    .text.vEventGroupDelete:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:803    .text.vEventGroupDelete:0000000000000000 vEventGroupDelete
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:853    .text.vEventGroupSetBitsCallback:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:860    .text.vEventGroupSetBitsCallback:0000000000000000 vEventGroupSetBitsCallback
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:883    .text.vEventGroupClearBitsCallback:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccDmimmi.s:890    .text.vEventGroupClearBitsCallback:0000000000000000 vEventGroupClearBitsCallback
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:16     .text.prvTestWaitCondition:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:23     .text.prvTestWaitCondition:0000000000000000 prvTestWaitCondition
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:76     .text.xEventGroupCreate:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:83     .text.xEventGroupCreate:0000000000000000 xEventGroupCreate
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:124    .text.xEventGroupWaitBits:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:131    .text.xEventGroupWaitBits:0000000000000000 xEventGroupWaitBits
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:346    .text.xEventGroupWaitBits:00000000000000b0 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:351    .text.xEventGroupClearBits:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:358    .text.xEventGroupClearBits:0000000000000000 xEventGroupClearBits
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:406    .text.xEventGroupGetBitsFromISR:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:413    .text.xEventGroupGetBitsFromISR:0000000000000000 xEventGroupGetBitsFromISR
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:475    .text.xEventGroupSetBits:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:482    .text.xEventGroupSetBits:0000000000000000 xEventGroupSetBits
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:617    .text.xEventGroupSync:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:624    .text.xEventGroupSync:0000000000000000 xEventGroupSync
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:791    .text.xEventGroupSync:000000000000008c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:796    .text.vEventGroupDelete:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:803    .text.vEventGroupDelete:0000000000000000 vEventGroupDelete
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:853    .text.vEventGroupSetBitsCallback:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:860    .text.vEventGroupSetBitsCallback:0000000000000000 vEventGroupSetBitsCallback
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:883    .text.vEventGroupClearBitsCallback:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccxQcr7d.s:890    .text.vEventGroupClearBitsCallback:0000000000000000 vEventGroupClearBitsCallback
 
 UNDEFINED SYMBOLS
 pvPortMalloc

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -25,7 +25,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
   22              		.fpu softvfp
   24              	pvPortMalloc:
   25              	.LVL0:
-  26              	.LFB70:
+  26              	.LFB4:
   27              		.file 1 "FreeRTOS/src/heap_1.c"
    1:FreeRTOS/src/heap_1.c **** /*
    2:FreeRTOS/src/heap_1.c ****  * FreeRTOS Kernel V10.3.1
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
   29:FreeRTOS/src/heap_1.c **** /*
   30:FreeRTOS/src/heap_1.c ****  * The simplest possible implementation of pvPortMalloc().  Note that this
   31:FreeRTOS/src/heap_1.c ****  * implementation does NOT allow allocated memory to be freed again.
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 2
 
 
   32:FreeRTOS/src/heap_1.c ****  *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
   42              	.LVL1:
   72:FreeRTOS/src/heap_1.c **** static uint8_t *pucAlignedHeap = NULL;
   43              		.loc 1 72 1 view .LVU3
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 3
 
 
   73:FreeRTOS/src/heap_1.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
   76 002a 10D2     		bcs	.L6
   95:FreeRTOS/src/heap_1.c **** 			( ( xNextFreeByte + xWantedSize ) > xNextFreeByte )	)/* Check for overflow. */
   96:FreeRTOS/src/heap_1.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 4
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 4
 
 
   97:FreeRTOS/src/heap_1.c **** 			/* Return the next free byte then increment the index past this
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  106 0044 034A     		ldr	r2, .L9
  107 0046 1360     		str	r3, [r2]
  108 0048 E7E7     		b	.L3
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 5
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 5
 
 
  109              	.LVL9:
@@ -257,7 +257,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  121 0058 00000000 		.word	.LANCHOR1
  122 005c 08000000 		.word	ucHeap+8
  123              		.cfi_endproc
- 124              	.LFE70:
+ 124              	.LFE4:
  126              		.section	.text.vPortFree,"ax",%progbits
  127              		.align	1
  128              		.global	vPortFree
@@ -267,7 +267,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  132              		.fpu softvfp
  134              	vPortFree:
  135              	.LVL10:
- 136              	.LFB71:
+ 136              	.LFB5:
  119:FreeRTOS/src/heap_1.c **** /*-----------------------------------------------------------*/
  120:FreeRTOS/src/heap_1.c **** 
  121:FreeRTOS/src/heap_1.c **** void vPortFree( void *pv )
@@ -290,7 +290,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  144              		.loc 1 130 1 is_stmt 0 view .LVU33
  145 0000 7047     		bx	lr
  146              		.cfi_endproc
- 147              	.LFE71:
+ 147              	.LFE5:
  149              		.section	.text.vPortInitialiseBlocks,"ax",%progbits
  150              		.align	1
  151              		.global	vPortInitialiseBlocks
@@ -298,11 +298,11 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  153              		.thumb
  154              		.thumb_func
  155              		.fpu softvfp
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 6
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 6
 
 
  157              	vPortInitialiseBlocks:
- 158              	.LFB72:
+ 158              	.LFB6:
  131:FreeRTOS/src/heap_1.c **** /*-----------------------------------------------------------*/
  132:FreeRTOS/src/heap_1.c **** 
  133:FreeRTOS/src/heap_1.c **** void vPortInitialiseBlocks( void )
@@ -327,7 +327,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  173              	.L13:
  174 0008 00000000 		.word	.LANCHOR1
  175              		.cfi_endproc
- 176              	.LFE72:
+ 176              	.LFE6:
  178              		.section	.text.xPortGetFreeHeapSize,"ax",%progbits
  179              		.align	1
  180              		.global	xPortGetFreeHeapSize
@@ -336,7 +336,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  183              		.thumb_func
  184              		.fpu softvfp
  186              	xPortGetFreeHeapSize:
- 187              	.LFB73:
+ 187              	.LFB7:
  138:FreeRTOS/src/heap_1.c **** /*-----------------------------------------------------------*/
  139:FreeRTOS/src/heap_1.c **** 
  140:FreeRTOS/src/heap_1.c **** size_t xPortGetFreeHeapSize( void )
@@ -358,17 +358,17 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  200 000a 7047     		bx	lr
  201              	.L17:
  202              		.align	2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 7
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 7
 
 
  203              	.L16:
  204 000c 00000000 		.word	.LANCHOR1
  205              		.cfi_endproc
- 206              	.LFE73:
- 208              		.section	.bss.pucAlignedHeap.6106,"aw",%nobits
+ 206              	.LFE7:
+ 208              		.section	.bss.pucAlignedHeap.5198,"aw",%nobits
  209              		.align	2
  210              		.set	.LANCHOR0,. + 0
- 213              	pucAlignedHeap.6106:
+ 213              	pucAlignedHeap.5198:
  214 0000 00000000 		.space	4
  215              		.section	.bss.ucHeap,"aw",%nobits
  216              		.align	2
@@ -391,31 +391,29 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 1
  233              		.file 5 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\reent.h"
  234              		.file 6 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\stdlib.h"
  235              		.file 7 "FreeRTOS/inc/stdint.h"
- 236              		.file 8 "CMSIS/inc/core_cm3.h"
- 237              		.file 9 "CMSIS/inc/system_stm32f1xx.h"
- 238              		.file 10 "FreeRTOS/inc/task.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s 			page 8
+ 236              		.file 8 "FreeRTOS/inc/task.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 heap_1.c
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:16     .text.pvPortMalloc:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:24     .text.pvPortMalloc:0000000000000000 pvPortMalloc
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:120    .text.pvPortMalloc:0000000000000054 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:219    .bss.ucHeap:0000000000000000 ucHeap
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:127    .text.vPortFree:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:134    .text.vPortFree:0000000000000000 vPortFree
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:150    .text.vPortInitialiseBlocks:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:157    .text.vPortInitialiseBlocks:0000000000000000 vPortInitialiseBlocks
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:174    .text.vPortInitialiseBlocks:0000000000000008 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:179    .text.xPortGetFreeHeapSize:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:186    .text.xPortGetFreeHeapSize:0000000000000000 xPortGetFreeHeapSize
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:204    .text.xPortGetFreeHeapSize:000000000000000c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:209    .bss.pucAlignedHeap.6106:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:213    .bss.pucAlignedHeap.6106:0000000000000000 pucAlignedHeap.6106
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:216    .bss.ucHeap:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:222    .bss.xNextFreeByte:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cchS5xsg.s:226    .bss.xNextFreeByte:0000000000000000 xNextFreeByte
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:16     .text.pvPortMalloc:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:24     .text.pvPortMalloc:0000000000000000 pvPortMalloc
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:120    .text.pvPortMalloc:0000000000000054 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:219    .bss.ucHeap:0000000000000000 ucHeap
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:127    .text.vPortFree:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:134    .text.vPortFree:0000000000000000 vPortFree
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:150    .text.vPortInitialiseBlocks:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:157    .text.vPortInitialiseBlocks:0000000000000000 vPortInitialiseBlocks
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:174    .text.vPortInitialiseBlocks:0000000000000008 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:179    .text.xPortGetFreeHeapSize:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:186    .text.xPortGetFreeHeapSize:0000000000000000 xPortGetFreeHeapSize
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:204    .text.xPortGetFreeHeapSize:000000000000000c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:209    .bss.pucAlignedHeap.5198:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:213    .bss.pucAlignedHeap.5198:0000000000000000 pucAlignedHeap.5198
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:216    .bss.ucHeap:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:222    .bss.xNextFreeByte:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccwId57f.s:226    .bss.xNextFreeByte:0000000000000000 xNextFreeByte
 
 UNDEFINED SYMBOLS
 vTaskSuspendAll
