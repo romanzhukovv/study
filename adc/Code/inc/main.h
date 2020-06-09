@@ -1,14 +1,16 @@
 /***************************Library*******************************/
 
 #include "stm32f1xx.h"
-#include "cmsis_os.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 #include "sysInit.h"
 #include "uartLib.h"
-#include "pwmLib.h"
+#include "adcLib.h"
 
 /***************************Defines*******************************/
 
-xQueueHandle SendData;
+QueueHandle_t SendDataADC;
 
 /************************Tasks FreeRTOS***************************/
 

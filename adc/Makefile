@@ -41,7 +41,6 @@ Code/src/sysInit.c \
 Code/src/uartLib.c \
 Code/src/pwmLib.c \
 CMSIS/src/system_stm32f1xx.c \
-FreeRTOS/src/cmsis_os.c \
 FreeRTOS/src/croutine.c \
 FreeRTOS/src/event_groups.c \
 FreeRTOS/src/heap_1.c \

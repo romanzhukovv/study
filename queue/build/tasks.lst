@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
   30:FreeRTOS/src/tasks.c **** #include <string.h>
   31:FreeRTOS/src/tasks.c **** 
   32:FreeRTOS/src/tasks.c **** /* Defining MPU_WRAPPERS_INCLUDED_FROM_API_FILE prevents task.h from redefining
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 2
 
 
   33:FreeRTOS/src/tasks.c **** all the API functions to use the MPU wrappers.  That should only be done when
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
   87:FreeRTOS/src/tasks.c **** 	#define tskSET_NEW_STACKS_TO_KNOWN_VALUE	1
   88:FreeRTOS/src/tasks.c **** #else
   89:FreeRTOS/src/tasks.c **** 	#define tskSET_NEW_STACKS_TO_KNOWN_VALUE	0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 3
 
 
   90:FreeRTOS/src/tasks.c **** #endif
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  144:FreeRTOS/src/tasks.c **** 		/* listGET_OWNER_OF_NEXT_ENTRY indexes through the list, so the tasks of						\
  145:FreeRTOS/src/tasks.c **** 		the	same priority get an equal share of the processor time. */									\
  146:FreeRTOS/src/tasks.c **** 		listGET_OWNER_OF_NEXT_ENTRY( pxCurrentTCB, &( pxReadyTasksLists[ uxTopPriority ] ) );			\
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 4
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 4
 
 
  147:FreeRTOS/src/tasks.c **** 		uxTopReadyPriority = uxTopPriority;																\
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  201:FreeRTOS/src/tasks.c **** 																									\
  202:FreeRTOS/src/tasks.c **** 	/* The delayed tasks list should be empty when the lists are switched. */						\
  203:FreeRTOS/src/tasks.c **** 	configASSERT( ( listLIST_IS_EMPTY( pxDelayedTaskList ) ) );										\
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 5
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 5
 
 
  204:FreeRTOS/src/tasks.c **** 																									\
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  258:FreeRTOS/src/tasks.c **** 	#endif
  259:FreeRTOS/src/tasks.c **** 
  260:FreeRTOS/src/tasks.c **** 	ListItem_t			xStateListItem;	/*< The list that the state list item of a task is reference from den
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 6
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 6
 
 
  261:FreeRTOS/src/tasks.c **** 	ListItem_t			xEventListItem;		/*< Used to reference a task from an event list. */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  315:FreeRTOS/src/tasks.c **** 	/* See the comments in FreeRTOS.h with the definition of
  316:FreeRTOS/src/tasks.c **** 	tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE. */
  317:FreeRTOS/src/tasks.c **** 	#if( tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE != 0 ) /*lint !e731 !e9029 Macro has been consolida
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 7
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 7
 
 
  318:FreeRTOS/src/tasks.c **** 		uint8_t	ucStaticallyAllocated; 		/*< Set to pdTRUE if the task is a statically allocated to ensur
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  372:FreeRTOS/src/tasks.c **** PRIVILEGED_DATA static volatile UBaseType_t uxTopReadyPriority 		= tskIDLE_PRIORITY;
  373:FreeRTOS/src/tasks.c **** PRIVILEGED_DATA static volatile BaseType_t xSchedulerRunning 		= pdFALSE;
  374:FreeRTOS/src/tasks.c **** PRIVILEGED_DATA static volatile TickType_t xPendedTicks 			= ( TickType_t ) 0U;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 8
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 8
 
 
  375:FreeRTOS/src/tasks.c **** PRIVILEGED_DATA static volatile BaseType_t xYieldPending 			= pdFALSE;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  429:FreeRTOS/src/tasks.c ****  */
  430:FreeRTOS/src/tasks.c **** #if ( INCLUDE_vTaskSuspend == 1 )
  431:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 9
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 9
 
 
  432:FreeRTOS/src/tasks.c **** 	static BaseType_t prvTaskIsTaskSuspended( const TaskHandle_t xTask ) PRIVILEGED_FUNCTION;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  486:FreeRTOS/src/tasks.c ****  * THIS FUNCTION IS INTENDED FOR DEBUGGING ONLY, AND SHOULD NOT BE CALLED FROM
  487:FreeRTOS/src/tasks.c ****  * NORMAL APPLICATION CODE.
  488:FreeRTOS/src/tasks.c ****  */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 10
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 10
 
 
  489:FreeRTOS/src/tasks.c **** #if ( configUSE_TRACE_FACILITY == 1 )
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  543:FreeRTOS/src/tasks.c **** 	static char *prvWriteNameToBuffer( char *pcBuffer, const char *pcTaskName ) PRIVILEGED_FUNCTION;
  544:FreeRTOS/src/tasks.c **** 
  545:FreeRTOS/src/tasks.c **** #endif
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 11
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 11
 
 
  546:FreeRTOS/src/tasks.c **** 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  600:FreeRTOS/src/tasks.c **** 			volatile size_t xSize = sizeof( StaticTask_t );
  601:FreeRTOS/src/tasks.c **** 			configASSERT( xSize == sizeof( TCB_t ) );
  602:FreeRTOS/src/tasks.c **** 			( void ) xSize; /* Prevent lint warning when configASSERT() is not used. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 12
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 12
 
 
  603:FreeRTOS/src/tasks.c **** 		}
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  657:FreeRTOS/src/tasks.c **** 			{
  658:FreeRTOS/src/tasks.c **** 				/* Tasks can be created statically or dynamically, so note this
  659:FreeRTOS/src/tasks.c **** 				task was created statically in case the task is later deleted. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 13
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 13
 
 
  660:FreeRTOS/src/tasks.c **** 				pxNewTCB->ucStaticallyAllocated = tskSTATICALLY_ALLOCATED_STACK_AND_TCB;
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  714:FreeRTOS/src/tasks.c **** 										( uint32_t ) pxTaskDefinition->usStackDepth,
  715:FreeRTOS/src/tasks.c **** 										pxTaskDefinition->pvParameters,
  716:FreeRTOS/src/tasks.c **** 										pxTaskDefinition->uxPriority,
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 14
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 14
 
 
  717:FreeRTOS/src/tasks.c **** 										pxCreatedTask, pxNewTCB,
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  771:FreeRTOS/src/tasks.c **** 
  772:FreeRTOS/src/tasks.c **** 			/* Allocate space for the stack used by the task being created. */
  773:FreeRTOS/src/tasks.c **** 			pxStack = pvPortMalloc( ( ( ( size_t ) usStackDepth ) * sizeof( StackType_t ) ) ); /*lint !e9079
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 15
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 15
 
 
  774:FreeRTOS/src/tasks.c **** 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  828:FreeRTOS/src/tasks.c **** 									UBaseType_t uxPriority,
  829:FreeRTOS/src/tasks.c **** 									TaskHandle_t * const pxCreatedTask,
  830:FreeRTOS/src/tasks.c **** 									TCB_t *pxNewTCB,
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 16
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 16
 
 
  831:FreeRTOS/src/tasks.c **** 									const MemoryRegion_t * const xRegions )
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  885:FreeRTOS/src/tasks.c **** 		/* The other extreme of the stack space is required if stack checking is
  886:FreeRTOS/src/tasks.c **** 		performed. */
  887:FreeRTOS/src/tasks.c **** 		pxNewTCB->pxEndOfStack = pxNewTCB->pxStack + ( ulStackDepth - ( uint32_t ) 1 );
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 17
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 17
 
 
  888:FreeRTOS/src/tasks.c **** 	}
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  942:FreeRTOS/src/tasks.c **** 	vListInitialiseItem( &( pxNewTCB->xEventListItem ) );
  943:FreeRTOS/src/tasks.c **** 
  944:FreeRTOS/src/tasks.c **** 	/* Set the pxNewTCB as a link back from the ListItem_t.  This is so we can get
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 18
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 18
 
 
  945:FreeRTOS/src/tasks.c **** 	back to	the containing TCB from a generic item in a list. */
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  999:FreeRTOS/src/tasks.c **** 		/* Initialise this task's Newlib reent structure.
 1000:FreeRTOS/src/tasks.c **** 		See the third party link http://www.nadler.com/embedded/newlibAndFreeRTOS.html
 1001:FreeRTOS/src/tasks.c **** 		for additional information. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 19
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 19
 
 
 1002:FreeRTOS/src/tasks.c **** 		_REENT_INIT_PTR( ( &( pxNewTCB->xNewLib_reent ) ) );
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1056:FreeRTOS/src/tasks.c **** 		#else /* portHAS_STACK_OVERFLOW_CHECKING */
 1057:FreeRTOS/src/tasks.c **** 		{
 1058:FreeRTOS/src/tasks.c **** 			pxNewTCB->pxTopOfStack = pxPortInitialiseStack( pxTopOfStack, pxTaskCode, pvParameters );
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 20
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 20
 
 
 1059:FreeRTOS/src/tasks.c **** 		}
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1113:FreeRTOS/src/tasks.c **** 				else
 1114:FreeRTOS/src/tasks.c **** 				{
 1115:FreeRTOS/src/tasks.c **** 					mtCOVERAGE_TEST_MARKER();
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 21
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 21
 
 
 1116:FreeRTOS/src/tasks.c **** 				}
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1170:FreeRTOS/src/tasks.c **** 			pxTCB = prvGetTCBFromHandle( xTaskToDelete );
 1171:FreeRTOS/src/tasks.c **** 
 1172:FreeRTOS/src/tasks.c **** 			/* Remove task from the ready/delayed list. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 22
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 22
 
 
 1173:FreeRTOS/src/tasks.c **** 			if( uxListRemove( &( pxTCB->xStateListItem ) ) == ( UBaseType_t ) 0 )
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1227:FreeRTOS/src/tasks.c **** 				prvDeleteTCB( pxTCB );
 1228:FreeRTOS/src/tasks.c **** 
 1229:FreeRTOS/src/tasks.c **** 				/* Reset the next expected unblock time in case it referred to
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 23
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 23
 
 
 1230:FreeRTOS/src/tasks.c **** 				the task that has just been deleted. */
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1284:FreeRTOS/src/tasks.c **** 					xShouldDelay = pdTRUE;
 1285:FreeRTOS/src/tasks.c **** 				}
 1286:FreeRTOS/src/tasks.c **** 				else
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 24
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 24
 
 
 1287:FreeRTOS/src/tasks.c **** 				{
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1341:FreeRTOS/src/tasks.c **** 	void vTaskDelay( const TickType_t xTicksToDelay )
 1342:FreeRTOS/src/tasks.c **** 	{
 1343:FreeRTOS/src/tasks.c **** 	BaseType_t xAlreadyYielded = pdFALSE;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 25
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 25
 
 
 1344:FreeRTOS/src/tasks.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1398:FreeRTOS/src/tasks.c **** 		}
 1399:FreeRTOS/src/tasks.c **** 		else
 1400:FreeRTOS/src/tasks.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 26
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 26
 
 
 1401:FreeRTOS/src/tasks.c **** 			taskENTER_CRITICAL();
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1455:FreeRTOS/src/tasks.c **** 					/* The task being queried is referenced from the deleted
 1456:FreeRTOS/src/tasks.c **** 					tasks list, or it is not referenced from any lists at
 1457:FreeRTOS/src/tasks.c **** 					all. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 27
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 27
 
 
 1458:FreeRTOS/src/tasks.c **** 					eReturn = eDeleted;
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1512:FreeRTOS/src/tasks.c **** 		failure if a FreeRTOS API function is called from an interrupt that has
 1513:FreeRTOS/src/tasks.c **** 		been assigned a priority above the configured maximum system call
 1514:FreeRTOS/src/tasks.c **** 		priority.  Only FreeRTOS functions that end in FromISR can be called
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 28
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 28
 
 
 1515:FreeRTOS/src/tasks.c **** 		from interrupts	that have been assigned a priority at or (logically)
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1569:FreeRTOS/src/tasks.c **** 			}
 1570:FreeRTOS/src/tasks.c **** 			#else
 1571:FreeRTOS/src/tasks.c **** 			{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 29
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 29
 
 
 1572:FreeRTOS/src/tasks.c **** 				uxCurrentBasePriority = pxTCB->uxPriority;
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1626:FreeRTOS/src/tasks.c **** 					if( pxTCB->uxBasePriority == pxTCB->uxPriority )
 1627:FreeRTOS/src/tasks.c **** 					{
 1628:FreeRTOS/src/tasks.c **** 						pxTCB->uxPriority = uxNewPriority;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 30
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 30
 
 
 1629:FreeRTOS/src/tasks.c **** 					}
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1683:FreeRTOS/src/tasks.c **** 				{
 1684:FreeRTOS/src/tasks.c **** 					taskYIELD_IF_USING_PREEMPTION();
 1685:FreeRTOS/src/tasks.c **** 				}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 31
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 31
 
 
 1686:FreeRTOS/src/tasks.c **** 				else
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1740:FreeRTOS/src/tasks.c **** 			{
 1741:FreeRTOS/src/tasks.c **** 				if( pxTCB->ucNotifyState == taskWAITING_NOTIFICATION )
 1742:FreeRTOS/src/tasks.c **** 				{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 32
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 32
 
 
 1743:FreeRTOS/src/tasks.c **** 					/* The task was blocked to wait for a notification, but is
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1797:FreeRTOS/src/tasks.c **** 		}
 1798:FreeRTOS/src/tasks.c **** 	}
 1799:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 33
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 33
 
 
 1800:FreeRTOS/src/tasks.c **** #endif /* INCLUDE_vTaskSuspend */
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1823:FreeRTOS/src/tasks.c **** 				state, or because is is blocked with no timeout? */
 1824:FreeRTOS/src/tasks.c **** 				if( listIS_CONTAINED_WITHIN( NULL, &( pxTCB->xEventListItem ) ) != pdFALSE ) /*lint !e961.  The
   56              		.loc 1 1824 5 is_stmt 1 view .LVU12
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 34
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 34
 
 
   57              		.loc 1 1824 7 is_stmt 0 view .LVU13
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
   88              		.section	.text.prvIdleTask,"ax",%progbits
   89              		.align	1
   90              		.syntax unified
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 35
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 35
 
 
   91              		.thumb
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1894:FreeRTOS/src/tasks.c **** 		{
 1895:FreeRTOS/src/tasks.c **** 			mtCOVERAGE_TEST_MARKER();
 1896:FreeRTOS/src/tasks.c **** 		}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 36
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 36
 
 
 1897:FreeRTOS/src/tasks.c **** 	}
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1951:FreeRTOS/src/tasks.c **** 					( void ) uxListRemove( &( pxTCB->xStateListItem ) );
 1952:FreeRTOS/src/tasks.c **** 					prvAddTaskToReadyList( pxTCB );
 1953:FreeRTOS/src/tasks.c **** 				}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 37
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 37
 
 
 1954:FreeRTOS/src/tasks.c **** 				else
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2008:FreeRTOS/src/tasks.c **** 		/* The Idle task is being created using dynamically allocated RAM. */
 2009:FreeRTOS/src/tasks.c **** 		xReturn = xTaskCreate(	prvIdleTask,
 2010:FreeRTOS/src/tasks.c **** 								configIDLE_TASK_NAME,
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 38
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 38
 
 
 2011:FreeRTOS/src/tasks.c **** 								configMINIMAL_STACK_SIZE,
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2065:FreeRTOS/src/tasks.c **** 		the run time counter time base.   NOTE:  If configGENERATE_RUN_TIME_STATS
 2066:FreeRTOS/src/tasks.c **** 		is set to 0 and the following line fails to build then ensure you do not
 2067:FreeRTOS/src/tasks.c **** 		have portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() defined in your
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 39
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 39
 
 
 2068:FreeRTOS/src/tasks.c **** 		FreeRTOSConfig.h file. */
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2122:FreeRTOS/src/tasks.c **** 	is used to allow calls to vTaskSuspendAll() to nest. */
 2123:FreeRTOS/src/tasks.c **** 	++uxSchedulerSuspended;
 2124:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 40
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 40
 
 
 2125:FreeRTOS/src/tasks.c **** 	/* Enforces ordering for ports and optimised compilers that may otherwise place
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2179:FreeRTOS/src/tasks.c **** 			idle priority.  This path can only be reached if
 2180:FreeRTOS/src/tasks.c **** 			configUSE_PREEMPTION is 0. */
 2181:FreeRTOS/src/tasks.c **** 			xReturn = 0;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 41
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 41
 
 
 2182:FreeRTOS/src/tasks.c **** 		}
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2236:FreeRTOS/src/tasks.c **** 
 2237:FreeRTOS/src/tasks.c **** 				if( pxTCB != NULL )
 2238:FreeRTOS/src/tasks.c **** 				{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 42
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 42
 
 
 2239:FreeRTOS/src/tasks.c **** 					/* A task was unblocked while the scheduler was suspended,
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2293:FreeRTOS/src/tasks.c **** 		else
 2294:FreeRTOS/src/tasks.c **** 		{
 2295:FreeRTOS/src/tasks.c **** 			mtCOVERAGE_TEST_MARKER();
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 43
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 43
 
 
 2296:FreeRTOS/src/tasks.c **** 		}
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2350:FreeRTOS/src/tasks.c **** UBaseType_t uxTaskGetNumberOfTasks( void )
 2351:FreeRTOS/src/tasks.c **** {
 2352:FreeRTOS/src/tasks.c **** 	/* A critical section is not required because the variables are of type
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 44
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 44
 
 
 2353:FreeRTOS/src/tasks.c **** 	BaseType_t. */
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2407:FreeRTOS/src/tasks.c **** 					}
 2408:FreeRTOS/src/tasks.c **** 					else
 2409:FreeRTOS/src/tasks.c **** 					{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 45
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 45
 
 
 2410:FreeRTOS/src/tasks.c **** 						mtCOVERAGE_TEST_MARKER();
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2464:FreeRTOS/src/tasks.c **** 			/* Search the delayed lists. */
 2465:FreeRTOS/src/tasks.c **** 			if( pxTCB == NULL )
 2466:FreeRTOS/src/tasks.c **** 			{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 46
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 46
 
 
 2467:FreeRTOS/src/tasks.c **** 				pxTCB = prvSearchForNameWithinSingleList( ( List_t * ) pxDelayedTaskList, pcNameToQuery );
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2521:FreeRTOS/src/tasks.c **** 				} while( uxQueue > ( UBaseType_t ) tskIDLE_PRIORITY ); /*lint !e961 MISRA exception as the cast
 2522:FreeRTOS/src/tasks.c **** 
 2523:FreeRTOS/src/tasks.c **** 				/* Fill in an TaskStatus_t structure with information on each
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 47
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 47
 
 
 2524:FreeRTOS/src/tasks.c **** 				task in the Blocked state. */
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2578:FreeRTOS/src/tasks.c **** 
 2579:FreeRTOS/src/tasks.c **** 	TaskHandle_t xTaskGetIdleTaskHandle( void )
 2580:FreeRTOS/src/tasks.c **** 	{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 48
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 48
 
 
 2581:FreeRTOS/src/tasks.c **** 		/* If xTaskGetIdleTaskHandle() is called before the scheduler has been
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2635:FreeRTOS/src/tasks.c **** 
 2636:FreeRTOS/src/tasks.c **** 		vTaskSuspendAll();
 2637:FreeRTOS/src/tasks.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 49
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 49
 
 
 2638:FreeRTOS/src/tasks.c **** 			/* A task can only be prematurely removed from the Blocked state if
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2692:FreeRTOS/src/tasks.c **** 				#endif /* configUSE_PREEMPTION */
 2693:FreeRTOS/src/tasks.c **** 			}
 2694:FreeRTOS/src/tasks.c **** 			else
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 50
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 50
 
 
 2695:FreeRTOS/src/tasks.c **** 			{
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2749:FreeRTOS/src/tasks.c **** 					if( xTickCount >= xNextTaskUnblockTime ) test will pass
 2750:FreeRTOS/src/tasks.c **** 					next time through. */
 2751:FreeRTOS/src/tasks.c **** 					xNextTaskUnblockTime = portMAX_DELAY; /*lint !e961 MISRA exception as the casts are only redun
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 51
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 51
 
 
 2752:FreeRTOS/src/tasks.c **** 					break;
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2806:FreeRTOS/src/tasks.c **** 							xSwitchRequired = pdTRUE;
 2807:FreeRTOS/src/tasks.c **** 						}
 2808:FreeRTOS/src/tasks.c **** 						else
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 52
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 52
 
 
 2809:FreeRTOS/src/tasks.c **** 						{
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2863:FreeRTOS/src/tasks.c **** 	{
 2864:FreeRTOS/src/tasks.c **** 		++xPendedTicks;
 2865:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 53
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 53
 
 
 2866:FreeRTOS/src/tasks.c **** 		/* The tick hook gets called at regular intervals, even if the
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2920:FreeRTOS/src/tasks.c **** 		taskENTER_CRITICAL();
 2921:FreeRTOS/src/tasks.c **** 		{
 2922:FreeRTOS/src/tasks.c **** 			xReturn = pxTCB->pxTaskTag;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 54
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 54
 
 
 2923:FreeRTOS/src/tasks.c **** 		}
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2977:FreeRTOS/src/tasks.c **** 		}
 2978:FreeRTOS/src/tasks.c **** 		else
 2979:FreeRTOS/src/tasks.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 55
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 55
 
 
 2980:FreeRTOS/src/tasks.c **** 			xReturn = pdFAIL;
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3034:FreeRTOS/src/tasks.c **** 		{
 3035:FreeRTOS/src/tasks.c **** 			pxCurrentTCB->iTaskErrno = FreeRTOS_errno;
 3036:FreeRTOS/src/tasks.c **** 		}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 56
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 56
 
 
 3037:FreeRTOS/src/tasks.c **** 		#endif
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3091:FreeRTOS/src/tasks.c **** 	task that is not in the Blocked state. */
 3092:FreeRTOS/src/tasks.c **** 	listSET_LIST_ITEM_VALUE( &( pxCurrentTCB->xEventListItem ), xItemValue | taskEVENT_LIST_ITEM_VALUE
 3093:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 57
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 57
 
 
 3094:FreeRTOS/src/tasks.c **** 	/* Place the event list item of the TCB at the end of the appropriate event
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3148:FreeRTOS/src/tasks.c **** 	the delayed list, and add it to the ready list.
 3149:FreeRTOS/src/tasks.c **** 
 3150:FreeRTOS/src/tasks.c **** 	If an event is for a queue that is locked then this function will never
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 58
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 58
 
 
 3151:FreeRTOS/src/tasks.c **** 	get called - the lock count on the queue will get modified instead.  This
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3205:FreeRTOS/src/tasks.c **** 
 3206:FreeRTOS/src/tasks.c **** void vTaskRemoveFromUnorderedEventList( ListItem_t * pxEventListItem, const TickType_t xItemValue )
 3207:FreeRTOS/src/tasks.c **** {
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 59
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 59
 
 
 3208:FreeRTOS/src/tasks.c **** TCB_t *pxUnblockedTCB;
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3262:FreeRTOS/src/tasks.c **** 	taskEXIT_CRITICAL();
 3263:FreeRTOS/src/tasks.c **** }
 3264:FreeRTOS/src/tasks.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 60
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 60
 
 
 3265:FreeRTOS/src/tasks.c **** 
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3319:FreeRTOS/src/tasks.c **** 		{
 3320:FreeRTOS/src/tasks.c **** 			/* Not a genuine timeout. Adjust parameters for time remaining. */
 3321:FreeRTOS/src/tasks.c **** 			*pxTicksToWait -= xElapsedTime;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 61
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 61
 
 
 3322:FreeRTOS/src/tasks.c **** 			vTaskInternalSetTimeOutState( pxTimeOut );
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3376:FreeRTOS/src/tasks.c **** 		}
 3377:FreeRTOS/src/tasks.c **** 	}
 3378:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 62
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 62
 
 
 3379:FreeRTOS/src/tasks.c **** #endif /* configUSE_TRACE_FACILITY */
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3421:FreeRTOS/src/tasks.c **** 		#if ( ( configUSE_PREEMPTION == 1 ) && ( configIDLE_SHOULD_YIELD == 1 ) )
 3422:FreeRTOS/src/tasks.c **** 		{
 3423:FreeRTOS/src/tasks.c **** 			/* When using preemption tasks of equal priority will be
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 63
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 63
 
 
 3424:FreeRTOS/src/tasks.c **** 			timesliced.  If a task that is sharing the idle priority is ready
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3439:FreeRTOS/src/tasks.c **** 			}
 3440:FreeRTOS/src/tasks.c **** 		}
 3441:FreeRTOS/src/tasks.c **** 		#endif /* ( ( configUSE_PREEMPTION == 1 ) && ( configIDLE_SHOULD_YIELD == 1 ) ) */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 64
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 64
 
 
 3442:FreeRTOS/src/tasks.c **** 
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3496:FreeRTOS/src/tasks.c **** 				}
 3497:FreeRTOS/src/tasks.c **** 				( void ) xTaskResumeAll();
 3498:FreeRTOS/src/tasks.c **** 			}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 65
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 65
 
 
 3499:FreeRTOS/src/tasks.c **** 			else
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3553:FreeRTOS/src/tasks.c **** 	void vTaskSetThreadLocalStoragePointer( TaskHandle_t xTaskToSet, BaseType_t xIndex, void *pvValue 
 3554:FreeRTOS/src/tasks.c **** 	{
 3555:FreeRTOS/src/tasks.c **** 	TCB_t *pxTCB;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 66
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 66
 
 
 3556:FreeRTOS/src/tasks.c **** 
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3610:FreeRTOS/src/tasks.c **** 
 3611:FreeRTOS/src/tasks.c **** 	for( uxPriority = ( UBaseType_t ) 0U; uxPriority < ( UBaseType_t ) configMAX_PRIORITIES; uxPriorit
 3612:FreeRTOS/src/tasks.c **** 	{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 67
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 67
 
 
 3613:FreeRTOS/src/tasks.c **** 		vListInitialise( &( pxReadyTasksLists[ uxPriority ] ) );
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3667:FreeRTOS/src/tasks.c **** 
 3668:FreeRTOS/src/tasks.c **** #if( configUSE_TRACE_FACILITY == 1 )
 3669:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 68
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 68
 
 
 3670:FreeRTOS/src/tasks.c **** 	void vTaskGetInfo( TaskHandle_t xTask, TaskStatus_t *pxTaskStatus, BaseType_t xGetFreeStackSpace, 
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3724:FreeRTOS/src/tasks.c **** 						{
 3725:FreeRTOS/src/tasks.c **** 							if( listLIST_ITEM_CONTAINER( &( pxTCB->xEventListItem ) ) != NULL )
 3726:FreeRTOS/src/tasks.c **** 							{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 69
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 69
 
 
 3727:FreeRTOS/src/tasks.c **** 								pxTaskStatus->eCurrentState = eBlocked;
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3781:FreeRTOS/src/tasks.c **** 				listGET_OWNER_OF_NEXT_ENTRY( pxNextTCB, pxList ); /*lint !e9079 void * is used as this macro is
 3782:FreeRTOS/src/tasks.c **** 				vTaskGetInfo( ( TaskHandle_t ) pxNextTCB, &( pxTaskStatusArray[ uxTask ] ), pdTRUE, eState );
 3783:FreeRTOS/src/tasks.c **** 				uxTask++;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 70
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 70
 
 
 3784:FreeRTOS/src/tasks.c **** 			} while( pxNextTCB != pxFirstTCB );
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3838:FreeRTOS/src/tasks.c **** 
 3839:FreeRTOS/src/tasks.c **** 		#if portSTACK_GROWTH < 0
 3840:FreeRTOS/src/tasks.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 71
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 71
 
 
 3841:FreeRTOS/src/tasks.c **** 			pucEndOfStack = ( uint8_t * ) pxTCB->pxStack;
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3895:FreeRTOS/src/tasks.c **** 		to the task to free any memory allocated at the application level.
 3896:FreeRTOS/src/tasks.c **** 		See the third party link http://www.nadler.com/embedded/newlibAndFreeRTOS.html
 3897:FreeRTOS/src/tasks.c **** 		for additional information. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 72
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 72
 
 
 3898:FreeRTOS/src/tasks.c **** 		#if ( configUSE_NEWLIB_REENTRANT == 1 )
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3946:FreeRTOS/src/tasks.c **** 
 3947:FreeRTOS/src/tasks.c **** 	if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
  156              		.loc 1 3947 2 view .LVU36
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 73
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 73
 
 
  157              		.loc 1 3947 6 is_stmt 0 view .LVU37
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  194              	.LFE39:
  196              		.section	.text.prvInitialiseNewTask,"ax",%progbits
  197              		.align	1
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 74
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 74
 
 
  198              		.syntax unified
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  242              		.loc 1 865 81 is_stmt 0 view .LVU59
  243 001a 26F00706 		bic	r6, r6, #7
  244              	.LVL15:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 75
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 75
 
 
  868:FreeRTOS/src/tasks.c **** 
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  282              		.loc 1 924 2 is_stmt 1 view .LVU76
  924:FreeRTOS/src/tasks.c **** 	{
  283              		.loc 1 924 4 is_stmt 0 view .LVU77
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 76
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 76
 
 
  284 003c 042D     		cmp	r5, #4
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  321 0066 C4F84CA0 		str	r10, [r4, #76]
  993:FreeRTOS/src/tasks.c **** 	}
  322              		.loc 1 993 3 is_stmt 1 view .LVU95
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 77
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 77
 
 
  993:FreeRTOS/src/tasks.c **** 	}
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  365              		.loc 1 3608 1 is_stmt 1 view -0
  366              		.cfi_startproc
  367              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 78
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 78
 
 
  368              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  411              		.loc 1 3618 2 is_stmt 1 view .LVU120
  412 002a 0848     		ldr	r0, .L37+12
  413 002c FFF7FEFF 		bl	vListInitialise
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 79
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 79
 
 
  414              	.LVL35:
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  462 0002 0446     		mov	r4, r0
 1081:FreeRTOS/src/tasks.c **** 	{
  463              		.loc 1 1081 2 is_stmt 1 view .LVU129
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 80
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 80
 
 
  464 0004 FFF7FEFF 		bl	vPortEnterCritical
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  502 002e 184B     		ldr	r3, .L47+4
  503 0030 1C60     		str	r4, [r3]
 1090:FreeRTOS/src/tasks.c **** 			{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 81
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 81
 
 
  504              		.loc 1 1090 4 is_stmt 1 view .LVU146
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1140:FreeRTOS/src/tasks.c **** 	{
  544              		.loc 1 1140 2 discriminator 3 view .LVU161
 1140:FreeRTOS/src/tasks.c **** 	{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 82
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 82
 
 
  545              		.loc 1 1140 24 is_stmt 0 discriminator 3 view .LVU162
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  587              		.align	2
  588              	.L47:
  589 008c 00000000 		.word	.LANCHOR8
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 83
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 83
 
 
  590 0090 00000000 		.word	.LANCHOR9
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4002:FreeRTOS/src/tasks.c **** 				xReturn = taskSCHEDULER_SUSPENDED;
 4003:FreeRTOS/src/tasks.c **** 			}
 4004:FreeRTOS/src/tasks.c **** 		}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 84
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 84
 
 
 4005:FreeRTOS/src/tasks.c **** 
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4059:FreeRTOS/src/tasks.c **** 					prvAddTaskToReadyList( pxMutexHolderTCB );
 4060:FreeRTOS/src/tasks.c **** 				}
 4061:FreeRTOS/src/tasks.c **** 				else
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 85
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 85
 
 
 4062:FreeRTOS/src/tasks.c **** 				{
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4116:FreeRTOS/src/tasks.c **** 			configASSERT( pxTCB->uxMutexesHeld );
 4117:FreeRTOS/src/tasks.c **** 			( pxTCB->uxMutexesHeld )--;
 4118:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 86
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 86
 
 
 4119:FreeRTOS/src/tasks.c **** 			/* Has the holder of the mutex inherited the priority of another
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4173:FreeRTOS/src/tasks.c **** 			mtCOVERAGE_TEST_MARKER();
 4174:FreeRTOS/src/tasks.c **** 		}
 4175:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 87
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 87
 
 
 4176:FreeRTOS/src/tasks.c **** 		return xReturn;
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4230:FreeRTOS/src/tasks.c **** 					/* Only reset the event list item value if the value is not
 4231:FreeRTOS/src/tasks.c **** 					being used for anything else. */
 4232:FreeRTOS/src/tasks.c **** 					if( ( listGET_LIST_ITEM_VALUE( &( pxTCB->xEventListItem ) ) & taskEVENT_LIST_ITEM_VALUE_IN_USE
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 88
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 88
 
 
 4233:FreeRTOS/src/tasks.c **** 					{
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4287:FreeRTOS/src/tasks.c **** #if ( portCRITICAL_NESTING_IN_TCB == 1 )
 4288:FreeRTOS/src/tasks.c **** 
 4289:FreeRTOS/src/tasks.c **** 	void vTaskEnterCritical( void )
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 89
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 89
 
 
 4290:FreeRTOS/src/tasks.c **** 	{
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4344:FreeRTOS/src/tasks.c **** 		}
 4345:FreeRTOS/src/tasks.c **** 	}
 4346:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 90
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 90
 
 
 4347:FreeRTOS/src/tasks.c **** #endif /* portCRITICAL_NESTING_IN_TCB */
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4401:FreeRTOS/src/tasks.c **** 		 * snprintf() implementation!).
 4402:FreeRTOS/src/tasks.c **** 		 *
 4403:FreeRTOS/src/tasks.c **** 		 * It is recommended that production systems call uxTaskGetSystemState()
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 91
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 91
 
 
 4404:FreeRTOS/src/tasks.c **** 		 * directly to get access to raw stats data, rather than indirectly
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4458:FreeRTOS/src/tasks.c **** 				sprintf( pcWriteBuffer, "\t%c\t%u\t%u\t%u\r\n", cStatus, ( unsigned int ) pxTaskStatusArray[ x 
 4459:FreeRTOS/src/tasks.c **** 				pcWriteBuffer += strlen( pcWriteBuffer ); /*lint !e9016 Pointer arithmetic ok on char pointers 
 4460:FreeRTOS/src/tasks.c **** 			}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 92
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 92
 
 
 4461:FreeRTOS/src/tasks.c **** 
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4515:FreeRTOS/src/tasks.c **** 		*pcWriteBuffer = ( char ) 0x00;
 4516:FreeRTOS/src/tasks.c **** 
 4517:FreeRTOS/src/tasks.c **** 		/* Take a snapshot of the number of tasks in case it changes while this
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 93
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 93
 
 
 4518:FreeRTOS/src/tasks.c **** 		function is executing. */
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4572:FreeRTOS/src/tasks.c **** 						#else
 4573:FreeRTOS/src/tasks.c **** 						{
 4574:FreeRTOS/src/tasks.c **** 							/* sizeof( int ) == sizeof( long ) so a smaller
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 94
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 94
 
 
 4575:FreeRTOS/src/tasks.c **** 							printf() library can be used. */
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4629:FreeRTOS/src/tasks.c **** 
 4630:FreeRTOS/src/tasks.c **** #endif /* configUSE_MUTEXES */
 4631:FreeRTOS/src/tasks.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 95
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 95
 
 
 4632:FreeRTOS/src/tasks.c **** 
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4686:FreeRTOS/src/tasks.c **** 			else
 4687:FreeRTOS/src/tasks.c **** 			{
 4688:FreeRTOS/src/tasks.c **** 				mtCOVERAGE_TEST_MARKER();
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 96
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 96
 
 
 4689:FreeRTOS/src/tasks.c **** 			}
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4743:FreeRTOS/src/tasks.c **** 		taskENTER_CRITICAL();
 4744:FreeRTOS/src/tasks.c **** 		{
 4745:FreeRTOS/src/tasks.c **** 			traceTASK_NOTIFY_WAIT();
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 97
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 97
 
 
 4746:FreeRTOS/src/tasks.c **** 
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4800:FreeRTOS/src/tasks.c **** 
 4801:FreeRTOS/src/tasks.c **** 			pxTCB->ucNotifyState = taskNOTIFICATION_RECEIVED;
 4802:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 98
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 98
 
 
 4803:FreeRTOS/src/tasks.c **** 			switch( eAction )
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4857:FreeRTOS/src/tasks.c **** 					/* If a task is blocked waiting for a notification then
 4858:FreeRTOS/src/tasks.c **** 					xNextTaskUnblockTime might be set to the blocked task's time
 4859:FreeRTOS/src/tasks.c **** 					out time.  If the task is unblocked for a reason other than
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 99
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 99
 
 
 4860:FreeRTOS/src/tasks.c **** 					a timeout xNextTaskUnblockTime is normally left unchanged,
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4914:FreeRTOS/src/tasks.c **** 		been assigned a priority above the configured maximum system call
 4915:FreeRTOS/src/tasks.c **** 		priority.  Only FreeRTOS functions that end in FromISR can be called
 4916:FreeRTOS/src/tasks.c **** 		from interrupts	that have been assigned a priority at or (logically)
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 100
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 100
 
 
 4917:FreeRTOS/src/tasks.c **** 		below the maximum system call interrupt priority.  FreeRTOS maintains a
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4971:FreeRTOS/src/tasks.c **** 					configASSERT( pxTCB->ulNotifiedValue == ~0UL );
 4972:FreeRTOS/src/tasks.c **** 					break;
 4973:FreeRTOS/src/tasks.c **** 			}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 101
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 101
 
 
 4974:FreeRTOS/src/tasks.c **** 
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 5028:FreeRTOS/src/tasks.c **** 	TCB_t * pxTCB;
 5029:FreeRTOS/src/tasks.c **** 	uint8_t ucOriginalNotifyState;
 5030:FreeRTOS/src/tasks.c **** 	UBaseType_t uxSavedInterruptStatus;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 102
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 102
 
 
 5031:FreeRTOS/src/tasks.c **** 
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 5085:FreeRTOS/src/tasks.c **** 				{
 5086:FreeRTOS/src/tasks.c **** 					/* The notified task has a priority above the currently
 5087:FreeRTOS/src/tasks.c **** 					executing task so a yield is required. */
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 103
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 103
 
 
 5088:FreeRTOS/src/tasks.c **** 					if( pxHigherPriorityTaskWoken != NULL )
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 5142:FreeRTOS/src/tasks.c **** 
 5143:FreeRTOS/src/tasks.c **** 	uint32_t ulTaskNotifyValueClear( TaskHandle_t xTask, uint32_t ulBitsToClear )
 5144:FreeRTOS/src/tasks.c **** 	{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 104
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 104
 
 
 5145:FreeRTOS/src/tasks.c **** 	TCB_t *pxTCB;
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  627 0008 1D68     		ldr	r5, [r3]
  628              	.LVL44:
 5181:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 105
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 105
 
 
 5182:FreeRTOS/src/tasks.c **** 	#if( INCLUDE_xTaskAbortDelay == 1 )
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  646 001a 2C44     		add	r4, r4, r5
  647              	.LVL47:
 5219:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 106
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 106
 
 
 5220:FreeRTOS/src/tasks.c **** 			/* The list item will be inserted in wake time order. */
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 5255:FreeRTOS/src/tasks.c **** 
 5256:FreeRTOS/src/tasks.c **** 		/* The list item will be inserted in wake time order. */
 5257:FreeRTOS/src/tasks.c **** 		listSET_LIST_ITEM_VALUE( &( pxCurrentTCB->xStateListItem ), xTimeToWake );
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 107
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 107
 
 
 5258:FreeRTOS/src/tasks.c **** 
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  687 0048 0A4B     		ldr	r3, .L55+16
  688 004a 1868     		ldr	r0, [r3]
 5233:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 108
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 108
 
 
  689              		.loc 1 5233 52 is_stmt 0 view .LVU200
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  739:FreeRTOS/src/tasks.c **** 	TCB_t *pxNewTCB;
  737              		.loc 1 739 2 is_stmt 0 view .LVU210
  738 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 109
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 109
 
 
  739              	.LCFI4:
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  780 0020 98B1     		cbz	r0, .L59
  783:FreeRTOS/src/tasks.c **** 				}
  781              		.loc 1 783 6 is_stmt 1 view .LVU224
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 110
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 110
 
 
  783:FreeRTOS/src/tasks.c **** 				}
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  825              		.loc 1 789 6 view .LVU235
  826              	.LBE23:
  815:FreeRTOS/src/tasks.c **** 		}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 111
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 111
 
 
  827              		.loc 1 815 12 view .LVU236
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1483:FreeRTOS/src/tasks.c **** 		{
  875              		.loc 1 1483 3 view .LVU245
  876 0004 FFF7FEFF 		bl	vPortEnterCritical
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 112
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 112
 
 
  877              	.LVL69:
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  923              		@ frame_needed = 0, uses_anonymous_args = 0
  924              		@ link register save eliminated.
 1502:FreeRTOS/src/tasks.c **** 	UBaseType_t uxReturn, uxSavedInterruptState;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 113
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 113
 
 
  925              		.loc 1 1502 2 view .LVU256
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
   45:FreeRTOS/inc/portmacro.h **** 
   46:FreeRTOS/inc/portmacro.h **** /* Type definitions. */
   47:FreeRTOS/inc/portmacro.h **** #define portCHAR		char
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 114
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 114
 
 
   48:FreeRTOS/inc/portmacro.h **** #define portFLOAT		float
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  102:FreeRTOS/inc/portmacro.h **** #define portENABLE_INTERRUPTS()					vPortSetBASEPRI(0)
  103:FreeRTOS/inc/portmacro.h **** #define portENTER_CRITICAL()					vPortEnterCritical()
  104:FreeRTOS/inc/portmacro.h **** #define portEXIT_CRITICAL()						vPortExitCritical()
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 115
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 115
 
 
  105:FreeRTOS/inc/portmacro.h **** 
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  159:FreeRTOS/inc/portmacro.h **** 
  160:FreeRTOS/inc/portmacro.h **** /* portNOP() is not required by this port. */
  161:FreeRTOS/inc/portmacro.h **** #define portNOP()
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 116
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 116
 
 
  162:FreeRTOS/inc/portmacro.h **** 
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  213:FreeRTOS/inc/portmacro.h **** 	__asm volatile
  935              		.loc 2 213 2 view .LVU262
  936              		.syntax unified
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 117
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 117
 
 
  937              	@ 213 "FreeRTOS/inc/portmacro.h" 1
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  968              	@ 231 "FreeRTOS/inc/portmacro.h" 1
  969 0018 83F31188 			msr basepri, r3	
  970              	@ 0 "" 2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 118
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 118
 
 
  971              	.LVL79:
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1020              		.loc 1 1542 2 is_stmt 1 view .LVU279
 1543:FreeRTOS/src/tasks.c **** 	BaseType_t xYieldRequired = pdFALSE;
  1021              		.loc 1 1543 2 view .LVU280
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 119
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 119
 
 
 1544:FreeRTOS/src/tasks.c **** 
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1582:FreeRTOS/src/tasks.c **** 					{
  1058              		.loc 1 1582 8 view .LVU299
  1059 001e A342     		cmp	r3, r4
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 120
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 120
 
 
  1060 0020 2CD0     		beq	.L86
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1099              		.loc 1 1626 8 is_stmt 0 view .LVU314
  1100 0042 9A42     		cmp	r2, r3
  1101 0044 20D0     		beq	.L91
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 121
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 121
 
 
  1102              	.L81:
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1139              		.loc 1 1684 6 is_stmt 1 view .LVU331
  1140 0066 154B     		ldr	r3, .L93+8
  1141 0068 4FF08052 		mov	r2, #268435456
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 122
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 122
 
 
  1142 006c 1A60     		str	r2, [r3]
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1184              	.L92:
 1664:FreeRTOS/src/tasks.c **** 					{
  1185              		.loc 1 1664 6 is_stmt 1 view .LVU344
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 123
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 123
 
 
 1664:FreeRTOS/src/tasks.c **** 					{
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1234              	.LFB14:
 1852:FreeRTOS/src/tasks.c **** 	TCB_t * const pxTCB = xTaskToResume;
  1235              		.loc 1 1852 2 view -0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 124
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 124
 
 
  1236              		.cfi_startproc
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1276              	.L95:
 1897:FreeRTOS/src/tasks.c **** 
  1277              		.loc 1 1897 2 is_stmt 0 view .LVU368
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 125
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 125
 
 
  1278 001e 38BD     		pop	{r3, r4, r5, pc}
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1879:FreeRTOS/src/tasks.c **** 					}
  1319              		.loc 1 1879 7 is_stmt 1 view .LVU382
  1320 0052 074B     		ldr	r3, .L101+12
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 126
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 126
 
 
  1321 0054 4FF08052 		mov	r2, #268435456
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1907:FreeRTOS/src/tasks.c **** 	TCB_t * const pxTCB = xTaskToResume;
  1372              		.loc 1 1907 2 is_stmt 1 view .LVU388
  1373              	.LVL113:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 127
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 127
 
 
 1908:FreeRTOS/src/tasks.c **** 	UBaseType_t uxSavedInterruptStatus;
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1938:FreeRTOS/src/tasks.c **** 				{
  1412              		.loc 1 1938 7 view .LVU405
  1413 0022 E3B9     		cbnz	r3, .L105
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 128
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 128
 
 
 1942:FreeRTOS/src/tasks.c **** 					{
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1952:FreeRTOS/src/tasks.c **** 				}
  1455              		.loc 1 1952 36 discriminator 3 view .LVU419
  1456 0058 09E0     		b	.L104
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 129
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 129
 
 
  1457              	.LVL119:
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1501              	.L111:
  1502 0078 00000000 		.word	.LANCHOR14
  1503 007c 00000000 		.word	.LANCHOR9
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 130
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 130
 
 
  1504 0080 00000000 		.word	.LANCHOR12
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1551 001a 0128     		cmp	r0, #1
  1552 001c 05D0     		beq	.L118
  1553              	.LVL125:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 131
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 131
 
 
  1554              	.L113:
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1597              		.loc 1 2060 3 is_stmt 1 view .LVU451
 2060:FreeRTOS/src/tasks.c **** 		xTickCount = ( TickType_t ) configINITIAL_TICK_COUNT;
  1598              		.loc 1 2060 21 is_stmt 0 view .LVU452
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 132
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 132
 
 
  1599 0042 084B     		ldr	r3, .L119+16
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1645              		.cfi_def_cfa_offset 8
  1646              		.cfi_offset 3, -8
  1647              		.cfi_offset 14, -4
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 133
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 133
 
 
 2104:FreeRTOS/src/tasks.c **** 	xSchedulerRunning = pdFALSE;
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1695              		.cfi_startproc
  1696              		@ args = 0, pretend = 0, frame = 0
  1697              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 134
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 134
 
 
  1698              		@ link register save eliminated.
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1742 0006 00BF     		.align	2
  1743              	.L129:
  1744 0008 00000000 		.word	.LANCHOR13
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 135
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 135
 
 
  1745              		.cfi_endproc
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1793              	.LFB22:
 2351:FreeRTOS/src/tasks.c **** 	/* A critical section is not required because the variables are of type
  1794              		.loc 1 2351 1 is_stmt 1 view -0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 136
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 136
 
 
  1795              		.cfi_startproc
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1841              	.L139:
 2364:FreeRTOS/src/tasks.c **** 	configASSERT( pxTCB );
  1842              		.loc 1 2364 10 discriminator 1 view .LVU505
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 137
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 137
 
 
  1843 000a 014B     		ldr	r3, .L140
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1890              	.LBB36:
 2721:FreeRTOS/src/tasks.c **** 
  1891              		.loc 1 2721 3 is_stmt 1 view .LVU515
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 138
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 138
 
 
 2721:FreeRTOS/src/tasks.c **** 
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1930              	.LBE38:
 2875:FreeRTOS/src/tasks.c **** }
  1931              		.loc 1 2875 2 is_stmt 1 view .LVU532
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 139
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 139
 
 
 2875:FreeRTOS/src/tasks.c **** }
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  1972 0048 1B68     		ldr	r3, [r3]
  1973 004a 1B68     		ldr	r3, [r3]
 2744:FreeRTOS/src/tasks.c **** 				{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 140
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 140
 
 
  1974              		.loc 1 2744 7 view .LVU547
@@ -8398,7 +8398,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2011              		.loc 1 2794 6 view .LVU564
 2794:FreeRTOS/src/tasks.c **** 
  2012              		.loc 1 2794 6 view .LVU565
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 141
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 141
 
 
  2013 0070 E36A     		ldr	r3, [r4, #44]
@@ -8458,7 +8458,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2055 00a0 094B     		ldr	r3, .L161+8
  2056 00a2 4FF0FF32 		mov	r2, #-1
  2057 00a6 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 142
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 142
 
 
 2752:FreeRTOS/src/tasks.c **** 				}
@@ -8518,7 +8518,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2105              		.thumb
  2106              		.thumb_func
  2107              		.fpu softvfp
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 143
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 143
 
 
  2109              	xTaskResumeAll:
@@ -8578,7 +8578,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2196:FreeRTOS/src/tasks.c **** BaseType_t xAlreadyYielded = pdFALSE;
  2150              		.loc 1 2196 8 view .LVU599
  2151 001e 0024     		movs	r4, #0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 144
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 144
 
 
  2152              	.LVL158:
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2191 004a 03EB8303 		add	r3, r3, r3, lsl #2
  2192 004e 9A00     		lsls	r2, r3, #2
  2193 0050 2946     		mov	r1, r5
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 145
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 145
 
 
  2194 0052 1F48     		ldr	r0, .L179+16
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2233              		.loc 1 2274 31 is_stmt 1 view .LVU629
  2234              	.LBE41:
 2278:FreeRTOS/src/tasks.c **** 				{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 146
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 146
 
 
  2235              		.loc 1 2278 5 view .LVU630
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2275              		.loc 1 2257 7 is_stmt 1 view .LVU644
 2259:FreeRTOS/src/tasks.c **** 							{
  2276              		.loc 1 2259 8 view .LVU645
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 147
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 147
 
 
 2259:FreeRTOS/src/tasks.c **** 							{
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2317              		.loc 1 2197 12 view .LVU659
  2318 00bc F9E7     		b	.L164
  2319              	.L180:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 148
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 148
 
 
  2320 00be 00BF     		.align	2
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2368              	.LBB43:
 1270:FreeRTOS/src/tasks.c **** 
  2369              		.loc 1 1270 4 view .LVU668
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 149
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 149
 
 
 1270:FreeRTOS/src/tasks.c **** 
@@ -8938,7 +8938,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2406              		.loc 1 1307 24 is_stmt 0 view .LVU686
  2407 0026 2C60     		str	r4, [r5]
 1309:FreeRTOS/src/tasks.c **** 			{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 150
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 150
 
 
  2408              		.loc 1 1309 4 is_stmt 1 view .LVU687
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2446 0042 064B     		ldr	r3, .L191+4
  2447 0044 4FF08052 		mov	r2, #268435456
  2448 0048 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 151
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 151
 
 
 1328:FreeRTOS/src/tasks.c **** 		}
@@ -9058,7 +9058,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2496              		@ frame_needed = 0, uses_anonymous_args = 0
 1342:FreeRTOS/src/tasks.c **** 	BaseType_t xAlreadyYielded = pdFALSE;
  2497              		.loc 1 1342 2 is_stmt 0 view .LVU713
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 152
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 152
 
 
  2498 0000 10B5     		push	{r4, lr}
@@ -9118,7 +9118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1360:FreeRTOS/src/tasks.c **** 			}
  2539              		.loc 1 1360 5 view .LVU727
  2540 001c 0021     		movs	r1, #0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 153
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 153
 
 
  2541 001e 2046     		mov	r0, r4
@@ -9178,7 +9178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 2619:FreeRTOS/src/tasks.c **** 	xPendedTicks += xTicksToCatchUp;
  2587              		.loc 1 2619 2 view .LVU738
  2588 0004 FFF7FEFF 		bl	vTaskSuspendAll
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 154
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 154
 
 
  2589              	.LVL196:
@@ -9238,7 +9238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2633              		.loc 1 2995 3 is_stmt 1 view .LVU750
 2995:FreeRTOS/src/tasks.c **** 	}
  2634              		.loc 1 2995 17 is_stmt 0 view .LVU751
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 155
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 155
 
 
  2635 0006 1C4B     		ldr	r3, .L214+4
@@ -9298,7 +9298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2677 002e 9A00     		lsls	r2, r3, #2
  2678 0030 D418     		adds	r4, r2, r3
  2679 0032 A100     		lsls	r1, r4, #2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 156
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 156
 
 
  2680 0034 0144     		add	r1, r1, r0
@@ -9358,7 +9358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2726 006c 0A44     		add	r2, r2, r1
  2727 006e 5060     		str	r0, [r2, #4]
  2728 0070 EAE7     		b	.L209
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 157
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 157
 
 
  2729              	.L215:
@@ -9418,7 +9418,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1718:FreeRTOS/src/tasks.c **** 			{
  2777              		.loc 1 1718 8 is_stmt 0 discriminator 4 view .LVU780
  2778 000a 251D     		adds	r5, r4, #4
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 158
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 158
 
 
  2779 000c 2846     		mov	r0, r5
@@ -9478,7 +9478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 1764:FreeRTOS/src/tasks.c **** 		}
  2818              		.loc 1 1764 28 is_stmt 1 view .LVU796
 1767:FreeRTOS/src/tasks.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 159
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 159
 
 
  2819              		.loc 1 1767 3 view .LVU797
@@ -9538,7 +9538,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2860              		.loc 1 1769 6 view .LVU810
  2861 0064 43B1     		cbz	r3, .L222
 1772:FreeRTOS/src/tasks.c **** 				portYIELD_WITHIN_API();
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 160
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 160
 
 
  2862              		.loc 1 1772 46 is_stmt 1 view .LVU811
@@ -9598,7 +9598,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2903 0090 D7E7     		b	.L216
  2904              	.L230:
  2905 0092 00BF     		.align	2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 161
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 161
 
 
  2906              	.L229:
@@ -9658,7 +9658,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  2954              	.LVL220:
  2955              	.L234:
 3078:FreeRTOS/src/tasks.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 162
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 162
 
 
  2956              		.loc 1 3078 1 view .LVU833
@@ -9718,7 +9718,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3002              	.LVL224:
 3101:FreeRTOS/src/tasks.c **** }
  3003              		.loc 1 3101 2 is_stmt 1 view .LVU844
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 163
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 163
 
 
  3004 0016 0121     		movs	r1, #1
@@ -9778,7 +9778,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3052 000c FFF7FEFF 		bl	vListInsertEnd
  3053              	.LVL229:
 3126:FreeRTOS/src/tasks.c **** 		{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 164
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 164
 
 
  3054              		.loc 1 3126 3 is_stmt 1 view .LVU853
@@ -9838,7 +9838,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3101              		.loc 1 3140 1 is_stmt 1 view .LVU862
 3141:FreeRTOS/src/tasks.c **** 
  3102              		.loc 1 3141 1 view .LVU863
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 165
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 165
 
 
 3156:FreeRTOS/src/tasks.c **** 	configASSERT( pxUnblockedTCB );
@@ -9898,7 +9898,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3141              		.loc 1 3163 3 discriminator 3 view .LVU879
 3163:FreeRTOS/src/tasks.c **** 
  3142              		.loc 1 3163 3 discriminator 3 view .LVU880
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 166
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 166
 
 
  3143 002c 03EB8303 		add	r3, r3, r3, lsl #2
@@ -9958,7 +9958,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3185 005c 38BD     		pop	{r3, r4, r5, pc}
  3186              	.LVL243:
  3187              	.L253:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 167
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 167
 
 
 3203:FreeRTOS/src/tasks.c **** /*-----------------------------------------------------------*/
@@ -10018,7 +10018,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3234              		.loc 1 3220 32 is_stmt 1 view .LVU902
 3221:FreeRTOS/src/tasks.c **** 
  3235              		.loc 1 3221 2 view .LVU903
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 168
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 168
 
 
 3221:FreeRTOS/src/tasks.c **** 
@@ -10078,7 +10078,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3276              		.loc 1 3249 3 is_stmt 1 view .LVU917
 3249:FreeRTOS/src/tasks.c **** 	}
  3277              		.loc 1 3249 17 is_stmt 0 view .LVU918
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 169
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 169
 
 
  3278 0040 044B     		ldr	r3, .L258+12
@@ -10138,7 +10138,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3326 000c 2360     		str	r3, [r4]
 3260:FreeRTOS/src/tasks.c **** 	}
  3327              		.loc 1 3260 3 is_stmt 1 view .LVU927
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 170
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 170
 
 
 3260:FreeRTOS/src/tasks.c **** 	}
@@ -10198,7 +10198,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3374 000c 7047     		bx	lr
  3375              	.L266:
  3376 000e 00BF     		.align	2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 171
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 171
 
 
  3377              	.L265:
@@ -10258,7 +10258,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3423              		.loc 1 3285 62 is_stmt 0 view .LVU947
  3424 000e 6368     		ldr	r3, [r4, #4]
 3285:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 172
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 172
 
 
  3425              		.loc 1 3285 20 view .LVU948
@@ -10318,7 +10318,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 3321:FreeRTOS/src/tasks.c **** 			vTaskInternalSetTimeOutState( pxTimeOut );
  3464              		.loc 1 3321 4 is_stmt 1 view .LVU964
 3321:FreeRTOS/src/tasks.c **** 			vTaskInternalSetTimeOutState( pxTimeOut );
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 173
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 173
 
 
  3465              		.loc 1 3321 19 is_stmt 0 view .LVU965
@@ -10378,7 +10378,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3507 0054 00000000 		.word	.LANCHOR13
  3508 0058 00000000 		.word	.LANCHOR16
  3509              	.LBE50:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 174
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 174
 
 
  3510              		.cfi_endproc
@@ -10438,7 +10438,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3560 0000 014B     		ldr	r3, .L281
  3561 0002 1868     		ldr	r0, [r3]
  3562              	.LVL271:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 175
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 175
 
 
 3978:FreeRTOS/src/tasks.c **** 	}
@@ -10498,7 +10498,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3606 000e 7047     		bx	lr
  3607              	.LVL273:
  3608              	.L287:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 176
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 176
 
 
 3998:FreeRTOS/src/tasks.c **** 			}
@@ -10558,7 +10558,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3655              		.loc 1 4027 24 is_stmt 0 view .LVU1008
  3656 0008 C26A     		ldr	r2, [r0, #44]
 4027:FreeRTOS/src/tasks.c **** 			{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 177
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 177
 
 
  3657              		.loc 1 4027 51 view .LVU1009
@@ -10618,7 +10618,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3697              		.loc 1 4070 13 view .LVU1023
  3698 003e 0120     		movs	r0, #1
  3699              	.LVL276:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 178
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 178
 
 
  3700              	.L290:
@@ -10678,7 +10678,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3740 006e 0120     		movs	r0, #1
  3741 0070 E6E7     		b	.L290
  3742              	.LVL280:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 179
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 179
 
 
  3743              	.L292:
@@ -10738,7 +10738,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3785              		.loc 1 4096 10 is_stmt 0 view .LVU1049
  3786 0088 DAE7     		b	.L290
  3787              	.L304:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 180
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 180
 
 
  3788 008a 00BF     		.align	2
@@ -10798,7 +10798,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4121:FreeRTOS/src/tasks.c **** 			{
  3833              		.loc 1 4121 4 is_stmt 1 view .LVU1061
 4121:FreeRTOS/src/tasks.c **** 			{
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 181
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 181
 
 
  3834              		.loc 1 4121 13 is_stmt 0 view .LVU1062
@@ -10858,7 +10858,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3871              		.loc 1 4149 6 view .LVU1079
 4149:FreeRTOS/src/tasks.c **** 
  3872              		.loc 1 4149 6 view .LVU1080
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 182
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 182
 
 
  3873 002c 094A     		ldr	r2, .L316
@@ -10918,7 +10918,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3918 0052 E1E7     		b	.L305
  3919              	.L317:
  3920              		.align	2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 183
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 183
 
 
  3921              	.L316:
@@ -10978,7 +10978,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  3965 000c 0A46     		mov	r2, r1
  3966              	.L320:
  3967              	.LVL296:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 184
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 184
 
 
 4210:FreeRTOS/src/tasks.c **** 			{
@@ -11038,7 +11038,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4005              	.L321:
 4238:FreeRTOS/src/tasks.c **** 					}
  4006              		.loc 1 4238 31 is_stmt 1 view .LVU1119
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 185
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 185
 
 
 4247:FreeRTOS/src/tasks.c **** 					{
@@ -11098,7 +11098,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4047              		.loc 1 4280 28 discriminator 3 view .LVU1133
 4282:FreeRTOS/src/tasks.c **** 
  4048              		.loc 1 4282 2 is_stmt 0 discriminator 3 view .LVU1134
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 186
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 186
 
 
  4049 0060 DBE7     		b	.L318
@@ -11158,7 +11158,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4097              		.loc 1 4612 2 view .LVU1142
 4613:FreeRTOS/src/tasks.c **** /*-----------------------------------------------------------*/
  4098              		.loc 1 4613 1 is_stmt 0 view .LVU1143
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 187
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 187
 
 
  4099 0012 7047     		bx	lr
@@ -11218,7 +11218,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4145              	.L335:
  4146 0018 00000000 		.word	.LANCHOR9
  4147              		.cfi_endproc
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 188
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 188
 
 
  4148              	.LFE46:
@@ -11278,7 +11278,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4193              		.loc 1 4647 5 is_stmt 1 view .LVU1164
 4647:FreeRTOS/src/tasks.c **** 				{
  4194              		.loc 1 4647 7 is_stmt 0 view .LVU1165
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 189
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 189
 
 
  4195 001c ACB9     		cbnz	r4, .L342
@@ -11338,7 +11338,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4231              		.loc 1 4691 32 view .LVU1183
  4232 003c 0022     		movs	r2, #0
  4233 003e 83F85020 		strb	r2, [r3, #80]
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 190
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 190
 
 
 4693:FreeRTOS/src/tasks.c **** 
@@ -11398,7 +11398,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4275 006a DA64     		str	r2, [r3, #76]
  4276 006c E4E7     		b	.L339
  4277              	.L344:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 191
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 191
 
 
  4278 006e 00BF     		.align	2
@@ -11458,7 +11458,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4715:FreeRTOS/src/tasks.c **** 
  4327              		.loc 1 4715 5 is_stmt 1 view .LVU1204
 4715:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 192
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 192
 
 
  4328              		.loc 1 4715 35 is_stmt 0 view .LVU1205
@@ -11518,7 +11518,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4366 0046 1B68     		ldr	r3, [r3]
  4367 0048 93F85030 		ldrb	r3, [r3, #80]	@ zero_extendqisi2
  4368 004c DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 193
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 193
 
 
 4758:FreeRTOS/src/tasks.c **** 			{
@@ -11578,7 +11578,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4410              	@ 0 "" 2
 4729:FreeRTOS/src/tasks.c **** 				}
  4411              		.loc 1 4729 28 view .LVU1235
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 194
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 194
 
 
  4412              		.thumb
@@ -11638,7 +11638,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4460              		.cfi_offset 4, -20
  4461              		.cfi_offset 5, -16
  4462              		.cfi_offset 6, -12
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 195
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 195
 
 
  4463              		.cfi_offset 7, -8
@@ -11698,7 +11698,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4501              	.L359:
  4502 002a 02       		.byte	(.L362-.L359)/2
  4503 002b 0C       		.byte	(.L361-.L359)/2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 196
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 196
 
 
  4504 002c 11       		.byte	(.L360-.L359)/2
@@ -11758,7 +11758,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4811:FreeRTOS/src/tasks.c **** 
  4543              		.loc 1 4811 6 is_stmt 1 view .LVU1275
 4786:FreeRTOS/src/tasks.c **** 	uint8_t ucOriginalNotifyState;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 197
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 197
 
 
  4544              		.loc 1 4786 13 is_stmt 0 view .LVU1276
@@ -11818,7 +11818,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4582              		.loc 1 4849 14 view .LVU1292
  4583 0066 3046     		mov	r0, r6
  4584 0068 FFF7FEFF 		bl	uxListRemove
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 198
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 198
 
 
  4585              	.LVL338:
@@ -11878,7 +11878,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4626              	@ 0 "" 2
 4875:FreeRTOS/src/tasks.c **** 				}
  4627              		.loc 1 4875 6 view .LVU1306
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 199
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 199
 
 
  4628              	@ 4875 "FreeRTOS/src/tasks.c" 1
@@ -11938,7 +11938,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4922:FreeRTOS/src/tasks.c **** 
  4676              		.loc 1 4922 45 view .LVU1315
 4924:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 200
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 200
 
 
  4677              		.loc 1 4924 3 view .LVU1316
@@ -11998,7 +11998,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 4934:FreeRTOS/src/tasks.c **** 
  4717              		.loc 1 4934 4 is_stmt 1 view .LVU1331
 4934:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 201
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 201
 
 
  4718              		.loc 1 4934 25 is_stmt 0 view .LVU1332
@@ -12058,7 +12058,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4759              	.LBB54:
  4760              		.loc 2 231 2 view .LVU1346
  4761              		.syntax unified
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 202
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 202
 
 
  4762              	@ 231 "FreeRTOS/inc/portmacro.h" 1
@@ -12118,7 +12118,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4801 005c 04D0     		beq	.L385
 4953:FreeRTOS/src/tasks.c **** 					}
  4802              		.loc 1 4953 7 is_stmt 1 view .LVU1363
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 203
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 203
 
 
 4953:FreeRTOS/src/tasks.c **** 					}
@@ -12178,7 +12178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4842 0082 9342     		cmp	r3, r2
  4843 0084 01D9     		bls	.L381
 4987:FreeRTOS/src/tasks.c **** 				}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 204
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 204
 
 
  4844              		.loc 1 4987 6 discriminator 1 view .LVU1379
@@ -12238,7 +12238,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4885              	.LVL356:
  4886              	.L380:
 4993:FreeRTOS/src/tasks.c **** 				}
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 205
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 205
 
 
  4887              		.loc 1 4993 6 is_stmt 1 view .LVU1393
@@ -12298,7 +12298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 5050:FreeRTOS/src/tasks.c **** 
  4936              		.loc 1 5050 45 view .LVU1401
 5052:FreeRTOS/src/tasks.c **** 
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 206
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 206
 
 
  4937              		.loc 1 5052 3 view .LVU1402
@@ -12358,7 +12358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  4977              		.loc 1 5063 36 is_stmt 1 view .LVU1416
 5067:FreeRTOS/src/tasks.c **** 			{
  4978              		.loc 1 5067 4 view .LVU1417
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 207
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 207
 
 
 5067:FreeRTOS/src/tasks.c **** 			{
@@ -12418,7 +12418,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  5020 003e 3846     		mov	r0, r7
  5021              	.LVL367:
 5074:FreeRTOS/src/tasks.c **** 					prvAddTaskToReadyList( pxTCB );
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 208
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 208
 
 
  5022              		.loc 1 5074 15 view .LVU1433
@@ -12478,7 +12478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  5062 0070 0123     		movs	r3, #1
  5063 0072 3360     		str	r3, [r6]
  5064              	.L395:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 209
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 209
 
 
 5096:FreeRTOS/src/tasks.c **** 				}
@@ -12538,7 +12538,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  5114              		.cfi_offset 4, -8
  5115              		.cfi_offset 14, -4
 5114:FreeRTOS/src/tasks.c **** 	BaseType_t xReturn;
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 210
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 210
 
 
  5116              		.loc 1 5114 2 is_stmt 1 view .LVU1455
@@ -12598,7 +12598,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 5125:FreeRTOS/src/tasks.c **** 				xReturn = pdPASS;
  5156              		.loc 1 5125 26 is_stmt 0 view .LVU1470
  5157 0024 0023     		movs	r3, #0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 211
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 211
 
 
  5158 0026 84F85030 		strb	r3, [r4, #80]
@@ -12658,7 +12658,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
 5152:FreeRTOS/src/tasks.c **** 		{
  5205              		.loc 1 5152 3 is_stmt 1 discriminator 4 view .LVU1480
  5206 0008 FFF7FEFF 		bl	vPortEnterCritical
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 212
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 212
 
 
  5207              	.LVL386:
@@ -12718,7 +12718,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  5256 0000 00000000 		.space	4
  5257              		.section	.bss.pxOverflowDelayedTaskList,"aw",%nobits
  5258              		.align	2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 213
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 213
 
 
  5259              		.set	.LANCHOR7,. + 0
@@ -12778,7 +12778,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  5319 0000 00000000 		.space	4
  5320              		.section	.bss.xNextTaskUnblockTime,"aw",%nobits
  5321              		.align	2
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 214
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 214
 
 
  5322              		.set	.LANCHOR4,. + 0
@@ -12838,7 +12838,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  5383              		.file 4 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\lock.h"
  5384              		.file 5 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\_types.h"
  5385              		.file 6 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\reent.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 215
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 215
 
 
  5386              		.file 7 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\stdlib.h"
@@ -12848,211 +12848,211 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 1
  5390              		.file 11 "FreeRTOS/inc/task.h"
  5391              		.file 12 "FreeRTOS/inc/portable.h"
  5392              		.file 13 "FreeRTOS/inc/timers.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 216
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 216
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 tasks.c
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:16     .text.prvTaskIsTaskSuspended:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:23     .text.prvTaskIsTaskSuspended:0000000000000000 prvTaskIsTaskSuspended
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:83     .text.prvTaskIsTaskSuspended:0000000000000024 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:89     .text.prvIdleTask:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:95     .text.prvIdleTask:0000000000000000 prvIdleTask
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:136    .text.prvIdleTask:000000000000001c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:142    .text.prvResetNextTaskUnblockTime:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:148    .text.prvResetNextTaskUnblockTime:0000000000000000 prvResetNextTaskUnblockTime
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:191    .text.prvResetNextTaskUnblockTime:0000000000000024 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:197    .text.prvInitialiseNewTask:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:203    .text.prvInitialiseNewTask:0000000000000000 prvInitialiseNewTask
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:357    .text.prvInitialiseTaskLists:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:363    .text.prvInitialiseTaskLists:0000000000000000 prvInitialiseTaskLists
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:432    .text.prvInitialiseTaskLists:0000000000000040 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:443    .text.prvAddNewTaskToReadyList:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:449    .text.prvAddNewTaskToReadyList:0000000000000000 prvAddNewTaskToReadyList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:589    .text.prvAddNewTaskToReadyList:000000000000008c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:600    .text.prvAddCurrentTaskToDelayedList:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:606    .text.prvAddCurrentTaskToDelayedList:0000000000000000 prvAddCurrentTaskToDelayedList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:713    .text.prvAddCurrentTaskToDelayedList:0000000000000064 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:723    .text.xTaskCreate:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:730    .text.xTaskCreate:0000000000000000 xTaskCreate
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:852    .text.uxTaskPriorityGet:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:859    .text.uxTaskPriorityGet:0000000000000000 uxTaskPriorityGet
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:905    .text.uxTaskPriorityGet:000000000000001c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:910    .text.uxTaskPriorityGetFromISR:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:917    .text.uxTaskPriorityGetFromISR:0000000000000000 uxTaskPriorityGetFromISR
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:991    .text.uxTaskPriorityGetFromISR:0000000000000024 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:996    .text.vTaskPrioritySet:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1003   .text.vTaskPrioritySet:0000000000000000 vTaskPrioritySet
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1217   .text.vTaskPrioritySet:00000000000000b4 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1225   .text.vTaskResume:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1232   .text.vTaskResume:0000000000000000 vTaskResume
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1339   .text.vTaskResume:0000000000000064 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1347   .text.xTaskResumeFromISR:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1354   .text.xTaskResumeFromISR:0000000000000000 xTaskResumeFromISR
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1502   .text.xTaskResumeFromISR:0000000000000078 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1511   .text.vTaskStartScheduler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1518   .text.vTaskStartScheduler:0000000000000000 vTaskStartScheduler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1620   .text.vTaskStartScheduler:0000000000000054 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1630   .text.vTaskEndScheduler:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1637   .text.vTaskEndScheduler:0000000000000000 vTaskEndScheduler
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1680   .text.vTaskEndScheduler:0000000000000020 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1685   .text.vTaskSuspendAll:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1692   .text.vTaskSuspendAll:0000000000000000 vTaskSuspendAll
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1711   .text.vTaskSuspendAll:000000000000000c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1716   .text.xTaskGetTickCount:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1723   .text.xTaskGetTickCount:0000000000000000 xTaskGetTickCount
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1744   .text.xTaskGetTickCount:0000000000000008 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1749   .text.xTaskGetTickCountFromISR:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1756   .text.xTaskGetTickCountFromISR:0000000000000000 xTaskGetTickCountFromISR
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1780   .text.xTaskGetTickCountFromISR:0000000000000008 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1785   .text.uxTaskGetNumberOfTasks:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1792   .text.uxTaskGetNumberOfTasks:0000000000000000 uxTaskGetNumberOfTasks
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1808   .text.uxTaskGetNumberOfTasks:0000000000000008 $d
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 217
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:16     .text.prvTaskIsTaskSuspended:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:23     .text.prvTaskIsTaskSuspended:0000000000000000 prvTaskIsTaskSuspended
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:83     .text.prvTaskIsTaskSuspended:0000000000000024 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:89     .text.prvIdleTask:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:95     .text.prvIdleTask:0000000000000000 prvIdleTask
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:136    .text.prvIdleTask:000000000000001c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:142    .text.prvResetNextTaskUnblockTime:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:148    .text.prvResetNextTaskUnblockTime:0000000000000000 prvResetNextTaskUnblockTime
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:191    .text.prvResetNextTaskUnblockTime:0000000000000024 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:197    .text.prvInitialiseNewTask:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:203    .text.prvInitialiseNewTask:0000000000000000 prvInitialiseNewTask
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:357    .text.prvInitialiseTaskLists:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:363    .text.prvInitialiseTaskLists:0000000000000000 prvInitialiseTaskLists
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:432    .text.prvInitialiseTaskLists:0000000000000040 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:443    .text.prvAddNewTaskToReadyList:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:449    .text.prvAddNewTaskToReadyList:0000000000000000 prvAddNewTaskToReadyList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:589    .text.prvAddNewTaskToReadyList:000000000000008c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:600    .text.prvAddCurrentTaskToDelayedList:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:606    .text.prvAddCurrentTaskToDelayedList:0000000000000000 prvAddCurrentTaskToDelayedList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:713    .text.prvAddCurrentTaskToDelayedList:0000000000000064 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:723    .text.xTaskCreate:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:730    .text.xTaskCreate:0000000000000000 xTaskCreate
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:852    .text.uxTaskPriorityGet:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:859    .text.uxTaskPriorityGet:0000000000000000 uxTaskPriorityGet
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:905    .text.uxTaskPriorityGet:000000000000001c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:910    .text.uxTaskPriorityGetFromISR:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:917    .text.uxTaskPriorityGetFromISR:0000000000000000 uxTaskPriorityGetFromISR
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:991    .text.uxTaskPriorityGetFromISR:0000000000000024 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:996    .text.vTaskPrioritySet:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1003   .text.vTaskPrioritySet:0000000000000000 vTaskPrioritySet
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1217   .text.vTaskPrioritySet:00000000000000b4 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1225   .text.vTaskResume:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1232   .text.vTaskResume:0000000000000000 vTaskResume
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1339   .text.vTaskResume:0000000000000064 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1347   .text.xTaskResumeFromISR:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1354   .text.xTaskResumeFromISR:0000000000000000 xTaskResumeFromISR
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1502   .text.xTaskResumeFromISR:0000000000000078 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1511   .text.vTaskStartScheduler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1518   .text.vTaskStartScheduler:0000000000000000 vTaskStartScheduler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1620   .text.vTaskStartScheduler:0000000000000054 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1630   .text.vTaskEndScheduler:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1637   .text.vTaskEndScheduler:0000000000000000 vTaskEndScheduler
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1680   .text.vTaskEndScheduler:0000000000000020 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1685   .text.vTaskSuspendAll:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1692   .text.vTaskSuspendAll:0000000000000000 vTaskSuspendAll
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1711   .text.vTaskSuspendAll:000000000000000c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1716   .text.xTaskGetTickCount:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1723   .text.xTaskGetTickCount:0000000000000000 xTaskGetTickCount
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1744   .text.xTaskGetTickCount:0000000000000008 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1749   .text.xTaskGetTickCountFromISR:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1756   .text.xTaskGetTickCountFromISR:0000000000000000 xTaskGetTickCountFromISR
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1780   .text.xTaskGetTickCountFromISR:0000000000000008 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1785   .text.uxTaskGetNumberOfTasks:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1792   .text.uxTaskGetNumberOfTasks:0000000000000000 uxTaskGetNumberOfTasks
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1808   .text.uxTaskGetNumberOfTasks:0000000000000008 $d
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 217
 
 
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1813   .text.pcTaskGetName:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1820   .text.pcTaskGetName:0000000000000000 pcTaskGetName
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1851   .text.pcTaskGetName:0000000000000010 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1856   .text.xTaskIncrementTick:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:1863   .text.xTaskIncrementTick:0000000000000000 xTaskIncrementTick
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2087   .text.xTaskIncrementTick:00000000000000c0 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2102   .text.xTaskResumeAll:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2109   .text.xTaskResumeAll:0000000000000000 xTaskResumeAll
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2322   .text.xTaskResumeAll:00000000000000c0 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2335   .text.vTaskDelayUntil:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2342   .text.vTaskDelayUntil:0000000000000000 vTaskDelayUntil
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2476   .text.vTaskDelayUntil:0000000000000058 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2483   .text.vTaskDelay:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2490   .text.vTaskDelay:0000000000000000 vTaskDelay
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2558   .text.vTaskDelay:0000000000000030 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2563   .text.xTaskCatchUpTicks:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2570   .text.xTaskCatchUpTicks:0000000000000000 xTaskCatchUpTicks
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2608   .text.xTaskCatchUpTicks:0000000000000018 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2613   .text.vTaskSwitchContext:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2620   .text.vTaskSwitchContext:0000000000000000 vTaskSwitchContext
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2732   .text.vTaskSwitchContext:0000000000000074 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2743   .text.vTaskSuspend:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2750   .text.vTaskSuspend:0000000000000000 vTaskSuspend
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2907   .text.vTaskSuspend:0000000000000094 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2916   .text.vTaskPlaceOnEventList:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2923   .text.vTaskPlaceOnEventList:0000000000000000 vTaskPlaceOnEventList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2959   .text.vTaskPlaceOnEventList:0000000000000018 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2964   .text.vTaskPlaceOnUnorderedEventList:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:2971   .text.vTaskPlaceOnUnorderedEventList:0000000000000000 vTaskPlaceOnUnorderedEventList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3015   .text.vTaskPlaceOnUnorderedEventList:0000000000000020 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3020   .text.vTaskPlaceOnEventListRestricted:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3027   .text.vTaskPlaceOnEventListRestricted:0000000000000000 vTaskPlaceOnEventListRestricted
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3074   .text.vTaskPlaceOnEventListRestricted:0000000000000020 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3079   .text.xTaskRemoveFromEventList:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3086   .text.xTaskRemoveFromEventList:0000000000000000 xTaskRemoveFromEventList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3191   .text.xTaskRemoveFromEventList:0000000000000060 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3201   .text.vTaskRemoveFromUnorderedEventList:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3208   .text.vTaskRemoveFromUnorderedEventList:0000000000000000 vTaskRemoveFromUnorderedEventList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3289   .text.vTaskRemoveFromUnorderedEventList:0000000000000048 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3297   .text.vTaskSetTimeOutState:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3304   .text.vTaskSetTimeOutState:0000000000000000 vTaskSetTimeOutState
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3342   .text.vTaskSetTimeOutState:000000000000001c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3348   .text.vTaskInternalSetTimeOutState:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3355   .text.vTaskInternalSetTimeOutState:0000000000000000 vTaskInternalSetTimeOutState
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3378   .text.vTaskInternalSetTimeOutState:0000000000000010 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3384   .text.xTaskCheckForTimeOut:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3391   .text.xTaskCheckForTimeOut:0000000000000000 xTaskCheckForTimeOut
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3507   .text.xTaskCheckForTimeOut:0000000000000054 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3514   .text.vTaskMissedYield:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3521   .text.vTaskMissedYield:0000000000000000 vTaskMissedYield
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3538   .text.vTaskMissedYield:0000000000000008 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3543   .text.xTaskGetCurrentTaskHandle:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3550   .text.xTaskGetCurrentTaskHandle:0000000000000000 xTaskGetCurrentTaskHandle
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3569   .text.xTaskGetCurrentTaskHandle:0000000000000008 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3574   .text.xTaskGetSchedulerState:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3581   .text.xTaskGetSchedulerState:0000000000000000 xTaskGetSchedulerState
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3619   .text.xTaskGetSchedulerState:0000000000000018 $d
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 218
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1813   .text.pcTaskGetName:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1820   .text.pcTaskGetName:0000000000000000 pcTaskGetName
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1851   .text.pcTaskGetName:0000000000000010 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1856   .text.xTaskIncrementTick:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:1863   .text.xTaskIncrementTick:0000000000000000 xTaskIncrementTick
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2087   .text.xTaskIncrementTick:00000000000000c0 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2102   .text.xTaskResumeAll:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2109   .text.xTaskResumeAll:0000000000000000 xTaskResumeAll
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2322   .text.xTaskResumeAll:00000000000000c0 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2335   .text.vTaskDelayUntil:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2342   .text.vTaskDelayUntil:0000000000000000 vTaskDelayUntil
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2476   .text.vTaskDelayUntil:0000000000000058 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2483   .text.vTaskDelay:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2490   .text.vTaskDelay:0000000000000000 vTaskDelay
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2558   .text.vTaskDelay:0000000000000030 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2563   .text.xTaskCatchUpTicks:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2570   .text.xTaskCatchUpTicks:0000000000000000 xTaskCatchUpTicks
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2608   .text.xTaskCatchUpTicks:0000000000000018 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2613   .text.vTaskSwitchContext:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2620   .text.vTaskSwitchContext:0000000000000000 vTaskSwitchContext
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2732   .text.vTaskSwitchContext:0000000000000074 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2743   .text.vTaskSuspend:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2750   .text.vTaskSuspend:0000000000000000 vTaskSuspend
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2907   .text.vTaskSuspend:0000000000000094 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2916   .text.vTaskPlaceOnEventList:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2923   .text.vTaskPlaceOnEventList:0000000000000000 vTaskPlaceOnEventList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2959   .text.vTaskPlaceOnEventList:0000000000000018 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2964   .text.vTaskPlaceOnUnorderedEventList:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:2971   .text.vTaskPlaceOnUnorderedEventList:0000000000000000 vTaskPlaceOnUnorderedEventList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3015   .text.vTaskPlaceOnUnorderedEventList:0000000000000020 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3020   .text.vTaskPlaceOnEventListRestricted:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3027   .text.vTaskPlaceOnEventListRestricted:0000000000000000 vTaskPlaceOnEventListRestricted
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3074   .text.vTaskPlaceOnEventListRestricted:0000000000000020 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3079   .text.xTaskRemoveFromEventList:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3086   .text.xTaskRemoveFromEventList:0000000000000000 xTaskRemoveFromEventList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3191   .text.xTaskRemoveFromEventList:0000000000000060 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3201   .text.vTaskRemoveFromUnorderedEventList:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3208   .text.vTaskRemoveFromUnorderedEventList:0000000000000000 vTaskRemoveFromUnorderedEventList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3289   .text.vTaskRemoveFromUnorderedEventList:0000000000000048 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3297   .text.vTaskSetTimeOutState:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3304   .text.vTaskSetTimeOutState:0000000000000000 vTaskSetTimeOutState
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3342   .text.vTaskSetTimeOutState:000000000000001c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3348   .text.vTaskInternalSetTimeOutState:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3355   .text.vTaskInternalSetTimeOutState:0000000000000000 vTaskInternalSetTimeOutState
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3378   .text.vTaskInternalSetTimeOutState:0000000000000010 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3384   .text.xTaskCheckForTimeOut:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3391   .text.xTaskCheckForTimeOut:0000000000000000 xTaskCheckForTimeOut
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3507   .text.xTaskCheckForTimeOut:0000000000000054 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3514   .text.vTaskMissedYield:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3521   .text.vTaskMissedYield:0000000000000000 vTaskMissedYield
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3538   .text.vTaskMissedYield:0000000000000008 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3543   .text.xTaskGetCurrentTaskHandle:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3550   .text.xTaskGetCurrentTaskHandle:0000000000000000 xTaskGetCurrentTaskHandle
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3569   .text.xTaskGetCurrentTaskHandle:0000000000000008 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3574   .text.xTaskGetSchedulerState:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3581   .text.xTaskGetSchedulerState:0000000000000000 xTaskGetSchedulerState
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3619   .text.xTaskGetSchedulerState:0000000000000018 $d
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 218
 
 
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3625   .text.xTaskPriorityInherit:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3632   .text.xTaskPriorityInherit:0000000000000000 xTaskPriorityInherit
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3790   .text.xTaskPriorityInherit:000000000000008c $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3797   .text.xTaskPriorityDisinherit:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3804   .text.xTaskPriorityDisinherit:0000000000000000 xTaskPriorityDisinherit
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3922   .text.xTaskPriorityDisinherit:0000000000000054 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3928   .text.vTaskPriorityDisinheritAfterTimeout:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:3935   .text.vTaskPriorityDisinheritAfterTimeout:0000000000000000 vTaskPriorityDisinheritAfterTimeout
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4063   .text.vTaskPriorityDisinheritAfterTimeout:0000000000000064 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4069   .text.uxTaskResetEventItemValue:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4076   .text.uxTaskResetEventItemValue:0000000000000000 uxTaskResetEventItemValue
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4103   .text.uxTaskResetEventItemValue:0000000000000014 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4108   .text.pvTaskIncrementMutexHeldCount:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4115   .text.pvTaskIncrementMutexHeldCount:0000000000000000 pvTaskIncrementMutexHeldCount
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4146   .text.pvTaskIncrementMutexHeldCount:0000000000000018 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4151   .text.ulTaskNotifyTake:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4158   .text.ulTaskNotifyTake:0000000000000000 ulTaskNotifyTake
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4280   .text.ulTaskNotifyTake:0000000000000070 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4286   .text.xTaskNotifyWait:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4293   .text.xTaskNotifyWait:0000000000000000 xTaskNotifyWait
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4435   .text.xTaskNotifyWait:0000000000000090 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4441   .text.xTaskGenericNotify:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4448   .text.xTaskGenericNotify:0000000000000000 xTaskGenericNotify
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4502   .text.xTaskGenericNotify:000000000000002a $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4506   .text.xTaskGenericNotify:000000000000002e $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4638   .text.xTaskGenericNotify:00000000000000a8 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4646   .text.xTaskGenericNotifyFromISR:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4653   .text.xTaskGenericNotifyFromISR:0000000000000000 xTaskGenericNotifyFromISR
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4729   .text.xTaskGenericNotifyFromISR:0000000000000032 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4733   .text.xTaskGenericNotifyFromISR:0000000000000036 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4898   .text.xTaskGenericNotifyFromISR:00000000000000c4 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4908   .text.vTaskNotifyGiveFromISR:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:4915   .text.vTaskNotifyGiveFromISR:0000000000000000 vTaskNotifyGiveFromISR
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5086   .text.vTaskNotifyGiveFromISR:0000000000000088 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5096   .text.xTaskNotifyStateClear:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5103   .text.xTaskNotifyStateClear:0000000000000000 xTaskNotifyStateClear
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5169   .text.xTaskNotifyStateClear:0000000000000030 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5174   .text.ulTaskNotifyValueClear:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5181   .text.ulTaskNotifyValueClear:0000000000000000 ulTaskNotifyValueClear
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5238   .text.ulTaskNotifyValueClear:0000000000000028 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5248   .bss.pxCurrentTCB:0000000000000000 pxCurrentTCB
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5244   .bss.pxCurrentTCB:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5251   .bss.pxDelayedTaskList:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5255   .bss.pxDelayedTaskList:0000000000000000 pxDelayedTaskList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5258   .bss.pxOverflowDelayedTaskList:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5262   .bss.pxOverflowDelayedTaskList:0000000000000000 pxOverflowDelayedTaskList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5265   .bss.pxReadyTasksLists:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5269   .bss.pxReadyTasksLists:0000000000000000 pxReadyTasksLists
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5272   .bss.uxCurrentNumberOfTasks:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5276   .bss.uxCurrentNumberOfTasks:0000000000000000 uxCurrentNumberOfTasks
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5279   .bss.uxSchedulerSuspended:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5283   .bss.uxSchedulerSuspended:0000000000000000 uxSchedulerSuspended
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5286   .bss.uxTaskNumber:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5290   .bss.uxTaskNumber:0000000000000000 uxTaskNumber
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5293   .bss.uxTopReadyPriority:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5297   .bss.uxTopReadyPriority:0000000000000000 uxTopReadyPriority
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5300   .bss.xDelayedTaskList1:0000000000000000 $d
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s 			page 219
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3625   .text.xTaskPriorityInherit:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3632   .text.xTaskPriorityInherit:0000000000000000 xTaskPriorityInherit
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3790   .text.xTaskPriorityInherit:000000000000008c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3797   .text.xTaskPriorityDisinherit:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3804   .text.xTaskPriorityDisinherit:0000000000000000 xTaskPriorityDisinherit
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3922   .text.xTaskPriorityDisinherit:0000000000000054 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3928   .text.vTaskPriorityDisinheritAfterTimeout:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:3935   .text.vTaskPriorityDisinheritAfterTimeout:0000000000000000 vTaskPriorityDisinheritAfterTimeout
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4063   .text.vTaskPriorityDisinheritAfterTimeout:0000000000000064 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4069   .text.uxTaskResetEventItemValue:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4076   .text.uxTaskResetEventItemValue:0000000000000000 uxTaskResetEventItemValue
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4103   .text.uxTaskResetEventItemValue:0000000000000014 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4108   .text.pvTaskIncrementMutexHeldCount:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4115   .text.pvTaskIncrementMutexHeldCount:0000000000000000 pvTaskIncrementMutexHeldCount
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4146   .text.pvTaskIncrementMutexHeldCount:0000000000000018 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4151   .text.ulTaskNotifyTake:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4158   .text.ulTaskNotifyTake:0000000000000000 ulTaskNotifyTake
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4280   .text.ulTaskNotifyTake:0000000000000070 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4286   .text.xTaskNotifyWait:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4293   .text.xTaskNotifyWait:0000000000000000 xTaskNotifyWait
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4435   .text.xTaskNotifyWait:0000000000000090 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4441   .text.xTaskGenericNotify:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4448   .text.xTaskGenericNotify:0000000000000000 xTaskGenericNotify
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4502   .text.xTaskGenericNotify:000000000000002a $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4506   .text.xTaskGenericNotify:000000000000002e $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4638   .text.xTaskGenericNotify:00000000000000a8 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4646   .text.xTaskGenericNotifyFromISR:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4653   .text.xTaskGenericNotifyFromISR:0000000000000000 xTaskGenericNotifyFromISR
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4729   .text.xTaskGenericNotifyFromISR:0000000000000032 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4733   .text.xTaskGenericNotifyFromISR:0000000000000036 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4898   .text.xTaskGenericNotifyFromISR:00000000000000c4 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4908   .text.vTaskNotifyGiveFromISR:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:4915   .text.vTaskNotifyGiveFromISR:0000000000000000 vTaskNotifyGiveFromISR
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5086   .text.vTaskNotifyGiveFromISR:0000000000000088 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5096   .text.xTaskNotifyStateClear:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5103   .text.xTaskNotifyStateClear:0000000000000000 xTaskNotifyStateClear
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5169   .text.xTaskNotifyStateClear:0000000000000030 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5174   .text.ulTaskNotifyValueClear:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5181   .text.ulTaskNotifyValueClear:0000000000000000 ulTaskNotifyValueClear
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5238   .text.ulTaskNotifyValueClear:0000000000000028 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5248   .bss.pxCurrentTCB:0000000000000000 pxCurrentTCB
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5244   .bss.pxCurrentTCB:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5251   .bss.pxDelayedTaskList:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5255   .bss.pxDelayedTaskList:0000000000000000 pxDelayedTaskList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5258   .bss.pxOverflowDelayedTaskList:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5262   .bss.pxOverflowDelayedTaskList:0000000000000000 pxOverflowDelayedTaskList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5265   .bss.pxReadyTasksLists:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5269   .bss.pxReadyTasksLists:0000000000000000 pxReadyTasksLists
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5272   .bss.uxCurrentNumberOfTasks:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5276   .bss.uxCurrentNumberOfTasks:0000000000000000 uxCurrentNumberOfTasks
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5279   .bss.uxSchedulerSuspended:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5283   .bss.uxSchedulerSuspended:0000000000000000 uxSchedulerSuspended
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5286   .bss.uxTaskNumber:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5290   .bss.uxTaskNumber:0000000000000000 uxTaskNumber
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5293   .bss.uxTopReadyPriority:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5297   .bss.uxTopReadyPriority:0000000000000000 uxTopReadyPriority
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5300   .bss.xDelayedTaskList1:0000000000000000 $d
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s 			page 219
 
 
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5304   .bss.xDelayedTaskList1:0000000000000000 xDelayedTaskList1
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5307   .bss.xDelayedTaskList2:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5311   .bss.xDelayedTaskList2:0000000000000000 xDelayedTaskList2
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5314   .bss.xIdleTaskHandle:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5318   .bss.xIdleTaskHandle:0000000000000000 xIdleTaskHandle
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5321   .bss.xNextTaskUnblockTime:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5325   .bss.xNextTaskUnblockTime:0000000000000000 xNextTaskUnblockTime
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5328   .bss.xNumOfOverflows:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5332   .bss.xNumOfOverflows:0000000000000000 xNumOfOverflows
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5335   .bss.xPendedTicks:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5339   .bss.xPendedTicks:0000000000000000 xPendedTicks
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5342   .bss.xPendingReadyList:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5346   .bss.xPendingReadyList:0000000000000000 xPendingReadyList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5349   .bss.xSchedulerRunning:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5353   .bss.xSchedulerRunning:0000000000000000 xSchedulerRunning
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5356   .bss.xSuspendedTaskList:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5360   .bss.xSuspendedTaskList:0000000000000000 xSuspendedTaskList
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5363   .bss.xTickCount:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5367   .bss.xTickCount:0000000000000000 xTickCount
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5370   .bss.xYieldPending:0000000000000000 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5374   .bss.xYieldPending:0000000000000000 xYieldPending
-C:\Users\HARTO_~1\AppData\Local\Temp\ccJkTfWd.s:5377   .rodata.vTaskStartScheduler.str1.4:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5304   .bss.xDelayedTaskList1:0000000000000000 xDelayedTaskList1
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5307   .bss.xDelayedTaskList2:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5311   .bss.xDelayedTaskList2:0000000000000000 xDelayedTaskList2
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5314   .bss.xIdleTaskHandle:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5318   .bss.xIdleTaskHandle:0000000000000000 xIdleTaskHandle
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5321   .bss.xNextTaskUnblockTime:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5325   .bss.xNextTaskUnblockTime:0000000000000000 xNextTaskUnblockTime
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5328   .bss.xNumOfOverflows:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5332   .bss.xNumOfOverflows:0000000000000000 xNumOfOverflows
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5335   .bss.xPendedTicks:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5339   .bss.xPendedTicks:0000000000000000 xPendedTicks
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5342   .bss.xPendingReadyList:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5346   .bss.xPendingReadyList:0000000000000000 xPendingReadyList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5349   .bss.xSchedulerRunning:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5353   .bss.xSchedulerRunning:0000000000000000 xSchedulerRunning
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5356   .bss.xSuspendedTaskList:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5360   .bss.xSuspendedTaskList:0000000000000000 xSuspendedTaskList
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5363   .bss.xTickCount:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5367   .bss.xTickCount:0000000000000000 xTickCount
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5370   .bss.xYieldPending:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5374   .bss.xYieldPending:0000000000000000 xYieldPending
+C:\Users\HARTO_~1\AppData\Local\Temp\ccShEbVh.s:5377   .rodata.vTaskStartScheduler.str1.4:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 vListInitialiseItem

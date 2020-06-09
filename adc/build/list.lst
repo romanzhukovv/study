@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -25,7 +25,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
   22              		.fpu softvfp
   24              	vListInitialise:
   25              	.LVL0:
-  26              	.LFB70:
+  26              	.LFB4:
   27              		.file 1 "FreeRTOS/src/list.c"
    1:FreeRTOS/src/list.c **** /*
    2:FreeRTOS/src/list.c ****  * FreeRTOS Kernel V10.3.1
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
   29:FreeRTOS/src/list.c **** #include <stdlib.h>
   30:FreeRTOS/src/list.c **** #include "FreeRTOS.h"
   31:FreeRTOS/src/list.c **** #include "list.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 2
 
 
   32:FreeRTOS/src/list.c **** 
@@ -118,10 +118,10 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
   54              		.loc 1 59 1 is_stmt 0 view .LVU14
   55 0014 7047     		bx	lr
   56              		.cfi_endproc
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 3
 
 
-  57              	.LFE70:
+  57              	.LFE4:
   59              		.section	.text.vListInitialiseItem,"ax",%progbits
   60              		.align	1
   61              		.global	vListInitialiseItem
@@ -131,7 +131,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
   65              		.fpu softvfp
   67              	vListInitialiseItem:
   68              	.LVL1:
-  69              	.LFB71:
+  69              	.LFB5:
   60:FreeRTOS/src/list.c **** /*-----------------------------------------------------------*/
   61:FreeRTOS/src/list.c **** 
   62:FreeRTOS/src/list.c **** void vListInitialiseItem( ListItem_t * const pxItem )
@@ -158,7 +158,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
   81              		.loc 1 71 1 is_stmt 0 view .LVU20
   82 0004 7047     		bx	lr
   83              		.cfi_endproc
-  84              	.LFE71:
+  84              	.LFE5:
   86              		.section	.text.vListInsertEnd,"ax",%progbits
   87              		.align	1
   88              		.global	vListInsertEnd
@@ -168,7 +168,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
   92              		.fpu softvfp
   94              	vListInsertEnd:
   95              	.LVL2:
-  96              	.LFB72:
+  96              	.LFB6:
   72:FreeRTOS/src/list.c **** /*-----------------------------------------------------------*/
   73:FreeRTOS/src/list.c **** 
   74:FreeRTOS/src/list.c **** void vListInsertEnd( List_t * const pxList, ListItem_t * const pxNewListItem )
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
   99              		@ args = 0, pretend = 0, frame = 0
  100              		@ frame_needed = 0, uses_anonymous_args = 0
  101              		@ link register save eliminated.
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 4
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 4
 
 
   76:FreeRTOS/src/list.c **** ListItem_t * const pxIndex = pxList->pxIndex;
@@ -238,12 +238,12 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  132 0012 0360     		str	r3, [r0]
  100:FreeRTOS/src/list.c **** }
  133              		.loc 1 100 1 view .LVU41
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 5
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 5
 
 
  134 0014 7047     		bx	lr
  135              		.cfi_endproc
- 136              	.LFE72:
+ 136              	.LFE6:
  138              		.section	.text.vListInsert,"ax",%progbits
  139              		.align	1
  140              		.global	vListInsert
@@ -253,7 +253,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  144              		.fpu softvfp
  146              	vListInsert:
  147              	.LVL5:
- 148              	.LFB73:
+ 148              	.LFB7:
  101:FreeRTOS/src/list.c **** /*-----------------------------------------------------------*/
  102:FreeRTOS/src/list.c **** 
  103:FreeRTOS/src/list.c **** void vListInsert( List_t * const pxList, ListItem_t * const pxNewListItem )
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  168              		.loc 1 122 4 is_stmt 0 view .LVU50
  169 0004 B5F1FF3F 		cmp	r5, #-1
  170 0008 02D0     		beq	.L10
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 6
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 6
 
 
  123:FreeRTOS/src/list.c **** 	{
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  194              		.loc 1 150 3 discriminator 1 view .LVU60
  195 001a AC42     		cmp	r4, r5
  196 001c FAD9     		bls	.L8
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 7
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 7
 
 
  197              	.L6:
@@ -412,20 +412,20 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  228              		.loc 1 167 1 view .LVU76
  229 0032 7047     		bx	lr
  230              		.cfi_endproc
- 231              	.LFE73:
+ 231              	.LFE7:
  233              		.section	.text.uxListRemove,"ax",%progbits
  234              		.align	1
  235              		.global	uxListRemove
  236              		.syntax unified
  237              		.thumb
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 8
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 8
 
 
  238              		.thumb_func
  239              		.fpu softvfp
  241              	uxListRemove:
  242              	.LVL12:
- 243              	.LFB74:
+ 243              	.LFB8:
  168:FreeRTOS/src/list.c **** /*-----------------------------------------------------------*/
  169:FreeRTOS/src/list.c **** 
  170:FreeRTOS/src/list.c **** UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove )
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  188:FreeRTOS/src/list.c **** 	{
  189:FreeRTOS/src/list.c **** 		mtCOVERAGE_TEST_MARKER();
  273              		.loc 1 189 27 is_stmt 1 view .LVU91
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 9
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 9
 
 
  190:FreeRTOS/src/list.c **** 	}
@@ -516,7 +516,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  296 0022 5A60     		str	r2, [r3, #4]
  297 0024 F5E7     		b	.L12
  298              		.cfi_endproc
- 299              	.LFE74:
+ 299              	.LFE8:
  301              		.text
  302              	.Letext0:
  303              		.file 2 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\lock.h"
@@ -525,24 +525,22 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 1
  306              		.file 5 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\sys\\reent.h"
  307              		.file 6 "c:\\software\\embeddedgcc\\arm_gcc\\arm-none-eabi\\include\\stdlib.h"
  308              		.file 7 "FreeRTOS/inc/stdint.h"
- 309              		.file 8 "CMSIS/inc/core_cm3.h"
- 310              		.file 9 "CMSIS/inc/system_stm32f1xx.h"
- 311              		.file 10 "FreeRTOS/inc/portmacro.h"
- 312              		.file 11 "FreeRTOS/inc/list.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s 			page 10
+ 309              		.file 8 "FreeRTOS/inc/portmacro.h"
+ 310              		.file 9 "FreeRTOS/inc/list.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 list.c
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:16     .text.vListInitialise:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:24     .text.vListInitialise:0000000000000000 vListInitialise
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:60     .text.vListInitialiseItem:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:67     .text.vListInitialiseItem:0000000000000000 vListInitialiseItem
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:87     .text.vListInsertEnd:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:94     .text.vListInsertEnd:0000000000000000 vListInsertEnd
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:139    .text.vListInsert:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:146    .text.vListInsert:0000000000000000 vListInsert
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:234    .text.uxListRemove:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\ccNeyETe.s:241    .text.uxListRemove:0000000000000000 uxListRemove
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:16     .text.vListInitialise:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:24     .text.vListInitialise:0000000000000000 vListInitialise
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:60     .text.vListInitialiseItem:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:67     .text.vListInitialiseItem:0000000000000000 vListInitialiseItem
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:87     .text.vListInsertEnd:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:94     .text.vListInsertEnd:0000000000000000 vListInsertEnd
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:139    .text.vListInsert:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:146    .text.vListInsert:0000000000000000 vListInsert
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:234    .text.uxListRemove:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccp9R4ji.s:241    .text.uxListRemove:0000000000000000 uxListRemove
 
 NO UNDEFINED SYMBOLS

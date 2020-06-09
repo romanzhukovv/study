@@ -8,7 +8,7 @@
 
 /***************************Defines*******************************/
 
-xQueueHandle SendData;
+QueueHandle_t SendData;
 
 /************************Tasks FreeRTOS***************************/
 
