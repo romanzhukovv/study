@@ -42,7 +42,7 @@ void USART3_Send_String(char* str)
 	USART3_Send(str[i++]);
 }
 
-void SendDataUSART3 (uint8_t data){
+void SendDataUSART3 (uint16_t data){
 
 	while (!(USART3->SR & USART_SR_TC));
 	USART3->DR = data;

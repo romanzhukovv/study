@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -37,7 +37,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
    9:Code/src/main.c ****     RCC_Init();
   10:Code/src/main.c ****     GPIO_Init();
   11:Code/src/main.c **** 	USART3_Init();
-  12:Code/src/main.c **** 	//adcInit();
+  12:Code/src/main.c **** 	adcInit();
   13:Code/src/main.c **** 
   14:Code/src/main.c **** 	xTaskCreate(vTaskSendValue, "Value", 128, NULL, 1, NULL);
   15:Code/src/main.c **** 	xTaskCreate(vTaskConvertADC, "ADC", 128, NULL, 1, NULL);
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
   30:Code/src/main.c **** void vTaskSendValue(void *argument)
   31:Code/src/main.c **** {
   27              		.loc 1 31 1 view -0
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 2
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s 			page 2
 
 
   28              		.cfi_startproc
@@ -77,7 +77,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
   41 0004 02E0     		b	.L3
   42              	.LVL1:
   43              	.L2:
-  32:Code/src/main.c **** 	uint8_t data;
+  32:Code/src/main.c **** 	uint16_t data;
   33:Code/src/main.c **** 
   34:Code/src/main.c **** 	while (1)
   35:Code/src/main.c **** 	{
@@ -94,7 +94,7 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
   46 0008 FFF7FEFF 		bl	vTaskDelay
   47              	.LVL2:
   48              	.L3:
-  32:Code/src/main.c **** 	uint8_t data;
+  32:Code/src/main.c **** 	uint16_t data;
   49              		.loc 1 32 2 view .LVU3
   34:Code/src/main.c **** 	{
   50              		.loc 1 34 2 view .LVU4
@@ -113,17 +113,17 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
   38:Code/src/main.c **** 			SendDataUSART3(data);
   60              		.loc 1 38 4 is_stmt 1 view .LVU8
   61 0018 0022     		movs	r2, #0
-  62 001a 0DF10701 		add	r1, sp, #7
+  62 001a 0DF10601 		add	r1, sp, #6
   63 001e 044B     		ldr	r3, .L5
   64 0020 1868     		ldr	r0, [r3]
   65 0022 FFF7FEFF 		bl	xQueueReceive
   66              	.LVL4:
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 3
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s 			page 3
 
 
   39:Code/src/main.c **** 			
   67              		.loc 1 39 4 view .LVU9
-  68 0026 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+  68 0026 BDF80600 		ldrh	r0, [sp, #6]
   69 002a FFF7FEFF 		bl	SendDataUSART3
   70              	.LVL5:
   71 002e EAE7     		b	.L2
@@ -141,18 +141,18 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
   84              		.thumb_func
   85              		.fpu softvfp
   87              	vTaskConvertADC:
-  88              	.LVL6:
-  89              	.LFB71:
+  88              	.LFB71:
   44:Code/src/main.c **** 	}
   45:Code/src/main.c **** }
   46:Code/src/main.c **** 
   47:Code/src/main.c **** void vTaskConvertADC(void *argument)
   48:Code/src/main.c **** {
-  90              		.loc 1 48 1 view -0
-  91              		.cfi_startproc
-  92              		@ Volatile: function does not return.
-  93              		@ args = 0, pretend = 0, frame = 8
-  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  89              		.loc 1 48 1 view -0
+  90              		.cfi_startproc
+  91              		@ Volatile: function does not return.
+  92              		@ args = 0, pretend = 0, frame = 8
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              	.LVL6:
   95              		.loc 1 48 1 is_stmt 0 view .LVU11
   96 0000 00B5     		push	{lr}
   97              	.LCFI2:
@@ -161,183 +161,193 @@ ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 1
  100 0002 83B0     		sub	sp, sp, #12
  101              	.LCFI3:
  102              		.cfi_def_cfa_offset 16
-  49:Code/src/main.c **** 	uint16_t adcResult = 0;
- 103              		.loc 1 49 2 is_stmt 1 view .LVU12
- 104              		.loc 1 49 11 is_stmt 0 view .LVU13
- 105 0004 0023     		movs	r3, #0
- 106 0006 ADF80630 		strh	r3, [sp, #6]	@ movhi
- 107              	.LVL7:
- 108              	.L8:
+ 103              	.LVL7:
+ 104              	.L8:
+  49:Code/src/main.c **** 	uint16_t adcResult;
+ 105              		.loc 1 49 2 is_stmt 1 discriminator 1 view .LVU12
   50:Code/src/main.c **** 	
   51:Code/src/main.c **** 	while(1)
- 109              		.loc 1 51 2 is_stmt 1 discriminator 1 view .LVU14
+ 106              		.loc 1 51 2 discriminator 1 view .LVU13
   52:Code/src/main.c **** 	{
-  53:Code/src/main.c **** 		//adcResult = adcConvet ();
+  53:Code/src/main.c **** 		adcResult = adcConvert();
+ 107              		.loc 1 53 3 discriminator 1 view .LVU14
+ 108              		.loc 1 53 15 is_stmt 0 discriminator 1 view .LVU15
+ 109 0004 FFF7FEFF 		bl	adcConvert
+ 110              	.LVL8:
+ 111              		.loc 1 53 13 discriminator 1 view .LVU16
+ 112 0008 ADF80600 		strh	r0, [sp, #6]	@ movhi
   54:Code/src/main.c **** 		xQueueSend(SendDataADC, &adcResult, 0);
- 110              		.loc 1 54 3 discriminator 1 view .LVU15
- 111 000a 0023     		movs	r3, #0
- 112 000c 1A46     		mov	r2, r3
- 113 000e 0DF10601 		add	r1, sp, #6
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 4
+ 113              		.loc 1 54 3 is_stmt 1 discriminator 1 view .LVU17
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s 			page 4
 
 
- 114 0012 0448     		ldr	r0, .L10
- 115 0014 0068     		ldr	r0, [r0]
- 116 0016 FFF7FEFF 		bl	xQueueGenericSend
- 117              	.LVL8:
+ 114 000c 0023     		movs	r3, #0
+ 115 000e 1A46     		mov	r2, r3
+ 116 0010 0DF10601 		add	r1, sp, #6
+ 117 0014 0348     		ldr	r0, .L10
+ 118 0016 0068     		ldr	r0, [r0]
+ 119 0018 FFF7FEFF 		bl	xQueueGenericSend
+ 120              	.LVL9:
   55:Code/src/main.c **** 		vTaskDelay(200);
- 118              		.loc 1 55 3 discriminator 1 view .LVU16
- 119 001a C820     		movs	r0, #200
- 120 001c FFF7FEFF 		bl	vTaskDelay
- 121              	.LVL9:
- 122 0020 F3E7     		b	.L8
- 123              	.L11:
- 124 0022 00BF     		.align	2
- 125              	.L10:
- 126 0024 00000000 		.word	SendDataADC
- 127              		.cfi_endproc
- 128              	.LFE71:
- 130              		.section	.text.main,"ax",%progbits
- 131              		.align	1
- 132              		.global	main
- 133              		.syntax unified
- 134              		.thumb
- 135              		.thumb_func
- 136              		.fpu softvfp
- 138              	main:
- 139              	.LFB69:
+ 121              		.loc 1 55 3 discriminator 1 view .LVU18
+ 122 001c C820     		movs	r0, #200
+ 123 001e FFF7FEFF 		bl	vTaskDelay
+ 124              	.LVL10:
+ 125 0022 EFE7     		b	.L8
+ 126              	.L11:
+ 127              		.align	2
+ 128              	.L10:
+ 129 0024 00000000 		.word	SendDataADC
+ 130              		.cfi_endproc
+ 131              	.LFE71:
+ 133              		.section	.text.main,"ax",%progbits
+ 134              		.align	1
+ 135              		.global	main
+ 136              		.syntax unified
+ 137              		.thumb
+ 138              		.thumb_func
+ 139              		.fpu softvfp
+ 141              	main:
+ 142              	.LFB69:
    8:Code/src/main.c ****     RCC_Init();
- 140              		.loc 1 8 1 view -0
- 141              		.cfi_startproc
- 142              		@ Volatile: function does not return.
- 143              		@ args = 0, pretend = 0, frame = 0
- 144              		@ frame_needed = 0, uses_anonymous_args = 0
- 145 0000 00B5     		push	{lr}
- 146              	.LCFI4:
- 147              		.cfi_def_cfa_offset 4
- 148              		.cfi_offset 14, -4
- 149 0002 83B0     		sub	sp, sp, #12
- 150              	.LCFI5:
- 151              		.cfi_def_cfa_offset 16
+ 143              		.loc 1 8 1 view -0
+ 144              		.cfi_startproc
+ 145              		@ Volatile: function does not return.
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148 0000 00B5     		push	{lr}
+ 149              	.LCFI4:
+ 150              		.cfi_def_cfa_offset 4
+ 151              		.cfi_offset 14, -4
+ 152 0002 83B0     		sub	sp, sp, #12
+ 153              	.LCFI5:
+ 154              		.cfi_def_cfa_offset 16
    9:Code/src/main.c ****     GPIO_Init();
- 152              		.loc 1 9 5 view .LVU18
- 153 0004 FFF7FEFF 		bl	RCC_Init
- 154              	.LVL10:
-  10:Code/src/main.c **** 	USART3_Init();
- 155              		.loc 1 10 5 view .LVU19
- 156 0008 FFF7FEFF 		bl	GPIO_Init
+ 155              		.loc 1 9 5 view .LVU20
+ 156 0004 FFF7FEFF 		bl	RCC_Init
  157              	.LVL11:
-  11:Code/src/main.c **** 	//adcInit();
- 158              		.loc 1 11 2 view .LVU20
- 159 000c FFF7FEFF 		bl	USART3_Init
+  10:Code/src/main.c **** 	USART3_Init();
+ 158              		.loc 1 10 5 view .LVU21
+ 159 0008 FFF7FEFF 		bl	GPIO_Init
  160              	.LVL12:
+  11:Code/src/main.c **** 	adcInit();
+ 161              		.loc 1 11 2 view .LVU22
+ 162 000c FFF7FEFF 		bl	USART3_Init
+ 163              	.LVL13:
+  12:Code/src/main.c **** 
+ 164              		.loc 1 12 2 view .LVU23
+ 165 0010 FFF7FEFF 		bl	adcInit
+ 166              	.LVL14:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s 			page 5
+
+
   14:Code/src/main.c **** 	xTaskCreate(vTaskConvertADC, "ADC", 128, NULL, 1, NULL);
- 161              		.loc 1 14 2 view .LVU21
- 162 0010 0024     		movs	r4, #0
- 163 0012 0194     		str	r4, [sp, #4]
- 164 0014 0125     		movs	r5, #1
- 165 0016 0095     		str	r5, [sp]
- 166 0018 2346     		mov	r3, r4
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 5
-
-
- 167 001a 8022     		movs	r2, #128
- 168 001c 0A49     		ldr	r1, .L15
- 169 001e 0B48     		ldr	r0, .L15+4
- 170 0020 FFF7FEFF 		bl	xTaskCreate
- 171              	.LVL13:
+ 167              		.loc 1 14 2 view .LVU24
+ 168 0014 0024     		movs	r4, #0
+ 169 0016 0194     		str	r4, [sp, #4]
+ 170 0018 0125     		movs	r5, #1
+ 171 001a 0095     		str	r5, [sp]
+ 172 001c 2346     		mov	r3, r4
+ 173 001e 8022     		movs	r2, #128
+ 174 0020 0A49     		ldr	r1, .L15
+ 175 0022 0B48     		ldr	r0, .L15+4
+ 176 0024 FFF7FEFF 		bl	xTaskCreate
+ 177              	.LVL15:
   15:Code/src/main.c **** 
- 172              		.loc 1 15 2 view .LVU22
- 173 0024 0194     		str	r4, [sp, #4]
- 174 0026 0095     		str	r5, [sp]
- 175 0028 2346     		mov	r3, r4
- 176 002a 8022     		movs	r2, #128
- 177 002c 0849     		ldr	r1, .L15+8
- 178 002e 0948     		ldr	r0, .L15+12
- 179 0030 FFF7FEFF 		bl	xTaskCreate
- 180              	.LVL14:
+ 178              		.loc 1 15 2 view .LVU25
+ 179 0028 0194     		str	r4, [sp, #4]
+ 180 002a 0095     		str	r5, [sp]
+ 181 002c 2346     		mov	r3, r4
+ 182 002e 8022     		movs	r2, #128
+ 183 0030 0849     		ldr	r1, .L15+8
+ 184 0032 0948     		ldr	r0, .L15+12
+ 185 0034 FFF7FEFF 		bl	xTaskCreate
+ 186              	.LVL16:
   17:Code/src/main.c **** 	
- 181              		.loc 1 17 2 view .LVU23
+ 187              		.loc 1 17 2 view .LVU26
   17:Code/src/main.c **** 	
- 182              		.loc 1 17 16 is_stmt 0 view .LVU24
- 183 0034 2246     		mov	r2, r4
- 184 0036 0221     		movs	r1, #2
- 185 0038 0520     		movs	r0, #5
- 186 003a FFF7FEFF 		bl	xQueueGenericCreate
- 187              	.LVL15:
+ 188              		.loc 1 17 16 is_stmt 0 view .LVU27
+ 189 0038 2246     		mov	r2, r4
+ 190 003a 0221     		movs	r1, #2
+ 191 003c 0520     		movs	r0, #5
+ 192 003e FFF7FEFF 		bl	xQueueGenericCreate
+ 193              	.LVL17:
   17:Code/src/main.c **** 	
- 188              		.loc 1 17 14 view .LVU25
- 189 003e 064B     		ldr	r3, .L15+16
- 190 0040 1860     		str	r0, [r3]
+ 194              		.loc 1 17 14 view .LVU28
+ 195 0042 064B     		ldr	r3, .L15+16
+ 196 0044 1860     		str	r0, [r3]
   19:Code/src/main.c **** 
- 191              		.loc 1 19 2 is_stmt 1 view .LVU26
- 192 0042 FFF7FEFF 		bl	vTaskStartScheduler
- 193              	.LVL16:
- 194              	.L13:
+ 197              		.loc 1 19 2 is_stmt 1 view .LVU29
+ 198 0046 FFF7FEFF 		bl	vTaskStartScheduler
+ 199              	.LVL18:
+ 200              	.L13:
   21:Code/src/main.c ****     {
- 195              		.loc 1 21 5 discriminator 1 view .LVU27
+ 201              		.loc 1 21 5 discriminator 1 view .LVU30
   24:Code/src/main.c ****   
- 196              		.loc 1 24 5 discriminator 1 view .LVU28
- 197 0046 FEE7     		b	.L13
- 198              	.L16:
- 199              		.align	2
- 200              	.L15:
- 201 0048 00000000 		.word	.LC0
- 202 004c 00000000 		.word	vTaskSendValue
- 203 0050 08000000 		.word	.LC1
- 204 0054 00000000 		.word	vTaskConvertADC
- 205 0058 00000000 		.word	SendDataADC
- 206              		.cfi_endproc
- 207              	.LFE69:
- 209              		.comm	SendDataADC,4,4
- 210              		.section	.rodata.main.str1.4,"aMS",%progbits,1
- 211              		.align	2
- 212              	.LC0:
- 213 0000 56616C75 		.ascii	"Value\000"
- 213      6500
- 214 0006 0000     		.space	2
- 215              	.LC1:
- 216 0008 41444300 		.ascii	"ADC\000"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 6
+ 202              		.loc 1 24 5 discriminator 1 view .LVU31
+ 203 004a FEE7     		b	.L13
+ 204              	.L16:
+ 205              		.align	2
+ 206              	.L15:
+ 207 004c 00000000 		.word	.LC0
+ 208 0050 00000000 		.word	vTaskSendValue
+ 209 0054 08000000 		.word	.LC1
+ 210 0058 00000000 		.word	vTaskConvertADC
+ 211 005c 00000000 		.word	SendDataADC
+ 212              		.cfi_endproc
+ 213              	.LFE69:
+ 215              		.comm	SendDataADC,4,4
+ 216              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s 			page 6
 
 
- 217              		.text
- 218              	.Letext0:
- 219              		.file 2 "FreeRTOS/inc/stdint.h"
- 220              		.file 3 "CMSIS/inc/core_cm3.h"
- 221              		.file 4 "CMSIS/inc/system_stm32f1xx.h"
- 222              		.file 5 "FreeRTOS/inc/portmacro.h"
- 223              		.file 6 "FreeRTOS/inc/queue.h"
- 224              		.file 7 "Code/inc/main.h"
- 225              		.file 8 "FreeRTOS/inc/task.h"
- 226              		.file 9 "Code/inc/uartLib.h"
- 227              		.file 10 "Code/inc/sysInit.h"
-ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s 			page 7
+ 217              		.align	2
+ 218              	.LC0:
+ 219 0000 56616C75 		.ascii	"Value\000"
+ 219      6500
+ 220 0006 0000     		.space	2
+ 221              	.LC1:
+ 222 0008 41444300 		.ascii	"ADC\000"
+ 223              		.text
+ 224              	.Letext0:
+ 225              		.file 2 "FreeRTOS/inc/stdint.h"
+ 226              		.file 3 "CMSIS/inc/core_cm3.h"
+ 227              		.file 4 "CMSIS/inc/system_stm32f1xx.h"
+ 228              		.file 5 "FreeRTOS/inc/portmacro.h"
+ 229              		.file 6 "FreeRTOS/inc/queue.h"
+ 230              		.file 7 "Code/inc/main.h"
+ 231              		.file 8 "Code/inc/adcLib.h"
+ 232              		.file 9 "FreeRTOS/inc/task.h"
+ 233              		.file 10 "Code/inc/uartLib.h"
+ 234              		.file 11 "Code/inc/sysInit.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:16     .text.vTaskSendValue:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:24     .text.vTaskSendValue:0000000000000000 vTaskSendValue
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:75     .text.vTaskSendValue:0000000000000030 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:16     .text.vTaskSendValue:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:24     .text.vTaskSendValue:0000000000000000 vTaskSendValue
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:75     .text.vTaskSendValue:0000000000000030 $d
                             *COM*:0000000000000004 SendDataADC
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:80     .text.vTaskConvertADC:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:87     .text.vTaskConvertADC:0000000000000000 vTaskConvertADC
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:126    .text.vTaskConvertADC:0000000000000024 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:131    .text.main:0000000000000000 $t
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:138    .text.main:0000000000000000 main
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:201    .text.main:0000000000000048 $d
-C:\Users\HARTO_~1\AppData\Local\Temp\cct1y39a.s:211    .rodata.main.str1.4:0000000000000000 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:80     .text.vTaskConvertADC:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:87     .text.vTaskConvertADC:0000000000000000 vTaskConvertADC
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:129    .text.vTaskConvertADC:0000000000000024 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:134    .text.main:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:141    .text.main:0000000000000000 main
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:207    .text.main:000000000000004c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\cct3mHWc.s:217    .rodata.main.str1.4:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 vTaskDelay
 uxQueueMessagesWaiting
 xQueueReceive
 SendDataUSART3
+adcConvert
 xQueueGenericSend
 RCC_Init
 GPIO_Init
 USART3_Init
+adcInit
 xTaskCreate
 xQueueGenericCreate
 vTaskStartScheduler

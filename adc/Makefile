@@ -40,6 +40,7 @@ Code/src/main.c \
 Code/src/sysInit.c \
 Code/src/uartLib.c \
 Code/src/pwmLib.c \
+Code/src/adcLib.c \
 CMSIS/src/system_stm32f1xx.c \
 FreeRTOS/src/croutine.c \
 FreeRTOS/src/event_groups.c \

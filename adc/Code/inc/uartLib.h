@@ -7,4 +7,4 @@
 void USART3_Init(void);
 void USART3_Send(char chr);
 void USART3_Send_String(char* str);
-void SendDataUSART3 (uint8_t data);
+void SendDataUSART3 (uint16_t data);

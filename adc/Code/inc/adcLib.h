@@ -4,5 +4,5 @@
 
 /*************************Functions*******************************/
 
-//void adcInit(void);
-//uint16_t adcConvert (void);
+void adcInit(void);
+uint16_t adcConvert (void);

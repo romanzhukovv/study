@@ -29,7 +29,7 @@ int main(void)
 
 void vTaskSendValue(void *argument)
 {
-	uint8_t data;
+	uint16_t data;
 
 	while (1)
 	{
@@ -50,7 +50,7 @@ void vTaskConvertADC(void *argument)
 	
 	while(1)
 	{
-		adcResult = adcConvet ();
+		adcResult = adcConvert();
 		xQueueSend(SendDataADC, &adcResult, 0);
 		vTaskDelay(200);
 	}
