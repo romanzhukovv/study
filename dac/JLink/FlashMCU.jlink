@@ -1,0 +1,6 @@
+r
+loadbin build\dac.bin, 0x00
+verifybin build\dac.bin, 0x00
+r
+g
+q

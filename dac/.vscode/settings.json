@@ -1,0 +1,7 @@
+{
+	"cortex-debug.enableTelemetry": false,
+	"cortex-debug.JLinkGDBServerPath": "C:/Software/JLink/JLinkGDBServerCL.exe",
+	"files.associations": {
+	
+	}
+}

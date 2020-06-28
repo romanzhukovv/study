@@ -1,0 +1,152 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"dacLib.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.dacInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	dacInit
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	dacInit:
+  25              	.LFB65:
+  26              		.file 1 "Code/src/dacLib.c"
+   1:Code/src/dacLib.c **** /***************************Library*******************************/
+   2:Code/src/dacLib.c **** 
+   3:Code/src/dacLib.c **** #include "dacLib.h"
+   4:Code/src/dacLib.c **** 
+   5:Code/src/dacLib.c **** /*************************Functions*******************************/
+   6:Code/src/dacLib.c **** 
+   7:Code/src/dacLib.c **** //PA5 - TP7 - DAC2
+   8:Code/src/dacLib.c **** 
+   9:Code/src/dacLib.c **** void dacInit(void){
+  27              		.loc 1 9 19 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  10:Code/src/dacLib.c **** 	
+  11:Code/src/dacLib.c **** 	RCC->APB1ENR |= RCC_APB1ENR_DACEN;
+  32              		.loc 1 11 2 view .LVU1
+  33              		.loc 1 11 15 is_stmt 0 view .LVU2
+  34 0000 0C4B     		ldr	r3, .L2
+  35 0002 DA69     		ldr	r2, [r3, #28]
+  36 0004 42F00052 		orr	r2, r2, #536870912
+  37 0008 DA61     		str	r2, [r3, #28]
+  12:Code/src/dacLib.c **** 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+  38              		.loc 1 12 2 is_stmt 1 view .LVU3
+  39              		.loc 1 12 15 is_stmt 0 view .LVU4
+  40 000a 9A69     		ldr	r2, [r3, #24]
+  41 000c 42F00402 		orr	r2, r2, #4
+  42 0010 9A61     		str	r2, [r3, #24]
+  13:Code/src/dacLib.c **** 	
+  14:Code/src/dacLib.c **** 	GPIOA->CRL &= ~GPIO_CRL_CNF5;
+  43              		.loc 1 14 2 is_stmt 1 view .LVU5
+  44              		.loc 1 14 13 is_stmt 0 view .LVU6
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s 			page 2
+
+
+  45 0012 A3F58433 		sub	r3, r3, #67584
+  46 0016 1A68     		ldr	r2, [r3]
+  47 0018 22F44002 		bic	r2, r2, #12582912
+  48 001c 1A60     		str	r2, [r3]
+  15:Code/src/dacLib.c **** 	GPIOA->CRL &= ~GPIO_CRL_MODE5;
+  49              		.loc 1 15 2 is_stmt 1 view .LVU7
+  50              		.loc 1 15 13 is_stmt 0 view .LVU8
+  51 001e 1A68     		ldr	r2, [r3]
+  52 0020 22F44012 		bic	r2, r2, #3145728
+  53 0024 1A60     		str	r2, [r3]
+  16:Code/src/dacLib.c **** 	
+  17:Code/src/dacLib.c **** 	DAC->CR |= DAC_CR_EN2;
+  54              		.loc 1 17 2 is_stmt 1 view .LVU9
+  55              		.loc 1 17 10 is_stmt 0 view .LVU10
+  56 0026 044A     		ldr	r2, .L2+4
+  57 0028 1368     		ldr	r3, [r2]
+  58 002a 43F48033 		orr	r3, r3, #65536
+  59 002e 1360     		str	r3, [r2]
+  18:Code/src/dacLib.c **** 	
+  19:Code/src/dacLib.c **** }
+  60              		.loc 1 19 1 view .LVU11
+  61 0030 7047     		bx	lr
+  62              	.L3:
+  63 0032 00BF     		.align	2
+  64              	.L2:
+  65 0034 00100240 		.word	1073876992
+  66 0038 00740040 		.word	1073771520
+  67              		.cfi_endproc
+  68              	.LFE65:
+  70              		.section	.text.writeDAC,"ax",%progbits
+  71              		.align	1
+  72              		.global	writeDAC
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  76              		.fpu softvfp
+  78              	writeDAC:
+  79              	.LVL0:
+  80              	.LFB66:
+  20:Code/src/dacLib.c **** 
+  21:Code/src/dacLib.c **** void writeDAC(uint16_t data){
+  81              		.loc 1 21 29 is_stmt 1 view -0
+  82              		.cfi_startproc
+  83              		@ args = 0, pretend = 0, frame = 0
+  84              		@ frame_needed = 0, uses_anonymous_args = 0
+  85              		@ link register save eliminated.
+  22:Code/src/dacLib.c **** 	
+  23:Code/src/dacLib.c **** 	if (data < 4096){DAC->DHR12R2 = data;}
+  86              		.loc 1 23 2 view .LVU13
+  87              		.loc 1 23 5 is_stmt 0 view .LVU14
+  88 0000 B0F5805F 		cmp	r0, #4096
+  89 0004 01D2     		bcs	.L4
+  90              		.loc 1 23 19 is_stmt 1 discriminator 1 view .LVU15
+  91              		.loc 1 23 32 is_stmt 0 discriminator 1 view .LVU16
+  92 0006 014B     		ldr	r3, .L6
+  93 0008 5861     		str	r0, [r3, #20]
+  94              	.L4:
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s 			page 3
+
+
+  24:Code/src/dacLib.c **** 	
+  25:Code/src/dacLib.c **** }...
+  95              		.loc 1 25 1 view .LVU17
+  96 000a 7047     		bx	lr
+  97              	.L7:
+  98              		.align	2
+  99              	.L6:
+ 100 000c 00740040 		.word	1073771520
+ 101              		.cfi_endproc
+ 102              	.LFE66:
+ 104              		.text
+ 105              	.Letext0:
+ 106              		.file 2 "FreeRTOS/inc/stdint.h"
+ 107              		.file 3 "CMSIS/inc/core_cm3.h"
+ 108              		.file 4 "CMSIS/inc/system_stm32f1xx.h"
+ 109              		.file 5 "CMSIS/inc/stm32f105xc.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 dacLib.c
+C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s:16     .text.dacInit:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s:24     .text.dacInit:0000000000000000 dacInit
+C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s:65     .text.dacInit:0000000000000034 $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s:71     .text.writeDAC:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s:78     .text.writeDAC:0000000000000000 writeDAC
+C:\Users\HARTO_~1\AppData\Local\Temp\ccRbdtCg.s:100    .text.writeDAC:000000000000000c $d
+
+NO UNDEFINED SYMBOLS

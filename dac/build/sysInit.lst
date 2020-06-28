@@ -1,0 +1,352 @@
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"sysInit.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.RCC_Init,"ax",%progbits
+  16              		.align	1
+  17              		.global	RCC_Init
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	RCC_Init:
+  25              	.LFB65:
+  26              		.file 1 "Code/src/sysInit.c"
+   1:Code/src/sysInit.c **** /***************************Library*******************************/
+   2:Code/src/sysInit.c **** 
+   3:Code/src/sysInit.c **** #include "sysInit.h"
+   4:Code/src/sysInit.c **** 
+   5:Code/src/sysInit.c **** /*************************Functions*******************************/
+   6:Code/src/sysInit.c **** 
+   7:Code/src/sysInit.c **** void RCC_Init(void)
+   8:Code/src/sysInit.c **** {
+  27              		.loc 1 8 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+   9:Code/src/sysInit.c **** 	
+  10:Code/src/sysInit.c **** 	RCC->CR |= ((uint32_t)RCC_CR_HSEON);									//HSE Enable
+  32              		.loc 1 10 2 view .LVU1
+  33              		.loc 1 10 10 is_stmt 0 view .LVU2
+  34 0000 1E4A     		ldr	r2, .L5
+  35 0002 1368     		ldr	r3, [r2]
+  36 0004 43F48033 		orr	r3, r3, #65536
+  37 0008 1360     		str	r3, [r2]
+  11:Code/src/sysInit.c **** 	while(!(RCC->CR & RCC_CR_HSERDY));										//HSE is ready				
+  38              		.loc 1 11 2 is_stmt 1 view .LVU3
+  39              	.L2:
+  40              		.loc 1 11 35 discriminator 1 view .LVU4
+  41              		.loc 1 11 13 is_stmt 0 discriminator 1 view .LVU5
+  42 000a 1C4B     		ldr	r3, .L5
+  43 000c 1B68     		ldr	r3, [r3]
+  44              		.loc 1 11 7 discriminator 1 view .LVU6
+  45 000e 13F4003F 		tst	r3, #131072
+  46 0012 FAD0     		beq	.L2
+  12:Code/src/sysInit.c **** 	
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s 			page 2
+
+
+  13:Code/src/sysInit.c **** 	FLASH->ACR |= FLASH_ACR_PRFTBE | FLASH_ACR_LATENCY;						//Tact for Flash
+  47              		.loc 1 13 2 is_stmt 1 view .LVU7
+  48              		.loc 1 13 13 is_stmt 0 view .LVU8
+  49 0014 1A4A     		ldr	r2, .L5+4
+  50 0016 1368     		ldr	r3, [r2]
+  51 0018 43F01703 		orr	r3, r3, #23
+  52 001c 1360     		str	r3, [r2]
+  14:Code/src/sysInit.c **** 	
+  15:Code/src/sysInit.c **** 	RCC->CFGR |= RCC_CFGR_HPRE_DIV1;										//AHB = SYSCLK/1 = 48
+  53              		.loc 1 15 2 is_stmt 1 view .LVU9
+  54              		.loc 1 15 12 is_stmt 0 view .LVU10
+  55 001e 174B     		ldr	r3, .L5
+  56 0020 5A68     		ldr	r2, [r3, #4]
+  57 0022 5A60     		str	r2, [r3, #4]
+  16:Code/src/sysInit.c **** 	RCC->CFGR |= RCC_CFGR_PPRE1_DIV2;										//APB1 = HCLK/2 = 24
+  58              		.loc 1 16 2 is_stmt 1 view .LVU11
+  59              		.loc 1 16 12 is_stmt 0 view .LVU12
+  60 0024 5A68     		ldr	r2, [r3, #4]
+  61 0026 42F48062 		orr	r2, r2, #1024
+  62 002a 5A60     		str	r2, [r3, #4]
+  17:Code/src/sysInit.c **** 	RCC->CFGR |= RCC_CFGR_PPRE2_DIV1;										//APB2 = HCLK/1 = 48
+  63              		.loc 1 17 2 is_stmt 1 view .LVU13
+  64              		.loc 1 17 12 is_stmt 0 view .LVU14
+  65 002c 5A68     		ldr	r2, [r3, #4]
+  66 002e 5A60     		str	r2, [r3, #4]
+  18:Code/src/sysInit.c **** 
+  19:Code/src/sysInit.c **** 	RCC->CFGR2 |= RCC_CFGR2_PREDIV1SRC_HSE;									//Prediv1 Source - HSE
+  67              		.loc 1 19 2 is_stmt 1 view .LVU15
+  68              		.loc 1 19 13 is_stmt 0 view .LVU16
+  69 0030 DA6A     		ldr	r2, [r3, #44]
+  70 0032 DA62     		str	r2, [r3, #44]
+  20:Code/src/sysInit.c **** 	RCC->CFGR2 |= RCC_CFGR2_PREDIV1_DIV1;									//Previv1 = HSE/1 = 8
+  71              		.loc 1 20 2 is_stmt 1 view .LVU17
+  72              		.loc 1 20 13 is_stmt 0 view .LVU18
+  73 0034 DA6A     		ldr	r2, [r3, #44]
+  74 0036 DA62     		str	r2, [r3, #44]
+  21:Code/src/sysInit.c **** 	RCC->CFGR |= RCC_CFGR_PLLSRC_Msk;										//PLL source - Prediv1
+  75              		.loc 1 21 2 is_stmt 1 view .LVU19
+  76              		.loc 1 21 12 is_stmt 0 view .LVU20
+  77 0038 5A68     		ldr	r2, [r3, #4]
+  78 003a 42F48032 		orr	r2, r2, #65536
+  79 003e 5A60     		str	r2, [r3, #4]
+  22:Code/src/sysInit.c **** 	RCC->CFGR |= RCC_CFGR_PLLMULL6;											//PLLCLK = Prediv1 * 6 = 48
+  80              		.loc 1 22 2 is_stmt 1 view .LVU21
+  81              		.loc 1 22 12 is_stmt 0 view .LVU22
+  82 0040 5A68     		ldr	r2, [r3, #4]
+  83 0042 42F48012 		orr	r2, r2, #1048576
+  84 0046 5A60     		str	r2, [r3, #4]
+  23:Code/src/sysInit.c **** 	
+  24:Code/src/sysInit.c **** 	RCC->CR |= RCC_CR_PLLON;												//PLL Enable
+  85              		.loc 1 24 2 is_stmt 1 view .LVU23
+  86              		.loc 1 24 10 is_stmt 0 view .LVU24
+  87 0048 1A68     		ldr	r2, [r3]
+  88 004a 42F08072 		orr	r2, r2, #16777216
+  89 004e 1A60     		str	r2, [r3]
+  25:Code/src/sysInit.c **** 	while((RCC->CR & RCC_CR_PLLRDY) == 0) {}									//PLL is ready
+  90              		.loc 1 25 2 is_stmt 1 view .LVU25
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s 			page 3
+
+
+  91              	.L3:
+  92              		.loc 1 25 41 discriminator 1 view .LVU26
+  93              		.loc 1 25 12 is_stmt 0 discriminator 1 view .LVU27
+  94 0050 0A4B     		ldr	r3, .L5
+  95 0052 1B68     		ldr	r3, [r3]
+  96              		.loc 1 25 7 discriminator 1 view .LVU28
+  97 0054 13F0007F 		tst	r3, #33554432
+  98 0058 FAD0     		beq	.L3
+  26:Code/src/sysInit.c **** 	
+  27:Code/src/sysInit.c **** 	RCC->CFGR &= ~RCC_CFGR_SW;												//Clear SW bits
+  99              		.loc 1 27 2 is_stmt 1 view .LVU29
+ 100              		.loc 1 27 12 is_stmt 0 view .LVU30
+ 101 005a 084B     		ldr	r3, .L5
+ 102 005c 5A68     		ldr	r2, [r3, #4]
+ 103 005e 22F00302 		bic	r2, r2, #3
+ 104 0062 5A60     		str	r2, [r3, #4]
+  28:Code/src/sysInit.c **** 	RCC->CFGR |=RCC_CFGR_SW_PLL;											//Select sourse SYSCLK - PLLCLK
+ 105              		.loc 1 28 2 is_stmt 1 view .LVU31
+ 106              		.loc 1 28 12 is_stmt 0 view .LVU32
+ 107 0064 5A68     		ldr	r2, [r3, #4]
+ 108 0066 42F00202 		orr	r2, r2, #2
+ 109 006a 5A60     		str	r2, [r3, #4]
+  29:Code/src/sysInit.c **** 	while((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_1) {}					//Wait till PLL is used
+ 110              		.loc 1 29 2 is_stmt 1 view .LVU33
+ 111              	.L4:
+ 112              		.loc 1 29 55 discriminator 1 view .LVU34
+ 113              		.loc 1 29 12 is_stmt 0 discriminator 1 view .LVU35
+ 114 006c 034B     		ldr	r3, .L5
+ 115 006e 5B68     		ldr	r3, [r3, #4]
+ 116              		.loc 1 29 19 discriminator 1 view .LVU36
+ 117 0070 03F00C03 		and	r3, r3, #12
+ 118              		.loc 1 29 7 discriminator 1 view .LVU37
+ 119 0074 082B     		cmp	r3, #8
+ 120 0076 F9D1     		bne	.L4
+  30:Code/src/sysInit.c **** 	
+  31:Code/src/sysInit.c **** }
+ 121              		.loc 1 31 1 view .LVU38
+ 122 0078 7047     		bx	lr
+ 123              	.L6:
+ 124 007a 00BF     		.align	2
+ 125              	.L5:
+ 126 007c 00100240 		.word	1073876992
+ 127 0080 00200240 		.word	1073881088
+ 128              		.cfi_endproc
+ 129              	.LFE65:
+ 131              		.section	.text.GPIO_Init,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	GPIO_Init
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.fpu softvfp
+ 139              	GPIO_Init:
+ 140              	.LFB66:
+  32:Code/src/sysInit.c **** 
+  33:Code/src/sysInit.c **** void GPIO_Init(void)
+  34:Code/src/sysInit.c **** {
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s 			page 4
+
+
+ 141              		.loc 1 34 1 is_stmt 1 view -0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+  35:Code/src/sysInit.c **** 	RCC->APB2ENR |= RCC_APB2ENR_IOPCEN; 									//Takt on for port C
+ 146              		.loc 1 35 2 view .LVU40
+ 147              		.loc 1 35 15 is_stmt 0 view .LVU41
+ 148 0000 124B     		ldr	r3, .L8
+ 149 0002 9A69     		ldr	r2, [r3, #24]
+ 150 0004 42F01002 		orr	r2, r2, #16
+ 151 0008 9A61     		str	r2, [r3, #24]
+  36:Code/src/sysInit.c **** 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN; 									//Takt on for port A
+ 152              		.loc 1 36 2 is_stmt 1 view .LVU42
+ 153              		.loc 1 36 15 is_stmt 0 view .LVU43
+ 154 000a 9A69     		ldr	r2, [r3, #24]
+ 155 000c 42F00402 		orr	r2, r2, #4
+ 156 0010 9A61     		str	r2, [r3, #24]
+  37:Code/src/sysInit.c **** 	
+  38:Code/src/sysInit.c **** 	//GPIOC->CRH &= ~GPIO_CRH_CNF9; 	  									//PC9 in output
+  39:Code/src/sysInit.c **** 	//GPIOC->CRH |= GPIO_CRH_MODE9_0; 										//PC9 in output, speed 10 MHz
+  40:Code/src/sysInit.c **** 	
+  41:Code/src/sysInit.c **** 	//GPIOA->CRH &= ~GPIO_CRH_CNF9; 	 	 								//PA9 in output
+  42:Code/src/sysInit.c **** 	//GPIOA->CRH |= GPIO_CRH_MODE9_0; 										//PA9 in output, speed 10 MHz
+  43:Code/src/sysInit.c **** 	
+  44:Code/src/sysInit.c **** 	GPIOC->CRH &= ~GPIO_CRH_CNF11; 											//PC11 in output
+ 157              		.loc 1 44 2 is_stmt 1 view .LVU44
+ 158              		.loc 1 44 13 is_stmt 0 view .LVU45
+ 159 0012 A3F58033 		sub	r3, r3, #65536
+ 160 0016 5A68     		ldr	r2, [r3, #4]
+ 161 0018 22F44042 		bic	r2, r2, #49152
+ 162 001c 5A60     		str	r2, [r3, #4]
+  45:Code/src/sysInit.c **** 	GPIOC->CRH |= GPIO_CRH_MODE11_0; 										//PC11 in output, speed 10 MHz
+ 163              		.loc 1 45 2 is_stmt 1 view .LVU46
+ 164              		.loc 1 45 13 is_stmt 0 view .LVU47
+ 165 001e 5A68     		ldr	r2, [r3, #4]
+ 166 0020 42F48052 		orr	r2, r2, #4096
+ 167 0024 5A60     		str	r2, [r3, #4]
+  46:Code/src/sysInit.c **** 	GPIOC->BSRR |= GPIO_BSRR_BR11; 											//Reset PC11
+ 168              		.loc 1 46 2 is_stmt 1 view .LVU48
+ 169              		.loc 1 46 14 is_stmt 0 view .LVU49
+ 170 0026 1A69     		ldr	r2, [r3, #16]
+ 171 0028 42F00062 		orr	r2, r2, #134217728
+ 172 002c 1A61     		str	r2, [r3, #16]
+  47:Code/src/sysInit.c **** 	
+  48:Code/src/sysInit.c **** 	//GPIOC->CRH &= ~GPIO_CRH_CNF12; 										//PC12 in output
+  49:Code/src/sysInit.c **** 	//GPIOC->CRH |= GPIO_CRH_MODE12_0; 										//PC12 in output, speed 10 MHz
+  50:Code/src/sysInit.c **** 	
+  51:Code/src/sysInit.c **** 	//GPIOC->BSRR |= GPIO_BSRR_BR9; 										//Reset PC9
+  52:Code/src/sysInit.c **** 	//GPIOA->BSRR |= GPIO_BSRR_BR9;											//Reset PA9
+  53:Code/src/sysInit.c **** 
+  54:Code/src/sysInit.c **** 	GPIOA->CRL &= ~GPIO_CRL_CNF4_1;											//Input floating mode PA4
+ 173              		.loc 1 54 2 is_stmt 1 view .LVU50
+ 174              		.loc 1 54 13 is_stmt 0 view .LVU51
+ 175 002e A3F50063 		sub	r3, r3, #2048
+ 176 0032 1A68     		ldr	r2, [r3]
+ 177 0034 22F40022 		bic	r2, r2, #524288
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s 			page 5
+
+
+ 178 0038 1A60     		str	r2, [r3]
+  55:Code/src/sysInit.c **** 	GPIOA->CRL |= GPIO_CRL_CNF4_0;											//Input floating mode PA4
+ 179              		.loc 1 55 2 is_stmt 1 view .LVU52
+ 180              		.loc 1 55 13 is_stmt 0 view .LVU53
+ 181 003a 1A68     		ldr	r2, [r3]
+ 182 003c 42F48022 		orr	r2, r2, #262144
+ 183 0040 1A60     		str	r2, [r3]
+  56:Code/src/sysInit.c **** 	GPIOA->CRL &= ~GPIO_CRL_MODE4;											//Input floating mode PA4
+ 184              		.loc 1 56 2 is_stmt 1 view .LVU54
+ 185              		.loc 1 56 13 is_stmt 0 view .LVU55
+ 186 0042 1A68     		ldr	r2, [r3]
+ 187 0044 22F44032 		bic	r2, r2, #196608
+ 188 0048 1A60     		str	r2, [r3]
+  57:Code/src/sysInit.c **** }
+ 189              		.loc 1 57 1 view .LVU56
+ 190 004a 7047     		bx	lr
+ 191              	.L9:
+ 192              		.align	2
+ 193              	.L8:
+ 194 004c 00100240 		.word	1073876992
+ 195              		.cfi_endproc
+ 196              	.LFE66:
+ 198              		.section	.text.MCO_out,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	MCO_out
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 204              		.fpu softvfp
+ 206              	MCO_out:
+ 207              	.LFB67:
+  58:Code/src/sysInit.c **** 
+  59:Code/src/sysInit.c **** void MCO_out(void){
+ 208              		.loc 1 59 19 is_stmt 1 view -0
+ 209              		.cfi_startproc
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+  60:Code/src/sysInit.c **** 	
+  61:Code/src/sysInit.c **** 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+ 213              		.loc 1 61 2 view .LVU58
+ 214              		.loc 1 61 15 is_stmt 0 view .LVU59
+ 215 0000 0B4A     		ldr	r2, .L11
+ 216 0002 9369     		ldr	r3, [r2, #24]
+ 217 0004 43F00403 		orr	r3, r3, #4
+ 218 0008 9361     		str	r3, [r2, #24]
+  62:Code/src/sysInit.c **** 	
+  63:Code/src/sysInit.c **** 	GPIOA->CRH &= ~GPIO_CRH_CNF8_0;
+ 219              		.loc 1 63 2 is_stmt 1 view .LVU60
+ 220              		.loc 1 63 13 is_stmt 0 view .LVU61
+ 221 000a 0A4B     		ldr	r3, .L11+4
+ 222 000c 5968     		ldr	r1, [r3, #4]
+ 223 000e 21F00401 		bic	r1, r1, #4
+ 224 0012 5960     		str	r1, [r3, #4]
+  64:Code/src/sysInit.c **** 	GPIOA->CRH |= GPIO_CRH_CNF8_1;
+ 225              		.loc 1 64 2 is_stmt 1 view .LVU62
+ 226              		.loc 1 64 13 is_stmt 0 view .LVU63
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s 			page 6
+
+
+ 227 0014 5968     		ldr	r1, [r3, #4]
+ 228 0016 41F00801 		orr	r1, r1, #8
+ 229 001a 5960     		str	r1, [r3, #4]
+  65:Code/src/sysInit.c **** 	GPIOA->CRH |= GPIO_CRH_MODE8;
+ 230              		.loc 1 65 2 is_stmt 1 view .LVU64
+ 231              		.loc 1 65 13 is_stmt 0 view .LVU65
+ 232 001c 5968     		ldr	r1, [r3, #4]
+ 233 001e 41F00301 		orr	r1, r1, #3
+ 234 0022 5960     		str	r1, [r3, #4]
+  66:Code/src/sysInit.c **** 	
+  67:Code/src/sysInit.c **** 	RCC->CFGR |= RCC_CFGR_MCO_SYSCLK;
+ 235              		.loc 1 67 2 is_stmt 1 view .LVU66
+ 236              		.loc 1 67 12 is_stmt 0 view .LVU67
+ 237 0024 5368     		ldr	r3, [r2, #4]
+ 238 0026 43F08063 		orr	r3, r3, #67108864
+ 239 002a 5360     		str	r3, [r2, #4]
+  68:Code/src/sysInit.c **** 	
+  69:Code/src/sysInit.c **** }...
+ 240              		.loc 1 69 1 view .LVU68
+ 241 002c 7047     		bx	lr
+ 242              	.L12:
+ 243 002e 00BF     		.align	2
+ 244              	.L11:
+ 245 0030 00100240 		.word	1073876992
+ 246 0034 00080140 		.word	1073809408
+ 247              		.cfi_endproc
+ 248              	.LFE67:
+ 250              		.text
+ 251              	.Letext0:
+ 252              		.file 2 "FreeRTOS/inc/stdint.h"
+ 253              		.file 3 "CMSIS/inc/core_cm3.h"
+ 254              		.file 4 "CMSIS/inc/system_stm32f1xx.h"
+ 255              		.file 5 "CMSIS/inc/stm32f105xc.h"
+ARM GAS  C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 sysInit.c
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:16     .text.RCC_Init:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:24     .text.RCC_Init:0000000000000000 RCC_Init
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:126    .text.RCC_Init:000000000000007c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:132    .text.GPIO_Init:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:139    .text.GPIO_Init:0000000000000000 GPIO_Init
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:194    .text.GPIO_Init:000000000000004c $d
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:199    .text.MCO_out:0000000000000000 $t
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:206    .text.MCO_out:0000000000000000 MCO_out
+C:\Users\HARTO_~1\AppData\Local\Temp\ccjU8STd.s:245    .text.MCO_out:0000000000000030 $d
+
+NO UNDEFINED SYMBOLS
